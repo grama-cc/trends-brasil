@@ -1,0 +1,21 @@
+@import '../lib/scss/variables.scss';
+
+.nav {
+  display: flex;
+}
+
+.link {
+  color: $gray;
+  border: 1px solid $gray;
+  margin-right: 5px;
+  padding: 10px;
+  text-decoration: none;
+  font-size: responsive(14, 20);
+
+  &:hover {
+    color: $black;
+    border-color: $black;
+    border-width: 3px;
+    padding: 8px;
+  }
+}
