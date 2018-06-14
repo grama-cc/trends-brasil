@@ -1,0 +1,60 @@
+[
+	{
+		"id" : 1,
+		"words": [
+			{
+				"word": "Presidente",
+				"size": 40,
+				"period": "TDY"
+			},
+			{
+				"word": "PT",
+				"size": 100,
+				"period": "WKK"
+			}
+		],
+		"name": "Luis Inácio Lula da Silva",
+		"slug": "lula",
+		"size": 100,
+		"color": "#ff0000"
+	},
+	{
+		"id" : 2,
+		"words": [
+			{
+				"word": "Imbroxável",
+				"size": 20,
+				"period": "TDY"
+			},
+			{
+				"word": "PSL",
+				"size": 50,
+				"period": "WKK"
+			}
+		],
+		"name": "Jair Bolsonaro",
+		"slug": "bolsonaro",
+		"size": 50,
+		"color": "#ff00ff"
+	},
+	{
+		"id" : 3,
+		"words": [
+			{
+				"word": "Familia",
+				"size": 10,
+				"period": "TDY"
+			},
+			{
+				"word": "PDT",
+				"size": 25,
+				"period": "WKK"
+			}
+		],
+		"name": "Ciro Gomes",
+		"slug": "ciro",
+		"size": 25,
+		"color": "#0000ff"
+	}
+]
+

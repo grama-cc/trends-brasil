@@ -3,15 +3,18 @@ import { connect } from 'react-redux';
 
 import Head from '../components/Head';
 import Layout from '../components/Layout';
-import Api from '../lib/Api';
 
+import Intro from '../components/Intro';
+import Keywords from '../components/Keywords';
+
+import Api from '../lib/Api';
 import css from './home.scss';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null,
+      data: [],
     };
   }
 
@@ -20,7 +23,8 @@ class Home extends React.Component {
   }
 
   getData = async () => {
-    const data = await Api.get('/mock.json');
+    //https://brasil-trends.herokuapp.com/v1/candidate/
+    const data = await Api.get('/keywords.json');
     this.setState({ data });
   }
 
@@ -28,9 +32,8 @@ class Home extends React.Component {
     return (
       <Layout>
         <Head title="Home" />
-        <h1 className={css.title}>Home</h1>
-        <pre>{JSON.stringify(this.props, null, 2)}</pre>
-        <pre>{JSON.stringify(this.state.data, null, 2)}</pre>
+        <Intro />
+        <Keywords data={this.state.data} /> 
       </Layout>
     );
   }

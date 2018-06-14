@@ -1,0 +1,21 @@
+@import '../lib/scss/variables.scss';
+
+.keywords {
+  background-color: $gray;
+  margin: 0 0 20px;
+  padding: 20px;
+}
+
+.temp {
+	margin: 0 0 20px;
+	padding: 20px;
+	background-color: #ddd;
+}
+
+.candidate {
+	display: inline-block;
+	border-radius: 100%;
+}
+
+
+
