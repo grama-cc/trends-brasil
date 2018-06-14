@@ -6,11 +6,16 @@ import css from './KeywordsCloud.scss';
 class KeywordsCloud extends React.Component {
 
   render() {
+    const words = this.props.words
+
     return (
-      <div>
-        {this.props.words.map((words, idx) => {
+      <div {...this.props} className={css.cloud}>
+        {words.map((words, idx) => {
           return (
-            <span>
+            <span
+              key={idx}
+              style={{fontSize: `${words.size}px`}}
+            >
               {words.word}
             </span>
           )

@@ -1,9 +1,14 @@
 @import '../lib/scss/variables.scss';
 
+.temp {
+	display: flex;
+	justify-content: space-between;
+}
+
 .filter {
 	li {
 		padding: 5px;
-		background-color: pink;
+		background-color: #ddd;
 		cursor: pointer;
 		margin: 10px 0;
 	}

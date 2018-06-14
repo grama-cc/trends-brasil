@@ -1,9 +1,12 @@
 @import '../lib/scss/variables.scss';
 
-.cloud {
+.candidate {
 	background-color: #ddd;
 	span {
 		padding: 10px;
+		display: inline-block;
+		border-radius: 100%;
+		cursor: pointer;
 	}
 }
 
