@@ -5,7 +5,7 @@ import Head from '../components/Head';
 import Layout from '../components/Layout';
 
 import Intro from '../components/Intro';
-import Keywords from '../components/Keywords';
+import Keywords from '../components/Keywords/Keywords';
 
 import Api from '../lib/Api';
 import css from './home.scss';
@@ -23,16 +23,16 @@ class Home extends React.Component {
   }
 
   getData = async () => {
-    //https://brasil-trends.herokuapp.com/v1/candidate/
     const data = await Api.get('/keywords.json');
+    //const data = await Api.get('/v1/candidate/');
     this.setState({ data });
   }
 
   render() {
     return (
       <Layout>
-        <Head title="Home" />
-        <Intro />
+        <Head title='Trends Brasil' />
+        {/* <Intro /> */}
         <Keywords data={this.state.data} /> 
       </Layout>
     );

@@ -1,0 +1,44 @@
+@import '../../lib/scss/variables.scss';
+
+.filter {
+	li {
+		padding: 5px;
+		background-color: #ddd;
+		cursor: pointer;
+		margin: 10px 0;
+	}
+}
+
+.btn {
+	display: flex;
+	margin: 0 0 20px;
+	justify-content: center;
+}
+
+button {
+	background: #fff;
+	border-radius: 8px;
+	font-size: 12px;
+	border: 1px solid #999;
+	padding: 5px 10px;
+	margin: 0 5px;
+}
+
+.candidate {
+	background-color: #ddd;
+	position: relative;
+	width: 100%;
+	height: 300px;
+	span {
+		display: inline-block;
+		border-radius: 100%;
+		cursor: pointer;
+		max-width: 100px;
+		max-height: 100px;
+		min-width: 30px;
+		min-height: 30px;
+		//position: absolute;
+	}
+}
+
+
