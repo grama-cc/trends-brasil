@@ -1,18 +1,29 @@
 import React from 'react';
+import Slider from 'react-slick'
 import PropTypes from 'prop-types';
 
 import css from './KeywordsFilter.scss';
-import KeywordsCloud from './KeywordsCloud.js';
 
+import KeywordsCloud from './KeywordsCloud.js';
 
 class KeywordsFilter extends React.Component {
 
+  // save only current item index
   constructor (props) {
     super(props)
+    this.settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      //slidesToShow: 1,
+      //slidesToScroll: 1,
+      arrows: true
+    }
     this.state = {
       current: null,
       selected: 1,
-      active: false
+      active: false,
+      index: null
     }
   }
 
@@ -25,8 +36,12 @@ class KeywordsFilter extends React.Component {
   }
 
   onSelect = (e) => {
+    const index = e.currentTarget.dataset.index
     const id = Number(e.currentTarget.dataset.id)
-    this.setState({ current: id })
+    this.setState({ 
+      current: id,
+      index: index
+    })
   }
 
   getCandidate = () => {
@@ -46,8 +61,8 @@ class KeywordsFilter extends React.Component {
     return words
   }
 
+  // Make function return only itens 
   renderGraphic = () => {
-
     return (
       this.props.data.map((data, idx) => {
         let diam = data.size * 10
@@ -57,16 +72,20 @@ class KeywordsFilter extends React.Component {
         let padding = 20 // component padding
         let spacing = padding + radius
 
+        // Make if / else
         let top = Math.floor( Math.random() * ( ( size - diam ) - spacing ) )
         let left = Math.floor( Math.random() * ( ( size - diam ) - spacing ) )
         
         let t = top < 0 ? 0 : top > 280 ? 280 : top
         let l = left < 0 ? 0 : left > 280 ? 280 : left
 
+        // console.log(data)
+
         return (
           <span
             key={idx}
             onClick={this.onSelect}
+            data-index={idx}
             data-id={data.id}
             style={{
               backgroundImage: `url(/static/img/candidates/${data.slug}.png)`,
@@ -83,6 +102,7 @@ class KeywordsFilter extends React.Component {
     )
   }
 
+  // Make function return only itens 
   renderCandidate = () => {
     return (
       <ul className={css.filter}>
@@ -103,6 +123,8 @@ class KeywordsFilter extends React.Component {
     const current = this.state.current
     const selected = this.state.selected
 
+    const candidate = this.state.index ? data[this.state.index] : []
+
     return (
       <div>
 
@@ -115,11 +137,24 @@ class KeywordsFilter extends React.Component {
           {selected === 1 ? <div className={css.graphic}>{this.renderGraphic()}</div> : selected === 2 ? <div className={css.candidate}>{this.renderCandidate()}</div> : null}
         </div>
 
-        <div>
-          Modal
+
+        <div
+          className={this.state.index ? `${css.modal} ${css.open}` : `${css.modal}` }
+        >
+          <p>{candidate.name}</p>
+          <p>{candidate.slug}</p>
+          {candidate.words ? candidate.words.map((word, index) => {
+            return <p key='index'>{word.word}</p>
+          }) : null}
         </div>
 
-        {this.state.current ? <KeywordsCloud words={this.getWords()} /> : null}
+
+        {/*<Slider {...this.settings}>
+          {data.map((d, i) => {
+            return <div key={i}>{d.name}</div>
+          })}
+        </Slider>*/}
+        {/*this.state.current ? <KeywordsCloud words={this.getWords()} /> : null*/}
       </div>
     )
   }

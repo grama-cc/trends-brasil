@@ -1,5 +1,7 @@
 @import '../../lib/scss/variables.scss';
 
+// import slick css - correct
+
 .selected {
 	display: flex;
 	margin: 0 0 20px;
@@ -47,6 +49,7 @@
 		margin: 10px 0;
 	}
 }
+
 .graphic {
 	background-color: #ddd;
 	position: relative;
@@ -61,7 +64,21 @@
 		max-height: 100px;
 		min-width: 40px;
 		min-height: 40px;
-		position: absolute;
+		//position: absolute;
+	}
+}
+
+.modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 0, 0, .8);
+	display: none;
+
+	&.open {
+		display: block;
 	}
 }
 
