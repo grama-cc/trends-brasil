@@ -1,0 +1,10 @@
+<svg viewBox='0 0 12 5' xmlns='http://www.w3.org/2000/svg'>
+  <polyline
+  	stroke='#B4B4B4'
+  	strokeLinecap='round'
+  	strokeLinejoin='round'
+  	fill='none'
+  	transform='translate(-74, -7)'
+  	points='85 7 80 12 75 7'
+  />
+</svg>

@@ -13,7 +13,7 @@ const Head = (props) => {
       <title>{props.title}</title>
       <meta name="description" content={props.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/static/favicon.png" />
+      <link rel="icon" href="/static/img/favicon.png" />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={props.description} />
@@ -24,6 +24,7 @@ const Head = (props) => {
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <link rel="stylesheet" href="/_next/static/style.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
     </NextHead>
   );
 };
