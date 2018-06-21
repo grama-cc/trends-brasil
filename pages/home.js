@@ -20,7 +20,7 @@ class Home extends React.Component {
   }
 
   getData = async () => {
-    const data = await Api.get('/mock.json');
+    const data = await Api.get('/candidate/');
     this.setState({ data });
   }
 
