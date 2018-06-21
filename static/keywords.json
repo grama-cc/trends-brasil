@@ -1,0 +1,279 @@
+[
+  {
+      "id": 1,
+      "words": [
+        {
+          "word": "PT",
+          "size": 30,
+          "period": "WKK"
+        },
+        {
+          "word": "lula",
+          "size": 18,
+          "period": "TDY"
+        },
+        {
+          "word": "preso",
+          "size": 10,
+          "period": "WKK"
+        },
+        {
+          "word": "livre",
+          "size": 15,
+          "period": "TDY"
+        },
+        {
+          "word": "hc",
+          "size": 12,
+          "period": "WKK"
+        },
+        {
+          "word": "triplex",
+          "size": 17,
+          "period": "TDY"
+        },
+        {
+          "word": "presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "golpe",
+          "size": 13,
+          "period": "WKK"
+        }
+      ],
+      "name": "Luiz Inácio Lula da Silva",
+      "slug": "lula",
+      "size": 36,
+      "color": "#FF0000"
+  },
+  {
+      "id": 2,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "Imbroxável",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Jair Bolsonaro",
+      "slug": "jair",
+      "size": 10,
+      "color": "#5E2D79"
+  },
+  {
+      "id": 3,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "PT",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Marina Silva",
+      "slug": "marina",
+      "size": 8,
+      "color": "#5EDA9E"
+  },
+  {
+      "id": 4,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "PT",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Ciro Gomes",
+      "slug": "ciro",
+      "size": 10,
+      "color": "#E3CF57"
+  },
+  {
+      "id": 5,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "PT",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Geraldo Alckmin",
+      "slug": "alckmin",
+      "size": 6,
+      "color": "#B0E2FF"
+  },
+  {
+      "id": 6,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "PT",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Aldo Rebelo",
+      "slug": "rebelo",
+      "size": 1,
+      "color": "#CD6090"
+  },
+  {
+      "id": 7,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "PT",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Manuela D’Ávila",
+      "slug": "manuela",
+      "size": 2,
+      "color": "#DB9370"
+  },
+  {
+      "id": 8,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "PT",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Guilherme Boulos",
+      "slug": "boulos",
+      "size": 1,
+      "color": "#E0EEEE"
+  },
+  {
+      "id": 9,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "PT",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Álvaro Dias",
+      "slug": "dias",
+      "size": 1,
+      "color": "#C5E3BF"
+  },
+  {
+      "id": 10,
+      "words": [
+        {
+          "word": "Presidente",
+          "size": 20,
+          "period": "TDY"
+        },
+        {
+          "word": "PT",
+          "size": 35,
+          "period": "WKK"
+        }
+      ],
+      "name": "Rodrigo Maia",
+      "slug": "maia",
+      "size": 1,
+      "color": "#D8D8BF"
+  },
+  {
+      "id": 11,
+      "words": [],
+      "name": "Josué Gomes",
+      "slug": "gomes",
+      "size": 1,
+      "color": "#C7C7C7"
+  },
+  {
+      "id": 12,
+      "words": [],
+      "name": "João Amoêdo",
+      "slug": "amoedo",
+      "size": 1,
+      "color": "#B6316C"
+  },
+  {
+      "id": 13,
+      "words": [],
+      "name": "Flávio Rocha",
+      "slug": "rocha",
+      "size": 1,
+      "color": "#40E0D0"
+  },
+  {
+      "id": 14,
+      "words": [],
+      "name": "Henrique Meirelles",
+      "slug": "meirelles",
+      "size": 1,
+      "color": "#0D4F8B"
+  },
+  {
+      "id": 15,
+      "words": [],
+      "name": "Fernando Collor",
+      "slug": "collor",
+      "size": 1,
+      "color": "#000000"
+  },
+  {
+      "id": 16,
+      "words": [],
+      "name": "Paulo Rabello de Castro",
+      "slug": "rabello",
+      "size": 1,
+      "color": "#00EE00"
+  },
+  {
+      "id": 17,
+      "words": [],
+      "name": "Levy Fidelix",
+      "slug": "fidelix",
+      "size": 1,
+      "color": "#00EEFF"
+  }
+]
+
