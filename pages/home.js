@@ -23,7 +23,7 @@ class Home extends React.Component {
   }
 
   getData = async () => {
-    const data = await Api.get('/keywords.json');
+    const data = await Api.get('/candidate/');
     this.setState({ data });
   }
 
