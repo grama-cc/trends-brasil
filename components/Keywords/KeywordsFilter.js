@@ -8,6 +8,27 @@ import KeywordsCloud from './KeywordsCloud.js';
 
 class KeywordsFilter extends React.Component {
 
+
+  /*
+    display: block;
+    position: absolute;
+    top:  50%; 
+    left: 50%;
+    width:  $item-size;
+    height: $item-size;
+    margin: -($item-size / 2);
+  
+    $angle: (360 / $item-count);
+    $rot: 0;
+
+    //@for $i from 1 through $item-count {
+      //&:nth-of-type(#{$i}) {
+        transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
+      }
+      $rot: $rot + $angle;
+    }
+*/
+
   // save only current item index
   constructor (props) {
     super(props)
@@ -45,52 +66,66 @@ class KeywordsFilter extends React.Component {
     })
   }
 
-  /*getCandidate = () => {
-    const data = this.props.data
-    let id = this.state.current
-    let filter = data.filter( f => (f.id == id) )
-    let person = filter.reduce((acc, cur, i) => {
-     acc[i] = cur
-      return acc
-    })
-    return person
+  replace(index, spacing) {
+    let top = this.postions[index - 1].x
+    const tryLeft = Math.floor(this.postions[index - 1].y + spacing + this.postions[index - 1].diameter + Math.random() * 15)
+    const tryTop = Math.floor(this.postions[index - 1].x + spacing + this.postions[index - 1].diameter + Math.random() * 15)
+    let left = tryLeft
+    if (tryLeft + spacing > 300) {
+      top = tryTop
+      left = Math.floor(0 + Math.random() * 15)
+      if (this.touching(top, left, spacing)) {
+        console.log('colidiu ' + index)
+        top += spacing
+        left = tryLeft
+      }
+    }
+    return { top : top , left: left }
   }
-
-  getWords = () => {
-    const data = this.getCandidate()
-    let words = data.words
-    return words
-  }*/
+  touching(top, left, spacing) {
+      for (let i = 0; i < this.postions.length; i++) {
+        const element = this.postions[i]
+        const r1 = element.diameter /2
+        const r2 = spacing /2
+        const distance = Math.sqrt((top - element.x) ** 2  + (left -element.y) ** 2);
+        if (distance < r1 + r2) {
+         return true
+        }
+      }
+      return false
+  }
 
   // Make function return only itens 
   renderGraphic = () => {
+    this.postions = []
     return (
       this.props.data.map((data, idx) => {
-        let diam = data.size * 10
-        let radius = diam / 2
-
+        let diameter = data.size * 10
+        diameter = diameter < 40 ? 40 : diameter > 100 ? 100 : diameter
+        //let radius = diam / 2
         let size = 300 // component width and height
-        let padding = 20 // component padding
-        let spacing = padding + radius
-
-        // Make if / else
-        let top = Math.floor( Math.random() * ( ( size - diam ) - spacing ) )
-        let left = Math.floor( Math.random() * ( ( size - diam ) - spacing ) )
-        
-        let t = top < 0 ? 0 : top > 280 ? 280 : top
-        let l = left < 0 ? 0 : left > 280 ? 280 : left
-
+        let padding = 40 // component padding
+        let spacing = diameter
+        let  top = 0
+        let  left = 0
+        if (idx != 0) {
+          let result = this.replace(idx, top, left, spacing)
+          top = result.top
+          left = result.left
+        }
+        this.postions.push({ x: top, y: left, diameter: diameter })
+        let t = top
+        let l = left
         return (
           <span
             key={idx}
             onClick={this.onSelect}
-            data-index={idx}
             data-id={data.id}
             style={{
               backgroundImage: `url(/static/img/candidates/${data.slug}.png)`,
               backgroundColor: data.color,
-              width: `${diam}px`,
-              height: `${diam}px`,
+              width: `${diameter}px`,
+              height: `${diameter}px`,
               opacity: this.state.current === data.id ? 1 : .5,
               top: `${t}px`,
               left: `${l}px`,
@@ -116,7 +151,7 @@ class KeywordsFilter extends React.Component {
               
             >
               <div
-                className={`${css.choose} item`}
+                className={`${css.t} item`}
                 data-id={data.id}
                 onClick={this.onSelect}
                 style={{
@@ -170,10 +205,11 @@ class KeywordsFilter extends React.Component {
                     <span
                     style={{
                       color: candidate.color,
-                      fontSize: word.size
+                      fontSize: word.size,
+                      //fontSize: word.size > 20 ? 20 : word.size < 10 ? 10 : word.size
                     }}
                     >
-                      {word.word}
+                      {word.text}
                     </span>
                   </p>
                 )
