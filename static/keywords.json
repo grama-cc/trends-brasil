@@ -3,13 +3,43 @@
       "id": 1,
       "words": [
         {
-          "word": "Presidente",
+          "word": "PT",
+          "size": 30,
+          "period": "WKK"
+        },
+        {
+          "word": "lula",
+          "size": 18,
+          "period": "TDY"
+        },
+        {
+          "word": "preso",
+          "size": 10,
+          "period": "WKK"
+        },
+        {
+          "word": "livre",
+          "size": 15,
+          "period": "TDY"
+        },
+        {
+          "word": "hc",
+          "size": 12,
+          "period": "WKK"
+        },
+        {
+          "word": "triplex",
+          "size": 17,
+          "period": "TDY"
+        },
+        {
+          "word": "presidente",
           "size": 20,
           "period": "TDY"
         },
         {
-          "word": "PT",
-          "size": 35,
+          "word": "golpe",
+          "size": 13,
           "period": "WKK"
         }
       ],

@@ -12,11 +12,11 @@ class KeywordsFilter extends React.Component {
   constructor (props) {
     super(props)
     this.settings = {
-      dots: true,
+      dots: false,
       infinite: false,
       speed: 500,
-      //slidesToShow: 1,
-      //slidesToScroll: 1,
+      slidesToShow: 3,
+      slidesToScroll: 1,
       arrows: true
     }
     this.state = {
@@ -31,7 +31,8 @@ class KeywordsFilter extends React.Component {
     const val = Number(e.target.value)
     this.setState({ 
       selected: val,
-      active: !this.state.active
+      active: !this.state.active,
+      index: null
     })
   }
 
@@ -44,7 +45,7 @@ class KeywordsFilter extends React.Component {
     })
   }
 
-  getCandidate = () => {
+  /*getCandidate = () => {
     const data = this.props.data
     let id = this.state.current
     let filter = data.filter( f => (f.id == id) )
@@ -59,7 +60,7 @@ class KeywordsFilter extends React.Component {
     const data = this.getCandidate()
     let words = data.words
     return words
-  }
+  }*/
 
   // Make function return only itens 
   renderGraphic = () => {
@@ -78,8 +79,6 @@ class KeywordsFilter extends React.Component {
         
         let t = top < 0 ? 0 : top > 280 ? 280 : top
         let l = left < 0 ? 0 : left > 280 ? 280 : left
-
-        // console.log(data)
 
         return (
           <span
@@ -104,17 +103,35 @@ class KeywordsFilter extends React.Component {
 
   // Make function return only itens 
   renderCandidate = () => {
+    const data = this.props.data
     return (
-      <ul className={css.filter}>
-        <li> Escolha um candidato </li>
-        {this.props.data.map((data, idx) => {
+      <div>
+      <div>Escolha um candidato</div>
+      <Slider {...this.settings} className={css.filter}>
+        
+        {data.map((d, i) => {
           return (
-            <li key={idx} data-id={data.id} onClick={this.onSelect}>
-              {data.name}
-            </li>
+            <div
+              key={i}
+              
+            >
+              <div
+                className={`${css.choose} item`}
+                data-id={data.id}
+                onClick={this.onSelect}
+                style={{
+                  backgroundImage: `url(/static/img/candidates/${d.slug}.png)`,
+                  backgroundColor: d.color,
+                  color: d.color
+                }}
+              />
+              <p>{d.name}</p>
+              {/*<KeywordsCloud words={d.words} />*/}
+            </div>
           )
         })}
-      </ul>
+      </Slider>
+      </div>
     )
   }
 
@@ -122,12 +139,10 @@ class KeywordsFilter extends React.Component {
     const data = this.props.data
     const current = this.state.current
     const selected = this.state.selected
-
     const candidate = this.state.index ? data[this.state.index] : []
 
     return (
       <div>
-
         <div className={css.selected}>
           <button value='1' onClick={this.onChange} className={selected === 1 ? css.disabled : null}>Gráfico</button>
           <button value='2' onClick={this.onChange} className={selected === 2 ? css.disabled : null}>Candidato</button>
@@ -135,25 +150,40 @@ class KeywordsFilter extends React.Component {
 
         <div className={css.content}>
           {selected === 1 ? <div className={css.graphic}>{this.renderGraphic()}</div> : selected === 2 ? <div className={css.candidate}>{this.renderCandidate()}</div> : null}
+        
+          <div className={this.state.index ? `${css.modal} ${css.open}` : `${css.modal}` }>
+            
+            <div className={css.container}>
+
+              <div
+                className={css.choose}
+                style={{
+                  backgroundImage: `url(/static/img/candidates/${candidate.slug}.png)`,
+                  backgroundColor: candidate.color,
+                  color: candidate.color
+                }}
+              />
+
+              {candidate.words ? candidate.words.map((word, index) => {
+                return (
+                  <p key={index} className={css.teste}>
+                    <span
+                    style={{
+                      color: candidate.color,
+                      fontSize: word.size
+                    }}
+                    >
+                      {word.word}
+                    </span>
+                  </p>
+                )
+              }) : null}
+
+            </div>
+
+          </div>
+
         </div>
-
-
-        <div
-          className={this.state.index ? `${css.modal} ${css.open}` : `${css.modal}` }
-        >
-          <p>{candidate.name}</p>
-          <p>{candidate.slug}</p>
-          {candidate.words ? candidate.words.map((word, index) => {
-            return <p key='index'>{word.word}</p>
-          }) : null}
-        </div>
-
-
-        {/*<Slider {...this.settings}>
-          {data.map((d, i) => {
-            return <div key={i}>{d.name}</div>
-          })}
-        </Slider>*/}
         {/*this.state.current ? <KeywordsCloud words={this.getWords()} /> : null*/}
       </div>
     )

@@ -2,6 +2,7 @@
 
 // import slick css - correct
 
+
 .selected {
 	display: flex;
 	margin: 0 0 20px;
@@ -27,11 +28,11 @@
 			color: #b4b4b4;
 		}
 
-	}
+	}	
 }
 
 .content {
-	
+	position: relative;
 }
 
 .candidate {
@@ -39,7 +40,7 @@
 	overflow-x: scroll;
 }
 
-.filter {
+/*.filter {
 	display: flex;
 	width: 2200px; // rever
 	li {
@@ -48,7 +49,7 @@
 		cursor: pointer;
 		margin: 10px 0;
 	}
-}
+}*/
 
 .graphic {
 	background-color: #ddd;
@@ -68,18 +69,68 @@
 	}
 }
 
+.choose {
+		// width: 90px;
+		// height: 90px;
+		background-size: 100%;
+		border-radius: 100%;
+	}
+
+
 .modal {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	background-color: rgba(255, 0, 0, .8);
+	background-color: rgba(255, 255, 255, .5);
 	display: none;
+
+	.container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	
+	$item-size: 20px;
+	$item-count: 8;
+	$circle-size: 200px;
+
+	.teste {
+
+    display: block;
+    position: absolute;
+    top:  50%; 
+    left: 50%;
+    width:  $item-size;
+    height: $item-size;
+    margin: -($item-size / 2);
+  
+    $angle: (360 / $item-count);
+    $rot: 0;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
+      }
+      $rot: $rot + $angle;
+    }
+
+    span {
+    	position: absolute;
+    	font-family: 'Roboto-Medium', sans-serif;
+    	left: 50%;
+    	padding: 10px 5px;
+    	transform: translateX(-50%);
+    	background-color: #fff;
+    }
+
+	}
 
 	&.open {
 		display: block;
 	}
 }
-
 
