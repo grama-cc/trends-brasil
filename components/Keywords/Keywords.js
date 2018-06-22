@@ -1,15 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Keywords.scss';
-
 import content from '../../static/content/keywords.json'
 
-import KeywordsFilter from './KeywordsFilter.js';
 import Description from '../Description.js';
+import Select from './Select.js';
+
+import KeywordsFilter from './KeywordsFilter.js';
 
 class Keywords extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      selected: 1,
+    }
+  }
+
+  onChange = (val) => {
+    this.setState({ 
+      selected: val,
+    })
+  }
 
   render() {
+
     const data = this.props.data
 
     return (
@@ -22,19 +36,15 @@ class Keywords extends React.Component {
           button={content.button}
         />
 
-        <KeywordsFilter data={data} />
+        <Select change={this.onChange} val={this.state.selected} />
+
+        {this.state.selected}
+
+        {/*<KeywordsFilter data={data} />*/}
 
       </section>
     )
   }
 }
-
-Keywords.propTypes = {
-  children: PropTypes.node,
-};
-
-Keywords.defaultProps = {
-  children: null,
-};
 
 export default Keywords;
