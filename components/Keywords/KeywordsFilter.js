@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 
 import css from './KeywordsFilter.scss';
 
-import KeywordsCloud from './KeywordsCloud.js';
+//import KeywordsCloud from './KeywordsCloud.js';
+
+import SliderThumbs from './SliderThumbs.js';
 
 class KeywordsFilter extends React.Component {
 
@@ -32,19 +34,36 @@ class KeywordsFilter extends React.Component {
   // save only current item index
   constructor (props) {
     super(props)
-    this.settings = {
+
+    /*
+    this.slideNav = {
       dots: false,
-      infinite: false,
+      infinite: true,
       speed: 500,
       slidesToShow: 3,
       slidesToScroll: 1,
-      arrows: true
+      centerMode: true,
+      arrows: true,
+      variableWidth: true,
+      asNavFor: 'slider-info'
     }
+    this.slider = {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: 'slider-nav'
+    }*/
+
     this.state = {
       current: null,
-      selected: 1,
+      selected: 2,
       active: false,
-      index: null
+      index: null,
+
+      nav1: null, // slick nav and slider
+      nav2: null // slick nav and slider
+
     }
   }
 
@@ -120,6 +139,7 @@ class KeywordsFilter extends React.Component {
           <span
             key={idx}
             onClick={this.onSelect}
+            data-index={idx}
             data-id={data.id}
             style={{
               backgroundImage: `url(/static/img/candidates/${data.slug}.png)`,
@@ -139,39 +159,76 @@ class KeywordsFilter extends React.Component {
   // Make function return only itens 
   renderCandidate = () => {
     const data = this.props.data
+
+    if (!data.length) {
+      return null;
+    }
+
+    
     return (
       <div>
-      <div>Escolha um candidato</div>
-      <Slider {...this.settings} className={css.filter}>
-        
+
+        <Slider
+          className='nav'
+          asNavFor={this.state.nav1}
+          ref={ slider => ( this.slider2 = slider ) }
+
+          slidesToShow={3}
+          swipeToSlide={true}
+          focusOnSelect={true}
+          centerMode={true}
+        >
+
         {data.map((d, i) => {
           return (
-            <div
-              key={i}
-              
-            >
-              <div
-                className={`${css.t} item`}
-                data-id={data.id}
-                onClick={this.onSelect}
-                style={{
-                  backgroundImage: `url(/static/img/candidates/${d.slug}.png)`,
-                  backgroundColor: d.color,
-                  color: d.color
-                }}
-              />
-              <p>{d.name}</p>
-              {/*<KeywordsCloud words={d.words} />*/}
+            <div key={i} className='slider-nav'>
+             <h1>{i}</h1>
+              <div className='image'>
+                <div
+                  className={`${css.t} item`}
+                  style={{
+                    backgroundImage: `url(/static/img/candidates/${d.slug}.png)`,
+                    backgroundColor: d.color,
+                    color: d.color
+                  }}
+                />
+              </div>
             </div>
           )
         })}
-      </Slider>
+        </Slider> 
+
+        <Slider
+          className='slider'
+          asNavFor={this.state.nav2}
+          ref={ slider => ( this.slider1 = slider ) }
+          arrows={false}
+          slidesToShow={1}
+          slidesToScroll={1}
+        >
+          {data.map((d, i) => {
+            return (
+
+              <div className='slider-info' key={i}>
+                <h1>{i}</h1>
+                <p>{d.name}</p>
+                <KeywordsCloud words={d.words} />
+              </div>
+
+            )
+          })}
+
+        </Slider>
+
+
+
       </div>
     )
   }
 
   render() {
     const data = this.props.data
+    
     const current = this.state.current
     const selected = this.state.selected
     const candidate = this.state.index ? data[this.state.index] : []
@@ -184,7 +241,10 @@ class KeywordsFilter extends React.Component {
         </div>
 
         <div className={css.content}>
-          {selected === 1 ? <div className={css.graphic}>{this.renderGraphic()}</div> : selected === 2 ? <div className={css.candidate}>{this.renderCandidate()}</div> : null}
+
+          {!data.length ? null : <SliderThumbs data={data}/> }
+
+          {/*selected === 1 ? <div className={css.graphic}>{this.renderGraphic()}</div> : selected === 2 ? <div className={css.candidate}>{this.renderCandidate()}</div> : null*/}
         
           <div className={this.state.index ? `${css.modal} ${css.open}` : `${css.modal}` }>
             

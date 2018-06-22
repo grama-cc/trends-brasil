@@ -14,9 +14,9 @@ class KeywordsCloud extends React.Component {
           return (
             <span
               key={idx}
-              style={{fontSize: `${words.size}px`}}
+              //style={{fontSize: `${words.size}px`}}
             >
-              {words.word}
+              {words.text}
             </span>
           )
         })}
