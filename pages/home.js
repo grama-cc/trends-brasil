@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
 
-import Intro from '../components/Intro';
+//import Intro from '../components/Intro/Intro';
 import Keywords from '../components/Keywords/Keywords';
 
 import Api from '../lib/Api';
@@ -24,7 +24,7 @@ class Home extends React.Component {
 
   getData = async () => {
     const data = await Api.get('/candidate/');
-    //const data = await Api.get('/keywords.json');
+    //const data = await Api.get('/data/keywords.json');
     this.setState({ data });
   }
 

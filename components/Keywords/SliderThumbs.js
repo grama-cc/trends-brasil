@@ -56,11 +56,7 @@ class SliderThumbs extends React.Component {
           )
         })}
 
-        
-
-        
-        
-
+      
         </Slider>
 
         <Slider

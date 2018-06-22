@@ -1,0 +1,52 @@
+@import '../lib/scss/variables.scss';
+
+.description {
+	margin: 0 0 20px;
+	text-align: center;
+	h2 {
+		font-size: 24px;
+		margin: 0 0 10px;
+	}
+	p {
+		font-size: 14px;
+		margin: 0 0 10px;
+	}
+	button {
+		font-size: 14px;
+		padding: 0 18px 0 0;
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			height: 6px;
+			width: 12px;
+			background-image: url(/static/img/arrow.svg);
+			background-repeat: no-repeat;
+			top: 50%;
+			right: 0;
+			transform: translateY(-30%) scaleY(1);
+			transition: transform .4s ease;
+		}
+		&.open {
+			&:before {
+				transform: translateY(-50%) scaleY(-1);
+				transition: transform .4s ease;
+			}
+		}
+	}
+	.more {
+		background-color: #eee;
+		text-align: left;
+		margin: 0 10px;
+		padding: 0 10px;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height .6s ease, margin .6s ease, padding .6s ease;
+		&.open {
+			max-height: 1000px;
+			margin: 10px;
+			padding: 10px;
+			transition: max-height .6s ease, margin .6s ease, padding .6s ease;
+		}
+	}
+}
