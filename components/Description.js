@@ -14,21 +14,24 @@ class Description extends React.Component {
   open = () => this.setState({ open: !this.state.open })
 
   render() {
+
+    const content = this.props.content
+
     return (
       <div className={css.description}>
 
-        <h2>{this.props.title}</h2>
-        <p>{this.props.description}</p>
+        <h2>{content.title}</h2>
+        <p>{content.description}</p>
 
         <button
           onClick={this.open}
           className={this.state.open ? css.open : null}
         >
-          {this.props.button}
+          {content.button}
         </button>
 
         <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>
-          {this.props.more.map((text, index) => (
+          {content.more.map((text, index) => (
             <p key={index}>{text}</p>
           ))}
         </div>
@@ -39,17 +42,11 @@ class Description extends React.Component {
 }
 
 Description.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  button: PropTypes.string,
-  more: PropTypes.array,
+  content: PropTypes.object
 };
 
 Description.defaultProps = {
-  title: '',
-  description: '',
-  button: '',
-  more: []
+  content: {}
 };
 
 export default Description;

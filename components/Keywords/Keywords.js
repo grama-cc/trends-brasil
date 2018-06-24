@@ -5,8 +5,8 @@ import content from '../../static/content/keywords.json'
 
 import Description from '../Description.js';
 import Select from './Select.js';
-
-import KeywordsFilter from './KeywordsFilter.js';
+import Candidate from './Candidate.js';
+import Graphic from './Graphic.js';
 
 class Keywords extends React.Component {
   constructor (props) {
@@ -25,22 +25,25 @@ class Keywords extends React.Component {
   render() {
 
     const data = this.props.data
+    const selected = this.state.selected
+    const info = content.description
 
     return (
       <section className={css.keywords} {...this.props}>
 
-        <Description
-          title={content.title}
-          description={content.description}
-          more={content.more}
-          button={content.button}
-        />
+        <Description content={content.description} />
 
-        <Select change={this.onChange} val={this.state.selected} />
+        <Select change={this.onChange} val={selected} content={content.select} />
 
-        {this.state.selected}
+        {selected === 1 ?
 
-        {/*<KeywordsFilter data={data} />*/}
+          <Graphic data={data} />
+
+        : selected === 2 && data.length ?
+
+          <Candidate data={data}/>
+
+        : null}
 
       </section>
     )

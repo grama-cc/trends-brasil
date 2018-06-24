@@ -1,0 +1,125 @@
+@import '../../lib/scss/variables.scss';
+
+// import slick css - correct
+
+
+.selected {
+	display: flex;
+	margin: 0 0 20px;
+	justify-content: center;
+
+	button {
+		background: #fff;
+		border-radius: 4px;
+		font-size: 14px;
+		margin: 0 5px;
+		width: 110px;
+		height: 30px;
+		position: relative;
+		overflow: hidden;
+		border: 1px solid #b4b4b4;
+		background-color: #fff;
+		transition: background .4s ease;
+
+		&.disabled {
+			transition: background .4s ease;
+			background-color: #ececec;
+			border: 1px solid #ececec;
+			color: #b4b4b4;
+		}
+
+	}	
+}
+
+.content {
+	position: relative;
+}
+
+.candidate {
+	overflow-y: hidden;
+	overflow-x: scroll;
+}
+
+/*.filter {
+	display: flex;
+	width: 2200px; // rever
+	li {
+		padding: 5px;
+		background-color: #ddd;
+		cursor: pointer;
+		margin: 10px 0;
+	}
+}*/
+
+.graphic {
+	background-color: #ddd;
+	position: relative;
+	width: 100%;
+	height: 300px;
+	span {
+		background-size: 100%;
+		display: inline-block;
+		border-radius: 100%;
+		cursor: pointer;
+		max-width: 100px;
+		max-height: 100px;
+		min-width: 40px;
+		min-height: 40px;
+		//position: absolute;
+	}
+}
+
+.choose {
+		width: 90px;
+		height: 90px;
+		background-size: 100%;
+		border-radius: 100%;
+	}
+
+	.t {
+		background-size: 100%;
+		border-radius: 100%;
+	}
+
+
+.modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 255, 255, .5);
+	display: none;
+
+	.container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	
+	//$item-size: 20px;
+	//$item-count: 8;
+	//$circle-size: 200px;
+
+	.teste {
+    span {
+    	//position: absolute;
+    	font-family: 'Roboto-Medium', sans-serif;
+    	//left: 50%;
+    	//padding: 10px 5px;
+    	display: block;
+    	margin: 0 0 10px;
+    	transform: translateX(-50%);
+    	background-color: #fff;
+    }
+
+	}
+
+	&.open {
+		display: block;
+	}
+}
+
+

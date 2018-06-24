@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import css from './Select.scss';
 
-import SliderThumbs from './SliderThumbs.js';
-
 class Select extends React.Component {
 
   onChange = (e) => {
@@ -16,28 +14,35 @@ class Select extends React.Component {
   render() {
 
     let val = this.props.val
+    const content = this.props.content
 
     return (
-      <div>
-        <div className={css.selected}>
-          <button
-            value={1}
-            onClick={this.onChange}
-            className={val === 1 ? css.disabled : null}
-          >
-            Gráfico
-          </button>
-          <button
-            value={2}
-            onClick={this.onChange}
-            className={val === 2 ? css.disabled : null}
-          >
-            Candidato
-          </button>
-        </div>
+      <div className={css.selected}>
+        <button
+          value={1}
+          onClick={this.onChange}
+          className={val === 1 ? css.disabled : null}
+        >
+          {content.graphic} 
+        </button>
+        <button
+          value={2}
+          onClick={this.onChange}
+          className={val === 2 ? css.disabled : null}
+        >
+          {content.candidate}
+        </button>
       </div>
     )
   }
 }
+
+Select.propTypes = {
+  content: PropTypes.object
+};
+
+Select.defaultProps = {
+  content: {}
+};
 
 export default Select;
