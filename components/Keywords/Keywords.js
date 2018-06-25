@@ -23,10 +23,8 @@ class Keywords extends React.Component {
   }
 
   render() {
-
     const data = this.props.data
     const selected = this.state.selected
-    const info = content.description
 
     return (
       <section className={css.keywords} {...this.props}>
@@ -41,7 +39,7 @@ class Keywords extends React.Component {
 
         : selected === 2 && data.length ?
 
-          <Candidate data={data}/>
+          <Candidate data={data} />
 
         : null}
 

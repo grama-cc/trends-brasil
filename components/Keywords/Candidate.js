@@ -25,7 +25,7 @@ class Candidate extends React.Component {
   render() {
     const data = this.props.data
     return (
-      <div {...this.props}>
+      <div {...this.props} className={css.candidate}>
         <Slider
           className='nav'
           asNavFor={this.state.nav}
