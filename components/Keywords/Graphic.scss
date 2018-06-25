@@ -1,0 +1,15 @@
+@import '../../lib/scss/variables.scss';
+
+.graphic {
+	background-color: #ddd;
+	position: relative;
+	width: 100%;
+	height: 300px;
+	span {
+		background-size: 100%;
+		display: inline-block;
+		border-radius: 100%;
+		cursor: pointer;
+		position: absolute;
+	}
+}

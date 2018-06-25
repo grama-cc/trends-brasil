@@ -1,0 +1,14 @@
+@import '../../lib/scss/variables.scss';
+
+.cloud {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:center;
+	div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 5px;
+	}
+
+}
