@@ -4,10 +4,10 @@ import css from './Intro.scss';
 
 const Intro = props => (
   <section className={css.intro}>
-    <h1 className={css.title}>Na busca do candidato</h1>
+    <h1 className={css.title}>Na busca do <b>candidato</b></h1>
     <p>O que os brasileiros procuram nas eleições de 2018? </p>
     <p>Veja o que pesquisam sobre os seis candidatos que lideram.</p>
-    <button>go to</button>
+    <button />
   </section>
 );
 
