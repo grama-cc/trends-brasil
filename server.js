@@ -2,9 +2,12 @@ const next = require('next');
 const express = require('express');
 const routes = require('./routes');
 
-const host = process.env.HOST || 'localhost';
+// const host = process.env.HOST || 'localhost';
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
+
+
+console.log(process.env)
 
 const app = next({ dev });
 const handler = routes.getRequestHandler(app);
@@ -24,8 +27,8 @@ app.prepare().then(() => {
 
   server.use(handler);
 
-  server.listen(port, host, (err) => {
-    if (err) throw err;
-    console.log(`🌎 > Ready on http://${host}:${port}`); // eslint-disable-line no-console
+  server.listen(port, host, () => {
+    //if (err) throw err;
+    console.log(`🌎 > Ready on port ${port}`); // eslint-disable-line no-console
   });
 });
