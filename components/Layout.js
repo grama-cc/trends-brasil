@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import css from './Layout.scss';
 
 const Layout = props => (
   <React.Fragment>
