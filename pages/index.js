@@ -13,7 +13,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      data: null,
     };
   }
 
@@ -28,6 +28,10 @@ class Home extends React.Component {
   }
 
   render() {
+    if (!this.state.data) {
+      return <div>Loading...</div>
+    }
+
     return (
       <Layout>
         <Head title="Trends Brasil" />

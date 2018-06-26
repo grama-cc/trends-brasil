@@ -1,11 +1,12 @@
 {
-  "name": "seed-react",
+  "name": "trends-brasil",
   "version": "0.0.1",
   "license": "CC-BY-SA-4.0",
   "scripts": {
+    "clear-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
     "dev": "node server.js",
     "build": "next build && next export",
-    "heroku-postbuild": "next build",
+    "heroku-postbuild": "yarn clear-cache && next build",
     "test": "eslint . && stylelint **/*.scss",
     "start": "NODE_ENV=production node server.js"
   },
