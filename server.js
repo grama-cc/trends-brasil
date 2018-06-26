@@ -7,13 +7,12 @@ const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 
 
-console.log(process.env)
+// console.log(process.env)
 
 const app = next({ dev });
 const handler = routes.getRequestHandler(app);
 
-app.prepare()
-  .then(() => {
+app.prepare().then(() => {
     const server = express();
 
     // Resolve trailing slash
@@ -29,11 +28,8 @@ app.prepare()
     server.use(handler);
 
     server.listen(port, (error) => {
-      console.log(2, error);
-      //if (err) throw err;
+      if (error) throw error;
       console.log(`🌎 > Ready on port ${port}`); // eslint-disable-line no-console
     });
   })
-  .catch((error) => {
-    console.log(1, error);
-  });
+  .catch(console.error);
