@@ -1,0 +1,27 @@
+@import '../../lib/scss/variables.scss';
+
+.team {
+	padding: 0 10px;
+	margin: 0 0 40px;
+	h2 {
+		margin: 0 0 15px;
+		font-size: 24px;
+	}
+	li {
+		margin: 20px 0 0;
+		&:first-child {
+			margin: 0;
+		}
+		h3 {
+			font-family: 'Roboto-Medium', sans-serif;
+			font-size: 14px;
+		}
+		p {
+			font-family: 'Roboto-Light', sans-serif;
+			font-size: 14px;
+			margin: 0 0 20px;
+			line-height: 20px;
+		}
+	}
+	
+}

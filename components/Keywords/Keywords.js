@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Keywords.scss';
-import Api from '../../lib/Api';
 
 import content from '../../static/json/keywords.json'
 

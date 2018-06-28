@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 
 import Intro from '../components/Intro/Intro';
 import Keywords from '../components/Keywords/Keywords';
+import Footer from '../components/Footer/Footer';
 
 import Api from '../lib/Api';
 
@@ -37,6 +38,7 @@ class Home extends React.Component {
         <Head title="Trends Brasil" />
         <Intro />
         <Keywords data={this.state.data} />
+        <Footer />
       </Layout>
     );
   }

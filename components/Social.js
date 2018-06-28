@@ -2,25 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Social.scss';
 
-class Social extends React.Component {
-  render() {
-    return (
-      <ul className={css.social}>
-        <li><a href="javascript:void(0)"><img src="/static/img/media.svg"/></a></li>
-        <li><a href="javascript:void(0)"><img src="/static/img/twitter.svg"/></a></li>
-        <li><a href="javascript:void(0)"><img src="/static/img/facebook.svg"/></a></li>
-        <li><a href="javascript:void(0)"><img src="/static/img/whatsapp.svg"/></a></li>
-      </ul>
-    )
-  }
-}
+
+const Social = props => (
+  <div className={props.share ? css.share : null}>
+    {props.children}
+    <ul className={css.social}>
+      {!props.share ? <li><a href="#"><img src="/static/img/media.svg"/></a></li> : null}
+      <li><a href="#"><img src="/static/img/twitter.svg"/></a></li>
+      <li><a href="#"><img src="/static/img/facebook.svg"/></a></li>
+      <li><a href="#"><img src="/static/img/whatsapp.svg"/></a></li>
+    </ul>
+  </div>
+);
 
 Social.propTypes = {
-  content: PropTypes.object
+  children: PropTypes.node
 };
 
 Social.defaultProps = {
-  content: {}
+  children: null
 };
 
 export default Social;
