@@ -6,7 +6,7 @@
 	justify-content: center;
 
 	button {
-		background: #fff;
+		background-white: $white;
 		border-radius: 4px;
 		font-size: 14px;
 		margin: 0 5px;
@@ -14,16 +14,14 @@
 		height: 30px;
 		position: relative;
 		overflow: hidden;
-		border: 1px solid #b4b4b4;
-		background-color: #fff;
+		border: 1px solid $grayDark;
 		transition: background .4s ease;
 
 		&.disabled {
 			transition: background .4s ease;
-			background-color: #ececec;
-			border: 1px solid #ececec;
-			color: #b4b4b4;
+			background-color: $grayLight;
+			border: 1px solid $grayLight;
+			color: $grayDark;
 		}
-
 	}	
 }

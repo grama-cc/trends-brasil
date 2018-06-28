@@ -1,8 +1,22 @@
-$img: '../assets/images/';
+$img: '/static/img/';
 
+// Color
 $white: #fff;
-$gray: #aaa;
 $black: #000;
+
+$gray: #f8f8f8;
+$grayLight: #ececec;
+$grayDark: #b4b4b4;
+
+// Fonts
+$roboto: 'Roboto', sans-serif;
+$robotoLight: 'Roboto-Light', sans-serif;
+$robotoMedium: 'Roboto-Medium', sans-serif;
+
+// Circle position
+$item-size: 20px;
+$item-count: 8;
+$circle-size: 200px;
 
 @function responsive($value1, $value2, $width1: 320, $width2: 1920) {
   $x1: $width1;
