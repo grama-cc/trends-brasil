@@ -4,11 +4,11 @@
 	margin: 0 0 20px;
 	text-align: center;
 	h2 {
-		font-size: 24px;
+		font-size: responsive(24, 34);
 		margin: 0 0 10px;
 	}
 	p {
-		font-size: 14px;
+		font-size: responsive(14, 18);
 		margin: 0 0 10px;
 	}
 	button {
@@ -20,7 +20,7 @@
 			position: absolute;
 			height: 6px;
 			width: 12px;
-			background-image: url(/static/img/arrow.svg);
+			background-image: url($img + 'arrow.svg');
 			background-repeat: no-repeat;
 			top: 50%;
 			right: 0;
@@ -35,7 +35,6 @@
 		}
 	}
 	.more {
-		background-color: #eee;
 		text-align: left;
 		margin: 0 10px;
 		padding: 0 10px;

@@ -8,7 +8,7 @@ class Intro extends React.Component {
 	render() {
 		return (
 			<section className={css.intro}>
-		    <h1 className={css.title}>{content.title} <b>{content.highlight}</b></h1>
+		    <h1 className={css.title}>{content.title} <span>{content.highlight}</span></h1>
 		    {content.description.map((text, index) => (
 		    	<p key={index}>{text}</p>
 		    ))}

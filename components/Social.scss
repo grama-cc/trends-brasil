@@ -27,8 +27,8 @@
 	padding: 0 10px;
 	margin: 0 0 40px;
 	h4 {
-		font-size: 20px;
-		font-family: 'Roboto-Light', sans-serif;
+		font-size: responsive(20, 24);
+		font-family: $robotoLight;
 	}
 	.social {
 		justify-content: flex-start;

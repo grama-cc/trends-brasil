@@ -1,6 +1,6 @@
 import React from 'react';
-// import { connect } from 'react-redux';
 
+import css from './index.scss';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
 

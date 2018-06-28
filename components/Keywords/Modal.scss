@@ -22,13 +22,9 @@
 		border-radius: 100%;
 	}
 
-	$item-size: 20px;
-	$item-count: 8;
-	$circle-size: 200px;
-
   p {
   	position: absolute;
-  	font-family: 'Roboto-Medium', sans-serif;
+  	font-family: $robotoMedium;
     top:  50%; 
     left: 50%;
     width:  $item-size;
@@ -52,12 +48,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0;
     padding: 8px 5px;
   }
-
-
 }
 
 

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import NextHead from 'next/head';
 import { withRouter } from 'next/router';
 
-import './Head.scss';
-
 const Head = (props) => {
   const url = `http://localhost${props.url || props.router.asPath}`;
   return (
