@@ -1,15 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import content from '../../static/json/intro.json'
 import css from './Intro.scss';
 
-const Intro = props => (
-  <section className={css.intro}>
-    <h1 className={css.title}>Na busca do <b>candidato</b></h1>
-    <p>O que os brasileiros procuram nas eleições de 2018? </p>
-    <p>Veja o que pesquisam sobre os seis candidatos que lideram.</p>
-    <button />
-  </section>
-);
+class Intro extends React.Component {
+	render() {
+		return (
+			<section className={css.intro}>
+		    <h1 className={css.title}>{content.title} <b>{content.highlight}</b></h1>
+		    {content.description.map((text, index) => (
+		    	<p key={index}>{text}</p>
+		    ))}
+		    <button onClick={this.scrollTo} />
+		  </section>
+		);
+	}
+};
 
 Intro.propTypes = {
   children: PropTypes.node,

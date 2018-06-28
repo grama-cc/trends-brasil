@@ -1,8 +1,9 @@
 @import '../../lib/scss/variables.scss';
 
 .keywords {
-  padding: 20px 10px;
+  padding: 25px 10px;
   background-color: #f8f8f8;
+  min-height: 100vh;
 	.content {
 		margin: 0 0 20px;
 		text-align: center;

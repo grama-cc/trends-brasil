@@ -1,0 +1,43 @@
+@import '../lib/scss/variables.scss';
+
+.social {
+	display: flex;
+	justify-content: center;
+	margin: 30px 0 20px;
+	li {
+		margin: 0 0 0 24px;
+		&:first-child{
+			margin: 0;
+		}
+		a {
+			display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+	    height: 100%;
+	    width: 100%;
+			img {
+				display: block;
+			}
+		}
+	}
+}
+
+.share {
+	padding: 0 10px;
+	margin: 0 0 40px;
+	h4 {
+		font-size: 20px;
+		font-family: 'Roboto-Light', sans-serif;
+	}
+	.social {
+		justify-content: flex-start;
+		margin: 20px 0;
+		li {
+			background-color: #ececec;
+			border-radius: 100%;
+			width: 40px;
+			height: 40px;
+		}
+	}
+}
