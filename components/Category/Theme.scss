@@ -1,0 +1,27 @@
+@import '../../lib/scss/variables.scss';
+
+.theme {
+	.info {
+		text-align: center;
+		display: flex !important;
+		align-items: center;
+		flex-direction: column;
+		margin: 0 0 35px;
+		h3 {
+			font-size: 20px;
+  		font-family: $robotoMedium;
+  		margin: 0 0 20px;
+		}
+		p {
+			max-width: 240px;
+			font-size: 14px;
+		}
+	}
+}
+
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+[
+    {
+        "id": 6,
+        "name": "Aldo Rebelo",
+        "slug": "rebelo",
+        "size": 1,
+        "top": 254,
+        "left": 131,
+        "color": "#CD6090"
+    },
+    {
+        "id": 8,
+        "name": "Guilherme Boulos",
+        "slug": "boulos",
+        "size": 1,
+        "top": 50,
+        "left": 180,
+        "color": "#E0EEEE"
+    },
+    {
+        "id": 9,
+        "name": "Álvaro Dias",
+        "slug": "dias",
+        "size": 1,
+        "top": 153,
+        "left": 293,
+        "color": "#C5E3BF"
+    },
+    {
+        "id": 10,
+        "name": "Rodrigo Maia",
+        "slug": "maia",
+        "size": 1,
+        "top": 43,
+        "left": 290,
+        "color": "#D8D8BF"
+    },
+    {
+        "id": 12,
+        "name": "João Amoêdo",
+        "slug": "amoedo",
+        "size": 1,
+        "top": 2,
+        "left": 177,
+        "color": "#B6316C"
+    },
+    {
+        "id": 13,
+        "name": "Flávio Rocha",
+        "slug": "rocha",
+        "size": 1,
+        "top": 133,
+        "left": 70,
+        "color": "#40E0D0"
+    },
+    {
+        "id": 14,
+        "name": "Henrique Meirelles",
+        "slug": "meirelles",
+        "size": 1,
+        "top": 17,
+        "left": 70,
+        "color": "#0D4F8B"
+    },
+    {
+        "id": 15,
+        "name": "Fernando Collor",
+        "slug": "collor",
+        "size": 1,
+        "top": 63,
+        "left": 24,
+        "color": "#000000"
+    },
+    {
+        "id": 16,
+        "name": "Paulo Rabello de Castro",
+        "slug": "rabello",
+        "size": 1,
+        "top": 248,
+        "left": 190,
+        "color": "#00EE00"
+    },
+    {
+        "id": 17,
+        "name": "Levy Fidelix",
+        "slug": "fidelix",
+        "size": 1,
+        "top": 10,
+        "left": 7,
+        "color": "#00EEFF"
+    },
+    {
+        "id": 7,
+        "name": "Manuela D’Ávila",
+        "slug": "manuela",
+        "size": 2,
+        "top": 120,
+        "left": 11,
+        "color": "#DB9370"
+    },
+    {
+        "id": 5,
+        "name": "Geraldo Alckmin",
+        "slug": "alckmin",
+        "size": 6,
+        "top": 63,
+        "left": 99,
+        "color": "#B0E2FF"
+    },
+    {
+        "id": 3,
+        "name": "Marina Silva",
+        "slug": "marina",
+        "size": 8,
+        "top": 91,
+        "left": 222,
+        "color": "#5EDA9E"
+    },
+    {
+        "id": 2,
+        "name": "Jair Bolsonaro",
+        "slug": "jair",
+        "size": 10,
+        "top": 197,
+        "left": 239,
+        "color": "#5E2D79"
+    },
+    {
+        "id": 4,
+        "name": "Ciro Gomes",
+        "slug": "ciro",
+        "size": 15,
+        "top": 182,
+        "left": 18,
+        "color": "#E3CF57"
+    },
+    {
+        "id": 1,
+        "name": "Luiz Inácio Lula da Silva",
+        "slug": "lula",
+        "size": 36,
+        "top": 141,
+        "left": 125,
+        "color": "#FF0000"
+    }
+]

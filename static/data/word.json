@@ -1,0 +1,677 @@
+[
+    {
+        "id": 714,
+        "text": "manuela",
+        "query_text": "manuela",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 8,
+        "category": 6
+    },
+    {
+        "id": 715,
+        "text": "roda viva",
+        "query_text": "roda viva",
+        "size": 61,
+        "period": "now 7-d",
+        "candidate": 8,
+        "category": 5
+    },
+    {
+        "id": 718,
+        "text": "psol",
+        "query_text": "psol",
+        "size": 50,
+        "period": "now 7-d",
+        "candidate": 8,
+        "category": 4
+    },
+    {
+        "id": 724,
+        "text": "quem é",
+        "query_text": "quem é guilherme boulos",
+        "size": 27,
+        "period": "now 7-d",
+        "candidate": 8,
+        "category": 1
+    },
+    {
+        "id": 728,
+        "text": "marcos",
+        "query_text": "marcos boulos",
+        "size": 20,
+        "period": "now 7-d",
+        "candidate": 8,
+        "category": 3
+    },
+    {
+        "id": 737,
+        "text": "rico",
+        "query_text": "guilherme boulos rico",
+        "size": 8,
+        "period": "now 7-d",
+        "candidate": 8,
+        "category": 2
+    },
+    {
+        "id": 742,
+        "text": "presidente",
+        "query_text": "rodrigo maia presidente",
+        "size": 34,
+        "period": "now 7-d",
+        "candidate": 10,
+        "category": 6
+    },
+    {
+        "id": 748,
+        "query_text": "aecio neves",
+        "text": "aecio neves",
+        "size": 16,
+        "period": "now 7-d",
+        "candidate": 10,
+        "category": 3
+    },
+    {
+        "id": 749,
+        "query_text": "rodrigo maia partido",
+        "text": "partido",
+        "size": 14,
+        "period": "now 7-d",
+        "candidate": 10,
+        "category": 4
+    },
+    {
+        "id": 751,
+        "query_text": "dem",
+        "text": "dem",
+        "size": 11,
+        "period": "now 7-d",
+        "candidate": 10,
+        "category": 2
+    },
+    {
+        "id": 752,
+        "query_text": "rodrigo maia globo",
+        "text": "globo",
+        "size": 11,
+        "period": "now 7-d",
+        "candidate": 10,
+        "category": 5
+    },
+    {
+        "id": 753,
+        "query_text": "rodrigo maia filhos",
+        "text": "filhos",
+        "size": 10,
+        "period": "now 7-d",
+        "candidate": 10,
+        "category": 1
+    },
+    {
+        "id": 765,
+        "query_text": "marina silva 2018",
+        "text": "2018",
+        "size": 60,
+        "period": "now 7-d",
+        "candidate": 3,
+        "category": 2
+    },
+    {
+        "id": 766,
+        "query_text": "bolsonaro",
+        "text": "bolsonaro",
+        "size": 56,
+        "period": "now 7-d",
+        "candidate": 3,
+        "category": 6
+    },
+    {
+        "id": 770,
+        "query_text": "marido marina silva",
+        "text": "marido",
+        "size": 22,
+        "period": "now 7-d",
+        "candidate": 3,
+        "category": 1
+    },
+    {
+        "id": 772,
+        "query_text": "marina silva partido",
+        "text": "partido",
+        "size": 19,
+        "period": "now 7-d",
+        "candidate": 3,
+        "category": 4
+    },
+    {
+        "id": 773,
+        "query_text": "marina ruy barbosa",
+        "text": "ruy barbosa",
+        "size": 18,
+        "period": "now 7-d",
+        "candidate": 3,
+        "category": 3
+    },
+    {
+        "id": 774,
+        "query_text": "marina silva roda viva",
+        "text": "roda viva",
+        "size": 18,
+        "period": "now 7-d",
+        "candidate": 3,
+        "category": 5
+    },
+    {
+        "id": 789,
+        "query_text": "bolsonaro",
+        "text": "bolsonaro",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 5,
+        "category": 6
+    },
+    {
+        "id": 790,
+        "query_text": "geraldo alckmin 2018",
+        "text": "2018",
+        "size": 83,
+        "period": "now 7-d",
+        "candidate": 5,
+        "category": 2
+    },
+    {
+        "id": 793,
+        "query_text": "doria",
+        "text": "doria",
+        "size": 53,
+        "period": "now 7-d",
+        "candidate": 5,
+        "category": 3
+    },
+    {
+        "id": 797,
+        "query_text": "psdb",
+        "text": "psdb",
+        "size": 37,
+        "period": "now 7-d",
+        "candidate": 5,
+        "category": 4
+    },
+    {
+        "id": 800,
+        "query_text": "geraldo alckmin facebook",
+        "text": "facebook",
+        "size": 28,
+        "period": "now 7-d",
+        "candidate": 5,
+        "category": 5
+    },
+    {
+        "id": 807,
+        "query_text": "antagonista",
+        "text": "antagonista",
+        "size": 17,
+        "period": "now 7-d",
+        "candidate": 5,
+        "category": 1
+    },
+    {
+        "id": 814,
+        "query_text": "flávio rocha candidato",
+        "text": "candidato",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 13,
+        "category": 6
+    },
+    {
+        "id": 815,
+        "query_text": "flavio rocha",
+        "text": "flavio",
+        "size": 84,
+        "period": "now 7-d",
+        "candidate": 13,
+        "category": 3
+    },
+    {
+        "id": 816,
+        "query_text": "flávio rocha dono da riachuelo",
+        "text": "dono da riachuelo",
+        "size": 39,
+        "period": "now 7-d",
+        "candidate": 13,
+        "category": 1
+    },
+    {
+        "id": 820,
+        "query_text": "flávio rocha trabalho escravo",
+        "text": "trabalho escravo",
+        "size": 24,
+        "period": "now 7-d",
+        "candidate": 13,
+        "category": 4
+    },
+    {
+        "id": 823,
+        "query_text": "flávio rocha riachuelo sapatos",
+        "text": "sapatos",
+        "size": 13,
+        "period": "now 7-d",
+        "candidate": 13,
+        "category": 2   
+    },
+    {
+        "id": 824,
+        "query_text": "flávio rocha na veja",
+        "text": "veja",
+        "size": 11,
+        "period": "now 7-d",
+        "candidate": 13,
+        "category": 5
+    },
+    {
+        "id": 825,
+        "query_text": "partido novo",
+        "text": "partido novo",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 12,
+        "category": 4
+    },
+    {
+        "id": 826,
+        "query_text": "amoêdo",
+        "text": "amoedo",
+        "size": 97,
+        "period": "now 7-d",
+        "candidate": 12,
+        "category": 6
+    },
+    {
+        "id": 827,
+        "query_text": "joão amoêdo propostas",
+        "text": "propostas",
+        "size": 83,
+        "period": "now 7-d",
+        "candidate": 12,
+        "category": 4
+    },
+    {
+        "id": 828,
+        "query_text": "candidatos a presidencia 2018",
+        "text": "candidatos presidencia 2018",
+        "size": 69,
+        "period": "now 7-d",
+        "candidate": 12,
+        "category": 6
+    },
+    {
+        "id": 829,
+        "query_text": "henrique meirelles presidente",
+        "text": "presidente",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 14,
+        "category": 6
+    },
+    {
+        "id": 837,
+        "query_text": "mdb",
+        "text": "mdb",
+        "size": 44,
+        "period": "now 7-d",
+        "candidate": 14,
+        "category": 4
+    },
+    {
+        "id": 838,
+        "query_text": "chinelo da marina silva",
+        "text": "chinelo",
+        "size": 43,
+        "period": "now 7-d",
+        "candidate": 14,
+        "category": 2
+    },
+    {
+        "id": 844,
+        "query_text": "fernando meirelles",
+        "text": "fernando",
+        "size": 33,
+        "period": "now 7-d",
+        "candidate": 14,
+        "category": 3
+    },
+    {
+        "id": 847,
+        "query_text": "henrique meirelles fortuna",
+        "text": "fortuna",
+        "size": 27,
+        "period": "now 7-d",
+        "candidate": 14,
+        "category": 1
+    },
+    {
+        "id": 848,
+        "query_text": "henrique meirelles revista veja",
+        "text": "revista veja",
+        "size": 27,
+        "period": "now 7-d",
+        "candidate": 14,
+        "category": 5
+    },
+    {
+        "id": 854,
+        "query_text": "notícias",
+        "text": "notícias",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 1,
+        "category": 5
+    },
+    {
+        "id": 855,
+        "query_text": "luiz inácio lula da silva 2018",
+        "text": "2018",
+        "size": 75,
+        "period": "now 7-d",
+        "candidate": 1,
+        "category": 2
+    },
+    {
+        "id": 857,
+        "query_text": "sérgio moro",
+        "text": "sérgio moro",
+        "size": 26,
+        "period": "now 7-d",
+        "candidate": 1,
+        "category": 3
+    },
+    {
+        "id": 860,
+        "query_text": "luiz inácio lula da silva idade",
+        "text": "idade",
+        "size": 24,
+        "period": "now 7-d",
+        "candidate": 1,
+        "category": 1
+    },
+    {
+        "id": 863,
+        "query_text": "jair bolsonaro",
+        "text": "jair bolsonaro",
+        "size": 18,
+        "period": "now 7-d",
+        "candidate": 1,
+        "category": 6
+    },
+    {
+        "id": 876,
+        "query_text": "partido do lula",
+        "text": "partido",
+        "size": 1,
+        "period": "now 7-d",
+        "candidate": 1,
+        "category": 4
+    },
+    {
+        "id": 877,
+        "query_text": "bolsonaro",
+        "text": "bolsonaro",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 6
+    },
+    {
+        "id": 878,
+        "query_text": "ciro gomes 2018",
+        "text": "2018",
+        "size": 79,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 2
+    },
+    {
+        "id": 879,
+        "query_text": "lula",
+        "text": "lula",
+        "size": 55,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 6
+    },
+    {
+        "id": 707,
+        "query_text": "bolsonaro",
+        "text": "bolsonaro",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 6,
+        "category": 6
+    },
+    {
+        "id": 713,
+        "query_text": "aldo rebelo roda viva",
+        "text": "roda viva",
+        "size": 47,
+        "period": "now 7-d",
+        "candidate": 6,
+        "category": 5
+    },
+    {
+        "id": 880,
+        "query_text": "patricia pillar",
+        "text": "patricia pillar",
+        "size": 41,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 3
+    },
+    {
+        "id": 882,
+        "query_text": "ciro gomes roda viva",
+        "text": "roda viva",
+        "size": 29,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 5
+    },
+    {
+        "id": 884,
+        "query_text": "ciro gomes jovem",
+        "text": "jovem",
+        "size": 26,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 2
+    },
+    {
+        "id": 885,
+        "query_text": "marina",
+        "text": "marina",
+        "size": 25,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 6
+    },
+    {
+        "id": 891,
+        "query_text": "ciro gomes pesquisa",
+        "text": "pesquisa",
+        "size": 17,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 4
+    },
+    {
+        "id": 893,
+        "query_text": "mulher ciro gomes",
+        "text": "mulher",
+        "size": 16,
+        "period": "now 7-d",
+        "candidate": 4,
+        "category": 1
+    },
+    {
+        "id": 902,
+        "query_text": "alvaro dias",
+        "text": "alvaro",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 9,
+        "category": 6
+    },
+    {
+        "id": 903,
+        "query_text": "álvaro dias partido",
+        "text": "partido",
+        "size": 96,
+        "period": "now 7-d",
+        "candidate": 9,
+        "category": 4
+    },
+    {
+        "id": 910,
+        "query_text": "vidente carlinhos",
+        "text": "vidente carlinhos",
+        "size": 30,
+        "period": "now 7-d",
+        "candidate": 9,
+        "category": 3
+    },
+    {
+        "id": 916,
+        "query_text": "roda viva",
+        "text": "roda viva",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 7,
+        "category": 5
+    },
+    {
+        "id": 919,
+        "query_text": "manterrupting",
+        "text": "manterrupting",
+        "size": 8,
+        "period": "now 7-d",
+        "candidate": 7,
+        "category": 2
+    },
+    {
+        "id": 920,
+        "query_text": "ricardo lessa",
+        "text": "ricardo lessa",
+        "size": 6,
+        "period": "now 7-d",
+        "candidate": 7,
+        "category": 3
+    },
+    {
+        "id": 921,
+        "query_text": "fernando collor de mello",
+        "text": "de mello",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 15,
+        "category": 6
+    },
+    {
+        "id": 922,
+        "query_text": "governo fernando collor",
+        "text": "governo",
+        "size": 61,
+        "period": "now 7-d",
+        "candidate": 15,
+        "category": 4
+    },
+    {
+        "id": 924,
+        "query_text": "fernando collor 2018",
+        "text": "2018",
+        "size": 52,
+        "period": "now 7-d",
+        "candidate": 15,
+        "category": 2
+    },
+    {
+        "id": 925,
+        "query_text": "fernando henrique collor",
+        "text": "henrique",
+        "size": 52,
+        "period": "now 7-d",
+        "candidate": 15,
+        "category": 3
+    },
+    {
+        "id": 946,
+        "query_text": "levy fidelix 2018",
+        "text": "2018",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 17,
+        "category": 2
+    },
+    {
+        "id": 947,
+        "query_text": "ciro gomes",
+        "text": "ciro gomes",
+        "size": 22,
+        "period": "now 7-d",
+        "candidate": 17,
+        "category": 6
+    },
+    {
+        "id": 951,
+        "query_text": "ciro gomes 2018",
+        "text": "2018",
+        "size": 100,
+        "period": "now 7-d",
+        "candidate": 2,
+        "category": 2
+    },
+    {
+        "id": 953,
+        "query_text": "lula",
+        "text": "lula",
+        "size": 48,
+        "period": "now 7-d",
+        "candidate": 2,
+        "category": 6
+    },
+    {
+        "id": 956,
+        "query_text": "jair bolsonaro facebook",
+        "text": "facebook",
+        "size": 33,
+        "period": "now 7-d",
+        "candidate": 2,
+        "category": 5
+    },
+    {
+        "id": 957,
+        "query_text": "jair bolsonaro projetos",
+        "text": "projetos",
+        "size": 32,
+        "period": "now 7-d",
+        "candidate": 2,
+        "category": 4
+    },
+    {
+        "id": 976,
+        "query_text": "alvaro dias",
+        "text": "alvaro dias",
+        "size": 100,
+        "period": "now 1-d",
+        "candidate": 14,
+        "category": 6
+    },
+    {
+        "id": 979,
+        "query_text": "geraldo alckmin",
+        "text": "geraldo alckmin",
+        "size": 68,
+        "period": "now 1-d",
+        "candidate": 14,
+        "category": 6
+    }
+]
