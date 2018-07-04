@@ -20,14 +20,32 @@
 		}
 	}
 
+	// Candidate position
+	.position {
+		background-color: $white;
+		display: none;
+		justify-content: center;
+		align-items: center;
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+		font-size: 14px;
+		position: absolute;
+		bottom: -15px;
+		left: 50%;
+		transform: translateX(-50%);
+		font-family: $robotoMedium;
+	}
+
 	// Slider
 	.info {
 		text-align: center;
 		h3 {
 			font-size: responsive(20, 24);
-			margin: 10px 0 20px;
+			margin: 25px 0 20px;
 		}
 	}
+
 }
 
 

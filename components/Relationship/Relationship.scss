@@ -4,44 +4,39 @@
   padding: 25px 10px;
   background-color: $gray;
 
-  .filter {
+	.compare {
 		display: flex;
-		margin: 0 0 20px;
-		justify-content: center;
+		justify-content: space-between;
 
-		select {
-			background-color: $white;
-			border-radius: 4px;
-			font-size: 14px;
-			margin: 0 5px;
-			width: 110px;
-			height: 30px;
-			position: relative;
-			overflow: hidden;
-			border: 1px solid $grayDark;
-		}
-
-		/*button {
-			background-white: $white;
-			border-radius: 4px;
-			font-size: 14px;
-			margin: 0 5px;
-			width: 110px;
-			height: 30px;
-			position: relative;
-			overflow: hidden;
-			border: 1px solid $grayDark;
-			transition: background .4s ease;
-
-			&.disabled {
-				transition: background .4s ease;
-				background-color: $grayLight;
-				border: 1px solid $grayLight;
-				color: $grayDark;
+		>div {
+			width: 160px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			>div {
+				>div {
+					margin: 5px 0;
+				}
 			}
-		}	*/
+		}
 	}
+
 }
 
+.image {
+	width: 40px;
+  height: 40px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  margin: 0 0 30px;
+}
 
+.common {
+	font-size: 10px;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: $robotoMedium;
+	font-weight: bold;
+}
 

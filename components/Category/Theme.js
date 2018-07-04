@@ -46,7 +46,7 @@ class Theme extends React.Component {
           ref={ slider => ( this.nav = slider ) }
           arrows={false}
           slidesToShow={1}
-          adaptiveHeight={true}
+          // adaptiveHeight={true}
           dots={true}
         >
           {this.props.category.map((item, j) => (
