@@ -10,12 +10,19 @@ import Candidate from './Candidate.js';
 import Graphic from './Graphic.js';
 import Social from '../Social.js';
 
+import Api from '../../lib/Api';
+
 class Keywords extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       selected: 1,
+      candidate: null,
     }
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   onChange = (val) => {
@@ -24,12 +31,17 @@ class Keywords extends React.Component {
     })
   }
 
+  getData = async () => {
+    const candidate = await Api.get('/candidate.json');
+    this.setState({ candidate });
+  }
+
   render() {
-    const data = this.props.data;
+    const data = this.state.candidate;
     const selected = this.state.selected;
 
     return (
-      <section className={css.keywords} {...this.props}>
+      <section className={css.keywords} {...this.props} id="keywords">
 
         <Description content={content.description} />
         <Select change={this.onChange} val={selected} content={content.select} />

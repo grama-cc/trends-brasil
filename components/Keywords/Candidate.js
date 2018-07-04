@@ -23,12 +23,11 @@ class Candidate extends React.Component {
   }
 
   render() {
-    const data = this.props.data
-
-    if(!data) {
+    if(!this.props.data) {
       return <div>Loading</div>
     }
 
+    const data = this.props.data
 
     return (
       <div {...this.props} className={css.candidate}>
@@ -52,6 +51,7 @@ class Candidate extends React.Component {
                   color: data.color
                 }}
               />
+              <span className={`${css.position} pos`}>{index + 1}&ordm;</span>
             </div>
           ))}
         </Slider>
@@ -62,7 +62,7 @@ class Candidate extends React.Component {
           ref={ slider1 => ( this.nav1 = slider1 ) }
           arrows={false}
           slidesToShow={1}
-          adaptiveHeight={true}
+          // adaptiveHeight={true}
         >
           {data.map((data, j) => (
             <div className={css.info} key={j}>

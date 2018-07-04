@@ -124,6 +124,10 @@
 	transition: width .4s ease, height .4s ease, opacity .4s ease;
 }
 
+.nav .slick-current .pos {
+	display: flex;
+}
+
 .slick-arrow {
 	position: absolute;
 	top: 50%;
