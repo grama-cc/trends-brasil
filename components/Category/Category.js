@@ -6,7 +6,7 @@ import content from '../../static/json/category.json'
 
 import Description from '../Description.js';
 import Theme from './Theme.js';
-import Social from '../Social.js';
+import Social from '../Social/Social.js';
 
 import Api from '../../lib/Api';
 

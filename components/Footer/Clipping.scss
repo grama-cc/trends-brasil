@@ -3,10 +3,25 @@
 .clipping {
 	padding: 40px 10px;
 	background-color: $gray;
-	li {
-		margin: 40px 0 0;
-		&:first-child {
-			margin: 0;
+	@media screen and (max-width: $small-devices) {
+		li {
+			margin: 40px 0 0;
+			&:first-child {
+				margin: 0;
+			}
+		}
+	}
+}
+@media screen and (min-width: $medium-devices) {
+	.clipping {
+		display: flex;
+		padding: 40px;
+
+		li {
+			margin-right: 20px;
+		}
+		li:last-child {
+			margin-right: 0;
 		}
 	}
 }
