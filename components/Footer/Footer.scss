@@ -12,3 +12,11 @@
 		line-height: responsive(20, 22);
 	}
 }
+@media screen and (min-width: $medium-devices) {
+	.footerContent {
+		display: flex;
+	}
+	.footerContainer {
+		padding: 20px 40px 0 40px;
+	}
+}

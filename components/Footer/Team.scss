@@ -16,5 +16,10 @@
 			margin: 0 0 20px;
 		}
 	}
-	
+}
+@media screen and (min-width: $medium-devices) {
+	.team {
+		width: 100%;
+		padding: 25px 10px 0;
+	}
 }

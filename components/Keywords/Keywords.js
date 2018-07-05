@@ -8,7 +8,7 @@ import Description from '../Description.js';
 import Select from './Select.js';
 import Candidate from './Candidate.js';
 import Graphic from './Graphic.js';
-import Social from '../Social.js';
+import Social from '../Social/Social.js';
 
 class Keywords extends React.Component {
   constructor (props) {
