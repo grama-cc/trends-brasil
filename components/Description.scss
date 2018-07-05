@@ -1,8 +1,10 @@
 @import '../lib/scss/variables.scss';
 
 .description {
-	margin: 0 0 20px;
-	text-align: center;
+	@media screen and (max-width: $small-devices) {
+		margin: 0 0 20px;
+		text-align: center;
+	}
 	h2 {
 		font-size: responsive(24, 34);
 		margin: 0 0 10px;
@@ -47,5 +49,12 @@
 			padding: 10px;
 			transition: max-height .6s ease, margin .6s ease, padding .6s ease;
 		}
+	}
+}
+@media screen and (min-width: $medium-devices) {
+	.description {
+		margin: 0;
+		text-align: left;
+		padding-right: 80px;
 	}
 }
