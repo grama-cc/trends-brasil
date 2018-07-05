@@ -10,20 +10,15 @@ import Category from '../components/Category/Category';
 import Relationship from '../components/Relationship/Relationship';
 import Footer from '../components/Footer/Footer';
 
-import Api from '../lib/Api';
+
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      candidate: null,
       filter: 0,
       compare: 0,
     };
-  }
-
-  componentDidMount() {
-    this.getData();
   }
 
   onFilter = (id) => {
@@ -34,21 +29,12 @@ class Home extends React.Component {
     this.setState({ compare: id })
   }
 
-  getData = async () => {
-    const candidate = await Api.get('/candidate.json');
-    this.setState({ candidate });
-  }
-
   render() {
-    if (!this.state.candidate) {
-      return <div>Loading...</div>
-    }
-
     return (
       <Layout>
         <Head title="Trends Brasil" />
         <Intro />
-        <Keywords data={this.state.candidate} />
+        <Keywords />
         <Category />
         <Relationship 
           onfilter={this.onFilter} 

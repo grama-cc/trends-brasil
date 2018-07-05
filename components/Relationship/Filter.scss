@@ -5,27 +5,32 @@
 	justify-content: space-between;
 }
 .selected {
-	display: flex;
 	margin: 0 0 20px;
-	justify-content: center;
-	flex-direction: column;
 	width: 160px;
 	background-color: $white;
+	max-height: 36px;
+	overflow: hidden;
 
 	li {
-		// border-radius: 4px;
 		font-size: 14px;
 		position: relative;
 		padding: 10px;
 		overflow: hidden;
-		// border: 1px solid $grayDark;
 		transition: background .4s ease;
 
 		&.disabled {
 			transition: background .4s ease;
 			background-color: $grayLight;
-			// border: 1px solid $grayLight;
 			color: $grayDark;
 		}
+
+		&.taina {
+			color: red;
+		}
+	}
+
+	&.open {
+		max-height: 300px;
+		overflow-y: scroll;
 	}
 }

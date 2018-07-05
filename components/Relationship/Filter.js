@@ -6,45 +6,74 @@ import css from './Filter.scss';
 
 class Filter extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      disabled1: false,
+      disabled2: false,
+      name1: "Escolha...",
+      name2: "Escolha...",
+      openFilter: false,
+      openCompare: false,
+    };
+  }
+
   onFilter = (e) => {
     let id = Number(e.target.value)
     this.props.onfilter(id)
+    this.setState({ name1: e.currentTarget.dataset.name })
   }
 
   onCompare = (e) => {
     let id = Number(e.target.value)
     this.props.oncompare(id)
+    this.setState({ name2: e.currentTarget.dataset.name })
+  }
+
+  onDropdownFilter = () => {
+    this.setState({ openFilter: !this.state.openFilter })
+  }
+
+  onDropdownCompare = () => {
+    this.setState({ openCompare: !this.state.openCompare })
   }
 
   render() {
-    const id = this.props.id;
     const candidates = this.props.candidates;
-
-    console.log(this.props.filter, this.props.compare)
+    const filter = this.props.filter;
+    const compare = this.props.compare
 
     return (
       <div className={css.filter}>
 
-        <ul className={css.selected}>
+        <ul className={this.state.openFilter ? `${css.open} ${css.selected}` : `${css.selected}`} id='filter'>
+          
+          <li onClick={this.onDropdownFilter}>{this.state.name1}</li>
+
           {candidates.map((c, idx) => (
             <li 
               key={idx}
               value={c.id}
-              onClick={this.onFilter}
-              className={this.props.filter === c.id ? css.disabled : null}
+              data-name={c.name}
+              onClick={compare != c.id ? this.onFilter : null}
+              className={compare == c.id ? css.taina : filter == c.id && compare != c.id ? css.disabled : null}
             >
               {c.name}
             </li>
           ))}
         </ul>
 
-        <ul className={css.selected}>
+        <ul className={this.state.openCompare ? `${css.open} ${css.selected}` : `${css.selected}`} id='compare'>
+
+         <li onClick={this.onDropdownCompare}>{this.state.name2}</li>
+
           {candidates.map((c, idx) => (
             <li 
               key={idx}
               value={c.id}
-              onClick={this.onCompare}
-              className={this.props.compare === c.id ? css.disabled : null}
+              data-name={c.name}
+              onClick={filter != c.id ? this.onCompare : null}
+              className={filter == c.id ? css.taina : compare == c.id && filter != c.id ? css.disabled :  null}
             >
               {c.name}
             </li>

@@ -4,6 +4,8 @@ $img: '/static/img/';
 $white: #fff;
 $black: #000;
 
+$red: #ff0000;
+
 $gray: #f8f8f8;
 $grayLight: #ececec;
 $grayDark: #b4b4b4;
@@ -18,9 +20,10 @@ $small-devices: 800px;
 $medium-devices: 801px;
 
 // Circle position
-$item-size: 20px;
 $item-count: 8;
 $circle-size: 200px;
+$angle: (360 / $item-count);
+$rot: 0;
 
 @function responsive($value1, $value2, $width1: 320, $width2: 1920) {
   $x1: $width1;
