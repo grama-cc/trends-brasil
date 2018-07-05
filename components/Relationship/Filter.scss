@@ -10,6 +10,20 @@
 	background-color: $white;
 	max-height: 36px;
 	overflow: hidden;
+	position: relative;
+
+	&:after {
+		content: ' ';
+		position: absolute;
+		height: 6px;
+		width: 12px;
+		background-image: url($img + 'arrow.svg');
+		background-repeat: no-repeat;
+		top: 18px;
+		right: 11px;
+		transform: translateY(-30%) scaleY(1);
+		transition: transform .4s ease;
+	}
 
 	li {
 		font-size: 14px;
