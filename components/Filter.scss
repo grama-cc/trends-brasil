@@ -1,0 +1,36 @@
+@import '../lib/scss/variables.scss';
+
+.filter {
+	display: flex;
+	justify-content: space-between;
+}
+.selected {
+	margin: 0 0 20px;
+	width: 160px;
+	background-color: $white;
+	max-height: 36px;
+	overflow: hidden;
+
+	li {
+		font-size: 14px;
+		position: relative;
+		padding: 10px;
+		overflow: hidden;
+		transition: background .4s ease;
+
+		&.disabled {
+			transition: background .4s ease;
+			background-color: $grayLight;
+			color: $grayDark;
+		}
+
+		&.taina {
+			color: red;
+		}
+	}
+
+	&.open {
+		max-height: 300px;
+		overflow-y: scroll;
+	}
+}

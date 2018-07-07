@@ -7,7 +7,7 @@ import content from '../../static/json/relationship.json';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
-import Filter from './Filter.js';
+import Filter from '../Filter.js';
 import Cloud from '../Cloud.js';
 
 class Relationship extends React.Component {
@@ -44,7 +44,7 @@ class Relationship extends React.Component {
                 <Description content={content.description} />
             </div>
             <div>
-                <Filter {...this.props} candidates={this.state.candidate} />
+                <Filter {...this.props} candidates={this.state.candidate} startCompare />
                 <div className={css.compare}>
                     <div>
                         <div
