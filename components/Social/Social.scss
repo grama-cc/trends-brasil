@@ -2,8 +2,15 @@
 
 .social {
 	display: flex;
-	justify-content: center;
 	margin: 30px 0 20px;
+	@media screen and (max-width: $small-devices) {
+		justify-content: center;
+	}
+	@media screen and (min-width: $medium-devices) {
+		justify-content: flex-end;
+		margin-right: 40px;
+	}
+
 	li {
 		margin: 0 0 0 24px;
 		@media screen and (max-width: $small-devices) {

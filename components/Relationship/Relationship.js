@@ -39,36 +39,42 @@ class Relationship extends React.Component {
 
     return (
       <section className={css.relationship}>
+        <div className={css.flex}>
+            <div>
+                <Description content={content.description} />
+            </div>
+            <div>
+                <Filter {...this.props} candidates={this.state.candidate} startCompare />
+                <div className={css.compare}>
+                    <div>
+                        <div
+                            className={css.image}
+                            style={{
+                                backgroundImage: `url(/static/img/candidates/${filter.length ? filter[0].slug : 'none'}.png)`,
+                                backgroundColor: filter.length ? filter[0].color : null,
+                            }}
+                        />
+                        <Cloud category={this.props.filter} candidate />
+                    </div>
 
-        <Description content={content.description} />
-        <Filter {...this.props} candidates={this.state.candidate} />
-        <div className={css.compare}>
-          <div>
-            <div
-              className={css.image}
-              style={{
-                backgroundImage: `url(/static/img/candidates/${filter.length ? filter[0].slug : 'none'}.png)`,
-                backgroundColor: filter.length ? filter[0].color : null,
-              }}
-            />
-            <Cloud category={this.props.filter} candidate={true} />
-          </div>
+                    <div className={css.common}>
+                        mais<br/>comuns
+                    </div>
 
-          <div className={css.common}>
-            mais<br/>comuns
-          </div>
-
-          <div>
-            <div
-              className={css.image}
-              style={{
-                backgroundImage: `url(/static/img/candidates/${compare.length ? compare[0].slug : 'none'}.png)`,
-                backgroundColor: compare.length ? compare[0].color : null,
-              }}
-            />
-            <Cloud category={this.props.compare} candidate={true} />
-          </div>
+                    <div>
+                        <div
+                            className={css.image}
+                            style={{
+                                backgroundImage: `url(/static/img/candidates/${compare.length ? compare[0].slug : 'none'}.png)`,
+                                backgroundColor: compare.length ? compare[0].color : null,
+                            }}
+                        />
+                        <Cloud category={this.props.compare} candidate />
+                    </div>
+                </div>
+            </div>
         </div>
+
         <Social />
 
       </section>
