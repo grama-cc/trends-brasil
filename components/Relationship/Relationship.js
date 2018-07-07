@@ -7,7 +7,7 @@ import content from '../../static/json/relationship.json';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
-import Filter from './Filter.js';
+import Filter from '../Filter.js';
 import Cloud from '../Cloud.js';
 
 class Relationship extends React.Component {
@@ -51,7 +51,7 @@ class Relationship extends React.Component {
                 backgroundColor: filter.length ? filter[0].color : null,
               }}
             />
-            <Cloud category={this.props.filter} candidate />
+            <Cloud category={this.props.filter} candidate={true} />
           </div>
 
           <div className={css.common}>
@@ -66,7 +66,7 @@ class Relationship extends React.Component {
                 backgroundColor: compare.length ? compare[0].color : null,
               }}
             />
-            <Cloud category={this.props.compare} candidate />
+            <Cloud category={this.props.compare} candidate={true} />
           </div>
         </div>
         <Social />

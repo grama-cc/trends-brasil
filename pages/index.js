@@ -37,7 +37,10 @@ class Home extends React.Component {
         <Intro />
         <Keywords />
         <Category />
-        <Radar />
+        <Radar
+          onfilter={this.onFilter} 
+          filter={this.state.filter}
+        />
         <Relationship 
           onfilter={this.onFilter} 
           oncompare={this.onCompare}

@@ -4,10 +4,20 @@ import css from './Radar.scss';
 import * as d3 from "d3";
 
 import Api from '../../lib/Api';
+import content from '../../static/json/keywords.json'
+
+import Filter from '../Filter.js';
+import Description from '../Description.js';
+import Social from '../Social/Social.js';
 
 class RadarChart extends React.Component {
   constructor (props) {
     super(props)
+
+    this.state = {
+      radar: null
+    };
+
     this.config = {
       width: 300, // fazer o responsivo
       height: 300, // fazer o responsivo
@@ -17,15 +27,8 @@ class RadarChart extends React.Component {
         bottom: 100,
         left: 100 
       },
-      levels: 5,
+      levels: 1,
       maxValue: 0.5, // biggest circle will value
-      labelFactor: 1.2,  // words circle distance How much
-      wrapWidth: 60,     // words line break
-      opacityArea: 0.35,
-      dotRadius: 4,
-      opacityCircles: 0.1,
-      strokeWidth: 2,
-      roundStrokes: true,
       color: d3.scaleOrdinal().range([ "#EDC951", "#CC333F", "#00A0B0" ]) // color no array
     };
 
@@ -33,89 +36,35 @@ class RadarChart extends React.Component {
     this.radius = Math.min(this.config.width / 2, this.config.width / 2);
   }
 
-  RadarChartTest = (data) => {
-
-  // If the supplied maxValue is smaller than the actual one, replace by the max in the data
-  var maxValue = Math.max(this.config.maxValue, d3.max(data, function(i){
-    return (
-      d3.max(i.map(function(o){ return o.value; }))
-    )
-  }));
-  
-  // Names of each axis
-  var allAxis = (data[0].map(function(i, j){return i.axis}));
-
-  // The number of different axes
-  var total = allAxis.length; 
-
-  // The width in radians of each "slice" 
-  var angleSlice = Math.PI * 2 / total;   
-  
-  // Scale for the radius
-  var rScale = d3.scaleLinear().range([0, this.radius]).domain([0, maxValue]);
-
-
-
-
-/*
-  // Draw the axes
-  
-  //Create the straight lines radiating outward from the center
-  var axis = axisGrid.selectAll(".axis")
-    .data(allAxis)
-    .enter()
-    .append("g")
-    .attr("class", "axis");
-
-  //Append the lines
-  axis.append("line")
-    .attr("x1", 0)
-    .attr("y1", 0)
-    .attr("x2", function(d, i){ return rScale(maxValue) * Math.cos(angleSlice*i - Math.PI/2); })
-    .attr("y2", function(d, i){ return rScale(maxValue) * Math.sin(angleSlice*i - Math.PI/2); })
-    .attr("class", "line")
-    .style("stroke", "white")
-    .style("stroke-dasharray", 2)
-    .style("stroke-width", 2);
-*/
-
-/*
-
-  /////////////////////////////////
-  // Draw the radar chart blobs
-  //The radial line function
-  var radarLine = d3.svg.line.radial()
-    .interpolate("linear-closed")
-    .radius(function(d) { return rScale(d.value); })
-    .angle(function(d,i) {  return i*angleSlice; });
-    
-  if(cfg.roundStrokes) {
-    radarLine.interpolate("cardinal-closed");
+  componentDidMount() {
+    this.getData();
   }
-        
-  //Create a wrapper for the blobs  
-  var blobWrapper = g.selectAll(".radarWrapper")
-    .data(data)
-    .enter().append("g")
-    .attr("class", "radarWrapper")
-    .attr("id", function(d, i) { return 'layer_'+i });
-      
-  //Append the backgrounds  
-  blobWrapper
-    .append("path")
-    .attr("class", "radarArea")
-    .attr("d", function(d,i) { return radarLine(d); });
+
+  getData = async () => {
+    const radar = await Api.get('/radar.json');
+    this.setState({ radar });
+  }
+
+  values = (data) => {
+    const max = Math.max(this.config.maxValue, d3.max(data,
+      ((array) => (
+        d3.max(array.categories.map(
+          (item) => ( item.percent / 100 )
+        ))
+      )))
+    );
+
+    const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
+
+    const angles = Math.PI * 2 / 6;
     
-  //Create the outlines 
-  blobWrapper.append("path")
-    .attr("class", "radarStroke")
-    .attr("d", function(d,i) { return radarLine(d); })
-    .style("stroke-width", 1)
-    .style("stroke", '#4B4B4B')
-    .style("fill", "none");
-*/
-}
-  // Draw circles levels
+    return {
+      "max": max,
+      "scale": scale,
+      "angles": angles,
+    }
+  }
+
   circleLevels = () => {
     const levels = d3.range(1, (this.config.levels + 1) );
 
@@ -126,80 +75,105 @@ class RadarChart extends React.Component {
     return diameter
   }
 
+  axisPosition = (data) => {
+    const values = this.values(data)
+    const position = data[0].categories.map((d, i) => {
+      return {
+        "x": values.scale( values.max ) * Math.sin( values.angles * i - Math.PI / 2 ), 
+        "y": values.scale( values.max ) * Math.cos( values.angles * i - Math.PI / 2 )
+      }
+    })
+    return position
+  }
+
+  array_move = (arr, old_index, new_index) => {
+
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+};
 
   render() {
-    const data = [
-      [
-        {axis:"Politicos",value:0.28},
-        {axis:"Outros",value:0.02},
-        {axis:"Biografia",value:0.22},
-        {axis:"Celebridades",value:0.29},
-        {axis:"Ideologia",value:0.17},
-        {axis:"Notícias",value:0.22},
-        
-      ],[
-        {axis:"Politicos",value:0.10},
-        {axis:"Outros",value:0.04},
-        {axis:"Biografia",value:0.26},
-        {axis:"Celebridades",value:0.30},
-        {axis:"Ideologia",value:0.14},
-        {axis:"Notícias",value:0.22},
-        
-      ],[
-        {axis:"Politicos",value:0.16},
-        {axis:"Outros",value:0.13},
-        {axis:"Biografia",value:0.27},
-        {axis:"Celebridades",value:0.35},
-        {axis:"Ideologia",value:0.13},
-        {axis:"Notícias",value:0.20},
-      ],
-    ];
+    if (!this.state.radar) {
+      return <div>Loading...</div>
+    }
 
+    const data = this.state.radar;
     const circles = this.circleLevels();
+    const axis = this.axisPosition(data);
+    const values = this.values(data)
+    const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( values.scale( d.percent / 100 ) )).angle(( d, i ) => ( i * values.angles ));
+
+    // Faz o update da posição no arra para jogar o current para frente
+    const oi = this.props.filter
+    const array = data.findIndex((c, i) => (c.id == oi));
+    const novo = this.array_move(data, array, data.length - 1)
+    // console.log(this.props.filter, array, novo)
+
 
     return (
-      <section className={css.radar} {...this.props}>
+      <section className={css.radar}>
+        <Description content={content.description} />
 
-        <div className="radarChart">
-          <svg width={this.config.width} height={this.config.height} className='radarChart'>
+        <Filter {...this.props} candidates={this.state.radar} />
+
+        <svg width={this.config.width} height={this.config.height}>
+          <g transform={`translate(${this.config.width / 2}, ${this.config.height / 2})`}>
             
-            <g transform={`translate(${this.config.width / 2}, ${this.config.height / 2})`}>
-        
-              <defs>
-                <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="40%" style={{ stopColor: '#ff7e7e', stopOpacity: 0.1 }} />
-                  <stop offset="100%" style={{ stopColor: '#fff', stopOpacity: 0.4 }} />
-                </radialGradient>
-              </defs>
+            <defs>
+              <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="20%" style={{ stopColor: '#ff7e7e', stopOpacity: 0.1 }} />
+                <stop offset="100%" style={{ stopColor: '#fff', stopOpacity: 0.5 }} />
+              </radialGradient>
+            </defs>
 
-              <g className='axisWrapper'>
-                {circles.map((diameter, idx) => (
-                  <circle
-                    key={idx}
-                    className="gridCircle"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeDasharray="2"
-                    fillOpacity={this.config.opacityCircles}
-                    r={diameter}
-                  />
-                ))}
-              </g>
+            <g>
+              {circles.map((diameter, idx) => (
+                <circle
+                  key={idx}
+                  className={css.grid}
+                  fill="none"
+                  stroke="#fff"
+                  strokeDasharray={1}
+                  r={diameter}
+                />
+              ))}
 
-  
- 
-
+              {axis.map((point, idx) => (
+                <line
+                  key={idx}
+                  stroke="#fff"
+                  strokeDasharray={1}
+                  className={css.axis}
+                  x1={0}
+                  y1={0}
+                  x2={point.x}
+                  y2={point.y}
+                />
+              ))}
 
             </g>
-          </svg>
 
+            {novo.map((curves, idx) => (
+              <g className={css.wrap} key={idx}>
+                <path
+                  className={css.area}
+                  d={radarLine(curves.categories)}
+                  fill="none"
+                />
+                <path
+                  className={css.stroke}
+                  d={radarLine(curves.categories)}
+                  strokeWidth={curves.id == 16 ? 2 : 0.5}
+                  stroke={curves.id == 16 ? "#fff" : "#4B4B4B"}
+                  fill={curves.id == 16 ? "url(#grad)" : "none" }
+                />
+              </g>
+            ))}
 
-        </div>
+          </g>
+        </svg>
 
-        {this.RadarChartTest(data)}
-
-
+        <Social />
       </section>
     )
   }
