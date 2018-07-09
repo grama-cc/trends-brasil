@@ -1,6 +1,9 @@
 @import '../../lib/scss/variables.scss';
 
 .candidate {
+	@media screen and (min-width: $medium-devices) {
+    width: 50%;
+  }
 	
 	// Nav Slider
 	.contentImage {

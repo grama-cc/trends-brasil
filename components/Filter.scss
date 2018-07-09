@@ -24,8 +24,8 @@
 			color: $grayDark;
 		}
 
-		&.taina {
-			color: red;
+		&.unclick {
+			color: $grayDark;
 		}
 	}
 
@@ -33,4 +33,16 @@
 		max-height: 300px;
 		overflow-y: scroll;
 	}
+}
+.container {
+	display: flex;
+  flex-direction: column-reverse;
+}
+.image {
+	width: 40px;
+	height: 40px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	border-radius: 100%;
+	margin: 0 auto 10px;
 }

@@ -104,9 +104,9 @@ class RadarChart extends React.Component {
     const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( values.scale( d.percent / 100 ) )).angle(( d, i ) => ( i * values.angles ));
 
     // Faz o update da posição no arra para jogar o current para frente
-    const oi = this.props.filter
-    const array = data.findIndex((c, i) => (c.id == oi));
-    const novo = this.array_move(data, array, data.length - 1)
+    // const oi = this.props.filter
+    // const array = data.findIndex((c, i) => (c.id == oi));
+    // const novo = this.array_move(data, array, data.length - 1)
     // console.log(this.props.filter, array, novo)
 
 
@@ -153,7 +153,7 @@ class RadarChart extends React.Component {
 
             </g>
 
-            {novo.map((curves, idx) => (
+            {data.map((curves, idx) => (
               <g className={css.wrap} key={idx}>
                 <path
                   className={css.area}
