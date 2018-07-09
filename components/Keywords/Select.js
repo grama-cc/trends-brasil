@@ -7,13 +7,13 @@ import css from './Select.scss';
 class Select extends React.Component {
 
   onChange = (e) => {
-    let val = Number(e.target.value)
+    const val = Number(e.target.value)
     this.props.change(val)
   }
 
   render() {
 
-    let val = this.props.val
+    const val = this.props.val
     const content = this.props.content
 
     return (

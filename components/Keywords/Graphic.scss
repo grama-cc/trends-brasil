@@ -4,6 +4,9 @@
 	position: relative;
 	width: 100%;
 	height: 300px; // rever
+  @media screen and (min-width: $medium-devices) {
+    width: 50%;
+  }
 	span {
 		background-size: 100%;
 		display: inline-block;

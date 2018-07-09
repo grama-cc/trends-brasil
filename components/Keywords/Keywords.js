@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Media from "react-media";
 import css from './Keywords.scss';
 
 import content from '../../static/json/keywords.json'
@@ -37,23 +38,37 @@ class Keywords extends React.Component {
   }
 
   render() {
+
+    if(!this.state.candidate) {
+      return <div>Loading</div>
+    }
+
     const data = this.state.candidate;
     const selected = this.state.selected;
 
     return (
       <section className={css.keywords} {...this.props} id="keywords">
-
         <Description content={content.description} />
-        <Select change={this.onChange} val={selected} content={content.select} />
-
-        {selected === 1 ?
-          <Graphic data={data} />
-        : selected === 2 && data.length ?
-          <Candidate data={data} />
-        : null}
-
+        <Media query="(max-width: 800px)">
+          {matches =>
+            matches ? (
+              <div>
+                <Select
+                  change={this.onChange}
+                  val={selected}
+                  content={content.select}
+                />
+                {selected === 1 ? <Graphic data={data} /> : selected === 2 && data.length ? <Candidate data={data} /> : null}
+              </div>
+            ) : (
+              <div className={css.container}>
+                <Candidate data={data} />
+                <Graphic data={data} />
+              </div>
+            )
+          }
+        </Media>
         <Social />
-
       </section>
     )
   }

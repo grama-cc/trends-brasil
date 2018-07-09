@@ -138,6 +138,12 @@
 	width: 25px;
 }
 
+@media screen and (max-width: 800px) {
+ 	#keywords .slider .slick-arrow {
+ 		display: none !important;
+ 	}
+}
+
 .slick-arrow:before {
 	content: '';
 	position: absolute;

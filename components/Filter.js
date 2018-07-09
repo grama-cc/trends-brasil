@@ -31,54 +31,85 @@ class Filter extends React.Component {
   }
 
   onDropdownFilter = () => {
-    this.setState({ openFilter: !this.state.openFilter })
+    this.setState({
+      openFilter: !this.state.openFilter
+    })
   }
 
   onDropdownCompare = () => {
-    this.setState({ openCompare: !this.state.openCompare })
+    this.setState({ 
+      openCompare: !this.state.openCompare
+    })
   }
 
   render() {
     const candidates = this.props.candidates;
     const filter = this.props.filter;
-    const compare = this.props.compare
+    const compare = this.props.compare;
+
+    const f = candidates.filter(c => c.id == filter);
+    const c = candidates.filter(c => c.id == compare);
 
     return (
       <div className={css.filter}>
+        <div className={css.container}>
+          {this.props.relationship ? 
+          <div
+            className={css.image}
+            style={{
+              backgroundImage: `url(/static/img/candidates/${f.length ? f[0].slug : 'none'}.png)`,
+              backgroundColor: f.length ? f[0].color : null,
+            }}
+          /> : null}
+          <ul
+            onClick={this.onDropdownFilter}
+            className={this.state.openFilter ? `${css.open} ${css.selected}` : css.selected}
+          >
+            <li >{this.state.name1}</li>
+            {candidates.map((c, idx) => (
+              <li 
+                key={idx}
+                value={c.id}
+                data-name={c.name}
+                onClick={compare != c.id ? this.onFilter : null}
+                className={compare == c.id ? css.unclick : filter == c.id && compare != c.id ? css.disabled : null}
+              >
+                {c.name}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        <ul className={this.state.openFilter ? `${css.open} ${css.selected}` : `${css.selected}`} id='filter'>
-          
-          <li onClick={this.onDropdownFilter}>{this.state.name1}</li>
-
-          {candidates.map((c, idx) => (
-            <li 
-              key={idx}
-              value={c.id}
-              data-name={c.name}
-              onClick={compare != c.id ? this.onFilter : null}
-              className={compare == c.id ? css.taina : filter == c.id && compare != c.id ? css.disabled : null}
+        {this.props.startCompare ? 
+          <div className={css.container}>
+          {this.props.relationship ? 
+            <div
+              className={css.image}
+              style={{
+                backgroundImage: `url(/static/img/candidates/${c.length ? c[0].slug : 'none'}.png)`,
+                backgroundColor: c.length ? c[0].color : null,
+              }}
+            /> : null}
+            <ul
+              onClick={this.onDropdownCompare}
+              className={this.state.openCompare ? `${css.open} ${css.selected}` : css.selected}
             >
-              {c.name}
-            </li>
-          ))}
-        </ul>
+             <li>{this.state.name2}</li>
 
-        {this.props.startCompare ? <ul className={this.state.openCompare ? `${css.open} ${css.selected}` : `${css.selected}`} id='compare'>
-
-         <li onClick={this.onDropdownCompare}>{this.state.name2}</li>
-
-          {candidates.map((c, idx) => (
-            <li 
-              key={idx}
-              value={c.id}
-              data-name={c.name}
-              onClick={filter != c.id ? this.onCompare : null}
-              className={filter == c.id ? css.taina : compare == c.id && filter != c.id ? css.disabled :  null}
-            >
-              {c.name}
-            </li>
-          ))}
-        </ul> : null}
+              {candidates.map((c, idx) => (
+                <li 
+                  key={idx}
+                  value={c.id}
+                  data-name={c.name}
+                  onClick={filter != c.id ? this.onCompare : null}
+                  className={filter == c.id ? css.unclick : compare == c.id && filter != c.id ? css.disabled :  null}
+                >
+                  {c.name}
+                </li>
+              ))}
+            </ul> 
+          </div>
+        : null}
 
       </div>
     )
