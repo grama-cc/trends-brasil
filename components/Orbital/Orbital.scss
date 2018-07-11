@@ -1,0 +1,15 @@
+@import '../../lib/scss/variables.scss';
+
+.orbital {
+  padding: responsive(25, 60) responsive(10, 80);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  svg {
+  	padding: 10px;
+  	.stroke {
+  		transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+  	}
+  }
+}

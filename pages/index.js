@@ -9,9 +9,8 @@ import Keywords from '../components/Keywords/Keywords';
 // import Category from '../components/Category/Category';
 import Radar from '../components/Radar/Radar';
 import Relationship from '../components/Relationship/Relationship';
+import Orbital from '../components/Orbital/Orbital';
 import Footer from '../components/Footer/Footer';
-
-
 
 class Home extends React.Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class Home extends React.Component {
         <Head title="Trends Brasil" />
         <Intro />
         <Keywords />
-        {/*<Category />*/}
+        {/* <Category />*/}
         <Radar
           onfilter={this.onFilter} 
           filter={this.state.filter}
@@ -46,6 +45,10 @@ class Home extends React.Component {
           oncompare={this.onCompare}
           filter={this.state.filter}
           compare={this.state.compare}
+        />
+        <Orbital
+          onfilter={this.onFilter} 
+          filter={this.state.filter}
         />
         <Footer />
       </Layout>
