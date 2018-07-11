@@ -3,9 +3,16 @@
 .keywords {
   padding: responsive(25, 60) responsive(10, 80);
   background-color: $gray;
+
   .container {
   	display: flex;
+  	align-items: flex-end;
+  	//background: gray;
   }
+}
+
+.none {
+	display: none;
 }
 
 

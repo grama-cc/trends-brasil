@@ -19,6 +19,7 @@ class Keywords extends React.Component {
     this.state = {
       selected: 1,
       candidate: null,
+      id: null
     }
   }
 
@@ -29,6 +30,12 @@ class Keywords extends React.Component {
   onChange = (val) => {
     this.setState({ 
       selected: val,
+    })
+  }
+
+  onClick = (val) => {
+    this.setState({ 
+      id: val,
     })
   }
 
@@ -58,7 +65,22 @@ class Keywords extends React.Component {
                   val={selected}
                   content={content.select}
                 />
-                {selected === 1 ? <Graphic data={data} /> : selected === 2 && data.length ? <Candidate data={data} /> : null}
+
+                <Graphic
+                  data={data}
+                  click={this.onClick}
+                  id={this.state.id}
+                  val={selected}
+                  
+                /> 
+                {selected === 2 ?
+                <Candidate
+                  data={data}
+                  id={this.state.id}
+                  val={selected}
+                  
+                /> : null}
+
               </div>
             ) : (
               <div className={css.container}>

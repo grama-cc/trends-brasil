@@ -2,14 +2,14 @@
 
 .candidate {
 	@media screen and (min-width: $medium-devices) {
-    width: 50%;
+    width: 40%;
+    //background: red;
   }
 	
 	// Nav Slider
 	.contentImage {
 		width: 90px;
-		height: 90px;
-		max-height: 90px;
+		height: 115px;
 		position: relative;
 		.image {
 			background-size: 100%;
@@ -34,7 +34,7 @@
 		border-radius: 100%;
 		font-size: 14px;
 		position: absolute;
-		bottom: -15px;
+		bottom: 0px;
 		left: 50%;
 		transform: translateX(-50%);
 		font-family: $robotoMedium;
@@ -45,10 +45,30 @@
 		text-align: center;
 		h3 {
 			font-size: responsive(20, 24);
+			line-height: 18px;
 			margin: 25px 0 20px;
+			@media screen and (min-width: $medium-devices) {
+		    margin: 0;
+		    height: 45px;
+		    display: flex;
+		    justify-content: center;
+    		align-items: center;
+    		span {
+    			background: $grayLight;
+    			padding: 12px 20px;
+    			border-radius: 50px;
+    		}
+		  }
 		}
 	}
 
+}
+
+.none {
+  display: none;
+  @media screen and (min-width: $medium-devices) {
+    display: block;
+  }
 }
 
 

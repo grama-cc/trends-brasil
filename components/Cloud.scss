@@ -9,5 +9,12 @@
 		flex-direction: column;
 		justify-content: center;
 		padding: 5px;
+		a {
+			text-align: center;
+		}
 	}
+	@media screen and (min-width: $medium-devices) {
+    width: calc(100% - 60px);
+    margin: 0 auto;
+  }
 }

@@ -2,26 +2,40 @@
 
 .graphic {
 	position: relative;
-	width: 100%;
-	height: 300px; // rever
   @media screen and (min-width: $medium-devices) {
-    width: 50%;
+    width: 70%;
   }
-	span {
-		background-size: 100%;
-		display: inline-block;
-		border-radius: 100%;
-		cursor: pointer;
-		position: absolute;
-		transition: top .4s ease, left .4s ease, opacity .4s ease, width .8s ease, height .8s ease, transform .5s ease;
-		&.modal {
-			transform: translate(-50%, -50%);
-			z-index: 1;
-		}
-	}
+  svg {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    //max-width: 70%;
+    g {
+      transition: opacity .4s ease, transform .5s ease;
+      &.open {
+        position: absolute;
+        transform: translateX(50%) translateY(50%);
+        z-index: 1;
+        circle {
+          r: 50;
+        }
+      }
+    }
+  }
 }
 
 .modal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  transform: translateX(-50%);
+  h3 {
+    text-align: center;
+    position: relative;
+    top: -20px;
+  }
 	p {
   	position: absolute;
   	font-family: $robotoMedium;
@@ -39,7 +53,7 @@
   	}
   }
 
-  span {
+  a {
   	position: absolute;
   	top: 50%; 
     left: 50%;
@@ -48,5 +62,11 @@
     background-color: $white;
     border-radius: 0;
     padding: 8px 5px;
+  }
+}
+.none {
+  display: none;
+  @media screen and (min-width: $medium-devices) {
+    display: block;
   }
 }

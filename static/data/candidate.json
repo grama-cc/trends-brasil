@@ -1,5 +1,53 @@
 [
   {
+    "id": 1,
+    "name": "Luiz Inácio Lula da Silva",
+    "slug": "lula",
+    "size": 36,
+    "top": 125,
+    "left": 125,
+    "color": "#FF7E7E"
+  },{
+    "id": 4,
+    "name": "Ciro Gomes",
+    "slug": "ciro",
+    "size": 15,
+    "top": 182,
+    "left": 18,
+    "color": "#FFA865"
+  },{
+    "id": 2,
+    "name": "Jair Bolsonaro",
+    "slug": "jair",
+    "size": 10,
+    "top": 197,
+    "left": 207,
+    "color": "#BD6BE5"
+  },{
+    "id": 3,
+    "name": "Marina Silva",
+    "slug": "marina",
+    "size": 8,
+    "top": 77,
+    "left": 212,
+    "color": "#85C974"
+  },{
+    "id": 5,
+    "name": "Geraldo Alckmin",
+    "slug": "alckmin",
+    "size": 6,
+    "top": 63,
+    "left": 99,
+    "color": "#8591E7"
+  },{
+    "id": 7,
+    "name": "Manuela D’Ávila",
+    "slug": "manuela",
+    "size": 2,
+    "top": 120,
+    "left": 11,
+    "color": "#DCB3B3"
+  },{
     "id": 6,
     "name": "Aldo Rebelo",
     "slug": "rebelo",
@@ -80,15 +128,6 @@
     "left": 7,
     "color": "#97B19F"
   },{
-    "id": 18,
-    "words": [],
-    "name": "JOSÉ MARIA EYMAEL",
-    "slug": "eymael",
-    "size": 1,
-    "top": 285,
-    "left": 10,
-    "color": "#CEB9C3"
-  },{
     "id": 19,
     "words": [],
     "name": "JOSÉ MARIA EYMAEL",
@@ -97,53 +136,5 @@
     "top": 10,
     "left": 124,
     "color": "#CEB9C3"
-  },{
-    "id": 7,
-    "name": "Manuela D’Ávila",
-    "slug": "manuela",
-    "size": 2,
-    "top": 120,
-    "left": 11,
-    "color": "#DCB3B3"
-  },{
-    "id": 5,
-    "name": "Geraldo Alckmin",
-    "slug": "alckmin",
-    "size": 6,
-    "top": 63,
-    "left": 99,
-    "color": "#8591E7"
-  },{
-    "id": 3,
-    "name": "Marina Silva",
-    "slug": "marina",
-    "size": 8,
-    "top": 77,
-    "left": 212,
-    "color": "#85C974"
-  },{
-    "id": 2,
-    "name": "Jair Bolsonaro",
-    "slug": "jair",
-    "size": 10,
-    "top": 197,
-    "left": 207,
-    "color": "#BD6BE5"
-  },{
-    "id": 4,
-    "name": "Ciro Gomes",
-    "slug": "ciro",
-    "size": 15,
-    "top": 182,
-    "left": 18,
-    "color": "#FFA865"
-  },{
-    "id": 1,
-    "name": "Luiz Inácio Lula da Silva",
-    "slug": "lula",
-    "size": 36,
-    "top": 125,
-    "left": 125,
-    "color": "#FF7E7E"
   }
 ]
