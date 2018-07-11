@@ -1,7 +1,7 @@
 @import '../../lib/scss/variables.scss';
 
 .radar {
-  padding: 25px 10px;
+  padding: responsive(25, 60) responsive(10, 80);
   background-color: #FF7E7E;
   display: flex;
   flex-direction: column;
@@ -9,5 +9,8 @@
 
   svg {
   	padding: 10px;
+  	.stroke {
+  		transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+  	}
   }
 }

@@ -1,7 +1,7 @@
 @import '../../lib/scss/variables.scss';
 
 .relationship {
-  padding: 25px 10px;
+  padding: responsive(25, 60) responsive(10, 80);
   background-color: $gray;
 
 	.compare {
@@ -34,9 +34,6 @@
 @media screen and (min-width: $medium-devices) {
 	.flex {
 		display: flex;
-	}
-	.flex > div {
-		padding: 0 40px;
 	}
 }
 

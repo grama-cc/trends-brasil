@@ -8,8 +8,9 @@
 	margin: 0 0 20px;
 	width: 160px;
 	background-color: $white;
-	max-height: 36px;
-	overflow: hidden;
+	position: relative;
+	//max-height: 36px;
+	//overflow: hidden;
 
 	li {
 		font-size: 14px;
@@ -17,7 +18,6 @@
 		padding: 10px;
 		overflow: hidden;
 		transition: background .4s ease;
-
 		&.disabled {
 			transition: background .4s ease;
 			background-color: $grayLight;
@@ -29,10 +29,19 @@
 		}
 	}
 
-	&.open {
-		max-height: 300px;
-		overflow-y: scroll;
+	div {
+		transition: height .4s ease;
+		height: 0;
+		overflow: hidden;
+		position: absolute;
+		background-color: $white;
+		&.open {
+			height: 300px;
+			overflow-y: scroll;
+		}
 	}
+
+	
 }
 .container {
 	display: flex;

@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick'
 import PropTypes from 'prop-types';
 import css from './Graphic.scss';
-
+import * as d3 from "d3";
 import Api from '../../lib/Api';
 
 class Graphic extends React.Component {
@@ -14,7 +14,7 @@ class Graphic extends React.Component {
       id: null,
       active: false,
       word: null,
-      index: null
+      //index: null
     }
   }
 
@@ -29,15 +29,21 @@ class Graphic extends React.Component {
 
   onSelect = (e) => {
     this.setState({ 
-      id: e.currentTarget.dataset.id,
+      //id: Number(e.currentTarget.dataset.id),
       active: true,
-      index: e.currentTarget.dataset.index
+      //index: Number(e.currentTarget.dataset.index),
     });
+    const val = Number(e.currentTarget.dataset.id)
+    this.props.click(val)
+  }
+
+  closeModal = () => {
+    this.setState({ active: false });
   }
 
   getWords () {
     const words = this.state.word.filter((w) => { 
-      return this.state.id == w.candidate;
+      return this.props.id == w.candidate;
     });
 
     const slice_array = words.slice(0, 8);
@@ -46,21 +52,28 @@ class Graphic extends React.Component {
 
   renderModalWords () {
     const words = this.getWords();
-    const color = this.props.data[this.state.index].color;
+
+    const name = this.props.data.map((d) => {
+      if (this.props.id === d.id) {
+        return d.name
+      }
+    })
 
     return (
-      <div className={css.modal}>
+      <div className={css.modal} onClick={this.closeModal}>
+        <h3>{name}</h3>
         {words.map((word, index) => (
           <p key={index}>
-            <span
+            <a
+              href={`https://www.google.com.br/search?q=${word.query_text.replace(/ /g,"+")}`}
+              target={`_blank`}
               style={{
-                color: color,
-                fontSize: `16px`,
-                // fontSize: `calc(${word.size}% + 10px)`
+                color: word.color,
+                fontSize: `14px`,
               }}
             >
               {word.text}
-            </span>
+            </a>
           </p>
         ))}
       </div> 
@@ -68,37 +81,78 @@ class Graphic extends React.Component {
   }
 
   render () {
-    if (!this.props.data) {
-      return <div>Loading...</div>
-    }
-    const data = this.props.data
+    const data = this.props.data;
 
-    return (
-      <div className={css.graphic}>
-        {data.map((data, idx) => {
-          const id = this.state.id
-          let diameter = data.size * 10;
-          diameter = diameter < 40 ? 40 : diameter > 100 ? 100 : diameter;
-          return (
-            <span
-              key={idx}
-              onClick={this.onSelect}
-              data-id={data.id}
-              data-index={idx}
-              className={id == data.id ? css.modal : null}
-              style={{
-                backgroundImage: `url(/static/img/candidates/${data.slug}.png)`,
-                backgroundColor: data.color,
-                width: `${id == data.id ? 110 : diameter}px`,
-                height: `${id == data.id ? 110 : diameter}px`,
-                opacity: id == data.id ? 1 : .3,
-                top: id == data.id ? `${50}%` : `${data.top}px`,
-                left: id == data.id ? `${50}%` : `${data.left}px`,
-              }}
-            />
-          )
-        })}
+    // fazer um func
+    const children = {'children': data.map((d) => (d))};
 
+    const diameterw = window.innerWidth < 800 ? window.innerWidth - 35 : window.innerWidth / 1.7; //responsivo
+    const diameterh = window.innerWidth < 800 ? window.innerWidth - 35 : (window.innerWidth / 1.7) * 2/3; //responsivo
+
+    const pad = diameterw < 800 ? 5 : 10
+    const bubble = d3.pack(children).size([diameterw, diameterh]).padding(pad); 
+
+    const nodes = d3.hierarchy(children).sum(function(d) { return d.size; });
+
+    let circles = bubble(nodes).leaves();
+
+    circles = circles.sort((a, b) => {
+      if (a.data.id === this.props.id || b.data.id === this.props.id) {
+        return 1;
+      }
+        return 0;
+    })
+
+    return(
+      <div className={this.props.val === 1 ? css.graphic : `${css.none} ${css.graphic}`}>
+
+        <svg width={diameterw} height={diameterh}>
+
+          <defs>
+            {circles.map((c, idx) => {
+              return (
+                <pattern 
+                key={idx}
+                  id={`img${idx}`} 
+                  patternUnits="objectBoundingBox" 
+                  width="1" height="1" 
+                  //height={c.r} width={c.r}
+                  patternUnits="objectBoundingBox"
+                  > 
+                  <rect height="100%" width="100%" fill={c.data.color}/>
+                  <image 
+                 x="0" y="0" 
+                  //x={c.x}
+                  //y={c.y}
+                  height={this.props.id === c.data.id && this.state.active ? 100 : c.r * 2} 
+                  width={this.props.id === c.data.id && this.state.active ? 100 : c.r * 2}
+                  //width="152" height="152" 
+                  xlinkHref={`/static/img/candidates/${c.data.slug}.png`}></image>
+                </pattern>
+              )
+            })}
+          </defs>
+
+          {circles.map((c, idx) => {
+            const id = this.props.id
+            return (
+              <g
+                key={idx}
+                transform={`translate(${diameterw < 800 ? (c.x * 1.22) - diameterw / 9 : (c.x * 1.5) - diameterw / 3.5}, ${c.y})`}
+                onClick={this.onSelect}
+                data-id={c.data.id}
+                opacity={id === c.data.id ? 1 : .4}
+                className={id === c.data.id && this.state.active ? css.open : null}
+              >
+                <circle
+                  r={c.r}
+                  fill={`url(#img${idx})`}
+                />
+              </g>
+            )
+          })}
+          
+        </svg>
         {this.state.active ? this.renderModalWords() : null}
       </div>
     )

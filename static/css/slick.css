@@ -108,7 +108,7 @@
 
 /* Candidate -------------------------------- */
 
-.nav.slick-slider { height: 90px; }
+.nav.slick-slider { height: 115px; }
 .nav .slick-slide  { width: 90px; }
 
 .nav .item {
@@ -118,8 +118,8 @@
 }
 
 .nav .slick-current .item {
-	width: 100%;
-	height: 100%;
+	width: 90px;
+	height: 90px;
 	opacity: 1;
 	transition: width .4s ease, height .4s ease, opacity .4s ease;
 }
@@ -138,6 +138,12 @@
 	width: 25px;
 }
 
+#keywords .slider .slick-arrow {
+	top: 0;
+	transform: translateY(0%);
+	height: 45px;
+}
+
 @media screen and (max-width: 800px) {
  	#keywords .slider .slick-arrow {
  		display: none !important;
@@ -151,7 +157,7 @@
 	left: 0;
 	background-image: url(../img/slider_arrow.svg);
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: contain;
 	width: 100%;
 	height: 100%;
 }

@@ -1,10 +1,14 @@
 @import '../lib/scss/variables.scss';
 
 .description {
-	@media screen and (max-width: $small-devices) {
-		margin: 0 0 20px;
-		text-align: center;
-	}
+	margin: 0 0 20px;
+	text-align: center;
+	@media screen and (min-width: $medium-devices) {
+    width: 40%;
+    margin: 0 0 40px;
+    text-align: left;
+		padding-right: 80px;
+  }
 	h2 {
 		font-size: responsive(24, 34);
 		margin: 0 0 10px;
@@ -49,12 +53,5 @@
 			padding: 10px;
 			transition: max-height .6s ease, margin .6s ease, padding .6s ease;
 		}
-	}
-}
-@media screen and (min-width: $medium-devices) {
-	.description {
-		margin: 0;
-		text-align: left;
-		padding-right: 80px;
 	}
 }

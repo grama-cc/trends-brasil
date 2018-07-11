@@ -1,5 +1,5 @@
 @import '../../lib/scss/variables.scss';
 
 .category {
-  padding: 25px 10px;
+  padding: responsive(25, 60) responsive(10, 80);
 }

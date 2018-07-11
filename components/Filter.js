@@ -63,9 +63,12 @@ class Filter extends React.Component {
           /> : null}
           <ul
             onClick={this.onDropdownFilter}
-            className={this.state.openFilter ? `${css.open} ${css.selected}` : css.selected}
+            className={css.selected}
           >
             <li >{this.state.name1}</li>
+            <div
+            className={this.state.openFilter ? css.open : null}
+            >
             {candidates.map((c, idx) => (
               <li 
                 key={idx}
@@ -77,6 +80,7 @@ class Filter extends React.Component {
                 {c.name}
               </li>
             ))}
+            </div>
           </ul>
         </div>
 
@@ -92,10 +96,13 @@ class Filter extends React.Component {
             /> : null}
             <ul
               onClick={this.onDropdownCompare}
-              className={this.state.openCompare ? `${css.open} ${css.selected}` : css.selected}
+              className={css.selected}
             >
              <li>{this.state.name2}</li>
+             <div
+              className={this.state.openCompare ? css.open : null}
 
+             >
               {candidates.map((c, idx) => (
                 <li 
                   key={idx}
@@ -107,6 +114,7 @@ class Filter extends React.Component {
                   {c.name}
                 </li>
               ))}
+              </div>
             </ul> 
           </div>
         : null}

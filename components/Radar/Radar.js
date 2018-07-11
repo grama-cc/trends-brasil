@@ -15,7 +15,8 @@ class RadarChart extends React.Component {
     super(props)
 
     this.state = {
-      radar: null
+      radar: null,
+      id: null,
     };
 
     this.config = {
@@ -86,29 +87,23 @@ class RadarChart extends React.Component {
     return position
   }
 
-  array_move = (arr, old_index, new_index) => {
-
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr; // for testing
-};
-
   render() {
     if (!this.state.radar) {
       return <div>Loading...</div>
     }
 
-    const data = this.state.radar;
+    let data = this.state.radar;
     const circles = this.circleLevels();
     const axis = this.axisPosition(data);
     const values = this.values(data)
     const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( values.scale( d.percent / 100 ) )).angle(( d, i ) => ( i * values.angles ));
 
-    // Faz o update da posição no arra para jogar o current para frente
-    // const oi = this.props.filter
-    // const array = data.findIndex((c, i) => (c.id == oi));
-    // const novo = this.array_move(data, array, data.length - 1)
-    // console.log(this.props.filter, array, novo)
-
+    data = data.sort((a, b) => {
+      if (a.id === this.props.filter || b.id === this.props.filter) {
+        return 1;
+      }
+        return 0;
+    })
 
     return (
       <section className={css.radar}>
@@ -154,18 +149,18 @@ class RadarChart extends React.Component {
             </g>
 
             {data.map((curves, idx) => (
-              <g className={css.wrap} key={idx}>
+              <g className={css.wrap} key={idx} id={curves.id}>
                 <path
                   className={css.area}
                   d={radarLine(curves.categories)}
                   fill="none"
                 />
                 <path
-                  className={css.stroke}
+                  className={idx == data.length - 1 ? css.stroke : null}
                   d={radarLine(curves.categories)}
-                  strokeWidth={curves.id == 16 ? 2 : 0.5}
-                  stroke={curves.id == 16 ? "#fff" : "#4B4B4B"}
-                  fill={curves.id == 16 ? "url(#grad)" : "none" }
+                  strokeWidth={idx == data.length - 1 ? 2 : 0.5}
+                  stroke={idx == data.length - 1 ? "#fff" : "#4B4B4B"}
+                  fill={idx == data.length - 1 ? "url(#grad)" : "none" }
                 />
               </g>
             ))}

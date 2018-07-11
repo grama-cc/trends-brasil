@@ -68,10 +68,10 @@ class Cloud extends React.Component {
               href={`https://www.google.com.br/search?q=${word.query}`}
               target="_blank"
               style={{
-                fontSize: `calc(${word.size}% + 10px)`,
+                fontSize: `calc(${word.size}% + 1vw * ${word.size/100} + 10px)`,
                 color: word.color
               }}
-            >
+            > 
               {word.word}
             </a>
           </div>
