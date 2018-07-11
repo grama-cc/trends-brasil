@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import css from './Radar.scss';
+import css from './Orbital.scss';
 import * as d3 from "d3";
 
 import Api from '../../lib/Api';
@@ -10,12 +10,12 @@ import Filter from '../Filter.js';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
-class RadarChart extends React.Component {
+class Orbital extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      radar: null,
+      orbital: null,
       id: null,
     };
 
@@ -28,7 +28,7 @@ class RadarChart extends React.Component {
         bottom: 100,
         left: 100 
       },
-      levels: 1,
+      levels: 3,
       maxValue: 0.5, // biggest circle will value
       color: d3.scaleOrdinal().range([ "#EDC951", "#CC333F", "#00A0B0" ]) // color no array
     };
@@ -42,23 +42,26 @@ class RadarChart extends React.Component {
   }
 
   getData = async () => {
-    const radar = await Api.get('/radar.json');
-    this.setState({ radar });
+    const orbital = await Api.get('/orbital.json');
+    this.setState({ orbital });
   }
 
   values = (data) => {
     const max = Math.max(this.config.maxValue, d3.max(data,
       ((array) => (
-        d3.max(array.categories.map(
-          (item) => ( item.percent / 100 )
+        d3.max(array.orbit.map(
+          (item) => ( item.distance / 100 )
         ))
       )))
     );
 
-    const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
+    console.log(data[0].orbit.length)
 
-    const angles = Math.PI * 2 / 6;
-    
+    const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
+    const angles = Math.PI * 2 / data[0].orbit.length;
+
+    console.log(angles)
+
     return {
       "max": max,
       "scale": scale,
@@ -68,68 +71,70 @@ class RadarChart extends React.Component {
 
   circleLevels = () => {
     const levels = d3.range(1, (this.config.levels + 1) );
-
     const diameter = levels.map((d, i) => {
       return this.radius / this.config.levels * d
     });
-
     return diameter
   }
 
   axisPosition = (data) => {
     const values = this.values(data)
-    const position = data[0].categories.map((d, i) => {
+
+
+
+    const position = data[0].orbit.map((d, i) => {
       return {
         "x": values.scale( values.max ) * Math.sin( values.angles * i - Math.PI / 2 ), 
         "y": values.scale( values.max ) * Math.cos( values.angles * i - Math.PI / 2 )
       }
     })
+
+    console.log(position)
+    
     return position
   }
 
+  findIndex = (array, attr, value) => {
+    for(var i = 0; i < array.length; i += 1) {
+      if(array[i][attr] === value) {
+        return i;
+      }
+    }
+    return 0;
+  }
+
   render() {
-    if (!this.state.radar) {
+    if (!this.state.orbital) {
       return <div>Loading...</div>
     }
 
-    let data = this.state.radar;
+    let data = this.state.orbital;
     const circles = this.circleLevels();
     const axis = this.axisPosition(data);
     const values = this.values(data)
-    const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( values.scale( d.percent / 100 ) )).angle(( d, i ) => ( i * values.angles ));
+
 
     data = data.sort((a, b) => {
       if (a.id === this.props.filter || b.id === this.props.filter) {
         return 1;
       }
-        return 0;
+      return 0;
     })
 
     return (
       <section
-        className={css.radar}
+        className={css.orbital}
         style={{
-          backgroundColor: this.props.filter === 0 ? '#B4B4B4' : data[data.length - 1].color
+          backgroundColor: this.props.filter === 0 ? '#B4B4B4' : data[data.length - 1].color,
         }}
       >
         <Description content={content.description} />
 
-        <Filter {...this.props} candidates={this.state.radar} />
+        <Filter {...this.props} candidates={this.state.orbital} />
 
         <svg width={this.config.width} height={this.config.height}>
           <g transform={`translate(${this.config.width / 2}, ${this.config.height / 2})`}>
-            
-            <defs>
-              <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="20%" style={{ 
-                  stopColor: this.props.filter === 0 ? '#B4B4B4' : data[data.length - 1].color, 
-                  stopOpacity: 0.1 }} 
-                />
-                <stop offset="100%" style={{ stopColor: '#fff', stopOpacity: 0.5 }} />
-              </radialGradient>
-            </defs>
-
-            <g>
+            <g className='base'>
               {circles.map((diameter, idx) => (
                 <circle
                   key={idx}
@@ -140,7 +145,6 @@ class RadarChart extends React.Component {
                   r={diameter}
                 />
               ))}
-
               {axis.map((point, idx) => (
                 <line
                   key={idx}
@@ -153,33 +157,41 @@ class RadarChart extends React.Component {
                   y2={point.y}
                 />
               ))}
-
             </g>
+            <g className='dots'>
+              {data.map((points) => (
+                <g className='candidates'>
+                  {points.id === this.props.filter ? points.orbit.map((dot, i) => {
+                    let oi = values.scale( dot.distance / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
+                    oi = oi - 30
+                    return(
 
-            {data.map((curves, idx) => (
-              <g className={css.wrap} key={idx} id={curves.id}>
-                <path
-                  className={css.area}
-                  d={radarLine(curves.categories)}
-                  fill="none"
-                />
-                <path
-                  className={idx == data.length - 1 ? css.stroke : null}
-                  d={radarLine(curves.categories)}
-                  strokeWidth={idx == data.length - 1 ? 2 : 0.5}
-                  stroke={idx == data.length - 1 ? "#fff" : "#4B4B4B"}
-                  fill={idx == data.length - 1 ? "url(#grad)" : "none" }
-                />
-              </g>
-            ))}
+                    <g>
+                    <circle
+                      key={i}
+                      r={dot.distance === 0 ? 15 : 7.5}
+                      //cx={0}
+                      //cy={0}
+                      cx={values.scale( dot.distance / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )}
+                      cy={values.scale( dot.distance / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )}
+                      fill={`#fff`}
+                    />
+                    <text
+                      x={oi}
+                      y={values.scale( dot.distance / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )}
+                    >{dot.name}</text>
+                    </g>
 
+                  )}) : null}
+                </g>
+              ))}
+            </g>
           </g>
         </svg>
-
         <Social />
       </section>
     )
   }
 }
 
-export default RadarChart;
+export default Orbital;
