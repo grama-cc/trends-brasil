@@ -55,12 +55,8 @@ class Orbital extends React.Component {
       )))
     );
 
-    console.log(data[0].orbit.length)
-
     const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
     const angles = Math.PI * 2 / data[0].orbit.length;
-
-    console.log(angles)
 
     return {
       "max": max,
@@ -75,23 +71,6 @@ class Orbital extends React.Component {
       return this.radius / this.config.levels * d
     });
     return diameter
-  }
-
-  axisPosition = (data) => {
-    const values = this.values(data)
-
-
-
-    const position = data[0].orbit.map((d, i) => {
-      return {
-        "x": values.scale( values.max ) * Math.sin( values.angles * i - Math.PI / 2 ), 
-        "y": values.scale( values.max ) * Math.cos( values.angles * i - Math.PI / 2 )
-      }
-    })
-
-    console.log(position)
-    
-    return position
   }
 
   findIndex = (array, attr, value) => {
@@ -110,9 +89,9 @@ class Orbital extends React.Component {
 
     let data = this.state.orbital;
     const circles = this.circleLevels();
-    const axis = this.axisPosition(data);
-    const values = this.values(data)
-
+    const values = this.values(data);
+    const levels = d3.range(1, (this.config.levels + 1) ).reverse();
+    const color = data[data.length - 1].color
 
     data = data.sort((a, b) => {
       if (a.id === this.props.filter || b.id === this.props.filter) {
@@ -125,7 +104,7 @@ class Orbital extends React.Component {
       <section
         className={css.orbital}
         style={{
-          backgroundColor: this.props.filter === 0 ? '#B4B4B4' : data[data.length - 1].color,
+          backgroundColor: this.props.filter === 0 ? '#B4B4B4' : color,
         }}
       >
         <Description content={content.description} />
@@ -145,44 +124,62 @@ class Orbital extends React.Component {
                   r={diameter}
                 />
               ))}
-              {axis.map((point, idx) => (
-                <line
-                  key={idx}
-                  stroke="#fff"
-                  strokeDasharray={1}
-                  className={css.axis}
-                  x1={0}
-                  y1={0}
-                  x2={point.x}
-                  y2={point.y}
-                />
-              ))}
-            </g>
-            <g className='dots'>
-              {data.map((points) => (
-                <g className='candidates'>
-                  {points.id === this.props.filter ? points.orbit.map((dot, i) => {
-                    let oi = values.scale( dot.distance / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
-                    oi = oi - 30
-                    return(
-
-                    <g>
-                    <circle
-                      key={i}
-                      r={dot.distance === 0 ? 15 : 7.5}
-                      //cx={0}
-                      //cy={0}
-                      cx={values.scale( dot.distance / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )}
-                      cy={values.scale( dot.distance / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )}
-                      fill={`#fff`}
+              <g>
+                {levels.map((l, i) => (
+                  <g key={i}>
+                    <rect
+                      width="30"
+                      height="20"
+                      fill={this.props.filter === 0 ? '#B4B4B4' : color}
+                      stroke={`none`}
+                      x={-14}
+                      y={(-l * this.radius / 3) - 10}
                     />
                     <text
-                      x={oi}
-                      y={values.scale( dot.distance / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )}
-                    >{dot.name}</text>
+                      x={i != 2 ? -8 : -12.5}
+                      y={-l * this.radius / 3}
+                      dy={'0.4em'}
+                      fontSize={15}
+                      fill={'#000'}
+                    >
+                      {i === 0 ? 10 : ( i * 5 ) * 10}
+                    </text>
+                  </g>
+                ))}
+              </g>
+            </g>
+            <g className='dots'>
+              {data.map((points, idx) => (
+                <g className='candidates' key={idx}>
+                  {points.id === this.props.filter ? points.orbit.map((dot, i) => {
+
+                    const r = dot.distance === 0 ? 15 : 7.5
+                    let x = values.scale( dot.distance / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
+                    let y = values.scale( dot.distance / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
+                    y = y + r + 15;
+
+                    return(
+
+                    <g key={i}>
+                      <circle
+                        r={r}
+                        cx={values.scale( dot.distance / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )}
+                        cy={values.scale( dot.distance / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )}
+                        fill={`#fff`}
+                      />
+                      <text
+                        x={x}
+                        y={y}
+                        fontSize={12}
+                        textAnchor="middle"
+                      >
+                        {dot.name}
+                      </text>
                     </g>
 
                   )}) : null}
+
+
                 </g>
               ))}
             </g>

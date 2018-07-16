@@ -1,0 +1,9 @@
+@import '../../lib/scss/variables.scss';
+
+.lines {
+  padding: responsive(25, 60) responsive(10, 80);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: pink;
+}
