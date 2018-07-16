@@ -2,21 +2,22 @@
 
 .intro {
   margin: 25px 0 0;
-  text-align: center;
-  padding: 0 20px;
-  background-image: url($img + 'wave.svg');
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
   align-items: center;
-  background-repeat: no-repeat;
-  background-position: top 70px center;
+
+  .boxAnimation {
+    position: absolute;
+    max-width: 100%;
+    overflow: hidden;
+  }
 
   h1 {
   	font-size: 38px;
   	font-family: $robotoLight;
+    z-index:999;
   	span {
   		font-size: 56px;
   		font-family: $roboto;
@@ -26,6 +27,7 @@
   p {
   	font-size: 18px;
   	line-height: 24px;
+    z-index:999;
   }
 
   button {
@@ -34,5 +36,384 @@
   	width: 25px;
   	transform: rotate(90deg);
     margin: 40px 0 0;
+    z-index:999;
+  }
+}
+
+﻿.linha1 {
+  animation: slideout 15s linear 0s infinite alternate;
+  transform-origin: 100% 0%;
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  -webkit-animation: slideout 15s linear 0s infinite alternate;
+  -webkit-transform-origin: 100% 0%;
+  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+  -moz-animation: slideout 15s linear 0s infinite alternate;
+  -moz-transform-origin: 100% 0%;
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation: slideout 15s linear 0s infinite alternate;
+  -o-transform-origin: 100% 0%;
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation: slideout 15s linear 0s infinite alternate;
+  -ms-transform-origin: 100% 0%;
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+}
+
+@keyframes slideout{
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+@-moz-keyframes slideout{
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -moz-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-webkit-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-o-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -o-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-ms-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -ms-transform:  translate(0px,0px)  ;
+  }
+}
+
+.linha2 {
+  animation: slideout 10s linear 0s infinite alternate;
+  transform-origin: 0% 100%;
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  -webkit-animation: slideout 10s linear 0s infinite alternate;
+  -webkit-transform-origin: 0% 100%;
+  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+  -moz-animation: slideout 10s linear 0s infinite alternate;
+  -moz-transform-origin: 0% 100%;
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation: slideout 10s linear 0s infinite alternate;
+  -o-transform-origin: 0% 100%;
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation: slideout 10s linear 0s infinite alternate;
+  -ms-transform-origin: 0% 100%;
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+}
+
+@keyframes slideout{
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+@-moz-keyframes slideout{
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -moz-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-webkit-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-o-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -o-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-ms-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -ms-transform:  translate(0px,0px)  ;
+  }
+}
+
+.linha3 {
+  animation: slideout 15s linear 0s infinite alternate;
+  transform-origin: 0% 100%;
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  -webkit-animation: slideout 15s linear 0s infinite alternate;
+  -webkit-transform-origin: 0% 100%;
+  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+  -moz-animation: slideout 15s linear 0s infinite alternate;
+  -moz-transform-origin: 0% 100%;
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation: slideout 15s linear 0s infinite alternate;
+  -o-transform-origin: 0% 100%;
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation: slideout 15s linear 0s infinite alternate;
+  -ms-transform-origin: 0% 100%;
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+}
+
+@keyframes slideout{
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+@-moz-keyframes slideout{
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -moz-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-webkit-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-o-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -o-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-ms-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -ms-transform:  translate(0px,0px)  ;
+  }
+}
+
+.linha4 {
+  animation: slideout 10s linear 0s infinite alternate;
+  transform-origin: 100% 0%;
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  -webkit-animation: slideout 10s linear 0s infinite alternate;
+  -webkit-transform-origin: 100% 0%;
+  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+  -moz-animation: slideout 10s linear 0s infinite alternate;
+  -moz-transform-origin: 100% 0%;
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation: slideout 10s linear 0s infinite alternate;
+  -o-transform-origin: 100% 0%;
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation: slideout 10s linear 0s infinite alternate;
+  -ms-transform-origin: 100% 0%;
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+}
+
+@keyframes slideout{
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+@-moz-keyframes slideout{
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -moz-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-webkit-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-o-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -o-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-ms-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -ms-transform:  translate(0px,0px)  ;
+  }
+}
+
+.linha5 {
+  animation: slideout 10s linear 0s infinite alternate;
+  transform-origin: 0% 100%;
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  -webkit-animation: slideout 10s linear 0s infinite alternate;
+  -webkit-transform-origin: 0% 100%;
+  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+  -moz-animation: slideout 10s linear 0s infinite alternate;
+  -moz-transform-origin: 0% 100%;
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation: slideout 10s linear 0s infinite alternate;
+  -o-transform-origin: 0% 100%;
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation: slideout 10s linear 0s infinite alternate;
+  -ms-transform-origin: 0% 100%;
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+}
+
+@keyframes slideout{
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+@-moz-keyframes slideout{
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -moz-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-webkit-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-o-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -o-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-ms-keyframes slideout {
+  100% {
+    transform:  translate(-790px,0px)  ;
+  }
+  0% {
+    -ms-transform:  translate(0px,0px)  ;
+  }
+}
+
+.linha6 {
+  animation: slideout 15s linear 0s infinite alternate;
+  transform-origin: 100% 0%;
+  animation-fill-mode:forwards; /*when the spec is finished*/
+  -webkit-animation: slideout 15s linear 0s infinite alternate;
+  -webkit-transform-origin: 100% 0%;
+  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+  -moz-animation: slideout 15s linear 0s infinite alternate;
+  -moz-transform-origin: 100% 0%;
+  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -o-animation: slideout 15s linear 0s infinite alternate;
+  -o-transform-origin: 100% 0%;
+  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -ms-animation: slideout 15ss linear 0s infinite alternate;
+  -ms-transform-origin: 100% 0%;
+  -ms-animation-fill-mode:forwards; /*IE 10+*/
+}
+
+@keyframes slideout{
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+@-moz-keyframes slideout{
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -moz-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-webkit-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-o-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -o-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-ms-keyframes slideout {
+  0% {
+    transform:  translate(-790px,0px)  ;
+  }
+  100% {
+    -ms-transform:  translate(0px,0px)  ;
   }
 }
