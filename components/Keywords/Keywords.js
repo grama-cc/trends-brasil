@@ -40,7 +40,7 @@ class Keywords extends React.Component {
   }
 
   getData = async () => {
-    const candidate = await Api.get('/candidate.json');
+    const candidate = await Api.get('/candidate/');
     this.setState({ candidate });
   }
 
@@ -60,32 +60,14 @@ class Keywords extends React.Component {
           {matches =>
             matches ? (
               <div>
-                <Select
-                  change={this.onChange}
-                  val={selected}
-                  content={content.select}
-                />
-
-                <Graphic
-                  data={data}
-                  click={this.onClick}
-                  id={this.state.id}
-                  val={selected}
-                  
-                /> 
-                {selected === 2 ?
-                <Candidate
-                  data={data}
-                  id={this.state.id}
-                  val={selected}
-                  
-                /> : null}
-
+                <Select change={this.onChange} val={selected} content={content.select} />
+                <Graphic data={data} click={this.onClick} id={this.state.id} val={selected} /> 
+                {selected === 2 ? <Candidate data={data} id={this.state.id} val={selected} /> : null}
               </div>
             ) : (
               <div className={css.container}>
-                <Candidate data={data} />
-                <Graphic data={data} />
+                <Candidate data={data} id={this.state.id} val={selected} />
+                <Graphic data={data} id={this.state.id} val={selected} click={this.onClick} />
               </div>
             )
           }

@@ -35,18 +35,25 @@ class Home extends React.Component {
       <Layout>
         <Head title="Trends Brasil" />
         <Intro />
-        {/*<Keywords />*/}
+        <Keywords />
         {/*<Lines
           onfilter={this.onFilter} 
           filter={this.state.filter}
         />*/}
-        {/* <Category />*/}
+
+
+
+
+
+
+
         {/*<Radar
           onfilter={this.onFilter} 
           filter={this.state.filter}
+          behaivor='open'
         />*/}
         {/*<Relationship 
-          onfilter={this.onFilter} 
+          onfilter={tshis.onFilter} 
           oncompare={this.onCompare}
           filter={this.state.filter}
           compare={this.state.compare}
@@ -56,6 +63,7 @@ class Home extends React.Component {
           filter={this.state.filter}
         />*/}
         {/*<Footer />*/}
+        {/* <Category />*/}
       </Layout>
     );
   }

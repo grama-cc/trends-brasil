@@ -18,8 +18,8 @@ class Cloud extends React.Component {
   }
 
   getData = async () => {
-    const word = await Api.get('/word.json');
-    const candidate = await Api.get('/candidate.json');
+    const word = await Api.get('/word/');
+    const candidate = await Api.get('/candidate/');
     this.setState({ word, candidate });
   }
 
@@ -30,7 +30,7 @@ class Cloud extends React.Component {
 
     const objects = word.reduce((group, item) => {
 
-      let type = this.props.candidate ? item.candidate : item.category
+      let type = this.props.type === 'candidate' ? item.candidate : item.category
 
       group[type] = group[type] || [];
       group[type].push(item);

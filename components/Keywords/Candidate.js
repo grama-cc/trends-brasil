@@ -71,18 +71,17 @@ class Candidate extends React.Component {
           </Media>
 
         <Slider
-          className='slider'
+          className={`slider`}
           asNavFor={this.state.slider1}
           ref={ slider1 => ( this.nav1 = slider1 ) }
           arrows={true}
           slidesToShow={1}
           initialSlide={index}
-          //adaptiveHeight={true}
         >
           {data.map((data, j) => (
             <div className={css.info} key={j}>
               <h3><span>{data.name}</span></h3>
-              <Cloud category={data.id} candidate />
+              <Cloud category={data.id} type='candidate' />
             </div>
           ))}
         </Slider>

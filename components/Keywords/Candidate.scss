@@ -3,7 +3,6 @@
 .candidate {
 	@media screen and (min-width: $medium-devices) {
     width: 40%;
-    //background: red;
   }
 	
 	// Nav Slider
@@ -48,7 +47,7 @@
 			line-height: 18px;
 			margin: 25px 0 20px;
 			@media screen and (min-width: $medium-devices) {
-		    margin: 0;
+		    margin: 0 0 40px;
 		    height: 45px;
 		    display: flex;
 		    justify-content: center;
@@ -61,7 +60,6 @@
 		  }
 		}
 	}
-
 }
 
 .none {
