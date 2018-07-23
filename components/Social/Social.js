@@ -11,10 +11,10 @@ const Social = props => (
   <div className={props.share ? css.share : null}>
     {props.children}
     <ul className={css.social}>
-      {!props.share ? <li><a href="#"><Media /></a></li> : null}
-        <li><a href="#"><Twitter /></a></li>
-        <li><a href="#"><Facebook /></a></li>
-        <li><a href="#"><Whatsapp /></a></li>
+      {!props.share ? <li><a href="#"><Media stroke={props.stroke} /></a></li> : null}
+        <li><a href="#"><Twitter stroke={props.stroke} /></a></li>
+        <li><a href="#"><Facebook stroke={props.stroke} /></a></li>
+        <li><a href="#"><Whatsapp stroke={props.stroke} /></a></li>
     </ul>
   </div>
 );

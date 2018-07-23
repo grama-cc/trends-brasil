@@ -185,10 +185,9 @@ class Orbital extends React.Component {
             </g>
           </g>
         </svg>
-        <Social />
+        <Social stroke="#fff" />
       </section>
     )
   }
 }
-
 export default Orbital;
