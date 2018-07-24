@@ -30,7 +30,7 @@ class RadarChart extends React.Component {
       },
       levels: 1,
       maxValue: 0.5, // biggest circle will value
-      color: d3.scaleOrdinal().range([ "#EDC951", "#CC333F", "#00A0B0" ]) // color no array
+      color: d3.scaleOrdinal().range([ "#85C974", "#CECCCF", "#DFBCA2" ]) // color no array
     };
 
     // Circle radius
@@ -42,13 +42,14 @@ class RadarChart extends React.Component {
   }
 
   getData = async () => {
-    const radar = await Api.get('/radar.json');
+    const radar = await Api.get('/radar/?period=7%201-d');
     this.setState({ radar });
   }
 
   values = (data) => {
     const max = Math.max(this.config.maxValue, d3.max(data,
       ((array) => (
+          // console.log(array.categories),
         d3.max(array.categories.map(
           (item) => ( item.percent / 100 )
         ))

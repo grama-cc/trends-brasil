@@ -42,21 +42,22 @@ class Orbital extends React.Component {
   }
 
   getData = async () => {
-    const orbital = await Api.get('/orbital.json');
+    const orbital = await Api.get('/orbit/');
     this.setState({ orbital });
   }
 
   values = (data) => {
     const max = Math.max(this.config.maxValue, d3.max(data,
       ((array) => (
-        d3.max(array.orbit.map(
-          (item) => ( item.distance / 100 )
+        //console.log(array.people),
+        d3.max(array.people.map(
+          (item) => ( item.size / 100 )
         ))
       )))
     );
 
     const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
-    const angles = Math.PI * 2 / data[0].orbit.length;
+    const angles = Math.PI * 2 / data[0].people.length;
 
     return {
       "max": max,
@@ -151,11 +152,11 @@ class Orbital extends React.Component {
             <g className='dots'>
               {data.map((points, idx) => (
                 <g className='candidates' key={idx}>
-                  {points.id === this.props.filter ? points.orbit.map((dot, i) => {
+                  {points.id === this.props.filter ? points.people.map((dot, i) => {
 
-                    const r = dot.distance === 0 ? 15 : 7.5
-                    let x = values.scale( dot.distance / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
-                    let y = values.scale( dot.distance / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
+                    const r = dot.size === 0 ? 15 : 7.5
+                    let x = values.scale( dot.size / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
+                    let y = values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
                     y = y + r + 15;
 
                     return(
@@ -163,8 +164,8 @@ class Orbital extends React.Component {
                     <g key={i}>
                       <circle
                         r={r}
-                        cx={values.scale( dot.distance / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )}
-                        cy={values.scale( dot.distance / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )}
+                        cx={values.scale( dot.size / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )}
+                        cy={values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )}
                         fill={`#fff`}
                       />
                       <text
@@ -173,7 +174,7 @@ class Orbital extends React.Component {
                         fontSize={12}
                         textAnchor="middle"
                       >
-                        {dot.name}
+                        {dot.text}
                       </text>
                     </g>
 
