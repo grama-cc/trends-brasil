@@ -42,7 +42,7 @@ class RadarChart extends React.Component {
   }
 
   getData = async () => {
-    const radar = await Api.get('/radar.json');
+    const radar = await Api.get('/radar/');
     this.setState({ radar });
   }
 
