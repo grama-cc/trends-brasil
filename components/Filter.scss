@@ -7,7 +7,8 @@
 .selected {
 	margin: 0 0 20px;
 	width: 160px;
-	background-color: $white;
+	background-color: transparent;
+	border-bottom: 1px solid #c4c4c4;
 	position: relative;
 	//max-height: 36px;
 	//overflow: hidden;
@@ -15,7 +16,7 @@
 	li {
 		font-size: 14px;
 		position: relative;
-		padding: 10px;
+		padding: 3px 0px;
 		overflow: hidden;
 		transition: background .4s ease;
 		&.disabled {
@@ -63,10 +64,10 @@
         display: block;
         content: '';
         width: 10px; height: 10px;
-        top: 50%; right: 15px;
+        top: 50%; right: 4px;
         margin-top: -3px;
-        border-bottom: 1px solid #ccc;
-        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #c4c4c4;
+        border-right: 1px solid #c4c4c4;
         transform: rotate(45deg) translateY(-50%);
         transition: all .4s ease-in-out;
         transform-origin: 50% 0;
@@ -85,3 +86,12 @@
 	}
 }
 
+.filterList {
+	display:flex
+}
+.filterList li {
+    padding-right: 5px;
+}
+.filterList li:last-child {
+    padding-right: 0 !important;
+}

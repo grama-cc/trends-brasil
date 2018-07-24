@@ -72,7 +72,7 @@ class Keywords extends React.Component {
             )
           }
         </Media>
-        <Social />
+        <Social stroke="#B4B4B4" />
       </section>
     )
   }

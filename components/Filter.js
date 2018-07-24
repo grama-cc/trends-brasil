@@ -52,6 +52,17 @@ class Filter extends React.Component {
 
     return (
       <div className={css.filter}>
+        <ul className={css.filterList}>
+          <li>
+            <div
+            className={css.image}
+            style={{
+              backgroundImage: `url(/static/img/candidates/${c.slug}.png)`,
+            }}
+          >
+          </div>
+          </li>
+        </ul>
         <div className={css.container}>
           {this.props.relationship ? 
           <div

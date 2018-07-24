@@ -49,7 +49,7 @@ class Relationship extends React.Component {
             </div>
           </div>
         </div>
-        <Social />
+        <Social stroke="#B4B4B4"/>
       </section>
     )
   }

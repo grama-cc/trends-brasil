@@ -178,7 +178,7 @@ class RadarChart extends React.Component {
           </g>
         </svg>
 
-        <Social />
+        <Social stroke="#ffffff" />
       </section>
     )
   }
