@@ -36,8 +36,12 @@ class Candidate extends React.Component {
     const data = this.props.data;
     const index = this.findIndex(data, 'id', this.props.id);
 
+    // this.props.val === 2 && data.length ? css.candidate : `${css.none} ${css.candidate}`
+
+    // console.log(data)
+
     return (
-      <div {...this.props} className={this.props.val === 2 && data.length ? css.candidate : `${css.none} ${css.candidate}` }>
+      <div {...this.props} className={css.candidate}>
         <Media query="(max-width: 800px)">
           {matches =>
             matches ? (
@@ -52,7 +56,7 @@ class Candidate extends React.Component {
                 variableWidth={true}
                 initialSlide={index}
               >
-                {data.map((data, index) => (
+                {data.candidate.map((data, index) => (
                   <div className={css.contentImage} key={index}>
                     <div
                       className={`${css.image} item`}
@@ -68,21 +72,24 @@ class Candidate extends React.Component {
               </Slider>
               ) : null
             }
-          </Media>
+        </Media>
 
         <Slider
-          className='slider'
+          className={`slider`}
           asNavFor={this.state.slider1}
           ref={ slider1 => ( this.nav1 = slider1 ) }
           arrows={true}
           slidesToShow={1}
           initialSlide={index}
-          //adaptiveHeight={true}
         >
-          {data.map((data, j) => (
+          {data.candidate.map((item, j) => (
             <div className={css.info} key={j}>
-              <h3><span>{data.name}</span></h3>
-              <Cloud category={data.id} candidate />
+              <h3><span>{item.name}</span></h3>
+              <Cloud 
+                id={item.id} 
+                data={data} 
+                type='candidate' 
+              />
             </div>
           ))}
         </Slider>

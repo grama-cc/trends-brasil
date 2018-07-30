@@ -30,26 +30,25 @@ class Orbital extends React.Component {
       },
       levels: 3,
       maxValue: 0.5, // biggest circle will value
-      color: d3.scaleOrdinal().range([ "#EDC951", "#CC333F", "#00A0B0" ]) // color no array
+      // color: d3.scaleOrdinal().range([ "#EDC951", "#CC333F", "#00A0B0" ]) // color no array
     };
 
     // Circle radius
     this.radius = Math.min(this.config.width / 2, this.config.width / 2);
   }
 
-  componentDidMount() {
-    this.getData();
+  getData = async () => {
+    const orbital = await Api.getOrbit();
+    this.setState({ orbital });
   }
 
-  getData = async () => {
-    const orbital = await Api.get('/orbit/');
-    this.setState({ orbital });
+  componentDidMount() {
+    this.getData();
   }
 
   values = (data) => {
     const max = Math.max(this.config.maxValue, d3.max(data,
       ((array) => (
-        //console.log(array.people),
         d3.max(array.people.map(
           (item) => ( item.size / 100 )
         ))
@@ -85,7 +84,7 @@ class Orbital extends React.Component {
 
   render() {
     if (!this.state.orbital) {
-      return <div>Loading...</div>
+      return <div className={css.loading}>Loading...</div>
     }
 
     let data = this.state.orbital;
@@ -159,13 +158,15 @@ class Orbital extends React.Component {
                     let y = values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
                     y = y + r + 15;
 
+                    console.log(r, dot.size, 'oi')
+
                     return(
 
                     <g key={i}>
                       <circle
                         r={r}
-                        cx={values.scale( dot.size / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )}
-                        cy={values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )}
+                        cx={x}
+                        cy={y}
                         fill={`#fff`}
                       />
                       <text
@@ -186,10 +187,9 @@ class Orbital extends React.Component {
             </g>
           </g>
         </svg>
-        <Social />
+        <Social stroke="#fff" />
       </section>
     )
   }
 }
-
 export default Orbital;

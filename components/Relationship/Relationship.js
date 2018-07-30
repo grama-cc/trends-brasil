@@ -19,21 +19,20 @@ class Relationship extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.getData();
+  getData = async () => {
+    const candidate = await Api.getCandidate();
+    const word = await Api.getWord();
+    this.setState({ candidate, word });
   }
 
-  // https://brasil-trends.herokuapp.com/v1/relationship/?c1=4&c2=1
-
-  getData = async () => {
-    const candidate = await Api.get('/candidate.json');
-    this.setState({ candidate });
+  componentDidMount() {
+    this.getData();
   }
 
   render() {
 
     if (!this.state.candidate) {
-      return <div>Loading...</div>
+      return <div className={css.loading}>Loading...</div>
     }
 
     return (
@@ -41,15 +40,20 @@ class Relationship extends React.Component {
         <div className={css.flex}>
           <Description content={content.description} />
           <div>
-            <Filter {...this.props} candidates={this.state.candidate} startCompare relationship />
-            <div className={css.compare}>
-              <Cloud category={this.props.filter} candidate />
+            <Filter 
+              {...this.props}
+              candidates={this.state.candidate}
+              startCompare
+              relationship
+            />
+            {/*<div className={css.compare}>
+              <Cloud id={this.props.filter} type='candidate' />
               <div className={css.common}>mais<br/>comuns</div>
-              <Cloud category={this.props.compare} candidate />
-            </div>
+              <Cloud id={this.props.compare} type='candidate' />
+            </div>*/}
           </div>
         </div>
-        <Social />
+        <Social stroke="#B4B4B4"/>
       </section>
     )
   }

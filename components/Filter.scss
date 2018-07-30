@@ -9,8 +9,6 @@
 	width: 160px;
 	background-color: $white;
 	position: relative;
-	//max-height: 36px;
-	//overflow: hidden;
 
 	li {
 		font-size: 14px;
@@ -39,7 +37,13 @@
 			height: 300px;
 			overflow-y: scroll;
 		}
-	}	
+	}
+
+	
+}
+.container {
+	display: flex;
+  flex-direction: column-reverse;
 }
 .image {
 	width: 40px;
@@ -47,41 +51,5 @@
 	background-size: 100%;
 	background-repeat: no-repeat;
 	border-radius: 100%;
+	margin: 0 auto 10px;
 }
-@media screen and (min-width: $medium-devices) {
-	.image,
-	.selected {
-		display: inline-block
-	}
-	.selected {
-		margin: 0 0 20px 10px;
-		cursor: pointer;
-	}
-}
-.selected:after {
-        position: absolute;
-        display: block;
-        content: '';
-        width: 10px; height: 10px;
-        top: 50%; right: 15px;
-        margin-top: -3px;
-        border-bottom: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        transform: rotate(45deg) translateY(-50%);
-        transition: all .4s ease-in-out;
-        transform-origin: 50% 0;
-}
-
-@media screen and (max-width: $small-devices) {
-	.filter .container {
-		display: inline-grid;
-	}
-	.filter .container div {
-		order:2;
-		margin: 0 auto;
-	}
-	.filter .container ul {
-		order:1;
-	}
-}
-

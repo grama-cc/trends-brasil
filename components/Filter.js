@@ -15,6 +15,10 @@ class Filter extends React.Component {
       name2: "Escolha...",
       openFilter: false,
       openCompare: false,
+      /*sel: {
+        na: false,
+        ha: false
+      }*/
     };
   }
 
@@ -52,6 +56,16 @@ class Filter extends React.Component {
 
     return (
       <div className={css.filter}>
+        {/*<ul className={css.filterList}>
+          <li>
+            <div
+              className={css.image}
+              style={{
+                backgroundImage: `url(/static/img/candidates/${c.slug}.png)`,
+              }}
+            />
+          </li>
+        </ul>*/}
         <div className={css.container}>
           {this.props.relationship ? 
           <div

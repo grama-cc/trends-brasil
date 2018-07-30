@@ -1,594 +1,631 @@
 [
-  {
-    "id": 1,
-    "name": "Luiz Inácio Lula da Silva",
-    "color": "#FF0000",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 20.0
-      },
-      {
-        "name": "Outros",
+    {
         "id": 2,
-        "percent": 20.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 30.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 5.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 5.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 20.0
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Ciro Gomes",
-    "color": "#E3CF57",
-    "categories": [
-      {
-        "name": "Biografia",
+        "name": "Jair Bolsonaro",
+        "color": "#FFA865",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 6.25
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 25.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 6.25
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 25.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 12.5
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 25.0
+            }
+        ]
+    },
+    {
         "id": 1,
-        "percent": 15.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 20.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 5.0
-      },
-      {
-        "name": "Ideologia",
+        "name": "Luiz Inácio Lula da Silva",
+        "color": "#FF7E7E",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 5.26
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 47.37
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 15.79
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 0.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 10.53
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 21.05
+            }
+        ]
+    },
+    {
         "id": 4,
-        "percent": 10.0
-      },
-      {
-        "name": "Mídia",
+        "name": "Ciro Gomes",
+        "color": "#FFA865",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 30.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 20.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 0.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 15.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 35.0
+            }
+        ]
+    },
+    {
         "id": 5,
-        "percent": 20.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 30.0
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Jair Bolsonaro",
-    "color": "#5E2D79",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 15.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 10.0
-      },
-      {
-        "name": "Celebridades",
+        "name": "Geraldo Alckmin",
+        "color": "#8591E7",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 4.17
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 20.83
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 0.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 16.67
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 8.33
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 50.0
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Álvaro Dias",
+        "color": "#73CAA6",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 12.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 12.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 4.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 8.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 4.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 60.0
+            }
+        ]
+    },
+    {
         "id": 3,
-        "percent": 5.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 8.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 28.0
-      },
-      {
-        "name": "Políticos",
+        "name": "Marina Silva",
+        "color": "#85C974",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 8.7
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 21.74
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 4.35
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 13.04
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 4.35
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 47.83
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Guilherme Boulos",
+        "color": "#DFBCA2",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 4.17
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 20.83
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 12.5
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 12.5
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 8.33
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 41.67
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Fernando Collor de Mello",
+        "color": "#CECCCF",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 50.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 0.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 50.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 0.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 0.0
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Manuela D’Ávila",
+        "color": "#DCB3B3",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 0.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 100.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 0.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 0.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 0.0
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "João Amoêdo",
+        "color": "#B4B6C5",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 0.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 9.09
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 13.64
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 9.09
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 68.18
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Levy Fidelix",
+        "color": "#97B19F",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 0.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 20.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 8.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 16.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 56.0
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Henrique Meirelles",
+        "color": "#CECCCF",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 12.5
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 20.83
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 0.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 8.33
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 58.33
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Flávio Rocha",
+        "color": "#40E0D0",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 20.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 40.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 0.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 0.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 40.0
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "name": "José Maria Eymael",
+        "color": "#CEB9C3",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 0.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 11.11
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 11.11
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 0.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 77.78
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Rodrigo Maia",
+        "color": "#B0CFC2",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 0.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 16.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 4.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 8.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 72.0
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Paulo Rabello de Castro",
+        "color": "#A8BBBE",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 0.0
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 16.0
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 8.0
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 8.0
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 68.0
+            }
+        ]
+    },
+    {
         "id": 6,
-        "percent": 24.0
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "name": "Marina Silva",
-    "color": "#5EDA9E",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 10.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 32.86
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 10.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 9.52
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 9.52
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 28.1
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Geraldo Alckmin",
-    "color": "#B0E2FF",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 4.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 40.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 11.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 4.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 8.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 33.0
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Manuela D’Ávila",
-    "color": "#DB9370",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 20.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 20.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 5.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 5.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 20.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 30.0
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "name": "Flávio Rocha",
-    "color": "#40E0D0",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 12.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 8.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 30.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 46.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 2.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 2.0
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "name": "Henrique Meirelles",
-    "color": "#0D4F8B",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 10.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 29.13
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 17.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 8.7
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 4.35
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 30.83
-      }
-    ]
-  },
-  {
-    "id": 15,
-    "name": "Fernando Collor",
-    "color": "#000000",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 28.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 20.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 10.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 8.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 12.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 22.0
-      }
-    ]
-  },
-  {
-    "id": 17,
-    "name": "Levy Fidelix",
-    "color": "#00EEFF",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 20.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 22.86
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 20.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 10.29
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 4.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 22.86
-      }
-    ]
-  },
-  {
-    "id": 16,
-    "name": "Paulo Rabello de Castro",
-    "color": "#00EE00",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 20.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 20.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 20.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 20.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 10.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 10.0
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Aldo Rebelo",
-    "color": "#CD6090",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 10.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 10.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 10.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 10.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 10.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 50.0
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Guilherme Boulos",
-    "color": "#E0EEEE",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 40.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 10.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 10.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 20.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 10.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 10.0
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Álvaro Dias",
-    "color": "#C5E3BF",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 10.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 15.29
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 10.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 20.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 20.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 44.71
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Rodrigo Maia",
-    "color": "#D8D8BF",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 8.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 20.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 20.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 12.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 20.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 20.0
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "name": "João Amoêdo",
-    "color": "#B6316C",
-    "categories": [
-      {
-        "name": "Biografia",
-        "id": 1,
-        "percent": 15.0
-      },
-      {
-        "name": "Outros",
-        "id": 2,
-        "percent": 15.0
-      },
-      {
-        "name": "Celebridades",
-        "id": 3,
-        "percent": 15.0
-      },
-      {
-        "name": "Ideologia",
-        "id": 4,
-        "percent": 15.0
-      },
-      {
-        "name": "Mídia",
-        "id": 5,
-        "percent": 15.0
-      },
-      {
-        "name": "Políticos",
-        "id": 6,
-        "percent": 35.0
-      }
-    ]
-  }
+        "name": "Aldo Rebelo",
+        "color": "#A8BBBE",
+        "categories": [
+            {
+                "name": "Biografia",
+                "id": 1,
+                "percent": 6.67
+            },
+            {
+                "name": "Outros",
+                "id": 2,
+                "percent": 13.33
+            },
+            {
+                "name": "Celebridades",
+                "id": 3,
+                "percent": 6.67
+            },
+            {
+                "name": "Ideologia",
+                "id": 4,
+                "percent": 13.33
+            },
+            {
+                "name": "Mídia",
+                "id": 5,
+                "percent": 0.0
+            },
+            {
+                "name": "Políticos",
+                "id": 6,
+                "percent": 60.0
+            }
+        ]
+    }
 ]

@@ -5,74 +5,42 @@ import Api from '../lib/Api';
 
 class Cloud extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      word: null,
-      candidate: null,
-    };
-  }
-
-  componentDidMount() {
-    this.getData();
-  }
-
-  getData = async () => {
-    const word = await Api.get('/word.json');
-    const candidate = await Api.get('/candidate.json');
-    this.setState({ word, candidate });
-  }
-
-  // Filtro por categoria
-  getWordsPerCategory = (word) => {
-    const candidate = this.state.candidate;
-    const id = this.props.category || [];
-
+  // Reorder by category or candidate
+  getWords = () => {
+    const data = this.props.data;
+    const candidate = data.candidate;
+    const word = data.word;
+    const id = this.props.id || [];
+    
     const objects = word.reduce((group, item) => {
-
-      let type = this.props.candidate ? item.candidate : item.category
-
+      let type = this.props.type === 'candidate' ? item.candidate : item.category
       group[type] = group[type] || [];
       group[type].push(item);
       return group;
-
     }, Object.create(null));
 
     const list = objects[id] || [];
 
-    const words = list.map((w) => {
-      const array = candidate.find((c) => c.id === w.candidate);
-      return {
-        "color": array.color,
-        "size": w.size,
-        "word": w.text,
-        "query": w.query_text.replace(/ /g,"+")
-      }
-    });
-
-    return words
+    return list
   }
 
   render() {
-    if (!this.state.word && !this.state.candidate) {
-      return <div>Loading...</div>
-    }
 
-    const words = this.getWordsPerCategory(this.state.word);
+    const words = this.getWords();
 
     return (
       <div {...this.props} className={css.cloud}>
         {words.map((word, index) => (
           <div key={index}>
             <a
-              href={`https://www.google.com.br/search?q=${word.query}`}
+              href={`https://www.google.com.br/search?q=${word.query_text.replace(/ /g,"+")}`}
               target="_blank"
               style={{
                 fontSize: `calc(${word.size}% + 1vw * ${word.size/100} + 10px)`,
                 color: word.color
               }}
             > 
-              {word.word}
+              {word.text}
             </a>
           </div>
         ))}

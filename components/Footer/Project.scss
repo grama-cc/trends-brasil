@@ -11,7 +11,19 @@
 	}
 }
 @media screen and (min-width: $medium-devices) {
-	.project {
-		padding: 25px 40px 0 0px;
+	.footerText {
+		padding: 25px 20px 0 0px;
+	}
+}
+@media screen and (min-width: $medium-devices) {
+	.footerText {
+		display: flex;
+	}
+	.footerText > div {
+		width: 50%;
+	    padding-right: 24px;
+	}
+	.footerText > div:last-child {
+	    padding-right: 0;
 	}
 }

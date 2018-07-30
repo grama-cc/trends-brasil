@@ -1,18 +1,26 @@
 @import '../../lib/scss/variables.scss';
 
 .keywords {
-  padding: responsive(25, 60) responsive(10, 80);
+  padding: 40px responsive(0, 80);
   background-color: $gray;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
   .container {
   	display: flex;
-  	align-items: flex-end;
-  	//background: gray;
   }
 }
 
 .none {
 	display: none;
 }
+
+.loading {
+  text-align: center;
+  padding: 20px;
+}
+
 
 
