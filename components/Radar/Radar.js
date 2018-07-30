@@ -30,27 +30,37 @@ class RadarChart extends React.Component {
       },
       levels: 1,
       maxValue: 0.5, // biggest circle will value
-      // color: d3.scaleOrdinal().range([ "#85C974", "#CECCCF", "#DFBCA2" ]) // color no array
     };
 
     // Circle radius
     this.radius = Math.min(this.config.width / 2, this.config.width / 2);
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     this.getData();
+    //this.config.width = window.innerWidth - 20;
+    //this.config.height = window.innerWidth - 20;
+    //this.radius = Math.min(this.config.width / 2, this.config.width / 2);
   }
 
   getData = async () => {
     const radar = await Api.get('/radar/');
     // const radar = await Api.get('/radar/?period=7%201-d');
     this.setState({ radar });
+  }*/
+
+  getData = async () => {
+    const radar = await Api.getRadar();
+    this.setState({ radar });
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   values = (data) => {
     const max = Math.max(this.config.maxValue, d3.max(data,
       ((array) => (
-          // console.log(array.categories),
         d3.max(array.categories.map(
           (item) => ( item.percent / 100 )
         ))
@@ -58,9 +68,7 @@ class RadarChart extends React.Component {
     );
 
     const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
-
     const angles = Math.PI * 2 / 6;
-    
     return {
       "max": max,
       "scale": scale,
@@ -70,11 +78,9 @@ class RadarChart extends React.Component {
 
   circleLevels = () => {
     const levels = d3.range(1, (this.config.levels + 1) );
-
     const diameter = levels.map((d, i) => {
       return this.radius / this.config.levels * d
     });
-
     return diameter
   }
 
@@ -91,14 +97,18 @@ class RadarChart extends React.Component {
 
   render() {
     if (!this.state.radar) {
-      return <div>Loading...</div>
+      return <div className={css.loading}>Loading...</div>
     }
+
+    // console.log(this.state.radar)
 
     let data = this.state.radar;
     const circles = this.circleLevels();
     const axis = this.axisPosition(data);
     const values = this.values(data)
-    const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( values.scale( d.percent / 100 ) )).angle(( d, i ) => ( i * values.angles ));
+    const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
+      values.scale( (d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
+    );
 
     data = data.sort((a, b) => {
       if (a.id === this.props.filter || b.id === this.props.filter) {

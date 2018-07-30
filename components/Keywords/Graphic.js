@@ -10,7 +10,6 @@ class Graphic extends React.Component {
 
   constructor (props) {
     super(props)
-
     this.state = {
       id: null,
       active: false,

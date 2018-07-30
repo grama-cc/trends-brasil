@@ -4,9 +4,9 @@ import css from './index.scss';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
 
-import Lines from '../components/Lines/Lines';
 import Intro from '../components/Intro/Intro';
 import Keywords from '../components/Keywords/Keywords';
+// import Lines from '../components/Lines/Lines';
 // import Category from '../components/Category/Category';
 import Radar from '../components/Radar/Radar';
 import Relationship from '../components/Relationship/Relationship';
@@ -36,16 +36,11 @@ class Home extends React.Component {
         <Head title="Trends Brasil" />
         <Intro />
         <Keywords />
-        {/*<Lines
-          onfilter={this.onFilter} 
-          filter={this.state.filter}
-        />*/}
         <Radar
           onfilter={this.onFilter} 
           filter={this.state.filter}
-          behaivor='open'
         />
-        {/*<Relationship 
+        <Relationship 
           onfilter={this.onFilter} 
           oncompare={this.onCompare}
           filter={this.state.filter}
@@ -54,9 +49,8 @@ class Home extends React.Component {
         <Orbital
           onfilter={this.onFilter} 
           filter={this.state.filter}
-        />*/}
-        {/*<Footer />*/}
-        {/* <Category />*/}
+        />
+        <Footer />
       </Layout>
     );
   }

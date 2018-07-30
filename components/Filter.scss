@@ -7,16 +7,13 @@
 .selected {
 	margin: 0 0 20px;
 	width: 160px;
-	background-color: transparent;
-	border-bottom: 1px solid #c4c4c4;
+	background-color: $white;
 	position: relative;
-	//max-height: 36px;
-	//overflow: hidden;
 
 	li {
 		font-size: 14px;
 		position: relative;
-		padding: 3px 0px;
+		padding: 10px;
 		overflow: hidden;
 		transition: background .4s ease;
 		&.disabled {
@@ -40,7 +37,13 @@
 			height: 300px;
 			overflow-y: scroll;
 		}
-	}	
+	}
+
+	
+}
+.container {
+	display: flex;
+  flex-direction: column-reverse;
 }
 .image {
 	width: 40px;
@@ -48,50 +51,5 @@
 	background-size: 100%;
 	background-repeat: no-repeat;
 	border-radius: 100%;
-}
-@media screen and (min-width: $medium-devices) {
-	.image,
-	.selected {
-		display: inline-block
-	}
-	.selected {
-		margin: 0 0 20px 10px;
-		cursor: pointer;
-	}
-}
-.selected:after {
-        position: absolute;
-        display: block;
-        content: '';
-        width: 10px; height: 10px;
-        top: 50%; right: 4px;
-        margin-top: -3px;
-        border-bottom: 1px solid #c4c4c4;
-        border-right: 1px solid #c4c4c4;
-        transform: rotate(45deg) translateY(-50%);
-        transition: all .4s ease-in-out;
-        transform-origin: 50% 0;
-}
-
-@media screen and (max-width: $small-devices) {
-	.filter .container {
-		display: inline-grid;
-	}
-	.filter .container div {
-		order:2;
-		margin: 0 auto;
-	}
-	.filter .container ul {
-		order:1;
-	}
-}
-
-.filterList {
-	display:flex
-}
-.filterList li {
-    padding-right: 5px;
-}
-.filterList li:last-child {
-    padding-right: 0 !important;
+	margin: 0 auto 10px;
 }
