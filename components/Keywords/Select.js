@@ -6,7 +6,7 @@ import css from './Select.scss';
 
 class Select extends React.Component {
 
-  onChange = (e) => {
+  onClick = (e) => {
     const val = Number(e.target.value)
     this.props.change(val)
   }
@@ -20,14 +20,14 @@ class Select extends React.Component {
       <div className={css.selected}>
         <button
           value={1}
-          onClick={this.onChange}
+          onClick={this.onClick}
           className={val === 1 ? css.disabled : null}
         >
           {content.graphic} 
         </button>
         <button
           value={2}
-          onClick={this.onChange}
+          onClick={this.onClick}
           className={val === 2 ? css.disabled : null}
         >
           {content.candidate}

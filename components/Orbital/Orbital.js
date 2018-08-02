@@ -93,8 +93,8 @@ class Orbital extends React.Component {
     const levels = d3.range(1, (this.config.levels + 1) ).reverse();
     const color = data[data.length - 1].color
 
-    data = data.sort((a, b) => {
-      if (a.id === this.props.filter || b.id === this.props.filter) {
+    data = data.sort((a) => {
+      if (a.id === this.props.filter) {
         return 1;
       }
       return 0;

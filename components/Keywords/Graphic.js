@@ -11,27 +11,28 @@ class Graphic extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      id: null,
-      active: false,
+      // id: null,
+      // active: false,
     }
   }
 
-  onSelect = (e) => {
+  /*onSelect = (e) => {
     this.setState({ active: true });
     const val = Number(e.currentTarget.dataset.id)
     this.props.click(val)
     // console.log('select')
-  }
+  }*/
 
   onClick = (e) => {
     // this.setState({ active: true });
     const val = Number(e.currentTarget.dataset.id)
-    this.props.click(val)
+    this.props.onFilter(val)
     // console.log('click', val)
   }
 
   closeModal = () => {
-    this.setState({ active: false });
+    this.props.onFilter()
+    //this.setState({ active: false });
   }
 
   getWords () {
@@ -44,7 +45,7 @@ class Graphic extends React.Component {
 
   renderModalWords () {
     const words = this.getWords();
-    const name = this.props.data.map((d) => {
+    const name = this.props.data.map((d) => { // array.filter
       if (this.props.id === d.id) {
         return d.name
       }
@@ -70,9 +71,11 @@ class Graphic extends React.Component {
     )
   }
 
+  
+
   render () {
     const data = this.props.data;
-    const id = this.props.id;
+    const id = this.props.id; //filter
 
     let diameterw = window.innerWidth - 35;
     let diameterh = diameterw;
@@ -137,7 +140,7 @@ class Graphic extends React.Component {
               <g
                 key={idx}
                 transform={`translate(${x}, ${y})`}
-                onClick={diameterw < 750 ? this.onSelect : this.onClick}
+                onClick={this.onClick}
                 data-id={c.data.id}
                 opacity={id === c.data.id ? 1 : .4}
                 className={id === c.data.id && this.state.active ? css.open : null}
