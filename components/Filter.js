@@ -143,7 +143,7 @@ class Filter extends React.Component {
             >
              <li>{this.state.name2}</li>
              <div className={this.state.openCompare ? css.open : null}>
-              {candidates.map((c, idx) => (
+              {data.map((c, idx) => (
                 <li 
                   key={idx}
                   value={c.id}
