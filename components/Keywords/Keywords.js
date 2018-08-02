@@ -17,20 +17,21 @@ class Keywords extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      selected: 1,
-      candidate: null,
-      word: null,
-      id: null
+      view: "balls",
+      ballsData: null,
+      wordsData: null,
+      // id: null vem do pai
     }
   }
 
-  onChange = (val) => {
-    this.setState({ selected: val })
+  onChangeView = (val) => {
+    this.setState({ view: val })
   }
 
-  onClick = (val) => {
-    this.setState({ id: val })
-  }
+  //onChangeFilter = (val) => {
+    //this.props.onFilter(val)
+    //this.setState({ id: val })
+  //}
 
   getData = async () => {
     const candidate = await Api.getCandidate();
@@ -42,34 +43,14 @@ class Keywords extends React.Component {
     this.getData();
   }
 
-  renderGraphic(data, current) {
-    return (
-      <Graphic
-        data={data}
-        click={this.onClick}
-        id={this.state.id}
-        val={current}
-      />
-    )
-  }
-
-  renderCandidate(data, current) {
-    return (
-      <Candidate
-        data={data} 
-        id={this.state.id}
-        val={current}
-      />
-    )
-  }
 
   render() {
 
-    if(!this.state.candidate && !this.state.word) {
+    if(!this.state.ballsData && !this.state.wordsData) {
       return <div className={css.loading}>Loading...</div>
     }
 
-    const selected = this.state.selected;
+    const view = this.state.view;
     const data = {
       'candidate': this.state.candidate,
       'word': this.state.word
@@ -78,24 +59,22 @@ class Keywords extends React.Component {
     return (
       <section className={css.keywords} {...this.props} id="keywords">
         <Description content={content.description} />
-        <Media query="(max-width: 800px)">
-          {matches => matches ? (
-            <div>
-              <Select
-                change={this.onChange}
-                val={selected}
-                content={content.select}
-              />
-              { this.renderGraphic(data.candidate, selected) }
-              { selected === 2 ? this.renderCandidate(data, selected) : null }
-            </div>
-          ) : ( 
-            <div className={css.container}>
-              { this.renderCandidate(data, selected) }
-              { this.renderGraphic(data.candidate, selected) }
-            </div>
-          )}
-        </Media>
+          <Select // mudar para view
+            change={this.onChangeView}
+            val={view}
+            content={content.select}
+          />
+          <Graphic // Balls
+            data={data.candidate}
+            onFilter={this.props.onFilter}
+            filter={this.props.filter}
+            //className={} fazer um liga desliga via css this.props.view
+          />
+          <Candidate // Words
+            data={data}
+            onFilter={this.props.onFilter}
+            filter={this.props.filter}
+          />
         <Social stroke={`#b4b4b4`} />
       </section>
     )

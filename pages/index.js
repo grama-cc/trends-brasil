@@ -35,7 +35,10 @@ class Home extends React.Component {
       <Layout>
         <Head title="Trends Brasil" />
         <Intro />
-        <Keywords />
+        <Keywords
+          onFilter={this.onFilter} 
+          filter={this.state.filter}
+        />
         <Radar
           onfilter={this.onFilter} 
           filter={this.state.filter}
