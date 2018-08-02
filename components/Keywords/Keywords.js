@@ -56,7 +56,7 @@ class Keywords extends React.Component {
   renderCandidate(data, current) {
     return (
       <Candidate
-        data={data}
+        data={data} 
         id={this.state.id}
         val={current}
       />
@@ -96,7 +96,7 @@ class Keywords extends React.Component {
             </div>
           )}
         </Media>
-        <Social stroke="#B4B4B4" />
+        <Social stroke={`#b4b4b4`} />
       </section>
     )
   }

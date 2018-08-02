@@ -2,7 +2,11 @@
 
 .candidate {
 	@media screen and (min-width: $medium-devices) {
-    width: 40%;
+    width: 39%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    // background: gray;
   }
 	
 	// Nav Slider

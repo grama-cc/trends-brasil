@@ -39,7 +39,7 @@ class Category extends React.Component {
 
         <Description content={content.description} />
         <Theme category={this.state.category} />
-        <Social />
+        {/*<Social />*/}
 
       </section>
     )

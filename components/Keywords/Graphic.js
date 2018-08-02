@@ -20,6 +20,14 @@ class Graphic extends React.Component {
     this.setState({ active: true });
     const val = Number(e.currentTarget.dataset.id)
     this.props.click(val)
+    // console.log('select')
+  }
+
+  onClick = (e) => {
+    // this.setState({ active: true });
+    const val = Number(e.currentTarget.dataset.id)
+    this.props.click(val)
+    // console.log('click', val)
   }
 
   closeModal = () => {
@@ -69,21 +77,27 @@ class Graphic extends React.Component {
     let diameterw = window.innerWidth - 35;
     let diameterh = diameterw;
     let pad = 5;
+    let h;
 
     if(window.innerWidth > 800) {
-      diameterw = window.innerWidth/1.7;
-      diameterh = diameterw * 2/3;
+      diameterw = window.innerWidth/1.6;
+      h = (diameterw * 2/3) * 1/10;
+      diameterh = diameterw * 2/3 + h;
       pad = 10;
     }
 
+    // console.log(diameterw, diameterh, h)
+
     const children = {'children': data.map((d) => (d))};
+    //const bubble = d3.pack(children).size([1180, 860]).padding(pad);
     const bubble = d3.pack(children).size([diameterw, diameterh]).padding(pad); 
     const nodes = d3.hierarchy(children).sum(function(d) { return d.size; });
-
     let circles = bubble(nodes).leaves();
 
-    circles = circles.sort((a, b) => {
-      if (a.data.id === id || b.data.id === id) {
+    // console.log(circles)
+
+    circles = circles.sort((a) => {
+      if (a.data.id === id) {
         return 1;
       }
         return 0;
@@ -92,7 +106,7 @@ class Graphic extends React.Component {
     return(
       <div className={this.props.val === 1 ? css.graphic : `${css.none} ${css.graphic}`}>
 
-        <svg width='100%' height={`${diameterh}px`}>
+        <svg width='100%' height={diameterh}>
           <defs>
             {circles.map((c, idx) => {
               return (
@@ -123,7 +137,7 @@ class Graphic extends React.Component {
               <g
                 key={idx}
                 transform={`translate(${x}, ${y})`}
-                onClick={this.onSelect}
+                onClick={diameterw < 750 ? this.onSelect : this.onClick}
                 data-id={c.data.id}
                 opacity={id === c.data.id ? 1 : .4}
                 className={id === c.data.id && this.state.active ? css.open : null}

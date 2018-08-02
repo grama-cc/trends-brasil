@@ -40,7 +40,7 @@ class Home extends React.Component {
           onfilter={this.onFilter} 
           filter={this.state.filter}
         />
-        <Relationship 
+        {/*<Relationship 
           onfilter={this.onFilter} 
           oncompare={this.onCompare}
           filter={this.state.filter}
@@ -49,7 +49,7 @@ class Home extends React.Component {
         <Orbital
           onfilter={this.onFilter} 
           filter={this.state.filter}
-        />
+        />*/}
         <Footer />
       </Layout>
     );

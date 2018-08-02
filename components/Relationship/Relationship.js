@@ -42,7 +42,7 @@ class Relationship extends React.Component {
           <div>
             <Filter 
               {...this.props}
-              candidates={this.state.candidate}
+              data={this.state.candidate}
               startCompare
               relationship
             />
@@ -53,7 +53,7 @@ class Relationship extends React.Component {
             </div>*/}
           </div>
         </div>
-        <Social stroke="#B4B4B4"/>
+        {/*<Social stroke="#B4B4B4"/>*/}
       </section>
     )
   }
