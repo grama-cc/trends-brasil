@@ -1,16 +1,28 @@
 @import '../../lib/scss/variables.scss';
 
 .graphic {
-	position: relative;
-  @media screen and (min-width: $medium-devices) {
-    width: 70%;
-  }
   svg {
     display: block;
     margin: 0 auto;
     position: relative;
+
+    @media screen and (min-width: $medium-devices) {
+      width: 59% !important;
+    }
+
+    @media screen and (min-width: $medium-devices) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
     g {
       transition: opacity .4s ease, transform .5s ease;
+
+      @media screen and (min-width: $medium-devices) {
+        transition: opacity .4s ease;
+      }
+      
       &.open {
         position: absolute;
         transform: translateX(50%) translateY(50%);

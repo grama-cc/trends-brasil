@@ -109,7 +109,7 @@ class Orbital extends React.Component {
       >
         <Description content={content.description} />
 
-        <Filter {...this.props} candidates={this.state.orbital} />
+        <Filter {...this.props} data={this.state.orbital} />
 
         <svg width={this.config.width} height={this.config.height}>
           <g transform={`translate(${this.config.width / 2}, ${this.config.height / 2})`}>
@@ -158,7 +158,7 @@ class Orbital extends React.Component {
                     let y = values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
                     y = y + r + 15;
 
-                    console.log(r, dot.size, 'oi')
+                    // console.log(r, dot.size, 'oi')
 
                     return(
 
@@ -187,7 +187,7 @@ class Orbital extends React.Component {
             </g>
           </g>
         </svg>
-        <Social stroke="#fff" />
+        {/*<Social stroke="#fff" />*/}
       </section>
     )
   }

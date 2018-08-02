@@ -1,15 +1,24 @@
 @import '../lib/scss/variables.scss';
 
-.filter {
+// Filter and Compare
+.container {
 	display: flex;
-	justify-content: space-between;
+  flex-direction: column-reverse;
+
+  @media screen and (min-width: $medium-devices) {
+		width: 100%;
+	}
 }
+
+// If mobile filter
 .selected {
 	margin: 0 0 20px;
-	width: 160px;
-	background-color: $white;
+	width: 200px;
 	position: relative;
-
+	display: block;
+	@media screen and (min-width: $medium-devices) {
+		display: none;
+	}
 	li {
 		font-size: 14px;
 		position: relative;
@@ -25,9 +34,20 @@
 		&.unclick {
 			color: $grayDark;
 		}
+
+		&.choose {
+			background-color: $white;
+			border: 2px solid #eee;
+    	border-radius: 6px;
+    	background-image: url(/static/img/arrow.svg);
+    	background-size: 22px;
+    	background-repeat: no-repeat;
+    	background-position: center right 11px;
+		}
 	}
 
 	div {
+		width: 100%;
 		transition: height .4s ease;
 		height: 0;
 		overflow: hidden;
@@ -38,13 +58,16 @@
 			overflow-y: scroll;
 		}
 	}
+}
 
-	
+.filter, .compare {
+	display: block;
+	@media screen and (min-width: $medium-devices) {
+		display: none;
+	}
 }
-.container {
-	display: flex;
-  flex-direction: column-reverse;
-}
+
+// If componente is relationship
 .image {
 	width: 40px;
 	height: 40px;
@@ -52,4 +75,45 @@
 	background-repeat: no-repeat;
 	border-radius: 100%;
 	margin: 0 auto 10px;
+	display: block;
 }
+
+$circle-size: responsive(20, 60);
+
+// If desktop filter and not relationship
+.list {
+	width: 100%;
+	display: none;
+	@media screen and (min-width: $medium-devices) {
+		display: block;
+	}
+	ul {
+		width: 100%;
+		height: auto;
+		position: relative;
+		display: flex;
+		justify-content: space-around;
+		li {
+			display: block;
+			width: $circle-size;
+			height: $circle-size;
+			border-radius: 100%;
+			overflow: hidden;
+			opacity: 1;
+			background-color: transparent;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			box-shadow: 0 0 0 3px #fff;
+
+			&.disabled {
+				box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
+				filter: grayscale(100%);
+				opacity: .6;
+				background-color: rgba(255, 255, 255, .6);
+			}
+		}
+	}
+}
+
+
+
