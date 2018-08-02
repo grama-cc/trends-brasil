@@ -13,15 +13,12 @@ import Social from '../Social/Social.js';
 class Lines extends React.Component {
 
   render() {
-    if (!this.state.lines) {
-      return <div>Loading...</div>
-    }
-
     return (
       <section className={css.lines}>
         <Description content={content.description} />
-        <Filter {...this.props} candidates={this.state.lines} />
-        <Social />
+
+          Linhas
+        {/*<Filter {...this.props} candidates={this.state.lines} />*/}
       </section>
     )
   }

@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 
 import Intro from '../components/Intro/Intro';
 import Keywords from '../components/Keywords/Keywords';
-// import Lines from '../components/Lines/Lines';
+import Lines from '../components/Lines/Lines';
 // import Category from '../components/Category/Category';
 import Radar from '../components/Radar/Radar';
 import Relationship from '../components/Relationship/Relationship';
@@ -40,7 +40,8 @@ class Home extends React.Component {
           onfilter={this.onFilter} 
           filter={this.state.filter}
         />
-        {/*<Relationship 
+        <Lines />
+        <Relationship 
           onfilter={this.onFilter} 
           oncompare={this.onCompare}
           filter={this.state.filter}
@@ -49,7 +50,7 @@ class Home extends React.Component {
         <Orbital
           onfilter={this.onFilter} 
           filter={this.state.filter}
-        />*/}
+        />
         <Footer />
       </Layout>
     );

@@ -1,5 +1,8 @@
 @import '../../lib/scss/variables.scss';
 
 .lines {
-
+	padding: responsive(25, 60) responsive(10, 80);
+	min-height: calc(100vh - 80px);
+  transition: background .5s ease;
+  background-color: pink;
 }
