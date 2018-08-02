@@ -2,10 +2,13 @@
 
 .social {
 	display: flex;
-	margin: 30px 0 20px;
-	@media screen and (max-width: $small-devices) {
-		justify-content: center;
-	}
+	justify-content: center;
+	position: absolute;
+	width: calc(100vw - 80px);
+	bottom: 40px;
+	left: 50%;
+	transform: translateX(-50%);
+
 	@media screen and (min-width: $medium-devices) {
 		justify-content: flex-end;
 	}
@@ -27,38 +30,6 @@
 			img {
 				display: block;
 			}
-		}
-	}
-}
-
-.share {
-	padding: 0 10px;
-	margin: 0 0 40px;
-	h4 {
-		font-size: responsive(20, 24);
-		font-family: $robotoLight;
-	}
-	.social {
-		justify-content: flex-start;
-		@media screen and (max-width: $small-devices) {
-			margin: 20px 0;
-		}
-		li {
-			background-color: #ececec;
-			border-radius: 100%;
-			width: 40px;
-			height: 40px;
-		}
-	}
-}
-@media screen and (min-width: $medium-devices) {
-	.share {
-		display: flex;
-		ul {
-			margin: 0
-		}
-		h4 {
-			padding-top: 10px;
 		}
 	}
 }

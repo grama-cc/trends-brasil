@@ -12,7 +12,7 @@ class Candidate extends React.Component {
     super(props)
     this.state = {
       nav1: null,
-      slider1: null,
+      slider1: null
     }
   }
 
@@ -34,10 +34,11 @@ class Candidate extends React.Component {
 
   render() {
     const data = this.props.data;
-    const index = this.findIndex(data, 'id', this.props.id);
+    const index = this.findIndex(data.candidate, 'id', this.props.id);
+
+    // console.log('id', this.props.id, 'index', index)
 
     // this.props.val === 2 && data.length ? css.candidate : `${css.none} ${css.candidate}`
-
     // console.log(data)
 
     return (
@@ -73,15 +74,16 @@ class Candidate extends React.Component {
               ) : null
             }
         </Media>
-
         <Slider
           className={`slider`}
           asNavFor={this.state.slider1}
           ref={ slider1 => ( this.nav1 = slider1 ) }
           arrows={true}
           slidesToShow={1}
-          initialSlide={index}
-        >
+        > 
+          <div className={css.info}>
+            <h3><span>Clique em um candidato</span></h3>
+          </div>
           {data.candidate.map((item, j) => (
             <div className={css.info} key={j}>
               <h3><span>{item.name}</span></h3>
@@ -93,7 +95,6 @@ class Candidate extends React.Component {
             </div>
           ))}
         </Slider>
-
       </div>
     )
   }

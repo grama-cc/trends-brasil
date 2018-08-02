@@ -19,9 +19,9 @@ class Footer extends React.Component {
                 <Project />
                 <Team />
             </div>
-            <Social share stroke="#B4B4B4">
+            {/*<Social share stroke="#B4B4B4">
                 <h4>Compartilhe esse projeto</h4>
-            </Social>
+            </Social>*/}
         </div>
         <Clipping />
       </section>
