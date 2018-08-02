@@ -55,7 +55,7 @@ class Orbital extends React.Component {
       )))
     );
 
-    const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
+    const scale = d3.scaleLinear().range([this.radius -10 ,0]).domain([0, max]);
     const angles = Math.PI * 2 / data[0].people.length;
 
     return {
