@@ -7,12 +7,11 @@ class Cloud extends React.Component {
 
   // Reorder by category or candidate
   getWords = () => {
-    const data = this.props.data;
-    const candidate = data.candidate;
-    const word = data.word;
+    const candidates = this.props.candidates
+    const words = this.props.words;
     const id = this.props.id || [];
     
-    const objects = word.reduce((group, item) => {
+    const objects = words.reduce((group, item) => {
       let type = this.props.type === 'candidate' ? item.candidate : item.category
       group[type] = group[type] || [];
       group[type].push(item);
@@ -26,6 +25,7 @@ class Cloud extends React.Component {
 
   render() {
     const words = this.getWords();
+
     return (
       <div {...this.props} className={css.cloud}>
         {words.map((word, index) => (
@@ -36,7 +36,6 @@ class Cloud extends React.Component {
               style={{
                 fontSize: `calc(2vw * ${word.size/100} + 20px)`,
                 color: word.color,
-                // top: `calc(3vw * ${word.size/100} - 10)px`
               }}
             > 
               {`${word.text} `}

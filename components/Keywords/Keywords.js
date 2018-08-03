@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Media from "react-media";
 
 import css from './Keywords.scss';
 import content from '../../static/json/keywords.json'
@@ -45,18 +44,21 @@ class Keywords extends React.Component {
             content={content.select}
           />
           <Graphic
-            candidates={candidates}
-            onFilter={this.onFilter} 
-            filter={this.state.filter}
-          />
-          <Candidate
+            val={view}
             candidates={candidates}
             words={words}
-            onFilter={this.onFilter} 
-            filter={this.state.filter}
+            onFilter={this.props.onFilter} 
+            filter={this.props.filter}
+          />
+          <Candidate
+            val={view}
+            candidates={candidates}
+            words={words}
+            onFilter={this.props.onFilter} 
+            filter={this.props.filter}
           />
         </div>
-        <Social stroke='#b4b4b4' />
+        {/*<Social stroke='#b4b4b4' />*/}
       </section>
     )
   }

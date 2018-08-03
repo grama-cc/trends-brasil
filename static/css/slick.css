@@ -120,12 +120,18 @@
 .nav .slick-current .item {
 	width: 90px;
 	height: 90px;
-	opacity: 1;
+	opacity: 1 !important;
 	transition: width .4s ease, height .4s ease, opacity .4s ease;
 }
 
 .nav .slick-current .pos {
 	display: flex;
+}
+
+@media screen and (min-width: 800px) {
+ 	#keywords .nav {
+ 		display: none !important;
+ 	}
 }
 
 .slick-arrow {

@@ -10,16 +10,16 @@ class Candidate extends React.Component {
 
   constructor(props) {
     super(props)
-    /*this.state = {
-      nav1: null,
-      slider1: null
-    }*/
+    this.state = {
+      nav: null,
+      slider: null
+    }
   }
 
-  /*componentDidMount() {
+  componentDidMount() {
     this.setState({
-      nav1: this.nav1,
-      slider1: this.slider1
+      nav: this.nav,
+      slider: this.slider
     })
   }
 
@@ -30,68 +30,74 @@ class Candidate extends React.Component {
       }
     }
     return 0;
-  }*/
+  }
 
   render() {
-    // const data = this.props.data;
-   // const index = this.findIndex(data.candidate, 'id', this.props.id);
-
+    const candidates = this.props.candidates;
+    const index = this.findIndex(candidates, 'id', this.props.filter);
 
     return (
-      <div className={css.candidate}>
-      Slider
-        {/*<Media query="(max-width: 800px)">
-          {matches =>
-            matches ? (
-              <Slider
-                className='nav'
-                asNavFor={this.state.nav1}
-                ref={ slider1 => ( this.slider1 = slider1) }
-                slidesToShow={3}
-                swipeToSlide={true}
-                focusOnSelect={true}
-                centerMode={true}
-                variableWidth={true}
-                initialSlide={index}
-              >
-                {data.candidate.map((data, index) => (
-                  <div className={css.contentImage} key={index}>
-                    <div
-                      className={`${css.image} item`}
-                      style={{
-                        backgroundImage: `url(/static/img/candidates/${data.slug}.png)`,
-                        backgroundColor: data.color,
-                        color: data.color
-                      }}
-                    />
-                    <span className={`${css.position} pos`}>{index + 1}&ordm;</span>
-                  </div>
-                ))}
-              </Slider>
-              ) : null
-            }
-        </Media>
+      <div
+        className={`${css.candidate}`}
+        type={this.props.val}
+      >
+        <Slider
+          className='nav'
+          asNavFor={this.state.nav}
+          ref={ slider => ( this.slider = slider) }
+          slidesToShow={3}
+          swipeToSlide={true}
+          focusOnSelect={true}
+          centerMode={true}
+          variableWidth={true}
+          // beforeChange={this.slider.slickGoTo(index)}
+          initialSlide={0}
+        >
+          <div className={css.contentImage} key={index}>
+            <div
+              className={`${css.image} item`}
+              style={{
+                backgroundColor: '#000',
+              }}
+            />
+          </div>
+
+          {candidates.map((data, index) => (
+            <div className={css.contentImage} key={index}>
+              <div
+                className={`${css.image} item`}
+                style={{
+                  backgroundImage: `url(/static/img/candidates/${data.slug}.png)`,
+                  backgroundColor: data.color,
+                }}
+              />
+              <span className={`${css.position} pos`}>{index + 1}&ordm;</span>
+            </div>
+          ))}
+        </Slider>
+
         <Slider
           className={`slider`}
-          asNavFor={this.state.slider1}
-          ref={ slider1 => ( this.nav1 = slider1 ) }
+          asNavFor={this.state.slider}
+          ref={ slider => ( this.nav = slider ) }
           arrows={true}
           slidesToShow={1}
         > 
           <div className={css.info}>
             <h3><span>Clique em um candidato</span></h3>
           </div>
-          {data.candidate.map((item, j) => (
+          {candidates.map((item, j) => (
             <div className={css.info} key={j}>
               <h3><span>{item.name}</span></h3>
               <Cloud 
                 id={item.id} 
-                data={data} 
+                candidates={this.props.candidates}
+                words={this.props.words} 
                 type='candidate' 
               />
             </div>
           ))}
-        </Slider>*/}
+        </Slider>
       </div>
     )
   }

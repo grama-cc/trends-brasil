@@ -48,14 +48,10 @@ class Home extends React.Component {
     const candidates = this.state.candidates;
     const words = this.state.words;
 
-    console.log('component: index ', 'filter id: ', this.state.filter )
-
     return (
       <Layout>
         <Head title="Trends Brasil" />
-        
-        {/*<Intro />*/}
-
+        <Intro />
         <Keywords
           candidates={candidates}
           words={words}
@@ -63,7 +59,7 @@ class Home extends React.Component {
           filter={this.state.filter}
         />
 
-        {/*<Lines />
+        {/*
         <Category />
         <Radar
           onfilter={this.onFilter} 

@@ -1,35 +1,40 @@
 @import '../../lib/scss/variables.scss';
 
 .graphic {
+  position: relative;
+  &[type='words'] {
+    display: none;
+  }
+  @media screen and (min-width: $medium-devices) {
+    position: static;
+    &[type='words'] {
+      display: block;
+    }
+  }
   svg {
     display: block;
     margin: 0 auto;
-    position: relative;
-
     @media screen and (min-width: $medium-devices) {
-      width: 59% !important;
-    }
-
-    @media screen and (min-width: $medium-devices) {
+      width: 60% !important;
       position: absolute;
       top: 0;
       right: 0;
     }
 
-    g {
-      transition: opacity .4s ease, transform .5s ease;
-
-      @media screen and (min-width: $medium-devices) {
-        transition: opacity .4s ease;
-      }
-      
-      &.open {
-        position: absolute;
-        transform: translateX(50%) translateY(50%);
-        z-index: 1;
-        circle {
-          r: 50;
+    @media screen and (max-width: 800px) {
+      g { 
+        &.open {
+          position: absolute;
+          transform: translateX(50%) translateY(50%);
+          z-index: 1;
+          circle {
+            r: 50;
+          }
         }
+      }
+      .openImage {
+        width: 100px;
+        height: 100px;
       }
     }
   }
@@ -42,19 +47,21 @@
   height: 100%;
   width: 100%;
   transform: translateX(-50%);
+  @media screen and (min-width: $medium-devices) {
+    display: none;
+  }
   h3 {
     text-align: center;
-    position: relative;
-    top: -20px;
+    font-size: responsive(20, 24);
   }
 	p {
   	position: absolute;
   	font-family: $robotoMedium;
     top: 50%; 
     left: 50%;
-    width: 200px;
+    width: responsive(200, 300, 320, 800);
     height: 60px;
-    margin-left: -100px;
+    margin-left: responsive(-100, -150, 320, 800);
     margin-top: -30px;
 
   	@for $i from 1 through $item-count {
@@ -74,12 +81,7 @@
     background-color: $white;
     border-radius: 0;
     padding: 8px 5px;
+    font-size: responsive(14, 24, 320, 800);
   }
 }
 
-.none {
-  display: none;
-  @media screen and (min-width: $medium-devices) {
-    display: block;
-  }
-}
