@@ -10,13 +10,13 @@ class Candidate extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
+    /*this.state = {
       nav1: null,
       slider1: null
-    }
+    }*/
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     this.setState({
       nav1: this.nav1,
       slider1: this.slider1
@@ -30,20 +30,17 @@ class Candidate extends React.Component {
       }
     }
     return 0;
-  }
+  }*/
 
   render() {
-    const data = this.props.data;
-    const index = this.findIndex(data.candidate, 'id', this.props.id);
+    // const data = this.props.data;
+   // const index = this.findIndex(data.candidate, 'id', this.props.id);
 
-    // console.log('id', this.props.id, 'index', index)
-
-    // this.props.val === 2 && data.length ? css.candidate : `${css.none} ${css.candidate}`
-    // console.log(data)
 
     return (
-      <div {...this.props} className={css.candidate}>
-        <Media query="(max-width: 800px)">
+      <div className={css.candidate}>
+      Slider
+        {/*<Media query="(max-width: 800px)">
           {matches =>
             matches ? (
               <Slider
@@ -94,7 +91,7 @@ class Candidate extends React.Component {
               />
             </div>
           ))}
-        </Slider>
+        </Slider>*/}
       </div>
     )
   }

@@ -16,7 +16,12 @@ class Graphic extends React.Component {
     }
   }
 
-  onSelect = (e) => {
+  onFilter = (e) => {
+    const id = Number(e.target.value)
+    this.props.onFilter(id)
+  }
+
+  /*onSelect = (e) => {
     this.setState({ active: true });
     const val = Number(e.currentTarget.dataset.id)
     this.props.click(val)
@@ -68,12 +73,12 @@ class Graphic extends React.Component {
         ))}
       </div> 
     )
-  }
+  }*/
 
   render () {
 
 
-    const data = this.props.data;
+    /*const data = this.props.data;
     const id = this.props.id;
 
     let diameterw = window.innerWidth - 35;
@@ -88,27 +93,22 @@ class Graphic extends React.Component {
       pad = 10;
     }
 
-    // console.log(diameterw, diameterh, h)
-
     const children = {'children': data.map((d) => (d))};
-    //const bubble = d3.pack(children).size([1180, 860]).padding(pad);
     const bubble = d3.pack(children).size([diameterw, diameterh]).padding(pad); 
     const nodes = d3.hierarchy(children).sum(function(d) { return d.size; });
     let circles = bubble(nodes).leaves();
-
-    // console.log(circles)
 
     circles = circles.sort((a) => {
       if (a.data.id === id) {
         return 1;
       }
         return 0;
-    })
+    })*/
 
     return(
       <div className={this.props.val === 1 ? css.graphic : `${css.none} ${css.graphic}`}>
-
-        <svg width='100%' height={diameterh}>
+        balls
+        {/*<svg width='100%' height={diameterh}>
           <defs>
             {circles.map((c, idx) => {
               return (
@@ -155,7 +155,7 @@ class Graphic extends React.Component {
         </svg>
         <Media query="(max-width: 800px)">
           {matches => matches && this.state.active ? this.renderModalWords() : null}
-        </Media>
+        </Media>*/}
       </div>
     )
   }

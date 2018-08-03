@@ -17,38 +17,12 @@ class Keywords extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      selected: 1,
-      id: null
+      view: 'balls'
     }
   }
 
-  onChange = (val) => {
-    this.setState({ selected: val })
-  }
-
-  onClick = (val) => {
-    this.setState({ id: val })
-  }
-
-  renderGraphic(data, current) {
-    return (
-      <Graphic
-        data={data}
-        click={this.onClick}
-        id={this.state.id}
-        val={current}
-      />
-    )
-  }
-
-  renderCandidate(data, current) {
-    return (
-      <Candidate
-        data={data} 
-        id={this.state.id}
-        val={current}
-      />
-    )
+  onChangeView = (val) => {
+    this.setState({ view: val })
   }
 
   render() {
@@ -59,31 +33,30 @@ class Keywords extends React.Component {
 
     const candidates = this.props.candidates
     const words = this.props.words
-
-    const selected = this.state.selected;
+    const view = this.state.view;
 
     return (
-      <section className={css.keywords} {...this.props} id="keywords">
+      <section className={css.keywords} id='keywords'>
         <Description content={content.description} />
-        <Media query="(max-width: 800px)">
-          {matches => matches ? (
-            <div>
-              <Select
-                change={this.onChange}
-                val={selected}
-                content={content.select}
-              />
-              { this.renderGraphic(candidates, selected) }
-              { /*selected === 2 ? this.renderCandidate(data, selected) : null*/ }
-            </div>
-          ) : ( 
-            <div className={css.container}>
-              { /*this.renderCandidate(data, selected)*/ }
-              { this.renderGraphic(candidates, selected) }
-            </div>
-          )}
-        </Media>
-        {/*<Social stroke={`#b4b4b4`} />*/}
+        <div>
+          <Select
+            click={this.onChangeView}
+            val={view}
+            content={content.select}
+          />
+          <Graphic
+            candidates={candidates}
+            onFilter={this.onFilter} 
+            filter={this.state.filter}
+          />
+          <Candidate
+            candidates={candidates}
+            words={words}
+            onFilter={this.onFilter} 
+            filter={this.state.filter}
+          />
+        </div>
+        <Social stroke='#b4b4b4' />
       </section>
     )
   }
