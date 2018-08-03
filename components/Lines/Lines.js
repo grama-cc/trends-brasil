@@ -16,9 +16,7 @@ class Lines extends React.Component {
     return (
       <section className={css.lines}>
         <Description content={content.description} />
-
-          Linhas
-        {/*<Filter {...this.props} candidates={this.state.lines} />*/}
+				<h2>Linhas</h2>
       </section>
     )
   }

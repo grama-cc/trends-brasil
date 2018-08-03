@@ -71,6 +71,8 @@ class Graphic extends React.Component {
   }
 
   render () {
+
+
     const data = this.props.data;
     const id = this.props.id;
 
