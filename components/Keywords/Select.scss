@@ -2,9 +2,11 @@
 
 .selected {
 	display: flex;
-	// margin: 0 0 40px;
 	justify-content: center;
-
+	margin: 0 auto responsive(20, 40);
+	@media screen and (min-width: $medium-devices) {
+    display: none;
+  }
 	button {
 		background-color: $white;
 		border-radius: 4px;
@@ -17,7 +19,7 @@
 		border: 1px solid $grayDark;
 		transition: background .4s ease;
 
-		&.disabled {
+		&[disabled] {
 			transition: background .4s ease;
 			background-color: $grayLight;
 			border: 1px solid $grayLight;

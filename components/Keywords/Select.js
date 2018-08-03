@@ -6,29 +6,28 @@ import css from './Select.scss';
 
 class Select extends React.Component {
 
-  onChange = (e) => {
-    const val = Number(e.target.value)
-    this.props.change(val)
+  onClick = (e) => {
+    const val = e.target.value
+    this.props.click(val)
   }
 
   render() {
-
     const val = this.props.val
     const content = this.props.content
 
     return (
       <div className={css.selected}>
         <button
-          value={1}
-          onClick={this.onChange}
-          className={val === 1 ? css.disabled : null}
+          value='balls'
+          onClick={this.onClick}
+          disabled={val === 'balls'}
         >
           {content.graphic} 
         </button>
         <button
-          value={2}
-          onClick={this.onChange}
-          className={val === 2 ? css.disabled : null}
+          value='words'
+          onClick={this.onClick}
+          disabled={val === 'words'}
         >
           {content.candidate}
         </button>
@@ -36,13 +35,5 @@ class Select extends React.Component {
     )
   }
 }
-
-Select.propTypes = {
-  content: PropTypes.object
-};
-
-Select.defaultProps = {
-  content: {}
-};
 
 export default Select;

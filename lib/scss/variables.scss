@@ -15,15 +15,16 @@ $roboto: 'Roboto', sans-serif;
 $robotoLight: 'Roboto-Light', sans-serif;
 $robotoMedium: 'Roboto-Medium', sans-serif;
 
+// Circle position
+$item-count: 8;
+$circle-size: 40vh;
+$angle: (360 / $item-count);
+$rot: 0;
+
 // Media query
 $small-devices: 800px;
 $medium-devices: 801px;
 
-// Circle position
-$item-count: 8;
-$circle-size: 200px;
-$angle: (360 / $item-count);
-$rot: 0;
 
 @function responsive($value1, $value2, $width1: 320, $width2: 1920) {
   $x1: $width1;
@@ -35,3 +36,4 @@ $rot: 0;
 
   @return calc(#{$a * 100vw} + #{$b * 1px});
 }
+
