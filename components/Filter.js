@@ -10,25 +10,17 @@ class Filter extends React.Component {
     super(props);
     this.state = {
       disabled1: false,
-      disabled2: false,
-      name1: "Escolha...",
-      name2: "Escolha...",
+      disabled2: false, // excluir. Valor vazinho
+      name1: "Escolha...", // puxar tudo pelo filter do index(id)
+      name2: "Escolha...", // puxar tudo pelo compare do index(id)
       openFilter: false,
       openCompare: false,
-      name: {
-        filter: "Escolha...",
-        compare: "Escolha..."
-      }
-      /*sel: {
-        na: false,
-        ha: false
-      }*/
     };
   }
 
   onFilter = (e) => {
     let id = Number(e.target.value)
-    this.props.onfilter(id)
+    this.props.onFilter(id)
 
     //if (!this.props.open) {
     this.setState({ name1: e.currentTarget.dataset.name })
