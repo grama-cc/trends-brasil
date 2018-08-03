@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Api from '../lib/Api';
+
 import css from './index.scss';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
@@ -7,7 +9,7 @@ import Layout from '../components/Layout';
 import Intro from '../components/Intro/Intro';
 import Keywords from '../components/Keywords/Keywords';
 import Lines from '../components/Lines/Lines';
-// import Category from '../components/Category/Category';
+import Category from '../components/Category/Category';
 import Radar from '../components/Radar/Radar';
 import Relationship from '../components/Relationship/Relationship';
 import Orbital from '../components/Orbital/Orbital';
@@ -17,8 +19,10 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filter: 0,
-      compare: 0,
+      filter: null,
+      compare: null,
+      candidates: null,
+      words: null,
     };
   }
 
@@ -30,17 +34,37 @@ class Home extends React.Component {
     this.setState({ compare: id })
   }
 
+  getData = async () => {
+    const candidates = await Api.getCandidates();
+    const words = await Api.getWords();
+    this.setState({ candidates, words });
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
   render() {
+    const candidates = this.state.candidates;
+    const words = this.state.words;
+
     return (
       <Layout>
         <Head title="Trends Brasil" />
-        <Intro />
-        <Keywords />
+        
+        {/*<Intro />*/}
+
+        <Keywords
+          candidates={candidates}
+          words={words}
+        />
+
+        {/*<Lines />
+        <Category />
         <Radar
           onfilter={this.onFilter} 
           filter={this.state.filter}
         />
-        <Lines />
         <Relationship 
           onfilter={this.onFilter} 
           oncompare={this.onCompare}
@@ -51,7 +75,8 @@ class Home extends React.Component {
           onfilter={this.onFilter} 
           filter={this.state.filter}
         />
-        <Footer />
+        <Footer />*/}
+        
       </Layout>
     );
   }

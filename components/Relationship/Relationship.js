@@ -20,8 +20,8 @@ class Relationship extends React.Component {
   }
 
   getData = async () => {
-    const candidate = await Api.getCandidate();
-    const word = await Api.getWord();
+    const candidate = await Api.getCandidates();
+    const word = await Api.getWords();
     this.setState({ candidate, word });
   }
 

@@ -18,8 +18,6 @@ class Keywords extends React.Component {
     super(props)
     this.state = {
       selected: 1,
-      candidate: null,
-      word: null,
       id: null
     }
   }
@@ -30,16 +28,6 @@ class Keywords extends React.Component {
 
   onClick = (val) => {
     this.setState({ id: val })
-  }
-
-  getData = async () => {
-    const candidate = await Api.getCandidate();
-    const word = await Api.getWord();
-    this.setState({ candidate, word });
-  }
-
-  componentDidMount() {
-    this.getData();
   }
 
   renderGraphic(data, current) {
@@ -65,15 +53,14 @@ class Keywords extends React.Component {
 
   render() {
 
-    if(!this.state.candidate && !this.state.word) {
+    if(!this.props.candidates && !this.props.words) {
       return <div className={css.loading}>Loading...</div>
     }
 
+    const candidates = this.props.candidates
+    const words = this.props.words
+
     const selected = this.state.selected;
-    const data = {
-      'candidate': this.state.candidate,
-      'word': this.state.word
-    }
 
     return (
       <section className={css.keywords} {...this.props} id="keywords">
@@ -86,17 +73,17 @@ class Keywords extends React.Component {
                 val={selected}
                 content={content.select}
               />
-              { this.renderGraphic(data.candidate, selected) }
-              { selected === 2 ? this.renderCandidate(data, selected) : null }
+              { this.renderGraphic(candidates, selected) }
+              { /*selected === 2 ? this.renderCandidate(data, selected) : null*/ }
             </div>
           ) : ( 
             <div className={css.container}>
-              { this.renderCandidate(data, selected) }
-              { this.renderGraphic(data.candidate, selected) }
+              { /*this.renderCandidate(data, selected)*/ }
+              { this.renderGraphic(candidates, selected) }
             </div>
           )}
         </Media>
-        <Social stroke={`#b4b4b4`} />
+        {/*<Social stroke={`#b4b4b4`} />*/}
       </section>
     )
   }

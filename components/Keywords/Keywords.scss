@@ -1,9 +1,15 @@
 @import '../../lib/scss/variables.scss';
 
 .keywords {
-  padding: 40px responsive(0, 80);
-  background-color: $gray;
+  //padding: 40px responsive(0, 80);
+  //background-color: $gray;
+  //min-height: calc(100vh - 80px);
+
+  padding: responsive(25, 60) responsive(10, 80);
   min-height: calc(100vh - 80px);
+  transition: background .5s ease;
+
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;

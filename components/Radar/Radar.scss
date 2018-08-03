@@ -2,13 +2,14 @@
 
 .radar {
   padding: responsive(25, 60) responsive(10, 80);
+  min-height: calc(100vh - 80px);
+  transition: background .5s ease;
+  
   background-color: #FF7E7E;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  min-height: calc(100vh - 80px);
-  transition: background .5s ease;
 
   .container {
     display: flex;
