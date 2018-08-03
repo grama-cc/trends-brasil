@@ -8,6 +8,7 @@ import content from '../../static/json/keywords.json'
 
 import Filter from '../Filter.js';
 import Description from '../Description.js';
+import Section from '../SectionWithFilter/SectionWithFilter.js';
 import Social from '../Social/Social.js';
 
 class RadarChart extends React.Component {
@@ -16,7 +17,6 @@ class RadarChart extends React.Component {
 
     this.state = {
       radar: null,
-      candidate: null,
       id: null,
     };
 
@@ -42,8 +42,7 @@ class RadarChart extends React.Component {
 
   getData = async () => {
     const radar = await Api.getRadar();
-    const candidate = await Api.getCandidates();
-    this.setState({ radar, candidate });
+    this.setState({ radar });
   }
 
   componentDidMount() {
@@ -92,16 +91,12 @@ class RadarChart extends React.Component {
   axisPosition = (data) => {
     const values = this.values(data)
     const position = data[0].categories.map((d, i) => {
-
-      console.log(Math.sin( values.angles * i - Math.PI / 2 ))
       return {
         "name": d.name,
         "x": values.scale( values.max ) * Math.sin( values.angles * i - Math.PI / 2 ), 
         "y": values.scale( values.max ) * Math.cos( values.angles * i - Math.PI / 2 )
       }
     });
-
-    console.log(position)
     return position
   }
 
@@ -115,16 +110,11 @@ class RadarChart extends React.Component {
   }
 
   render() {
-    if (!this.state.radar && !this.state.candidate) {
+    if (!this.state.radar) {
       return <div className={css.loading}>Loading...</div>
     }
 
-    const data = {
-      'candidate': this.state.candidate,
-      'radar': this.state.radar
-    }
-
-    let radar = data.radar;
+    let radar = this.state.radar;
 
     const circles = this.circleLevels();
     const axis = this.axisPosition(radar);
@@ -145,119 +135,81 @@ class RadarChart extends React.Component {
     })
 
     return (
-      <section
-        className={css.radar}
-        style={{
-          backgroundColor: filter === 0 ? '#b4b4b4' : radar[radar.length - 1].color
-        }}
+      <Section
+        onFilter={this.props.onFilter} 
+        filter={this.props.filter}
+        candidates={this.props.candidates}
       >
-        <div className={css.container}>
-
-          <div className={css.info}>
-            <Description content={content.description} />
-
-            <ul className={css.slider}>
-              {data.candidate.map((c, idx) => (
-                <li 
-                  key={idx}
-                  value={c.id}
-                  data-name={c.name}
-                  style={{
-                    display: filter == c.id ? 'block' : 'none'
-                  }}
-                >
-                  <img src={`/static/img/busto/${c.slug}.png`} alt={`c.slug`} />
-                  <h3>{c.name}</h3>
-                </li>
-              ))}
-            </ul>
-
-          </div>
-
-          <div className={css.radarContainer}>
-            <Filter 
-              {...this.props}
-              data={data.candidate} 
-              open 
-            />
-
-            <svg width={w} height={h}>
-              <g transform={`translate(${w / 2}, ${h / 2})`}>
-                
-                <defs>
-                  <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="20%" 
-                      style={{ 
-                        stopColor: this.props.filter === 0 ? '#b4b4b4' : radar[radar.length - 1].color, 
-                        stopOpacity: 0.1 
-                      }} 
-                    />
-                    <stop offset="100%" style={{ stopColor: '#fff', stopOpacity: 0.5 }} />
-                  </radialGradient>
-                </defs>
-
-                <g>
-                  {circles.map((diameter, idx) => (
-                    <circle
-                      key={idx}
-                      className={css.grid}
-                      fill="none"
-                      stroke="#fff"
-                      strokeDasharray={this.config.dash}
-                      r={diameter}
-                    />
-                  ))}
-
-                  {axis.map((point, idx) => (
-                    <g key={idx}>
-                      <line
-                        stroke="#fff"
-                        strokeDasharray={this.config.dash}
-                        className={css.axis}
-                        x1={0}
-                        y1={0}
-                        x2={point.x}
-                        y2={point.y}
-                      />
-                      <text
-                        className={css.text}
-                        textAnchor={`middle`}
-                        dy={`0.35em`}
-                        x={point.x * 1.2}
-                        y={point.y * 1.2}
-                      >
-                        {point.name}
-                      </text>
-                    </g>
-                  ))}
-                </g>
-
-                {radar.map((curves, idx) => (
-                  <g className={css.wrap} key={idx} id={curves.id}>
-                    <path
-                      className={css.area}
-                      d={radarLine(curves.categories)}
-                      fill="none"
-                    />
-                    <path
-                      className={idx == radar.length - 1 ? css.stroke : null}
-                      d={radarLine(curves.categories)}
-                      strokeWidth={idx == radar.length - 1 ? 2 : 0.5}
-                      stroke={idx == radar.length - 1 ? "#fff" : "#4B4B4B"}
-                      fill={idx == radar.length - 1 ? "url(#grad)" : "none" }
-                    />
-                  </g>
+        <div className={css.radar}>
+          <h2>Radar Chart</h2>
+          {/*<svg width={w} height={h}>
+            <g transform={`translate(${w / 2}, ${h / 2})`}>
+              <defs>
+                <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="20%" 
+                    style={{ 
+                      stopColor: this.props.filter === 0 ? '#b4b4b4' : radar[radar.length - 1].color, 
+                      stopOpacity: 0.1 
+                    }} 
+                  />
+                  <stop offset="100%" style={{ stopColor: '#fff', stopOpacity: 0.5 }} />
+                </radialGradient>
+              </defs>
+              <g>
+                {circles.map((diameter, idx) => (
+                  <circle
+                    key={idx}
+                    className={css.grid}
+                    fill="none"
+                    stroke="#fff"
+                    strokeDasharray={this.config.dash}
+                    r={diameter}
+                  />
                 ))}
 
+                {axis.map((point, idx) => (
+                  <g key={idx}>
+                    <line
+                      stroke="#fff"
+                      strokeDasharray={this.config.dash}
+                      className={css.axis}
+                      x1={0}
+                      y1={0}
+                      x2={point.x}
+                      y2={point.y}
+                    />
+                    <text
+                      className={css.text}
+                      textAnchor={`middle`}
+                      dy={`0.35em`}
+                      x={point.x * 1.2}
+                      y={point.y * 1.2}
+                    >
+                      {point.name}
+                    </text>
+                  </g>
+                ))}
               </g>
-            </svg>
-
-          </div>
-
+              {radar.map((curves, idx) => (
+                <g className={css.wrap} key={idx} id={curves.id}>
+                  <path
+                    className={css.area}
+                    d={radarLine(curves.categories)}
+                    fill="none"
+                  />
+                  <path
+                    className={idx == radar.length - 1 ? css.stroke : null}
+                    d={radarLine(curves.categories)}
+                    strokeWidth={idx == radar.length - 1 ? 2 : 0.5}
+                    stroke={idx == radar.length - 1 ? "#fff" : "#4B4B4B"}
+                    fill={idx == radar.length - 1 ? "url(#grad)" : "none" }
+                  />
+                </g>
+              ))}
+            </g>
+          </svg>*/}
         </div>
-
-        {/*<Social stroke="#fff" />*/}
-      </section>
+      </Section>
     )
   }
 }

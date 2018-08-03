@@ -59,20 +59,23 @@ class Home extends React.Component {
           filter={this.state.filter}
         />
 
-        {/*
-        <Category />
+        {/*<Category />*/}
+
         <Radar
-          onfilter={this.onFilter} 
+          onFilter={this.onFilter} 
           filter={this.state.filter}
+          candidates={candidates}
         />
+
+        {/*
         <Relationship 
-          onfilter={this.onFilter} 
+          onFilter={this.onFilter} 
           oncompare={this.onCompare}
           filter={this.state.filter}
           compare={this.state.compare}
         />
         <Orbital
-          onfilter={this.onFilter} 
+          onFilter={this.onFilter} 
           filter={this.state.filter}
         />
         <Footer />*/}
