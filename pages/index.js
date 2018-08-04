@@ -68,12 +68,13 @@ class Home extends React.Component {
           candidates={candidates}
         />
 
-        {/*<Relationship 
+        <Relationship 
           onFilter={this.onFilter} 
-          oncompare={this.onCompare}
+          onCompare={this.onCompare}
           filter={this.state.filter}
           compare={this.state.compare}
-        />*/}
+          candidates={candidates}
+        />
 
         <Orbital
           onFilter={this.onFilter} 

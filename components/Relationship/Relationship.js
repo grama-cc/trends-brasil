@@ -12,48 +12,34 @@ import Cloud from '../Cloud.js';
 
 class Relationship extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      candidate: null,
-    };
-  }
-
-  getData = async () => {
-    const candidate = await Api.getCandidates();
-    const word = await Api.getWords();
-    this.setState({ candidate, word });
-  }
-
-  componentDidMount() {
-    this.getData();
-  }
-
   render() {
 
-    if (!this.state.candidate) {
+    if (!this.props.candidates) {
       return <div className={css.loading}>Loading...</div>
     }
 
     return (
       <section className={css.relationship}>
-        <div className={css.flex}>
-          <Description content={content.description} />
-          <div>
+        <Description content={content.description} />
+        <div className={css.compare}>
+          <div className={css.container}>
             <Filter 
-              {...this.props}
-              data={this.state.candidate}
+              onFilter={this.props.onFilter} 
+              onCompare={this.props.onCompare}
+
+              filter={this.props.filter}
+              compare={this.props.compare}
+              candidates={this.props.candidates} 
               startCompare
               relationship
             />
-            {/*<div className={css.compare}>
-              <Cloud id={this.props.filter} type='candidate' />
-              <div className={css.common}>mais<br/>comuns</div>
-              <Cloud id={this.props.compare} type='candidate' />
-            </div>*/}
           </div>
+          {/*<div className={css.compare}>
+            <Cloud id={this.props.filter} type='candidate' />
+            <div className={css.common}>mais<br/>comuns</div>
+            <Cloud id={this.props.compare} type='candidate' />
+          </div>*/}
         </div>
-        {/*<Social stroke="#B4B4B4"/>*/}
       </section>
     )
   }

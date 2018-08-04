@@ -90,7 +90,7 @@ class Filter extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={`${css.container} ${css.list}`}>
+        <div className={`${css.container} ${css.list} ${relationship ? css.hide : null}`}>
           <ul>
             {candidates.map((c, idx) => {
               return(
@@ -109,15 +109,15 @@ class Filter extends React.Component {
           </ul>
         </div>
 
-        <div className={`${css.container} ${css.filter}`}>
-          {relationship && filter != 0 ? this.renderImage(f.length, f[0].slug, f[0].color) : null}
+        <div className={`${css.container} ${css.filter} ${relationship ? css.show : null}`}>
+          {relationship && filter ? this.renderImage(f.length, f[0].slug, f[0].color) : null}
 
           {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
         </div>
 
         {this.props.startCompare ? 
-          <div className={`${css.container} ${css.compare}`}>
-          {relationship && compare != 0 ? this.renderImage(c.length, c[0].slug, c[0].color) : null}
+          <div className={`${css.container} ${css.compare} ${relationship ? css.show : null}`}>
+          {relationship && compare ? this.renderImage(c.length, c[0].slug, c[0].color) : null}
           
           {this.renderDropdown(this.onDropdownCompare, compare, selectedNameCompare, this.state.openCompare, filter, this.onCompare)}
           </div>
