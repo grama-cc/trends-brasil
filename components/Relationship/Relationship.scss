@@ -2,9 +2,30 @@
 
 .relationship {
   padding: responsive(25, 60) responsive(10, 80);
+  min-height: calc(100vh - 80px);
+  transition: background .4s ease;
   background-color: $gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-	.compare {
+  @media screen and (min-width: $medium-devices) {
+  	flex-direction: row;
+  	align-items: flex-start;
+  }
+
+  .compare {
+  	width: 70%;
+  	border: 2px solid #fff; // provisorio
+  	
+  	.container {
+  		display: flex;
+  		justify-content: space-between;
+  	}
+
+  }
+
+	/*.compare {
 		display: flex;
 		justify-content: space-between;
 
@@ -20,25 +41,22 @@
 				}
 			}
 		}
+	}*/
+
+	.common {
+		font-size: 10px;
+		text-transform: uppercase;
+		text-align: center;
+		font-family: $robotoMedium;
+		font-weight: bold;
 	}
 
 }
-.common {
-	font-size: 10px;
-	text-transform: uppercase;
-	text-align: center;
-	font-family: $robotoMedium;
-	font-weight: bold;
-}
+
 
 .loading {
   text-align: center;
   padding: 20px;
 }
 
-@media screen and (min-width: $medium-devices) {
-	.flex {
-		display: flex;
-	}
-}
 
