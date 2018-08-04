@@ -8,6 +8,7 @@ import content from '../../static/json/keywords.json'
 
 import Filter from '../Filter.js';
 import Description from '../Description.js';
+import Section from '../SectionWithFilter/SectionWithFilter.js';
 import Social from '../Social/Social.js';
 
 class Orbital extends React.Component {
@@ -101,17 +102,15 @@ class Orbital extends React.Component {
     })
 
     return (
-      <section
-        className={css.orbital}
-        style={{
-          backgroundColor: this.props.filter === 0 ? '#B4B4B4' : color,
-        }}
+      <Section
+        onFilter={this.props.onFilter} 
+        filter={this.props.filter}
+        candidates={this.props.candidates}
       >
-        <Description content={content.description} />
+        <div className={css.orbital}>
+          <h2>Orbital Chart</h2>
 
-        <Filter {...this.props} data={this.state.orbital} />
-
-        <svg width={this.config.width} height={this.config.height}>
+          {/*<svg width={this.config.width} height={this.config.height}>
           <g transform={`translate(${this.config.width / 2}, ${this.config.height / 2})`}>
             <g className='base'>
               {circles.map((diameter, idx) => (
@@ -186,9 +185,9 @@ class Orbital extends React.Component {
               ))}
             </g>
           </g>
-        </svg>
-        {/*<Social stroke="#fff" />*/}
-      </section>
+          </svg>*/}
+        </div>
+      </Section>
     )
   }
 }
