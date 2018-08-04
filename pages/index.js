@@ -59,6 +59,7 @@ class Home extends React.Component {
           filter={this.state.filter}
         />
 
+        {/*<Lines />*/}
         {/*<Category />*/}
 
         <Radar
@@ -67,18 +68,20 @@ class Home extends React.Component {
           candidates={candidates}
         />
 
-        {/*
-        <Relationship 
+        {/*<Relationship 
           onFilter={this.onFilter} 
           oncompare={this.onCompare}
           filter={this.state.filter}
           compare={this.state.compare}
-        />
+        />*/}
+
         <Orbital
           onFilter={this.onFilter} 
           filter={this.state.filter}
+          candidates={candidates}
         />
-        <Footer />*/}
+        
+        <Footer />
         
       </Layout>
     );

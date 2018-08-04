@@ -9,44 +9,36 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
-      disabled1: false,
-      disabled2: false,
-      name1: "Escolha...",
-      name2: "Escolha...",
-
       openFilter: false,
-      openCompare: false,
+      openCompare: false
     };
   }
 
   onFilter = (e) => {
     let id = Number(e.target.value)
     this.props.onFilter(id)
-    // this.setState({ name1: e.currentTarget.dataset.name })
   }
 
-  /*onDropdownFilter = () => {
+  onDropdownFilter = () => {
     this.setState({
       openFilter: !this.state.openFilter
     })
-  }*/
+  }
 
-  /*onCompare = (e) => {
+  onCompare = (e) => {
     let id = Number(e.target.value)
-    this.props.oncompare(id)
-    this.setState({ name2: e.currentTarget.dataset.name })
-  }*/
+    this.props.onCompare(id)
+  }
 
-  /*onDropdownCompare = () => {
+  onDropdownCompare = () => {
     this.setState({ 
       openCompare: !this.state.openCompare
     })
-  }*/
+  }
 
-  /*renderImage(has, slug, color) {
+  renderImage(has, slug, color) {
     const filter = this.props.filter;
-    if(filter != 0) {
+    if(filter) {
       return (
         <div
           className={css.image}
@@ -59,25 +51,45 @@ class Filter extends React.Component {
     } else {
       return
     }
-  }*/
+  }
+
+  renderDropdown(dropdown, dropdownFilter, dropdownSelected, dropdownState, dropdownCompare, dropdownFunc) {
+    const candidates = this.props.candidates;
+    return (
+      <ul onClick={dropdown} className={css.selected} >
+
+        <li className={css.choose}>{dropdownFilter ? dropdownSelected : 'Escolha...'}</li>
+
+        <div className={dropdownState ? css.open : null}>
+          {candidates.map((c, idx) => (
+            <li 
+              key={idx}
+              value={c.id}
+              onClick={dropdownCompare != c.id ? dropdownFunc : null}
+              className={dropdownCompare == c.id ? css.unclick : dropdownFilter == c.id && dropdownCompare != c.id ? css.disabled : null}
+            >
+              {c.name}
+            </li>
+          ))}
+        </div>
+      </ul>
+    )
+  }
 
   render() {
     const candidates = this.props.candidates;
     const filter = this.props.filter;
-
-    // const compare = this.props.compare;
-    // const relationship = this.props.relationship;
+    const compare = this.props.compare;
+    const relationship = this.props.relationship;
 
     const f = candidates.filter(c => c.id == filter);
-    // const c = candidates.filter(c => c.id == compare);
+    const c = candidates.filter(c => c.id == compare);
 
-    //const currentColor = filter === 0 ? '#b4b4b4' : candidates[candidates.length - 1].color;
-    //console.log(currentColor)
-    //console.log(f[0].slug);
+    const selectedNameFilter = filter ? f[0].name : 'Escolha...';
+    const selectedNameCompare = compare ? c[0].name : 'Escolha...';
 
     return (
       <React.Fragment>
-
         <div className={`${css.container} ${css.list}`}>
           <ul>
             {candidates.map((c, idx) => {
@@ -97,57 +109,19 @@ class Filter extends React.Component {
           </ul>
         </div>
 
-        {/*<div className={`${css.container} ${css.filter}`}>
+        <div className={`${css.container} ${css.filter}`}>
           {relationship && filter != 0 ? this.renderImage(f.length, f[0].slug, f[0].color) : null}
-          <ul
-            onClick={this.onDropdownFilter}
-            className={css.selected}
-          >
-            <li className={css.choose}>{this.state.name1}</li>
-            <div className={this.state.openFilter ? css.open : null}>
-              {data.map((c, idx) => (
-                <li 
-                  key={idx}
-                  value={c.id}
-                  data-name={c.name}
-                  onClick={compare != c.id ? this.onFilter : null}
-                  className={compare == c.id ? css.unclick : filter == c.id && compare != c.id ? css.disabled : null}
-                >
-                  {c.name}
-                </li>
-              ))}
-            </div>
-          </ul>
+
+          {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
         </div>
 
         {this.props.startCompare ? 
           <div className={`${css.container} ${css.compare}`}>
-
           {relationship && compare != 0 ? this.renderImage(c.length, c[0].slug, c[0].color) : null}
-
-            <ul
-              onClick={this.onDropdownCompare}
-              className={css.selected}
-            >
-             <li>{this.state.name2}</li>
-             <div className={this.state.openCompare ? css.open : null}>
-              {data.map((c, idx) => (
-                <li 
-                  key={idx}
-                  value={c.id}
-                  data-name={c.name}
-                  onClick={filter != c.id ? this.onCompare : null}
-                  className={filter == c.id ? css.unclick : compare == c.id && filter != c.id ? css.disabled :  null}
-                >
-                  {c.name}
-                </li>
-              ))}
-              </div>
-            </ul> 
-
+          
+          {this.renderDropdown(this.onDropdownCompare, compare, selectedNameCompare, this.state.openCompare, filter, this.onCompare)}
           </div>
-        : null}*/}
-
+        : null}
       </React.Fragment>
     )
   }
