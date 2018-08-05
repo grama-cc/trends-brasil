@@ -8,16 +8,15 @@ import Facebook from './Facebook.js';
 import Whatsapp from './Whatsapp.js';
 
 const Social = props => (
-  <div>
+  <React.Fragment>
     {props.children}
-    {/*className=props.share ? css.share : null*/}
-    <ul className={css.social}>
+    <ul className={`${css.social} ${props.bottom ? css.bottom : null}`}>
       {!props.share ? <li><a href="#"><Media stroke={props.stroke} /></a></li> : null}
       <li><a href="#"><Twitter stroke={props.stroke} /></a></li>
       <li><a href="#"><Facebook stroke={props.stroke} /></a></li>
       <li><a href="#"><Whatsapp stroke={props.stroke} /></a></li>
     </ul>
-  </div>
+  </React.Fragment>
 );
 
 Social.propTypes = {

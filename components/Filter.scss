@@ -13,7 +13,7 @@
 // If mobile filter
 .selected {
 	margin: 0 auto 20px;
-	width: 220px;
+	width: responsive(160, 220);
 	position: relative;
 	display: block;
 	li {

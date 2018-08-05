@@ -58,7 +58,7 @@ class Keywords extends React.Component {
             filter={this.props.filter}
           />
         </div>
-        {/*<Social stroke='#b4b4b4' />*/}
+        <Social stroke='#b4b4b4' bottom />
       </section>
     )
   }

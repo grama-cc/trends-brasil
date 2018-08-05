@@ -24,10 +24,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
 
       @media screen and (min-width: $medium-devices) {
         align-items: flex-start;
-        width: 70%;
+        width: 60%;
       }
 
     }
@@ -41,7 +42,6 @@
       width: 100%;
     }
   }
-
 
   .slider {
     position: absolute;

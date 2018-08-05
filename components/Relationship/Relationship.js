@@ -20,29 +20,33 @@ class Relationship extends React.Component {
 
     return (
       <section className={css.relationship}>
-        <Description content={content.description} />
 
-        <div className={css.compare}>
-          <div className={css.container}>
-            <Filter 
-              onFilter={this.props.onFilter} 
-              onCompare={this.props.onCompare}
+        <div className={css.content}>
+          <Description content={content.description} />
+          <div className={css.compare}>
+            <div className={css.container}>
+              <Filter 
+                onFilter={this.props.onFilter} 
+                onCompare={this.props.onCompare}
 
-              filter={this.props.filter}
-              compare={this.props.compare}
-              candidates={this.props.candidates} 
-              startCompare
-              relationship
-            />
-          </div>
-          <div className={css.clouds}>
-            <div />
-            {/*<Cloud id={this.props.filter} type='candidate' />*/}
-            <div className={css.common}>mais<br/>comuns</div>
-            <div />
-            {/*<Cloud id={this.props.compare} type='candidate' />*/}
+                filter={this.props.filter}
+                compare={this.props.compare}
+                candidates={this.props.candidates} 
+                startCompare
+                relationship
+              />
+            </div>
+            <div className={css.clouds}>
+              <div />
+              {/*<Cloud id={this.props.filter} type='candidate' />*/}
+              <div className={css.common}>mais<br/>comuns</div>
+              <div />
+              {/*<Cloud id={this.props.compare} type='candidate' />*/}
+            </div>
           </div>
         </div>
+
+        <Social stroke='#b4b4b4' />
         
       </section>
     )

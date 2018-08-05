@@ -3,20 +3,26 @@
 .relationship {
   padding: responsive(25, 60) responsive(10, 80);
   min-height: calc(100vh - 80px);
-  transition: background .4s ease;
   background-color: $gray;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media screen and (min-width: $medium-devices) {
-  	flex-direction: row;
-  	align-items: flex-start;
+  
+  .content {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	position: relative;
+  	@media screen and (min-width: $medium-devices) {
+  		flex-direction: row;
+  		align-items: flex-start;
+  	}
   }
 
   .compare {
-  	width: 70%;
+  	width: 100%;
   	border: 2px solid #b4b4b4; // provisorio
+
+  	@media screen and (min-width: $medium-devices) {
+  		width: 70%;
+  	}
   	
   	.container {
   		display: flex;

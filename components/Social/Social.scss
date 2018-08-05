@@ -3,11 +3,16 @@
 .social {
 	display: flex;
 	justify-content: center;
-	position: absolute;
-	width: calc(100vw - 80px);
-	bottom: 40px;
-	left: 50%;
-	transform: translateX(-50%);
+	margin: 20px 0 0;
+	width: 100%;
+	
+	&.bottom {
+		position: absolute;
+		width: calc(100vw - 80px);
+		bottom: 40px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 
 	@media screen and (min-width: $medium-devices) {
 		justify-content: flex-end;
@@ -27,8 +32,8 @@
 	    align-items: center;
 	    height: 100%;
 	    width: 100%;
-			img {
-				display: block;
+			svg {
+				margin: 0;
 			}
 		}
 	}

@@ -57,8 +57,9 @@ class Section extends React.Component {
             />
             {this.props.children}
           </div>
-
         </div>
+        
+        <Social stroke='#fff' />
       </section>
     )
   }
