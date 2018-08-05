@@ -21,6 +21,7 @@ class Relationship extends React.Component {
     return (
       <section className={css.relationship}>
         <Description content={content.description} />
+
         <div className={css.compare}>
           <div className={css.container}>
             <Filter 
@@ -34,12 +35,15 @@ class Relationship extends React.Component {
               relationship
             />
           </div>
-          {/*<div className={css.compare}>
-            <Cloud id={this.props.filter} type='candidate' />
+          <div className={css.clouds}>
+            <div />
+            {/*<Cloud id={this.props.filter} type='candidate' />*/}
             <div className={css.common}>mais<br/>comuns</div>
-            <Cloud id={this.props.compare} type='candidate' />
-          </div>*/}
+            <div />
+            {/*<Cloud id={this.props.compare} type='candidate' />*/}
+          </div>
         </div>
+        
       </section>
     )
   }

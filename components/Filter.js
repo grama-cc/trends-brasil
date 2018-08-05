@@ -37,20 +37,20 @@ class Filter extends React.Component {
   }
 
   renderImage(has, slug, color) {
-    const filter = this.props.filter;
-    if(filter) {
+    //const filter = this.props.filter;
+    //if(filter) {
       return (
         <div
           className={css.image}
           style={{
-            backgroundImage: `url(/static/img/candidates/${has ? slug : 'none'}.png)`,
-            backgroundColor: has ? color : null,
+            backgroundImage: `url(/static/img/candidates/${slug})`,
+            backgroundColor: color,
           }}
         />
       )
-    } else {
-      return
-    }
+    //} else {
+      //return
+    //}
   }
 
   renderDropdown(dropdown, dropdownFilter, dropdownSelected, dropdownState, dropdownCompare, dropdownFunc) {
@@ -88,6 +88,12 @@ class Filter extends React.Component {
     const selectedNameFilter = filter ? f[0].name : 'Escolha...';
     const selectedNameCompare = compare ? c[0].name : 'Escolha...';
 
+    const filterSlug = filter ? f[0].slug + '.png' : 'none.svg';
+    const filterColor = filter ? f[0].color : null;
+
+    const compareSlug = compare ? c[0].slug + '.png' : 'none.svg';
+    const compareColor = compare ? c[0].color : null;
+
     return (
       <React.Fragment>
         <div className={`${css.container} ${css.list} ${relationship ? css.hide : null}`}>
@@ -110,14 +116,14 @@ class Filter extends React.Component {
         </div>
 
         <div className={`${css.container} ${css.filter} ${relationship ? css.show : null}`}>
-          {relationship && filter ? this.renderImage(f.length, f[0].slug, f[0].color) : null}
+          {relationship ? this.renderImage(f.length, filterSlug, filterColor) : null}
 
           {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
         </div>
 
         {this.props.startCompare ? 
           <div className={`${css.container} ${css.compare} ${relationship ? css.show : null}`}>
-          {relationship && compare ? this.renderImage(c.length, c[0].slug, c[0].color) : null}
+          {relationship ? this.renderImage(c.length, compareSlug, compareColor) : null}
           
           {this.renderDropdown(this.onDropdownCompare, compare, selectedNameCompare, this.state.openCompare, filter, this.onCompare)}
           </div>

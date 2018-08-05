@@ -16,7 +16,7 @@
 
   .compare {
   	width: 70%;
-  	border: 2px solid #fff; // provisorio
+  	border: 2px solid #b4b4b4; // provisorio
   	
   	.container {
   		display: flex;
@@ -25,7 +25,7 @@
 
   }
 
-	/*.compare {
+	.clouds {
 		display: flex;
 		justify-content: space-between;
 
@@ -35,13 +35,14 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: flex-start;
+			height: 80vh;
 			>div {
 				>div {
 					margin: 5px 0;
 				}
 			}
 		}
-	}*/
+	}
 
 	.common {
 		font-size: 10px;
@@ -49,6 +50,16 @@
 		text-align: center;
 		font-family: $robotoMedium;
 		font-weight: bold;
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			border-left: 2px dashed #b4b4b4;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			height: 95%;
+		}
 	}
 
 }
