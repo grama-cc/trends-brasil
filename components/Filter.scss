@@ -8,6 +8,17 @@
   @media screen and (min-width: $medium-devices) {
 		width: 100%;
 	}
+
+	@media screen and (min-width: $medium-devices) {
+		&.filter {
+			p {
+				&.show {
+					display: block;
+				}
+				display: none;
+			}
+		}
+	}
 }
 
 // If mobile filter
@@ -16,10 +27,16 @@
 	width: responsive(140, 220);
 	position: relative;
 	display: block;
+
+	p {
+		display: none;
+	}
+
 	li {
 		font-size: responsive(12, 22);
 		position: relative;
-		padding: 10px 20px 10px 10px;
+		// padding: 10px 20px 10px 10px;
+		padding: 10px;
 		overflow: hidden;
 		transition: background .4s ease;
 		&.disabled {
@@ -36,10 +53,14 @@
 			background-color: $white;
 			border: 1px solid #b4b4b4;
     	border-radius: 4px;
-    	background-image: url(/static/img/arrow.svg);
-    	background-size: 22px;
-    	background-repeat: no-repeat;
-    	background-position: center right 11px;
+    	display: flex;
+    	justify-content: space-between;
+    	align-items: center;
+    	svg {
+    		width: 16px;
+    		height: 8px;
+    		margin: 0;
+    	}
 		}
 	}
 
@@ -79,7 +100,7 @@
 					border-radius: 0;
 					border: none;
 					background-position: center right 0;
-    			padding: 10px 30px 10px 0;
+    			padding: 10px 0;
     			&.choose {
     				border-bottom: 1px solid #b4b4b4;
     			}
@@ -115,6 +136,26 @@ $circle-size: responsive(20, 60);
 			display: none;
 		}
 	}
+
+	p {
+		background-image: url(/static/img/candidates/none.svg);
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: 40px;
+    height: 40px;
+    padding: 0 0 0 50px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 40px;
+    font-size: 24px;
+    font-family: $robotoLight;
+    cursor: pointer;
+    &.show {
+    	display: flex;
+    }
+	}
+
 	ul {
 		width: 100%;
 		height: auto;
@@ -132,6 +173,8 @@ $circle-size: responsive(20, 60);
 			background-repeat: no-repeat;
 			background-size: 100%;
 			box-shadow: 0 0 0 3px #fff;
+			transition: background .4s ease;
+			cursor: pointer;
 
 			&.disabled {
 				box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);

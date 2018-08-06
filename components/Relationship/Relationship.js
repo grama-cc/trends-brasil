@@ -11,11 +11,39 @@ import Cloud from '../Cloud.js';
 
 class Relationship extends React.Component {
 
-  render() {
-
+  renderChart () {
     if (!this.props.candidates) {
       return <div className={css.loading}>Loading...</div>
+    } else {
+      return (
+        <React.Fragment>
+          <div className={css.container}>
+            <Filter 
+              onFilter={this.props.onFilter} 
+              onCompare={this.props.onCompare}
+
+              filter={this.props.filter}
+              compare={this.props.compare}
+
+              candidates={this.props.candidates} 
+              arrowColor={this.props.arrowColor}
+              startCompare
+              relationship
+            />
+          </div>
+          <div className={css.clouds}>
+            <div />
+            {/*<Cloud id={this.props.filter} type='candidate' />*/}
+            <div className={css.common}>mais<br/>comuns</div>
+            <div />
+            {/*<Cloud id={this.props.compare} type='candidate' />*/}
+          </div>
+        </React.Fragment>
+      )
     }
+  }
+
+  render() {
 
     return (
       <section className={css.relationship}>
@@ -23,26 +51,9 @@ class Relationship extends React.Component {
         <div className={css.content}>
           <Description content="relationship" />
           <div className={css.compare}>
-            <div className={css.container}>
-              <Filter 
-                onFilter={this.props.onFilter} 
-                onCompare={this.props.onCompare}
-
-                filter={this.props.filter}
-                compare={this.props.compare}
-                candidates={this.props.candidates} 
-                startCompare
-                relationship
-              />
-            </div>
-            <div className={css.clouds}>
-              <div />
-              {/*<Cloud id={this.props.filter} type='candidate' />*/}
-              <div className={css.common}>mais<br/>comuns</div>
-              <div />
-              {/*<Cloud id={this.props.compare} type='candidate' />*/}
-            </div>
+            {this.renderChart()}
           </div>
+
         </div>
 
         <Social stroke='#b4b4b4' />

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import css from './Description.scss';
 import { i18n } from '../common/locale/i18n';
 
+import Arrow from './Arrow.js';
+
 class Description extends React.Component {
 
   constructor (props) {

@@ -1,27 +1,36 @@
 @import '../../lib/scss/variables.scss';
 
 .clipping {
-	padding: 40px 10px;
+	padding: responsive(25, 60) responsive(10, 80);
 	background-color: $gray;
-	@media screen and (max-width: $small-devices) {
+
+	ul {
+		display: flex;
+		flex-direction: column;
+
+		@media screen and (min-width: $medium-devices) {
+			flex-direction: row;
+		}
 		li {
 			margin: 40px 0 0;
 			&:first-child {
 				margin: 0;
 			}
-		}
-	}
-}
-@media screen and (min-width: $medium-devices) {
-	.clipping {
-		display: flex;
-		padding: 40px;
-
-		li {
-			margin-right: 20px;
-		}
-		li:last-child {
-			margin-right: 0;
+			h2 {
+				margin: 0 0 15px;
+				font-size: responsive(24, 34);
+			}
+			p {
+				font-family: $robotoLight;
+				font-size: responsive(14, 18);
+				line-height: responsive(20, 22);
+			}
+			@media screen and (min-width: $medium-devices) {
+				margin: 0 0 0 30px;
+				&:first-child {
+					margin: 0;
+				}
+			}
 		}
 	}
 }

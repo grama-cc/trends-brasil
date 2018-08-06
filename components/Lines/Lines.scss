@@ -12,13 +12,16 @@
 
   	@media screen and (min-width: $medium-devices) {
     	flex-direction: row;
-      align-items: center;
+      // align-items: center;
+      >div:first-child {
+        width: 40%;
+      }
   	}
   }
 
   .chart {
   	// Provisorio //////////////////////////////////
-    height: 75vh; // provisorio
+    height: 65vh; // provisorio
     border: 2px solid #b4b4b4; // provisorio
     display: flex; // provisorio
     justify-content: center; // provisorio
@@ -29,4 +32,9 @@
     }
     // Provisorio //////////////////////////////////
   }
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
 }

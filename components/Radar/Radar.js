@@ -4,7 +4,7 @@ import css from './Radar.scss';
 import * as d3 from "d3";
 
 import Api from '../../lib/Api';
-import content from '../../static/json/keywords.json'
+import content from '../../static/json/radar.json'
 
 import Filter from '../Filter.js';
 import Description from '../Description.js';
@@ -109,38 +109,12 @@ class RadarChart extends React.Component {
     return 0;
   }
 
-  render() {
-    if (!this.state.radar) {
+  renderChart () {
+    if(!this.state.radar && !this.props.candidates) {
       return <div className={css.loading}>Loading...</div>
-    }
-
-    let radar = this.state.radar;
-
-    const circles = this.circleLevels();
-    const axis = this.axisPosition(radar);
-    const values = this.values(radar)
-    const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
-      values.scale( (d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
-    );
-
-    const filter = this.props.filter;
-    const w = this.config.width;
-    const h = this.config.height;
-
-    radar = radar.sort((a) => {
-      if (a.id === filter) {
-        return 1;
-      }
-      return 0;
-    })
-
-    return (
-      <Section
-        onFilter={this.props.onFilter} 
-        filter={this.props.filter}
-        candidates={this.props.candidates}
-      >
-        <div className={css.radar}>
+    } else {
+      return (
+        <React.Fragment>
           <h2>Radar Chart</h2>
           {/*<svg width={w} height={h}>
             <g transform={`translate(${w / 2}, ${h / 2})`}>
@@ -208,6 +182,46 @@ class RadarChart extends React.Component {
               ))}
             </g>
           </svg>*/}
+        </React.Fragment>
+      )
+    }
+  }
+
+  render() {
+    //if (!this.state.radar && !this.props.candidates) {
+      
+    //}
+
+    let radar = this.state.radar || [];
+
+    /*const circles = this.circleLevels();
+    const axis = this.axisPosition(radar);
+    const values = this.values(radar)
+    const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
+      values.scale( (d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
+    );
+
+    const filter = this.props.filter;
+    const w = this.config.width;
+    const h = this.config.height;
+
+    radar = radar.sort((a) => {
+      if (a.id === filter) {
+        return 1;
+      }
+      return 0;
+    })*/
+
+    return (
+      <Section
+        onFilter={this.props.onFilter} 
+        filter={this.props.filter}
+        candidates={this.props.candidates}
+        content={content}
+        arrowColor={this.props.arrowColor}
+      >
+        <div className={css.radar}>
+          {this.renderChart()}
         </div>
       </Section>
     )

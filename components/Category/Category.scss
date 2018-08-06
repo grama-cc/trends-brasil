@@ -15,7 +15,10 @@
   	}
 
   	.info {
-  		width: 25%;
+      width: 100%;
+      @media screen and (min-width: $medium-devices) {
+  		  width: 25%;
+      }
   		>div {
   			width: 100%;
   		}
@@ -57,4 +60,9 @@
   	}
 
   }
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
 }
