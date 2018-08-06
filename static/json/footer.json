@@ -1,23 +1,58 @@
 {
-	"description": {
-	  "title": "Por quem buscam",
-	  "description": "A popularidade dos candidatos na busca do Google.",
-	  "button": "Saiba mais",
-	  "more": [
-	  	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
-			"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-			"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-			"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+	"project": {
+	  "title": "O projeto",
+	  "columnLeft": [
+	  	"“Na busca do Candidato” é um projeto do Google News Lab com designers e programadores brasileiros.", 
+			"Analisamos os dados de pesquisas no Google relacionados à campanha eleitoral de 2018. Buscamos entender o que mais interessa ao eleitor brasileiro sobre os candidatos ao cargo de Presidente da República.",
+			"Acompanharemos os resultados até outubro de 2018, mês das eleições."
+	  ],
+	   "columnRight": [
+	  	"O Google Trends analisa uma amostra aleatória das buscas feitas pelo Google em um período específico de tempo e as classifica em uma escala de 0 a 100, sendo 100 o termo de maior interesse de pesquisa. A partir daí, os outros resultados ganham valores relativos.", 
+			"Nesta página usamos um resumo da metodologia aqui apple pie sweet macaroon cotton candy. Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
 	  ]
 	},
 
-	"select": {
-	  "graphic": "Gráfico",
-	  "candidate": "Candidato"
+	"team": {
+	  "title": "Equipe",
+	  "list": [
+	  	{
+	  		"title": "Carol Cavaleiro",
+	  		"name": "Direção de arte, edição e design"
+	  	},
+	  	{
+	  		"title": "Hub9",
+	  		"name": "Nome 1, Nome 2, Nome 3"
+	  	},
+	  	{
+	  		"title": "Grama",
+	  		"name": "Nome 1, Nome 2, Nome 3"
+	  	},
+	  	{
+	  		"title": "Google News Lab",
+	  		"name": "Marco Túlio Pires e Simon Rogers"
+	  	},
+	  	{
+	  		"title": "Consultor de projetos",
+	  		"name": "Alberto Cairo"
+	  	}
+	  ]
+	},
+
+	"clipping": {
+	  "list": [
+	  	{
+	  		"title": "Making Of",
+	  		"text": "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  	},
+	  	{
+	  		"title": "Link 2",
+	  		"text": "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  	},
+	  	{
+	  		"title": "Link 3",
+	  		"text": "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  	}
+	  ]
 	}
-
 }
-
-
-
 

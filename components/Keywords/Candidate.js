@@ -34,6 +34,7 @@ class Candidate extends React.Component {
 
   render() {
     const candidates = this.props.candidates;
+    const content = this.props.content;
     const index = this.findIndex(candidates, 'id', this.props.filter);
 
     return (
@@ -57,7 +58,7 @@ class Candidate extends React.Component {
             <div
               className={`${css.image} item`}
               style={{
-                backgroundColor: '#000',
+                backgroundImage: `url(/static/img/candidates/none.svg)`,
               }}
             />
           </div>
@@ -83,8 +84,8 @@ class Candidate extends React.Component {
           arrows={true}
           slidesToShow={1}
         > 
-          <div className={css.info}>
-            <h3><span>Clique em um candidato</span></h3>
+          <div className={`${css.info} ${css.choose}`}>
+            <h3><span>{content.buttons.choose_candidate}</span></h3>
           </div>
           {candidates.map((item, j) => (
             <div className={css.info} key={j}>

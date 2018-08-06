@@ -4,7 +4,7 @@ import css from './Orbital.scss';
 import * as d3 from "d3";
 
 import Api from '../../lib/Api';
-import content from '../../static/json/keywords.json'
+import content from '../../static/json/orbital.json'
 
 import Filter from '../Filter.js';
 import Description from '../Description.js';
@@ -83,33 +83,13 @@ class Orbital extends React.Component {
     return 0;
   }
 
-  render() {
+  renderChart () {
     if (!this.state.orbital) {
       return <div className={css.loading}>Loading...</div>
-    }
-
-    let data = this.state.orbital;
-    const circles = this.circleLevels();
-    const values = this.values(data);
-    const levels = d3.range(1, (this.config.levels + 1) ).reverse();
-    const color = data[data.length - 1].color
-
-    data = data.sort((a, b) => {
-      if (a.id === this.props.filter || b.id === this.props.filter) {
-        return 1;
-      }
-      return 0;
-    })
-
-    return (
-      <Section
-        onFilter={this.props.onFilter} 
-        filter={this.props.filter}
-        candidates={this.props.candidates}
-      >
-        <div className={css.orbital}>
+    } else {
+      return (
+        <React.Fragment>
           <h2>Orbital Chart</h2>
-
           {/*<svg width={this.config.width} height={this.config.height}>
           <g transform={`translate(${this.config.width / 2}, ${this.config.height / 2})`}>
             <g className='base'>
@@ -186,6 +166,40 @@ class Orbital extends React.Component {
             </g>
           </g>
           </svg>*/}
+        </React.Fragment>
+      )
+    }
+  }
+
+  render() {
+    if (!this.state.orbital) {
+      return <div className={css.loading}>Loading...</div>
+    }
+
+    let data = this.state.orbital;
+
+    /*const circles = this.circleLevels();
+    const values = this.values(data);
+    const levels = d3.range(1, (this.config.levels + 1) ).reverse();
+    const color = data[data.length - 1].color
+
+    data = data.sort((a, b) => {
+      if (a.id === this.props.filter || b.id === this.props.filter) {
+        return 1;
+      }
+      return 0;
+    })*/
+
+    return (
+      <Section
+        onFilter={this.props.onFilter} 
+        filter={this.props.filter}
+        candidates={this.props.candidates}
+        content={content}
+        arrowColor={this.props.arrowColor}
+      >
+        <div className={css.orbital}>
+          {this.renderChart()}
         </div>
       </Section>
     )

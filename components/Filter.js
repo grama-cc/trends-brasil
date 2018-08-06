@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import PropTypes from 'prop-types';
 
 import css from './Filter.scss';
+import Arrow from './Arrow.js';
 
 class Filter extends React.Component {
 
@@ -12,6 +13,10 @@ class Filter extends React.Component {
       openFilter: false,
       openCompare: false
     };
+  }
+
+  onClickClear = () => {
+    this.props.onFilter()
   }
 
   onFilter = (e) => {
@@ -37,30 +42,38 @@ class Filter extends React.Component {
   }
 
   renderImage(has, slug, color) {
-    //const filter = this.props.filter;
-    //if(filter) {
-      return (
-        <div
-          className={css.image}
-          style={{
-            backgroundImage: `url(/static/img/candidates/${slug})`,
-            backgroundColor: color,
-          }}
-        />
-      )
-    //} else {
-      //return
-    //}
+    return (
+      <div
+        className={css.image}
+        style={{
+          backgroundImage: `url(/static/img/candidates/${slug})`,
+          backgroundColor: color,
+        }}
+      />
+    )
   }
 
   renderDropdown(dropdown, dropdownFilter, dropdownSelected, dropdownState, dropdownCompare, dropdownFunc) {
     const candidates = this.props.candidates;
+
     return (
       <ul onClick={dropdown} className={css.selected} >
+        <p className={!this.props.filter ? css.show : null}>
+          Escolha dois candidatos:
+        </p>
 
-        <li className={css.choose}>{dropdownFilter ? dropdownSelected : 'Escolha...'}</li>
+        <li className={css.choose}>
+          <span>{dropdownFilter ? dropdownSelected : this.props.all ? 'Todos' : 'Escolha...'}</span>
+          <Arrow arrowColor={this.props.arrowColor} />
+        </li>
 
         <div className={dropdownState ? css.open : null}>
+          <li
+            onClick={this.onClickClear}
+            className={!this.props.filter ? css.disabled : null}
+          >
+            {this.props.all ? 'Todos' : 'Escolha...'}
+          </li>
           {candidates.map((c, idx) => (
             <li 
               key={idx}
@@ -97,6 +110,12 @@ class Filter extends React.Component {
     return (
       <React.Fragment>
         <div className={`${css.container} ${css.list} ${relationship ? css.hide : null}`}>
+          <p
+            onClick={this.onClickClear}
+            className={`${!this.props.filter ? css.disabled : null} ${this.props.all ? css.show : null}`}
+          >
+            Todos os candidatos
+          </p>
           <ul>
             {candidates.map((c, idx) => {
               return(
@@ -108,6 +127,7 @@ class Filter extends React.Component {
                   className={filter === c.id ? null : css.disabled}
                   style={{
                     backgroundImage: `url(/static/img/candidates/${c.slug}.png)`,
+                    backgroundColor: filter === c.id ? c.color : null,
                   }}
                 />
               )

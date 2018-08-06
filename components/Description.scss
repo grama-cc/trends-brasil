@@ -4,8 +4,8 @@
 	margin: 0 0 20px;
 	text-align: center;
 	@media screen and (min-width: $medium-devices) {
-    width: 40%;
-    margin: 0 0 40px;
+    width: 70%;
+    // margin: 0 0 40px;
     text-align: left;
 		padding-right: 80px;
   }
@@ -19,22 +19,25 @@
 	}
 	button {
 		font-size: 14px;
-		padding: 0 18px 0 0;
 		position: relative;
-		&:before {
-			content: '';
-			position: absolute;
-			height: 6px;
-			width: 12px;
-			background-image: url($img + 'arrow.svg');
-			background-repeat: no-repeat;
-			top: 50%;
-			right: 0;
+		display: flex;
+		margin: 0 auto;
+		align-items: center;
+
+		@media screen and (min-width: $medium-devices) {
+			margin: 0;
+		}
+		span {
+			font-size: 14px;
+		}
+		svg {
+			margin: 6px 0 0 10px; 
+			width: 16px;
 			transform: translateY(-30%) scaleY(1);
 			transition: transform .4s ease;
 		}
 		&.open {
-			&:before {
+			svg {
 				transform: translateY(-50%) scaleY(-1);
 				transition: transform .4s ease;
 			}

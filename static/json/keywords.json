@@ -14,8 +14,11 @@
 	"select": {
 	  "graphic": "Gráfico",
 	  "candidate": "Candidato"
-	}
+	},
 
+	"buttons": {
+		"choose_candidate": "Clique em um candidato"
+	}
 }
 
 

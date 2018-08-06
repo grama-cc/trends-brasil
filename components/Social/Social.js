@@ -10,7 +10,7 @@ import Whatsapp from './Whatsapp.js';
 const Social = props => (
   <React.Fragment>
     {props.children}
-    <ul className={`${css.social} ${props.bottom ? css.bottom : null}`}>
+    <ul className={`${css.social} ${props.bottom ? css.bottom : null} ${props.share ? css.share : null}`}>
       {!props.share ? <li><a href="#"><Media stroke={props.stroke} /></a></li> : null}
       <li><a href="#"><Twitter stroke={props.stroke} /></a></li>
       <li><a href="#"><Facebook stroke={props.stroke} /></a></li>
