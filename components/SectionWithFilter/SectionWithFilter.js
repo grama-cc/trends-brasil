@@ -34,7 +34,7 @@ class Section extends React.Component {
         <div className={css.container}>
 
           <div className={css.info}>
-            <Description content={content.description} />
+            <Description content="keywords" />
 
             <ul 
               className={css.slider}

@@ -23,7 +23,7 @@ class Lines extends React.Component {
       <section className={css.lines}>
 
         <div className={css.info}>
-          <Description content={content.description} />
+          <Description content="lines" />
           <Filter 
             onFilter={this.props.onFilter} 
             filter={this.props.filter}

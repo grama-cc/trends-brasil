@@ -21,7 +21,7 @@ class Relationship extends React.Component {
       <section className={css.relationship}>
 
         <div className={css.content}>
-          <Description content={content.description} />
+          <Description content="relationship" />
           <div className={css.compare}>
             <div className={css.container}>
               <Filter 

@@ -37,7 +37,7 @@ class Keywords extends React.Component {
 
     return (
       <section className={css.keywords} id='keywords'>
-        <Description content={content.description} />
+        <Description content="keywords" />
         <div>
           <Select
             click={this.onChangeView}

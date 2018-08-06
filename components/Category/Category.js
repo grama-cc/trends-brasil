@@ -40,7 +40,7 @@ class Category extends React.Component {
 
         <div className={css.content}>
           <div className={css.info}>
-            <Description content={content.description} />
+            <Description content={'category'} />
 
             <ul className={css.nav}>
               <li>Biografia</li>
