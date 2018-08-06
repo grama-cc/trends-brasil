@@ -32,11 +32,8 @@
       line-height: 24px;
     }
     button {
-      background-image: url($img + 'slider_arrow.svg');
-      background-repeat: no-repeat;
-      height: 50px;
-      width: 25px;
-      transform: rotate(90deg);
+      height: 25px;
+      width: 50px;
       margin: 40px 0 0;
     }
   }

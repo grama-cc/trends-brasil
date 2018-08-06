@@ -36,7 +36,10 @@ class Section extends React.Component {
         <div className={css.container}>
 
           <div className={css.info}>
-            <Description content={content.description} />
+            <Description
+              content={content.description}
+              arrowColor={this.props.arrowColor}
+            />
 
             <ul 
               className={css.slider}
@@ -45,8 +48,8 @@ class Section extends React.Component {
               }}
             > 
               <li>
-                <img src={`/static/img/busto/${bg}`} alt={`c.slug`} />
-                <h3>{name}</h3>
+                <img src={`/static/img/busto/${bg}`} alt={name} />
+                <h3 className={!this.props.filter ? css.empty : null}>{name}</h3>
               </li>
             </ul>
 
@@ -56,15 +59,17 @@ class Section extends React.Component {
             <Filter 
               onFilter={this.props.onFilter} 
               filter={this.props.filter}
-              candidates={candidates} 
+              candidates={candidates}
+              arrowColor='#b4b4b4'
             />
             {this.props.children}
           </div>
         </div>
         
         <Period
-          bgColor='#b4b4b4'
+          bgColor={currentCandidate ? currentCandidate.color : '#b4b4b4'}
           color='#fff'
+          arrowColor={this.props.arrowColor}
         />
         <Social stroke='#fff' />
       </section>

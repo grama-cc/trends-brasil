@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Description.scss';
 
+import Arrow from './Arrow.js';
+
 class Description extends React.Component {
 
   constructor (props) {
@@ -27,7 +29,8 @@ class Description extends React.Component {
           onClick={this.open}
           className={this.state.open ? css.open : null}
         >
-          {content.button}
+          <span>{content.button}</span>
+          <Arrow arrowColor={this.props.arrowColor}/>
         </button>
 
         <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>

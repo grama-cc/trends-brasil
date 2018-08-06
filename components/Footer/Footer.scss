@@ -1,26 +1,58 @@
 @import '../../lib/scss/variables.scss';
 
 .footer {
+	padding: responsive(25, 60) responsive(10, 80);
+  .container, .content {
+  	display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	  @media screen and (min-width: $medium-devices) {
+	  	flex-direction: row;
+	  	.project {
+	  		width: 75%;
+	  	}
+	  }
+	}
+	.content {
+		@media screen and (min-width: $medium-devices) {
+			div {
+				width: 45%;
+			}
+		}
+	}
+
+	.socialContainer {
+		display: flex;
+		flex-direction: column;
+		@media screen and (min-width: $medium-devices) {
+			flex-direction: row;
+			align-items: center;
+			h4 {
+				margin: 0 30px 0 0;
+			}
+			ul {
+				width: auto;
+			}
+		}
+	}
+  
 	h2 {
 		margin: 0 0 15px;
 		font-size: responsive(24, 34);
 	}
-	p {
-		font-family: $robotoLight;
-		font-size: responsive(14, 18);
-		margin: 0 0 20px;
-		line-height: responsive(20, 22);
+	h3 {
+		font-family: $robotoMedium;
+		font-size: reponsive(14, 18);
 	}
 
 	h4 {
 		font-size: responsive(20, 24);
 	}
-}
-@media screen and (min-width: $medium-devices) {
-	.footerContent {
-		display: flex;
-	}
-	.footerContainer {
-		padding: 20px 40px 0 40px;
+
+	p {
+		font-family: $robotoLight;
+		font-size: responsive(14, 18);
+		margin: 0 0 20px;
+		line-height: responsive(20, 22);
 	}
 }

@@ -33,14 +33,16 @@ class Category extends React.Component {
       return <div className={css.loading}>Loading...</div>
     }
 
-    console.log(this.state.bars)
-
     return (
-      <section className={css.category} {...this.props}>
+      <section className={css.category}>
 
         <div className={css.content}>
           <div className={css.info}>
-            <Description content={content.description} />
+
+            <Description
+              content={content.description}
+              arrowColor={this.props.arrowColor}
+            />
 
             <ul className={css.nav}>
               <li>Biografia</li>

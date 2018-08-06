@@ -14,6 +14,7 @@ import Radar from '../components/Radar/Radar';
 import Relationship from '../components/Relationship/Relationship';
 import Orbital from '../components/Orbital/Orbital';
 import Footer from '../components/Footer/Footer';
+import Clipping from '../components/Footer/Clipping';
 
 class Home extends React.Component {
   constructor(props) {
@@ -52,27 +53,34 @@ class Home extends React.Component {
       <Layout>
         <Head title="Trends Brasil" />
         
-        <Intro />
+        <Intro
+          arrowColor='#b4b4b4'
+        />
 
         <Keywords
           candidates={candidates}
           words={words}
           onFilter={this.onFilter} 
           filter={this.state.filter}
+          arrowColor='#b4b4b4'
         />
 
         <Lines
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
+          arrowColor='#b4b4b4'
         />
 
-        <Category />
+        <Category
+          arrowColor='#b4b4b4'
+        />
 
         <Radar
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
+          arrowColor='#fff'
         />
 
         <Relationship 
@@ -81,16 +89,18 @@ class Home extends React.Component {
           filter={this.state.filter}
           compare={this.state.compare}
           candidates={candidates}
+          arrowColor='#b4b4b4'
         />
 
         <Orbital
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
+          arrowColor='#fff'
         />
         
         <Footer />
-        
+        <Clipping />
       </Layout>
     );
   }

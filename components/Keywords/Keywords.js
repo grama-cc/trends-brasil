@@ -38,9 +38,12 @@ class Keywords extends React.Component {
     return (
       <section className={css.keywords} id='keywords'>
         <div className={css.info}>
-          <Description content={content.description} />
+          <Description
+            content={content.description}
+            arrowColor={this.props.arrowColor}
+          />
         </div>
-        <div>
+        <div className={css.container}>
           <Select
             click={this.onChangeView}
             val={view}
@@ -59,12 +62,15 @@ class Keywords extends React.Component {
             words={words}
             onFilter={this.props.onFilter} 
             filter={this.props.filter}
+            content={content}
           />
         </div>
 
         <Period 
           bgColor='#f8f8f8'
           color='#b4b4b4'
+          bottom
+          arrowColor={this.props.arrowColor}
         />
         <Social stroke='#b4b4b4' bottom />
       </section>

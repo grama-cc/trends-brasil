@@ -23,11 +23,16 @@ class Lines extends React.Component {
       <section className={css.lines}>
 
         <div className={css.info}>
-          <Description content={content.description} />
+          <Description
+            content={content.description}
+            arrowColor={this.props.arrowColor}
+          />
           <Filter 
             onFilter={this.props.onFilter} 
             filter={this.props.filter}
-            candidates={this.props.candidates} 
+            candidates={this.props.candidates}
+            all
+            arrowColor='#b4b4b4'
           />
         </div>
 
@@ -38,6 +43,7 @@ class Lines extends React.Component {
 				<Period
           bgColor='#fff'
           color='#b4b4b4'
+          arrowColor={this.props.arrowColor}
         />
 				<Social stroke='#b4b4b4' />
       </section>

@@ -22,7 +22,10 @@ class Relationship extends React.Component {
 
         <div className={css.content}>
           <div className={css.info}>
-            <Description content={content.description} />
+            <Description
+              content={content.description}
+              arrowColor={this.props.arrowColor}
+            />
           </div>
           <div className={css.compare}>
             <div className={css.container}>
@@ -32,7 +35,9 @@ class Relationship extends React.Component {
 
                 filter={this.props.filter}
                 compare={this.props.compare}
+
                 candidates={this.props.candidates} 
+                arrowColor={this.props.arrowColor}
                 startCompare
                 relationship
               />
