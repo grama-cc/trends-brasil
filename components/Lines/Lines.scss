@@ -4,5 +4,29 @@
 	padding: responsive(25, 60) responsive(10, 80);
 	min-height: calc(100vh - 80px);
   transition: background .5s ease;
-  background-color: pink;
+  position: relative;
+
+  .info {
+  	display: flex;
+  	flex-direction: column;
+
+  	@media screen and (min-width: $medium-devices) {
+    	flex-direction: row;
+      align-items: center;
+  	}
+  }
+
+  .chart {
+  	// Provisorio //////////////////////////////////
+    height: 75vh; // provisorio
+    border: 2px solid #b4b4b4; // provisorio
+    display: flex; // provisorio
+    justify-content: center; // provisorio
+    align-items: center; // provisorio
+
+    h2 {
+      color: #b4b4b4; // provisorio
+    }
+    // Provisorio //////////////////////////////////
+  }
 }

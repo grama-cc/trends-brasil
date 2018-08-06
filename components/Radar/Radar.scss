@@ -5,23 +5,24 @@
   flex-direction: column;
   align-items: center;
 
+  // Provisorio //////////////////////////////////
+  height: 78vh; // provisorio
+  border: 2px solid #fff; // provisorio
+  display: flex; // provisorio
+  justify-content: center; // provisorio
+  align-items: center; // provisorio
+  width: 100%;
+
+  h2 {
+    color: #fff; // provisorio
+  }
+  // Provisorio //////////////////////////////////
+
   @media screen and (min-width: $medium-devices) {
     // align-items: flex-start;
     // width: 70%;
-    width: 90%;
+    // width: 90%;
     margin: 40px auto 0;
-
-    // Provisorio //////////////////////////////////
-    height: 78vh; // provisorio
-    border: 2px solid #fff; // provisorio
-    display: flex; // provisorio
-    justify-content: center; // provisorio
-    align-items: center; // provisorio
-
-    h2 {
-      color: #fff; // provisorio
-    }
-    // Provisorio //////////////////////////////////
   }
 }
 

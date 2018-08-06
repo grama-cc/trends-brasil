@@ -6,6 +6,7 @@ import content from '../../static/json/keywords.json'
 
 import Description from '../Description.js';
 import Select from './Select.js';
+import Period from '../Period/Period.js';
 import Candidate from './Candidate.js';
 import Graphic from './Graphic.js';
 import Social from '../Social/Social.js';
@@ -58,7 +59,12 @@ class Keywords extends React.Component {
             filter={this.props.filter}
           />
         </div>
-        {/*<Social stroke='#b4b4b4' />*/}
+
+        <Period 
+          bgColor='#f8f8f8'
+          color='#b4b4b4'
+        />
+        <Social stroke='#b4b4b4' bottom />
       </section>
     )
   }

@@ -6,6 +6,7 @@ import css from './SectionWithFilter.scss';
 // import Api from '../../lib/Api';
 import content from '../../static/json/keywords.json'
 import Filter from '../Filter.js';
+import Period from '../Period/Period.js';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
@@ -57,8 +58,13 @@ class Section extends React.Component {
             />
             {this.props.children}
           </div>
-
         </div>
+        
+        <Period
+          bgColor='#b4b4b4'
+          color='#fff'
+        />
+        <Social stroke='#fff' />
       </section>
     )
   }

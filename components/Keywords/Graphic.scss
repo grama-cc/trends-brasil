@@ -15,7 +15,8 @@
     display: block;
     margin: 0 auto;
     @media screen and (min-width: $medium-devices) {
-      width: 60% !important;
+      // width: 60% !important;
+      height: 110vh;
       position: absolute;
       top: 0;
       right: 0;
