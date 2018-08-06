@@ -4,7 +4,7 @@ import css from './Radar.scss';
 import * as d3 from "d3";
 
 import Api from '../../lib/Api';
-import content from '../../static/json/keywords.json'
+import content from '../../static/json/radar.json'
 
 import Filter from '../Filter.js';
 import Description from '../Description.js';
@@ -139,6 +139,7 @@ class RadarChart extends React.Component {
         onFilter={this.props.onFilter} 
         filter={this.props.filter}
         candidates={this.props.candidates}
+        content={content}
       >
         <div className={css.radar}>
           <h2>Radar Chart</h2>

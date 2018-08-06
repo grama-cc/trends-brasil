@@ -4,7 +4,7 @@ import css from './Orbital.scss';
 import * as d3 from "d3";
 
 import Api from '../../lib/Api';
-import content from '../../static/json/keywords.json'
+import content from '../../static/json/orbital.json'
 
 import Filter from '../Filter.js';
 import Description from '../Description.js';
@@ -106,6 +106,7 @@ class Orbital extends React.Component {
         onFilter={this.props.onFilter} 
         filter={this.props.filter}
         candidates={this.props.candidates}
+        content={content}
       >
         <div className={css.orbital}>
           <h2>Orbital Chart</h2>

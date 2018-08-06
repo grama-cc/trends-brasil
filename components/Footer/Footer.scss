@@ -11,6 +11,10 @@
 		margin: 0 0 20px;
 		line-height: responsive(20, 22);
 	}
+
+	h4 {
+		font-size: responsive(20, 24);
+	}
 }
 @media screen and (min-width: $medium-devices) {
 	.footerContent {

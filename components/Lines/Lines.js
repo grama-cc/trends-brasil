@@ -4,7 +4,7 @@ import css from './Lines.scss';
 import * as d3 from "d3";
 
 import Api from '../../lib/Api';
-import content from '../../static/json/keywords.json'
+import content from '../../static/json/lines.json'
 
 import Filter from '../Filter.js';
 import Period from '../Period/Period.js';

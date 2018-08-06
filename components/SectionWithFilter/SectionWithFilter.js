@@ -18,6 +18,8 @@ class Section extends React.Component {
       return <div className={css.loading}>Loading...</div>
     }
 
+    const content = this.props.content
+
     const candidates = this.props.candidates;
     const currentCandidate = candidates.find((c) => this.props.filter === c.id)
 

@@ -17,6 +17,12 @@
     justify-content: flex-start;
   }
 
+  .info {
+    @media screen and (min-width: $medium-devices) {
+      width: 40%;
+    }
+  }
+
   .container {
   	display: flex;
   }

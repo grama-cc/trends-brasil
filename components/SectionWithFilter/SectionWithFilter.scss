@@ -37,10 +37,10 @@
 
   .info {
     @media screen and (min-width: $medium-devices) {
-      width: 39%;
+      width: 40%;
     }
     >div {
-      width: 100%;
+      //width: 100%;
     }
   }
 

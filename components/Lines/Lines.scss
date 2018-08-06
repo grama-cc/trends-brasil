@@ -13,6 +13,9 @@
   	@media screen and (min-width: $medium-devices) {
     	flex-direction: row;
       align-items: center;
+      >div:first-child {
+        width: 40%;
+      }
   	}
   }
 
