@@ -6,7 +6,6 @@ import content from '../../static/json/relationship.json';
 
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
-
 import Filter from '../Filter.js';
 import Cloud from '../Cloud.js';
 

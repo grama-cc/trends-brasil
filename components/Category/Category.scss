@@ -4,5 +4,57 @@
   padding: responsive(25, 60) responsive(10, 80);
   min-height: calc(100vh - 80px);
   transition: background .5s ease;
-  background: beige;
+  background-color: #f8f8f8;
+
+  .content {
+  	display: flex;
+  	flex-direction: column;
+  	@media screen and (min-width: $medium-devices) {
+  		flex-direction: row;
+  		justify-content: space-between;
+  	}
+
+  	.info {
+  		width: 25%;
+  		>div {
+  			width: 100%;
+  		}
+
+      .nav {
+        font-size: 20px;
+        li {
+          margin: 0 0 24px;
+          background-image: url(/static/img/others.svg);
+          background-repeat: no-repeat;
+          background-position: center left;
+          height: 40px;
+          padding: 0 0 0 50px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+        }
+        
+      }
+  	}
+
+  	.chart {
+  		// Provisorio //////////////////////////////////
+	    height: 85vh; // provisorio
+	    border: 2px solid #b4b4b4; // provisorio
+	    display: flex; // provisorio
+	    justify-content: center; // provisorio
+	    align-items: center; // provisorio
+
+	    h2 {
+	      color: #b4b4b4; // provisorio
+	    }
+	    // Provisorio //////////////////////////////////
+
+	    @media screen and (min-width: $medium-devices) {
+	    	width: 70%;
+  		}
+  	}
+
+  }
 }

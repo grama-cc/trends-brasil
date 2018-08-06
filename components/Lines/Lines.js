@@ -7,6 +7,7 @@ import Api from '../../lib/Api';
 import content from '../../static/json/keywords.json'
 
 import Filter from '../Filter.js';
+import Period from '../Period/Period.js';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
@@ -34,8 +35,10 @@ class Lines extends React.Component {
           <h2>Linhas</h2>
         </div>
 
-				<p>periodo</p>
-        
+				<Period
+          bgColor='#fff'
+          color='#b4b4b4'
+        />
 				<Social stroke='#b4b4b4' />
       </section>
     )

@@ -4,6 +4,7 @@
   padding: responsive(25, 60) responsive(10, 80);
   min-height: calc(100vh - 80px);
   background-color: $gray;
+  position: relative;
   
   .content {
   	display: flex;

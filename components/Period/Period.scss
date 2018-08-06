@@ -1,0 +1,58 @@
+@import '../../lib/scss/variables.scss';
+
+.period {
+  display: flex;
+  font-size: 14px;
+  flex-direction: column;
+  max-width: 132px;
+  align-items: flex-end;
+  margin: 20px auto;
+
+  @media screen and (min-width: $medium-devices) {
+  	position: absolute;
+    top: responsive(25, 60);
+    right: responsive(10, 80);
+    margin: 0;
+    background: #fff;
+  }
+  
+	li {
+		padding: 5px 24px 5px 0;
+	}
+
+  .choose {
+  	background-image: url(/static/img/arrow.svg);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: top 10px right;
+    border-bottom: 1px solid #b4b4b4;
+    padding: 5px 24px 0px 0;
+    span {
+			color: #b4b4b4;
+		}
+    p {
+      display: inline;
+    }
+  }
+	.dropdown {
+		display: flex;
+    flex-direction: column;
+    height: 0;
+    transition: height .4s ease;
+    overflow: hidden;
+    &.open {
+    	height: 60px;
+    }
+    button {
+			color: #4b4b4b;
+			font-size: 14px;
+			&[disabled] {
+				transition: background .4s ease;
+				color: $grayDark;
+			}
+		}
+	}
+}
+
+
+
