@@ -13,12 +13,33 @@ import Social from '../Social/Social.js';
 
 class Lines extends React.Component {
 
-  render() {
-
-  	if (!this.props.candidates) {
-      return <div className={css.loading}>Loading...</div>
+  renderFilter () {
+    if (!this.props.candidates) {
+      return
+    } else {
+      return (
+        <Filter 
+          onFilter={this.props.onFilter} 
+          filter={this.props.filter}
+          candidates={this.props.candidates}
+          all
+          arrowColor='#b4b4b4'
+        />
+      )
     }
+  }
 
+  renderChart () {
+    if (!this.props.candidates) {
+      return <div className={css.loading}>Loading...</div>
+    } else {
+      return (
+        <h2>Linhas</h2>
+      )
+    }
+  }
+
+  render() {
     return (
       <section className={css.lines}>
 
@@ -27,17 +48,11 @@ class Lines extends React.Component {
             content={content.description}
             arrowColor={this.props.arrowColor}
           />
-          <Filter 
-            onFilter={this.props.onFilter} 
-            filter={this.props.filter}
-            candidates={this.props.candidates}
-            all
-            arrowColor='#b4b4b4'
-          />
+          {this.renderFilter()}
         </div>
 
         <div className={css.chart}>
-          <h2>Linhas</h2>
+          {this.renderChart()}
         </div>
 
 				<Period

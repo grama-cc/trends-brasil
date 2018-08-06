@@ -27,12 +27,34 @@ class Category extends React.Component {
     this.getData();
   }
 
-  render() {
+  renderChartNav () {
+    if (!this.state.bars) {
+      return
+    } else {
+      return (
+        <ul className={css.nav}>
+          <li>Biografia</li>
+          <li>Outros</li>
+          <li>Celebridades</li>
+          <li>Ideologia</li>
+          <li>Mídia</li>
+          <li>Políticos</li>
+        </ul>
+      )
+    }
+  }
 
+  renderChart () {
     if (!this.state.bars) {
       return <div className={css.loading}>Loading...</div>
+    } else {
+      return (
+        <h2>Bar chart</h2>
+      )
     }
+  }
 
+  render() {
     return (
       <section className={css.category}>
 
@@ -44,19 +66,11 @@ class Category extends React.Component {
               arrowColor={this.props.arrowColor}
             />
 
-            <ul className={css.nav}>
-              <li>Biografia</li>
-              <li>Outros</li>
-              <li>Celebridades</li>
-              <li>Ideologia</li>
-              <li>Mídia</li>
-              <li>Políticos</li>
-            </ul>
-
+            {this.renderChartNav()}
           </div>
 
           <div className={css.chart}>
-            <h2>Bar chart</h2>
+            {this.renderChart()}
           </div>
 
         </div>

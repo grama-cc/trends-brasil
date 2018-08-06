@@ -12,15 +12,25 @@ import Social from '../Social/Social.js';
 
 class Section extends React.Component {
 
-  render() {
-
+  renderFilter () {
     if (!this.props.candidates) {
-      return <div className={css.loading}>Loading...</div>
+      return
+    } else {
+      return (
+        <Filter 
+          onFilter={this.props.onFilter} 
+          filter={this.props.filter}
+          candidates={this.props.candidates}
+          arrowColor='#b4b4b4'
+        />
+      )
     }
+    
+  }
 
-    const content = this.props.content
-
-    const candidates = this.props.candidates;
+  render() {
+    const content = this.props.content;
+    const candidates = this.props.candidates || [];
     const currentCandidate = candidates.find((c) => this.props.filter === c.id)
 
     const bg = currentCandidate ? `${currentCandidate.slug}.png` : 'none.svg';
@@ -56,12 +66,7 @@ class Section extends React.Component {
           </div>
 
           <div className={css.chart}>
-            <Filter 
-              onFilter={this.props.onFilter} 
-              filter={this.props.filter}
-              candidates={candidates}
-              arrowColor='#b4b4b4'
-            />
+            {this.renderFilter()}
             {this.props.children}
           </div>
         </div>
