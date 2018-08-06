@@ -62,11 +62,15 @@ class Graphic extends React.Component {
     let circles = bubble(nodes).leaves();
 
     circles = circles.sort((a, b) => {
-      if (a.data.id === filter || b.data.id === filter) {
+      if (a.data.id === filter) {
         return 1;
+      }
+      if (b.data.id === filter) {
+        return -1;
       }
       return 0;
     })
+
 
     return(
       <div 

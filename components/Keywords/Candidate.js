@@ -12,16 +12,35 @@ class Candidate extends React.Component {
     super(props)
     this.state = {
       nav: null,
-      slider: null
+      slider: null,
+       slideIndex: 0,
+      //slideToIndex: state.get('slideTo')
     }
+    //this.slider.slickGoTo(0)
   }
 
   componentDidMount() {
+
     this.setState({
       nav: this.nav,
-      slider: this.slider
-    })
+      slider: this.slider,
+      //go: this.slider.slickGoTo(0)
+    });
+
+    //this.slider.slickGoTo(0)
+
+    //console.log('did', this.state.go)
   }
+
+  //componentWillMount () {
+    //const index = this.findIndex(this.props.candidates, 'id', this.props.filter);
+
+    //console.log('will', this.state.go)
+    //this.setState({
+     // go: this.slider.slickGoTo(index + 1)
+    //});
+  //}
+
 
   findIndex = (array, attr, value) => {
     for(var i = 0; i < array.length; i += 1) {
@@ -31,6 +50,11 @@ class Candidate extends React.Component {
     }
     return 0;
   }
+
+  //componentWillReceiveProps (nextProps) {
+    //const index = this.findIndex(this.props.candidates, 'id', this.props.filter);
+    //this.slider.slickGoTo(index + 1);
+  //}
 
   render() {
     const candidates = this.props.candidates;
@@ -51,8 +75,6 @@ class Candidate extends React.Component {
           focusOnSelect={true}
           centerMode={true}
           variableWidth={true}
-          // beforeChange={this.slider.slickGoTo(index)}
-          initialSlide={0}
         >
           <div className={css.contentImage} key={index}>
             <div
@@ -83,6 +105,8 @@ class Candidate extends React.Component {
           ref={ slider => ( this.nav = slider ) }
           arrows={true}
           slidesToShow={1}
+          initialSlide={0}
+          // beforeChange={this.slider.slickGoTo(index + 1)}
         > 
           <div className={`${css.info} ${css.choose}`}>
             <h3><span>{content.buttons.choose_candidate}</span></h3>
