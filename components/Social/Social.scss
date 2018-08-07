@@ -9,7 +9,7 @@
 	&.bottom {
 		position: absolute;
 		width: calc(100vw - 80px);
-		bottom: 10px;
+		bottom: responsive(10, 60);
 		left: 50%;
 		transform: translateX(-50%);
 	}
@@ -20,7 +20,6 @@
 
 		li {
 			background-color: #ececec; 
-			// padding: 10px;
 			border-radius: 100%;
 			width: 40px;
 			height: 40px;

@@ -12,15 +12,16 @@ class Candidate extends React.Component {
     super(props)
     this.state = {
       nav: null,
-      slider: null
+      slider: null,
     }
   }
 
   componentDidMount() {
+
     this.setState({
       nav: this.nav,
-      slider: this.slider
-    })
+      slider: this.slider,
+    });
   }
 
   findIndex = (array, attr, value) => {
@@ -51,8 +52,6 @@ class Candidate extends React.Component {
           focusOnSelect={true}
           centerMode={true}
           variableWidth={true}
-          // beforeChange={this.slider.slickGoTo(index)}
-          initialSlide={0}
         >
           <div className={css.contentImage} key={index}>
             <div
@@ -83,6 +82,8 @@ class Candidate extends React.Component {
           ref={ slider => ( this.nav = slider ) }
           arrows={true}
           slidesToShow={1}
+          initialSlide={0}
+          // beforeChange={this.slider.slickGoTo(index + 1)}
         > 
           <div className={`${css.info} ${css.choose}`}>
             <h3><span>{content.buttons.choose_candidate}</span></h3>
