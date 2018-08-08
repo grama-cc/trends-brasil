@@ -9,6 +9,8 @@ import content from '../../static/json/radar.json'
 import Filter from '../Filter.js';
 import Description from '../Description.js';
 import Section from '../SectionWithFilter/SectionWithFilter.js';
+// import CircleChart from '../CircleChart/CircleChart.js';
+
 import Social from '../Social/Social.js';
 
 class RadarChart extends React.Component {
@@ -21,8 +23,8 @@ class RadarChart extends React.Component {
     };
 
     this.config = {
-      width: 270, // fazer o responsivo
-      height: 270, // fazer o responsivo
+      width: 270,
+      height: 270,
       margin: { 
         top: 100,
         right: 100,
@@ -47,20 +49,14 @@ class RadarChart extends React.Component {
 
   componentDidMount() {
     this.getData();
+  }
 
-    const width = window.innerWidth / 2;
-    const circle = width / 2;
-
-    if(window.innerWidth > 500) {
-
-      this.config.dash = 2;
-      this.config.width = window.innerWidth / 2;
-      this.config.height = this.config.width * 0.80;
-      this.radius = Math.min(circle, circle * 0.70);
-
-    } else {
-
-    }
+  circleLevels = () => {
+    const levels = d3.range(1, (this.config.levels + 1) );
+    const diameter = levels.map((d, i) => {
+      return this.radius / this.config.levels * d
+    });
+    return diameter
   }
 
   values = (data) => {
@@ -80,14 +76,6 @@ class RadarChart extends React.Component {
     }
   }
 
-  circleLevels = () => {
-    const levels = d3.range(1, (this.config.levels + 1) );
-    const diameter = levels.map((d, i) => {
-      return this.radius / this.config.levels * d
-    });
-    return diameter
-  }
-
   axisPosition = (data) => {
     const values = this.values(data)
     const position = data[0].categories.map((d, i) => {
@@ -100,29 +88,65 @@ class RadarChart extends React.Component {
     return position
   }
 
-  findIndex = (array, attr, value) => {
-    for(var i = 0; i < array.length; i += 1) {
-      if(array[i][attr] === value) {
-        return i;
-      }
-    }
-    return 0;
-  }
-
   renderChart () {
     if(!this.state.radar && !this.props.candidates) {
       return <div className={css.loading}>Loading...</div>
     } else {
+
+      const circles = this.circleLevels();
+      //const w = this.config.width;
+      //const h = this.config.height;
+
+      /* Tentar remover =============================== */
+      let radar = this.state.radar || [];
+      const axis = this.axisPosition(radar);
+      const values = this.values(radar);
+      const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
+        values.scale( (d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
+      );
+      const filter = this.props.filter;
+
+      const candidates = radar.filter((c) => filter === c.id);
+
+      radar = radar.sort((a, b) => {
+        if (a.id === filter) {
+          return 1;
+        }
+        if (b.id === filter) {
+          return -1;
+        }
+        return 0;
+      });
+      /* Tentar remover =============================== */
+
+      // const w = this.config.width * this.config.padding + 50;
+      // const h = this.config.height * this.config.padding + 50;
+
+      const w = this.config.width;
+      const h = this.config.height;
+
       return (
         <React.Fragment>
-          <h2>Radar Chart</h2>
-          {/*<svg width={w} height={h}>
-            <g transform={`translate(${w / 2}, ${h / 2})`}>
+          {/*<div className={css.categoryNames}>
+            {axis.map((point, idx) => (
+              <p className={css.name}>
+                {point.name}
+              </p>
+            ))}
+          </div>*/}
+          <svg 
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox={`0 0 ${w} ${h}`}
+            preserveAspectRatio="none"
+          >
+            <g 
+              transform={`translate(${w / 2}, ${h / 2})`}
+            >
               <defs>
                 <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="20%" 
                     style={{ 
-                      stopColor: this.props.filter === 0 ? '#b4b4b4' : radar[radar.length - 1].color, 
+                      stopColor: filter ? candidates[0].color : '#b4b4b4', 
                       stopOpacity: 0.1 
                     }} 
                   />
@@ -155,9 +179,10 @@ class RadarChart extends React.Component {
                     <text
                       className={css.text}
                       textAnchor={`middle`}
+                      fontSize='12px'
                       dy={`0.35em`}
-                      x={point.x * 1.2}
-                      y={point.y * 1.2}
+                      x={point.x * 1.3}
+                      y={point.y * 1.3}
                     >
                       {point.name}
                     </text>
@@ -172,46 +197,22 @@ class RadarChart extends React.Component {
                     fill="none"
                   />
                   <path
-                    className={idx == radar.length - 1 ? css.stroke : null}
+                    className={idx == radar.length - 1 && filter ? css.stroke : null}
                     d={radarLine(curves.categories)}
-                    strokeWidth={idx == radar.length - 1 ? 2 : 0.5}
-                    stroke={idx == radar.length - 1 ? "#fff" : "#4B4B4B"}
-                    fill={idx == radar.length - 1 ? "url(#grad)" : "none" }
+                    strokeWidth={idx == radar.length - 1 && filter ? 2 : 0.5}
+                    stroke={idx == radar.length - 1 && filter ? "#fff" : "#4B4B4B"}
+                    fill={idx == radar.length - 1 && filter ? "url(#grad)" : "none" }
                   />
                 </g>
               ))}
             </g>
-          </svg>*/}
+          </svg>
         </React.Fragment>
       )
     }
   }
 
   render() {
-    //if (!this.state.radar && !this.props.candidates) {
-      
-    //}
-
-    let radar = this.state.radar || [];
-
-    /*const circles = this.circleLevels();
-    const axis = this.axisPosition(radar);
-    const values = this.values(radar)
-    const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
-      values.scale( (d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
-    );
-
-    const filter = this.props.filter;
-    const w = this.config.width;
-    const h = this.config.height;
-
-    radar = radar.sort((a) => {
-      if (a.id === filter) {
-        return 1;
-      }
-      return 0;
-    })*/
-
     return (
       <Section
         onFilter={this.props.onFilter} 

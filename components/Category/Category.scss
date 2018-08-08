@@ -1,14 +1,13 @@
 @import '../../lib/scss/variables.scss';
 
 .category {
-  padding: responsive(25, 60) responsive(10, 80);
-  min-height: calc(100vh - 80px);
-  transition: background .5s ease;
-  background-color: #f8f8f8;
+  @include grid();
+  background-color: $gray;
 
   .content {
   	display: flex;
   	flex-direction: column;
+    width: 100%;
   	@media screen and (min-width: $medium-devices) {
   		flex-direction: row;
   		justify-content: space-between;
@@ -25,16 +24,17 @@
 
       .nav {
         font-size: 20px;
-        li {
+        .item {
           margin: 0 0 24px;
-          background-image: url(/static/img/others.svg);
           background-repeat: no-repeat;
           background-position: center left;
+          background-size: 40px;
           height: 40px;
           padding: 0 0 0 50px;
           display: flex;
           flex-direction: column;
           justify-content: center;
+          cursor: pointer;
 
         }
         
@@ -42,15 +42,19 @@
   	}
 
   	.chart {
+      height: 80vh;
+
+
   		// Provisorio //////////////////////////////////
-	    height: 85vh; // provisorio
+
 	    border: 2px solid #b4b4b4; // provisorio
-	    display: flex; // provisorio
-	    justify-content: center; // provisorio
-	    align-items: center; // provisorio
+	    // display: flex; // provisorio
+	    // justify-content: center; // provisorio
+	    // align-items: center; // provisorio
 
 	    h2 {
 	      color: #b4b4b4; // provisorio
+        text-align: center;
 	    }
 	    // Provisorio //////////////////////////////////
 

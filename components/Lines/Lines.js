@@ -55,11 +55,11 @@ class Lines extends React.Component {
           {this.renderChart()}
         </div>
 
-				<Period
+				{/*<Period
           bgColor='#fff'
           color='#b4b4b4'
           arrowColor={this.props.arrowColor}
-        />
+        />*/}
 				<Social stroke='#b4b4b4' />
       </section>
     )

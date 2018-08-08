@@ -1,0 +1,35 @@
+<svg
+  width="37px"
+  height="37px"
+  viewBox="0 0 37 37"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <g
+    transform="translate(1, 1)"
+    stroke="#4b4b4b"
+    stroke-width="1"
+    fill="none"
+  >
+    <circle cx="17.5" cy="17.5" r="17.5" />
+    <polygon 
+      fill="#f8f8f8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      points="3.9375 18.375 12.25 18.375 12.25 9.625 3.9375 9.625"
+    />
+    <polygon
+      fill="#f8f8f8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      points="24.285674 22.2475586 15.8142374 6.45542187 7.34315998 22.2475586"
+    />
+    <path 
+      d="M17.3407696,22.3381348 C17.3407696,26.1397979 20.3959888,29.2219238 24.1644636,29.2219238 C27.9329384,29.2219238 30.9881576,26.1397979 30.9881576,22.3381348 C30.9881576,18.5364717 27.9329384,15.4543457 24.1644636,15.4543457 C20.3959888,15.4543457 17.3407696,18.5364717 17.3407696,22.3381348 Z"
+      fill="#f8f8f8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>

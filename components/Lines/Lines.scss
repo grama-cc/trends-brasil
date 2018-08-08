@@ -1,10 +1,7 @@
 @import '../../lib/scss/variables.scss';
 
 .lines {
-	padding: responsive(25, 60) responsive(10, 80);
-	min-height: calc(100vh - 80px);
-  transition: background .5s ease;
-  position: relative;
+	@include grid();
 
   .info {
   	display: flex;
@@ -20,8 +17,9 @@
   }
 
   .chart {
+    width: 100%;
   	// Provisorio //////////////////////////////////
-    height: 65vh; // provisorio
+    min-height: 60vh; // provisorio
     margin: 20px 0 0; // provisorio
     border: 2px solid #b4b4b4; // provisorio
     display: flex; // provisorio

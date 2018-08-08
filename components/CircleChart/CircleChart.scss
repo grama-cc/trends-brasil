@@ -1,0 +1,40 @@
+@import '../../lib/scss/variables.scss';
+
+/*.radar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // Provisorio //////////////////////////////////
+  height: 70vh; // provisorio
+  border: 2px solid #fff; // provisorio
+  display: flex; // provisorio
+  justify-content: center; // provisorio
+  align-items: center; // provisorio
+  width: 100%;
+
+  h2 {
+    color: #fff; // provisorio
+  }
+  // Provisorio //////////////////////////////////
+
+  @media screen and (min-width: $medium-devices) {
+    // align-items: flex-start;
+    // width: 70%;
+    // width: 90%;
+    margin: 20px auto 0;
+  }
+}
+
+svg {
+  margin: 0 auto;
+  @media screen and (min-width: $medium-devices) {
+    margin: 40px auto 0;
+  }
+  .stroke {
+    transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+  }
+  .text {
+    font-size: responsive(14, 18);
+  }
+}*/

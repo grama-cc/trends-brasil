@@ -23,24 +23,32 @@ class Cloud extends React.Component {
     return list
   }
 
+  isOdd = (num) => { return num % 2;}
+
+
   render() {
     const words = this.getWords();
 
     return (
-      <div {...this.props} className={css.cloud}>
-        {words.map((word, index) => (
+      <div className={css.cloud}>
+        {words.map((word, idx) => {
+
+          const font = this.props.keywords ? `calc(5vw * ${word.size/100} + 14px)` : `calc(10vw * ${word.size/100} + 12px)`
+
+          return(
             <a
-              key={index}
+              key={idx}
               href={`https://www.google.com.br/search?q=${word.query_text.replace(/ /g,"+")}`}
               target="_blank"
               style={{
-                fontSize: `calc(2vw * ${word.size/100} + 20px)`,
+                fontSize: font,
                 color: word.color,
+                left: `${ this.props.keywords ? 0 : this.isOdd(idx) === 0 ? - (6 * idx) - 20 : (idx * 4) + 20 }px`
               }}
             > 
               {`${word.text} `}
             </a>
-        ))}
+        )})}
       </div>
     )
   }

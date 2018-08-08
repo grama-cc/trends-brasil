@@ -17,7 +17,6 @@ class Candidate extends React.Component {
   }
 
   componentDidMount() {
-
     this.setState({
       nav: this.nav,
       slider: this.slider,
@@ -95,7 +94,8 @@ class Candidate extends React.Component {
                 id={item.id} 
                 candidates={this.props.candidates}
                 words={this.props.words} 
-                type='candidate' 
+                type='candidate'
+                keywords
               />
             </div>
           ))}

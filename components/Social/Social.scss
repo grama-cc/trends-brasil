@@ -5,6 +5,8 @@
 	justify-content: center;
 	margin: 20px 0 0;
 	width: 100%;
+
+	order: 2;
 	
 	&.bottom {
 		position: absolute;
@@ -36,7 +38,7 @@
 
 	li {
 		margin: 0 0 0 24px;
-		@media screen and (max-width: $small-devices) {
+		@media screen and (max-width: $medium-devices) {
 			&:first-child {
 				margin: 0;
 			}
