@@ -52,7 +52,7 @@ class Home extends React.Component {
     return (
       <Layout>
         <Head title="Trends Brasil" />
-        
+         
         <Intro
           arrowColor='#b4b4b4'
         />
@@ -89,6 +89,7 @@ class Home extends React.Component {
           filter={this.state.filter}
           compare={this.state.compare}
           candidates={candidates}
+          words={words}
           arrowColor='#b4b4b4'
         />
 
@@ -98,7 +99,6 @@ class Home extends React.Component {
           candidates={candidates}
           arrowColor='#fff'
         />
-        
         <Footer />
         <Clipping />
       </Layout>

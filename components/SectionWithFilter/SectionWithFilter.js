@@ -68,15 +68,18 @@ class Section extends React.Component {
           <div className={css.chart}>
             {this.renderFilter()}
             {this.props.children}
+
+            <Period
+              bgColor={currentCandidate ? currentCandidate.color : '#b4b4b4'}
+              color='#fff'
+              arrowColor={this.props.arrowColor}
+            />
+            <Social stroke='#fff' />
+
           </div>
         </div>
         
-        <Period
-          bgColor={currentCandidate ? currentCandidate.color : '#b4b4b4'}
-          color='#fff'
-          arrowColor={this.props.arrowColor}
-        />
-        <Social stroke='#fff' />
+        
       </section>
     )
   }

@@ -1,16 +1,15 @@
 @import '../lib/scss/variables.scss';
 
 .cloud {
-
 	a {
 		text-align: center;
-		padding: 8px;
+		padding: 3px;
 		display: inline;
 		position: relative;
 	}
 
 	@media screen and (min-width: $medium-devices) {
-    width: calc(100% - 60px);
-    margin: 0 auto;
+    // width: calc(100% - 60px);
+    width: calc(100%);
   }
 }

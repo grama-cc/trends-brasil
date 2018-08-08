@@ -141,7 +141,7 @@ class Filter extends React.Component {
           {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
         </div>
 
-        {this.props.startCompare ? 
+        {relationship ? 
           <div className={`${css.container} ${css.compare} ${relationship ? css.show : null}`}>
           {relationship ? this.renderImage(c.length, compareSlug, compareColor) : null}
           

@@ -202,6 +202,11 @@
 
 .slick-slide, .slick-slide *{ outline: none !important; }
 
+/* --------------------- Category Bars -----------------------*/
+
+.barsNav .slick-slide {
+	float: none;
+}
 
 
 

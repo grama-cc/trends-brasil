@@ -3,9 +3,6 @@ $img: '/static/img/';
 // Color
 $white: #fff;
 $black: #000;
-
-$red: #ff0000;
-
 $gray: #f8f8f8;
 $grayLight: #ececec;
 $grayDark: #b4b4b4;
@@ -15,17 +12,26 @@ $roboto: 'Roboto', sans-serif;
 $robotoLight: 'Roboto-Light', sans-serif;
 $robotoMedium: 'Roboto-Medium', sans-serif;
 
-// Circle position
+// Keywords modal circle position
 $item-count: 8;
 $circle-size: 40vh;
 $angle: (360 / $item-count);
 $rot: 0;
 
+// Componentes base grid
+@mixin grid {
+  padding: responsive(20, 40) responsive(20, 40);
+  transition: background .5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
 // Media query
-$small-devices: 800px;
-$medium-devices: 801px;
+$medium-devices: 800px;
 
-
+// Responsive
 @function responsive($value1, $value2, $width1: 320, $width2: 1920) {
   $x1: $width1;
   $x2: $width2;
@@ -33,7 +39,7 @@ $medium-devices: 801px;
   $y2: $value2;
   $a: ($y2 - $y1) / ($x2 - $x1);
   $b: ($x2 * $y1 - $x1 * $y2) / ($x2 - $x1);
-
   @return calc(#{$a * 100vw} + #{$b * 1px});
 }
+
 

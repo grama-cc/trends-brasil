@@ -21,8 +21,8 @@ class Orbital extends React.Component {
     };
 
     this.config = {
-      width: 300, // fazer o responsivo
-      height: 300, // fazer o responsivo
+      width: 270,
+      height: 270,
       margin: { 
         top: 100,
         right: 100,
@@ -31,7 +31,6 @@ class Orbital extends React.Component {
       },
       levels: 3,
       maxValue: 0.5, // biggest circle will value
-      // color: d3.scaleOrdinal().range([ "#EDC951", "#CC333F", "#00A0B0" ]) // color no array
     };
 
     // Circle radius
@@ -74,122 +73,131 @@ class Orbital extends React.Component {
     return diameter
   }
 
-  findIndex = (array, attr, value) => {
-    for(var i = 0; i < array.length; i += 1) {
-      if(array[i][attr] === value) {
-        return i;
-      }
-    }
-    return 0;
-  }
-
   renderChart () {
     if (!this.state.orbital) {
+
       return <div className={css.loading}>Loading...</div>
+
     } else {
-      return (
+
+      const orbital = this.state.orbital;
+
+      const w = this.config.width * 1.08;
+      const h = this.config.height * 1.08;
+
+      const filter = this.props.filter;
+
+      const circles = this.circleLevels();
+      const values = this.values(orbital);
+      const levels = d3.range(1, (this.config.levels + 1) ).reverse();
+
+      const candidates = orbital.filter((c) => filter === c.id);
+
+      return ( 
         <React.Fragment>
-          <h2>Orbital Chart</h2>
-          {/*<svg width={this.config.width} height={this.config.height}>
-          <g transform={`translate(${this.config.width / 2}, ${this.config.height / 2})`}>
-            <g className='base'>
-              {circles.map((diameter, idx) => (
-                <circle
-                  key={idx}
-                  className={css.grid}
-                  fill="none"
-                  stroke="#fff"
-                  strokeDasharray={1}
-                  r={diameter}
-                />
+        <p className={css.middle}>{filter ? candidates[0].name : null}</p>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox={`0 0 ${w} ${h}`}
+          preserveAspectRatio="none"
+        >
+        <g transform={`translate(${w / 2}, ${h / 2})`}>
+          <g className='base'>
+            {circles.map((diameter, idx) => (
+              <circle
+                key={idx}
+                className={css.grid}
+                fill="none"
+                stroke="#fff"
+                strokeDasharray={1}
+                r={diameter}
+              />
+            ))}
+
+            <g>
+              {levels.map((l, i) => (
+                <g key={i}>
+                  <rect
+                    width='30'
+                    height='20'
+                    fill={filter ? candidates[0].color : '#b4b4b4'}
+                    stroke='none'
+                    x={-14}
+                    y={(-l * this.radius / 3) - 10}
+                  />
+                  <text
+                    x={i != 2 ? -5 : -8}
+                    y={-l * this.radius / 3}
+                    dy='0.4em'
+                    fontSize='10px'
+                    fill='#4b4b4b'
+                    className={css.text}
+                  >
+                    {i === 0 ? 10 : ( i * 5 ) * 10}
+                  </text>
+                </g>
               ))}
-              <g>
-                {levels.map((l, i) => (
-                  <g key={i}>
-                    <rect
-                      width="30"
-                      height="20"
-                      fill={this.props.filter === 0 ? '#B4B4B4' : color}
-                      stroke={`none`}
-                      x={-14}
-                      y={(-l * this.radius / 3) - 10}
-                    />
-                    <text
-                      x={i != 2 ? -8 : -12.5}
-                      y={-l * this.radius / 3}
-                      dy={'0.4em'}
-                      fontSize={15}
-                      fill={'#000'}
-                    >
-                      {i === 0 ? 10 : ( i * 5 ) * 10}
-                    </text>
-                  </g>
-                ))}
-              </g>
             </g>
-            <g className='dots'>
-              {data.map((points, idx) => (
-                <g className='candidates' key={idx}>
-                  {points.id === this.props.filter ? points.people.map((dot, i) => {
 
-                    const r = dot.size === 0 ? 15 : 7.5
-                    let x = values.scale( dot.size / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
-                    let y = values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
-                    y = y + r + 15;
+          </g>
+          <g className='dots'>
+            {orbital.map((points, idx) => (
+              <g className='candidates' key={idx}>
 
-                    // console.log(r, dot.size, 'oi')
+                {points.id === filter ?
+                  <g>
+                    <circle
+                      r={15}
+                      cx={0}
+                      cy={0}
+                      fill='#fff'
+                    />
+                  </g>
+                  : null}
 
-                    return(
+
+                {points.id === filter ? points.people.map((dot, i) => {
+
+                  const r = dot.size === 0 ? 15 : 7.5
+
+                  let x = values.scale( dot.size / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
+                  let y = values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
+
+                  y = y + r + 15;
+
+                  return(
 
                     <g key={i}>
                       <circle
                         r={r}
                         cx={x}
                         cy={y}
-                        fill={`#fff`}
+                        fill='#fff'
                       />
                       <text
                         x={x}
-                        y={y}
+                        y={y - 12}
                         fontSize={12}
                         textAnchor="middle"
+                        fill='#fff'
                       >
                         {dot.text}
                       </text>
                     </g>
 
-                  )}) : null}
+                )}) : null}
 
-
-                </g>
-              ))}
-            </g>
+              </g>
+            ))}
           </g>
-          </svg>*/}
+        </g>
+        </svg>
         </React.Fragment>
       )
     }
   }
 
   render() {
-    if (!this.state.orbital) {
-      return <div className={css.loading}>Loading...</div>
-    }
-
-    let data = this.state.orbital;
-
-    /*const circles = this.circleLevels();
-    const values = this.values(data);
-    const levels = d3.range(1, (this.config.levels + 1) ).reverse();
-    const color = data[data.length - 1].color
-
-    data = data.sort((a, b) => {
-      if (a.id === this.props.filter || b.id === this.props.filter) {
-        return 1;
-      }
-      return 0;
-    })*/
-
     return (
       <Section
         onFilter={this.props.onFilter} 

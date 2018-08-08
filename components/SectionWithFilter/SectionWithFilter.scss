@@ -1,22 +1,17 @@
 @import '../../lib/scss/variables.scss';
 
 .section {
-  padding: responsive(25, 60) responsive(10, 80);
-  min-height: calc(100vh - 100px);
-  transition: background .5s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+  @include grid();
 
   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 
     @media screen and (min-width: $medium-devices) {
       flex-direction: row;
-      align-items: flex-start;
+      align-items: stretch;
       justify-content: space-between;
     }
 
@@ -27,29 +22,34 @@
       width: 100%;
 
       @media screen and (min-width: $medium-devices) {
-        align-items: flex-start;
+        height: auto;
+        justify-content: flex-start;
+        align-items: flex-end;
         width: 60%;
-        margin: 40px 0 0;
       }
 
     }
   }
 
   .info {
+
     @media screen and (min-width: $medium-devices) {
       width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 
   .slider {
-    position: absolute;
-    bottom: 0;
-    width: 35%;
     display: none;
-    min-height: 55vh;
     @media screen and (min-width: $medium-devices) {
       display: flex;
       flex-direction: column;
+      position: absolute;
+      bottom: 0;
+      min-height: 55vh;
+      width: 40%;
     }
     li {
       img {
@@ -57,15 +57,16 @@
         width: 100%;
       }
       h3 {
-        position: absolute;
         background: $grayLight;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
         padding: 15px 30px;
         border-radius: 50px;
         font-size: 24px;
         white-space: nowrap;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        bottom: 30px;
         &.empty {
           background: transparent;
         }

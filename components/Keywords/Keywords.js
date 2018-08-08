@@ -74,12 +74,12 @@ class Keywords extends React.Component {
           { this.renderChart(candidates, words, view) }
         </div>
 
-        <Period 
+        {/*<Period 
           bgColor='#f8f8f8'
           color='#b4b4b4'
           bottom
           arrowColor={this.props.arrowColor}
-        />
+        />*/}
         <Social stroke='#b4b4b4' bottom />
       </section>
     )

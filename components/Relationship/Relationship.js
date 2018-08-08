@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Relationship.scss';
-import Api from '../../lib/Api';
+// import Api from '../../lib/Api';
 import content from '../../static/json/relationship.json';
 
 import Description from '../Description.js';
@@ -12,9 +12,12 @@ import Cloud from '../Cloud.js';
 class Relationship extends React.Component {
 
   renderChart () {
-    if (!this.props.candidates) {
+    if (!this.props.candidates && !this.props.words) {
+
       return <div className={css.loading}>Loading...</div>
+
     } else {
+
       return (
         <React.Fragment>
           <div className={css.container}>
@@ -27,16 +30,24 @@ class Relationship extends React.Component {
 
               candidates={this.props.candidates} 
               arrowColor={this.props.arrowColor}
-              startCompare
               relationship
             />
           </div>
           <div className={css.clouds}>
-            <div />
+            <Cloud 
+              id={this.props.filter} 
+              candidates={this.props.candidates}
+              words={this.props.words} 
+              type='candidate' 
+            />
             {/*<Cloud id={this.props.filter} type='candidate' />*/}
             <div className={css.common}>mais<br/>comuns</div>
-            <div />
-            {/*<Cloud id={this.props.compare} type='candidate' />*/}
+            <Cloud 
+              id={this.props.compare}
+              candidates={this.props.candidates}
+              words={this.props.words} 
+              type='candidate'
+            />
           </div>
         </React.Fragment>
       )
