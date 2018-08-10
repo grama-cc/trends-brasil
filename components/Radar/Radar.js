@@ -127,13 +127,13 @@ class RadarChart extends React.Component {
 
       return (
         <React.Fragment>
-          {/*<div className={css.categoryNames}>
+          <div className={css.categoryNames}>
             {axis.map((point, idx) => (
               <p className={css.name}>
                 {point.name}
               </p>
             ))}
-          </div>*/}
+          </div>
           <svg 
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${w} ${h}`}

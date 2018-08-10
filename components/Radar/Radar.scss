@@ -16,6 +16,50 @@
     height: 60vh;
   }
 
+
+  $count: 6;
+  $angle: (360 / $count);
+  $rot: 90;
+  $size: 72vh;
+
+  .categoryNames {
+    display: none;
+    @media screen and (min-width: $medium-devices){
+      display: block;
+    }
+    position: absolute;
+    .name {
+      position: relative;
+      font-family: $robotoMedium;
+      top: 50%; 
+      left: 50%;
+      text-align: center;
+      width: 100px;
+      height: 16px;
+      margin-left: -50px;
+      margin-top: -8px;
+      color: #4b4b4b;
+      font-size: responsive(12, 16);
+      // background: #fff;
+
+      @for $i from 1 through $count {
+        &:nth-of-type(#{$i}) {
+          transform: rotate($rot * -1deg) translate($size / 2) rotate($rot * 1deg);
+        }
+        $rot: $rot + $angle;
+      }
+
+      &:nth-of-type(1) {
+        transform: rotate(-90deg) translate(30vh) rotate(90deg);
+      }
+
+      &:nth-of-type(4) {
+        transform: rotate(-270deg) translate(33vh) rotate(270deg);
+      }
+    }
+  }
+
+
   svg {
     margin: 0 auto;
     transform: rotate(90deg);
