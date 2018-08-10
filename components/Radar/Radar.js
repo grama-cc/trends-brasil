@@ -122,12 +122,12 @@ class RadarChart extends React.Component {
       // const w = this.config.width * this.config.padding + 50;
       // const h = this.config.height * this.config.padding + 50;
 
-      const w = this.config.width;
-      const h = this.config.height;
+      const w = this.config.width + 5;
+      const h = this.config.height + 5;
 
       return (
         <React.Fragment>
-          <div className={css.categoryNames}>
+          <div className={css.categories}>
             {axis.map((point, idx) => (
               <p className={css.name} key={idx}>
                 {point.name}
@@ -189,6 +189,7 @@ class RadarChart extends React.Component {
                   </g>
                 ))}
               </g>
+              <g className={css.areaContainer}>
               {radar.map((curves, idx) => (
                 <g className={css.wrap} key={idx} id={curves.id}>
                   <path
@@ -199,12 +200,14 @@ class RadarChart extends React.Component {
                   <path
                     className={idx == radar.length - 1 && filter ? css.stroke : null}
                     d={radarLine(curves.categories)}
-                    strokeWidth={idx == radar.length - 1 && filter ? 2 : 0.5}
-                    stroke={idx == radar.length - 1 && filter ? "#fff" : "#4B4B4B"}
+                    strokeWidth={idx == radar.length - 1 && filter ? 2 : 1}
+                    stroke={idx == radar.length - 1 && filter ? "#fff" : "#4b4b4b"}
+                    opacity={idx == radar.length - 1 && filter ? 1 : .4}
                     fill={idx == radar.length - 1 && filter ? "url(#grad)" : "none" }
                   />
                 </g>
               ))}
+              </g>
             </g>
           </svg>
         </React.Fragment>

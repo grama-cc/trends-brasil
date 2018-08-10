@@ -16,17 +16,7 @@
     height: 60vh;
   }
 
-
-  $count: 6;
-  $angle: (360 / $count);
-  $rot: 90;
-  $size: 72vh;
-
-  .categoryNames {
-    display: none;
-    @media screen and (min-width: $medium-devices){
-      display: block;
-    }
+  .categories {
     position: absolute;
     .name {
       position: relative;
@@ -34,28 +24,35 @@
       top: 50%; 
       left: 50%;
       text-align: center;
-      width: 100px;
+      width: 80px;
       height: 16px;
-      margin-left: -50px;
+      margin-left: -40px;
       margin-top: -8px;
       color: #4b4b4b;
       font-size: responsive(12, 16);
-      // background: #fff;
 
-      @for $i from 1 through $count {
-        &:nth-of-type(#{$i}) {
-          transform: rotate($rot * -1deg) translate($size / 2) rotate($rot * 1deg);
-        }
-        $rot: $rot + $angle;
+      &:nth-of-type(1) { transform: rotate(-90deg) translate(33vw) rotate(90deg); }
+      &:nth-of-type(2) { transform: rotate(-160deg) translate(40vw) rotate(160deg); }
+      &:nth-of-type(3) { transform: rotate(-210deg) translate(45vw) rotate(210deg); }
+      &:nth-of-type(4) { transform: rotate(-270deg) translate(40vw) rotate(270deg); }
+      &:nth-of-type(5) { transform: rotate(-336deg) translate(42vw) rotate(336deg); }
+      &:nth-of-type(6) { transform: rotate(-390deg) translate(44vw) rotate(390deg); }
+
+      @media screen and (min-width: 700px) {
+        &:nth-of-type(1) { transform: rotate(-90deg) translate(36vw) rotate(90deg); }
       }
 
-      &:nth-of-type(1) {
-        transform: rotate(-90deg) translate(30vh) rotate(90deg);
+      @media screen and (min-width: $medium-devices) {
+        width: 100px;
+        margin-left: -50px;
+        &:nth-of-type(1) { transform: rotate(-90deg) translate(30vh) rotate(90deg); }
+        &:nth-of-type(2) { transform: rotate(-150deg) translate(36vh) rotate(150deg); }
+        &:nth-of-type(3) { transform: rotate(-210deg) translate(36vh) rotate(210deg); }
+        &:nth-of-type(4) { transform: rotate(-270deg) translate(33vh) rotate(270deg); }
+        &:nth-of-type(5) { transform: rotate(-330deg) translate(36vh) rotate(330deg); }
+        &:nth-of-type(6) { transform: rotate(-390deg) translate(36vh) rotate(390deg); }
       }
 
-      &:nth-of-type(4) {
-        transform: rotate(-270deg) translate(33vh) rotate(270deg);
-      }
     }
   }
 
@@ -65,6 +62,9 @@
     transform: rotate(90deg);
     .stroke {
       transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+    }
+    .areaContainer {
+      transform: rotate(-30deg);
     }
   }
 }
