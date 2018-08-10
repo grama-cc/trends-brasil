@@ -77,8 +77,6 @@ class Category extends React.Component {
 
       const bars = this.state.bars;
 
-      console.log(bars)
-
       return (
         <Slider
           className={`slider`}

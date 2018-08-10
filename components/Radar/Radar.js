@@ -129,7 +129,7 @@ class RadarChart extends React.Component {
         <React.Fragment>
           <div className={css.categoryNames}>
             {axis.map((point, idx) => (
-              <p className={css.name}>
+              <p className={css.name} key={idx}>
                 {point.name}
               </p>
             ))}

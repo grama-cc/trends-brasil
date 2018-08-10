@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100vw;
 
   .boxAnimation {
     position: absolute;
@@ -37,6 +38,38 @@
       margin: 40px 0 0;
     }
   }
+
+  .translate {
+    position: absolute;
+    top: responsive(20, 40);
+    right: responsive(20, 40);
+    display: flex;
+    
+    li {
+      &:first-child {
+        &:before {
+          content: '';
+          position: absolute;
+          width: 1px;
+          height: responsive(25, 35);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #b4b4b4;
+        }
+      }
+    }
+    button {
+      font-size: responsive(14, 22);
+      color: #b4b4b4;
+      padding: 0 10px;
+      font-family: $robotoLight;
+      &[disabled] {
+        color: #4b4b4b;
+      }
+    }
+  }
+
 }
 
 @for $i from 1 through 6 {
@@ -55,4 +88,6 @@
 @keyframes slideout{
   0% { transform: translate( -800px, 0px ); }
   100% { transform: translate( 0px ,0px ); }
-} 
+}
+
+
