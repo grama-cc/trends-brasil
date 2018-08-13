@@ -60,13 +60,7 @@ class Relationship extends React.Component {
       <section className={css.relationship}>
 
         <div className={css.content}>
-          <div className={css.info}>
-            <Description
-              content={content.description}
-              arrowColor={this.props.arrowColor}
-            />
-          </div>
-
+          <Description content="relationship" />
           <div className={css.compare}>
             {this.renderChart()}
           </div>

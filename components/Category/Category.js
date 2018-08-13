@@ -153,6 +153,7 @@ d3.tsv("data.tsv", function(d) {
 
         <div className={css.content}>
           <div className={css.info}>
+            <Description content={'category'} />
 
             <Description
               content={content.description}

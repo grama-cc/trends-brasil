@@ -44,9 +44,11 @@ class Lines extends React.Component {
       <section className={css.lines}>
 
         <div className={css.info}>
-          <Description
-            content={content.description}
-            arrowColor={this.props.arrowColor}
+          <Description content="lines" />
+          <Filter 
+            onFilter={this.props.onFilter} 
+            filter={this.props.filter}
+            candidates={this.props.candidates} 
           />
           {this.renderFilter()}
         </div>
