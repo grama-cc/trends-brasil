@@ -122,6 +122,7 @@ class Orbital extends React.Component {
                     height='20'
                     fill={filter ? candidates[0].color : '#b4b4b4'}
                     stroke='none'
+                    className={css.rect}
                     x={-14}
                     y={(-l * this.radius / 3) - 10}
                   />
@@ -167,7 +168,10 @@ class Orbital extends React.Component {
 
                   return(
 
-                    <g key={i}>
+                    <g 
+                      key={i} 
+                      className={css.point}
+                    >
                       <circle
                         r={r}
                         cx={x}
@@ -177,7 +181,7 @@ class Orbital extends React.Component {
                       <text
                         x={x}
                         y={y - 12}
-                        fontSize={12}
+                        fontSize={10}
                         textAnchor="middle"
                         fill='#fff'
                       >
