@@ -46,7 +46,10 @@ class Section extends React.Component {
         <div className={css.container}>
 
           <div className={css.info}>
-            <Description content="keywords" />
+            <Description
+              content={content.description}
+              arrowColor={this.props.arrowColor}
+            />
 
             <ul 
               className={css.slider}

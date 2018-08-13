@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Description.scss';
-import { i18n } from '../common/locale/i18n';
 
 import Arrow from './Arrow.js';
 
@@ -23,18 +22,19 @@ class Description extends React.Component {
     return (
       <div className={css.description}>
 
-        <h2>{i18n(content + '.title')}</h2>
-        <p>{i18n(content + '.description')}</p>
+        <h2>{content.title}</h2>
+        <p>{content.description}</p>
 
         <button
           onClick={this.open}
           className={this.state.open ? css.open : null}
         >
-          {i18n(content + '.button')}
+          <span>{content.button}</span>
+          <Arrow arrowColor={this.props.arrowColor}/>
         </button>
 
         <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>
-          {i18n(content + '.more').map((text, index) => (
+          {content.more.map((text, index) => (
             <p key={index}>{text}</p>
           ))}
         </div>

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { i18n } from '../../common/locale/i18n';
-
+import content from '../../static/json/intro.json'
 import css from './Intro.scss';
 
 import Arrow from '../Arrow.js';
@@ -72,11 +71,13 @@ class Intro extends React.Component {
 				</div>
 
 				<div className={css.info}>
-		    <h1 className={css.title}>{i18n('intro.title')} <span>{i18n('intro.highlight')}</span></h1>
-		    {i18n('intro.description').map((text, index) => (
-		    	<p key={index}>{text}</p>
-		    ))}
-		    <button onClick={this.onScroll} />
+			    <h1 className={css.title}>{content.title} <span>{content.highlight}</span></h1>
+			    {content.description.map((text, index) => (
+			    	<p key={index}>{text}</p>
+			    ))}
+			    <button onClick={this.onScroll}>
+			    	<Arrow arrowColor={this.props.arrowColor}/>
+			    </button>
 		    </div>
 
 		  </section>

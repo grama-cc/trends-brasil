@@ -28,21 +28,9 @@ class Keywords extends React.Component {
   renderChart(candidates, words, view) {
     if(!this.props.candidates && !this.props.words) {
       return <div className={css.loading}>Loading...</div>
-    }
-
-    const candidates = this.props.candidates
-    const words = this.props.words
-    const view = this.state.view;
-
-    return (
-      <section className={css.keywords} id='keywords'>
-        <Description content="keywords" />
-        <div>
-          <Select
-            click={this.onChangeView}
-            val={view}
-            content={content.select}
-          />
+    } else {
+      return (
+        <React.Fragment>
           <Graphic
             val={view}
             candidates={candidates}
