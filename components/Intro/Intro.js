@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { i18n } from '../../common/locale/i18n';
+
 import content from '../../static/json/intro.json'
 import css from './Intro.scss';
 
@@ -8,13 +10,6 @@ import Arrow from '../Arrow.js';
 
 
 class Intro extends React.Component {
-
-	constructor (props) {
-    super(props)
-    this.state = {
-    	lang: 'port',
-    }
-  }
 
 	onScroll = (e) => {
 		const scroll = document.getElementById('keywords').offsetTop;
@@ -25,30 +20,33 @@ class Intro extends React.Component {
 		});
   }
 
-  onClick = (e) => {
-    const lang = e.currentTarget.lang;
-    this.setState({ lang: lang });
+  onChangeLang = (e) => {
+    const lang = e.currentTarget.lang
+    this.props.onChangeLang(lang)
   }
 
 	render() {
+
+		const lang = this.props.lang
+
 		return (
 			<section className={css.intro}>
 
 				<ul className={css.translate}>
 					<li>
 						<button
-							onClick={this.onClick}
+							onClick={this.onChangeLang}
 							lang='port'
-							disabled={this.state.lang === 'port'}
+							disabled={lang === 'port'}
 						>
 							PT
 						</button>
 					</li>
 					<li>
 						<button
-							onClick={this.onClick}
+							onClick={this.onChangeLang}
 							lang='en'
-							disabled={this.state.lang === 'en'}
+							disabled={lang === 'en'}
 						>
 							EN
 						</button>
@@ -71,8 +69,8 @@ class Intro extends React.Component {
 				</div>
 
 				<div className={css.info}>
-			    <h1 className={css.title}>{content.title} <span>{content.highlight}</span></h1>
-			    {content.description.map((text, index) => (
+			    <h1 className={css.title}>{i18n('intro.title', lang)}<span>{i18n('intro.highlight', lang)}</span></h1>
+			    {i18n('intro.description', lang).map((text, index) => (
 			    	<p key={index}>{text}</p>
 			    ))}
 			    <button onClick={this.onScroll}>
