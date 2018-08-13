@@ -11,7 +11,7 @@ const Head = (props) => {
       <title>{props.title}</title>
       <meta name="description" content={props.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/static/img/favicon.png" />
+      <link rel="icon" href="/static/img/favicon.png?v=2" />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={props.description} />
