@@ -35,7 +35,7 @@ class RadarChart extends React.Component {
       levels: 1,
       padding: 1.3,
       labelsCirles: 1.2, // circle label distance
-      maxValue: 0.5, // biggest circle will value
+      maxValue: 1/6, // biggest circle will value
     };
 
     // Circle radius
@@ -64,9 +64,14 @@ class RadarChart extends React.Component {
       ((array) => (
         d3.max(array.categories.map(
           (item) => ( item.percent / 100 )
+          // (item) => ( 1 )
         ))
       )))
     );
+
+    console.log(max)
+    
+
     const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
     const angles = Math.PI * 2 / 6;
     return {
@@ -103,6 +108,11 @@ class RadarChart extends React.Component {
       let radar = this.state.radar || [];
       const axis = this.axisPosition(radar);
       const values = this.values(radar);
+
+      // curveCardinalClosed 
+
+      console.log(values)
+
       const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
         values.scale( (d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
       );
@@ -120,15 +130,15 @@ class RadarChart extends React.Component {
         return 0;
       });
 
-      // console.log(radar)
+      console.log(radar)
 
       /* Tentar remover =============================== */
 
       // const w = this.config.width * this.config.padding + 50;
       // const h = this.config.height * this.config.padding + 50;
 
-      const w = this.config.width + 5;
-      const h = this.config.height + 5;
+      const w = this.config.width + 5 * 2;
+      const h = this.config.height + 5 * 2;
 
       return (
         <React.Fragment>
@@ -181,16 +191,6 @@ class RadarChart extends React.Component {
                       x2={point.x}
                       y2={point.y}
                     />
-                    <text
-                      className={css.text}
-                      textAnchor={`middle`}
-                      fontSize='12px'
-                      dy={`0.35em`}
-                      x={point.x * 1.3}
-                      y={point.y * 1.3}
-                    >
-                      {point.name}
-                    </text>
                   </g>
                 ))}
               </g>
@@ -202,6 +202,7 @@ class RadarChart extends React.Component {
                     d={radarLine(curves.categories)}
                     fill="none"
                   />
+                  
                   <path
                     className={idx == radar.length - 1 && filter ? css.stroke : null}
                     d={radarLine(curves.categories)}
