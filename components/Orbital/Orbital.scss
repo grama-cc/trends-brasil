@@ -20,17 +20,38 @@
     position: absolute;
     font-weight: bold;
     text-align: center;
-    max-width: 100px;
+    max-width: 60px;
+    font-size: 10px;
+    display: none;
+    @media screen and (min-width: $medium-devices){
+      display: block;
+    }
+    
   }
 
   svg {
     margin: 0 auto;
     // transform: rotate(90deg);
-    .stroke {
-      transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
-    }
+    //.stroke {
+      //transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+    //}
     .text {
       font-weight: bold;
+    }
+    .point {
+      cursor: pointer;
+      circle, text {
+        transition: fill .5s ease;
+      }
+      &:hover {
+        circle, text {
+          fill: #4b4b4b;
+          transition: fill .5s ease;
+        }
+      }
+    }
+    .rect {
+      transition: fill .5s ease;
     }
   }
 }

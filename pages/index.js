@@ -16,6 +16,8 @@ import Orbital from '../components/Orbital/Orbital';
 import Footer from '../components/Footer/Footer';
 import Clipping from '../components/Footer/Clipping';
 
+// import { i18n } from '../common/locale/i18n';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +26,7 @@ class Home extends React.Component {
       compare: null,
       candidates: null,
       words: null,
+      lang: 'port'
     };
   }
 
@@ -33,6 +36,10 @@ class Home extends React.Component {
 
   onCompare = (id) => {
     this.setState({ compare: id })
+  }
+
+  onChangeLang = (lang) => {
+    this.setState({ lang: lang })
   }
 
   getData = async () => {
@@ -55,6 +62,8 @@ class Home extends React.Component {
          
         <Intro
           arrowColor='#b4b4b4'
+          onChangeLang={this.onChangeLang} 
+          lang={this.state.lang}
         />
 
         <Keywords
@@ -63,6 +72,7 @@ class Home extends React.Component {
           onFilter={this.onFilter} 
           filter={this.state.filter}
           arrowColor='#b4b4b4'
+          lang={this.state.lang}
         />
 
         <Lines
@@ -70,10 +80,12 @@ class Home extends React.Component {
           filter={this.state.filter}
           candidates={candidates}
           arrowColor='#b4b4b4'
+          lang={this.state.lang}
         />
 
         <Category
           arrowColor='#b4b4b4'
+          lang={this.state.lang}
         />
 
         <Radar
@@ -81,6 +93,7 @@ class Home extends React.Component {
           filter={this.state.filter}
           candidates={candidates}
           arrowColor='#fff'
+          lang={this.state.lang}
         />
 
         <Relationship 
@@ -91,6 +104,7 @@ class Home extends React.Component {
           candidates={candidates}
           words={words}
           arrowColor='#b4b4b4'
+          lang={this.state.lang}
         />
 
         <Orbital
@@ -98,6 +112,7 @@ class Home extends React.Component {
           filter={this.state.filter}
           candidates={candidates}
           arrowColor='#fff'
+          lang={this.state.lang}
         />
         <Footer />
         <Clipping />

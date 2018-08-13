@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { i18n } from '../../common/locale/i18n';
+
 import content from '../../static/json/intro.json'
 import css from './Intro.scss';
 
@@ -18,12 +20,41 @@ class Intro extends React.Component {
 		});
   }
 
+  onChangeLang = (e) => {
+    const lang = e.currentTarget.lang
+    this.props.onChangeLang(lang)
+  }
+
 	render() {
+
+		const lang = this.props.lang
+
 		return (
 			<section className={css.intro}>
 
+				<ul className={css.translate}>
+					<li>
+						<button
+							onClick={this.onChangeLang}
+							lang='port'
+							disabled={lang === 'port'}
+						>
+							PT
+						</button>
+					</li>
+					<li>
+						<button
+							onClick={this.onChangeLang}
+							lang='en'
+							disabled={lang === 'en'}
+						>
+							EN
+						</button>
+					</li>
+				</ul>
+
 				<div className={css.boxAnimation}>
-	        <svg
+	       	<svg
 	        	width="3500px"
 	        	height="600px"
 	        	viewBox="-2500 120 4000 600"
@@ -36,15 +67,17 @@ class Intro extends React.Component {
 	          <path className={css.line6} opacity="0.3" fill="#8591E7" d="M-2616.488,728.996V623.306 c299.776,0,452.636-68.919,626.103-84.744c173.466-15.829,511.213,62.189,640.649,66.975 c129.437,4.786,439.236-82.838,649.675-66.975c210.439,15.861,292.058,53.178,650.029,52.594 c311.548-14.871,371.221-25.316,577.428-52.594c206.202-27.279,496.583-33.931,787.955,0 c251.42,29.276,361.036,82.166,420.65,111.711v78.723c-34.914-0.061-142.896-91.462-435.427-123.459 c-260.724-28.519-517.448-2.632-725.252,17.77c-207.803,20.403-318.839,72.32-625.354,72.32 c-267.506,0-480.163-119.67-650.029-119.67c-249.456,0-404.937,119.67-649.675,119.67c-278.196,0-359.413-119.436-640.649-104.471 C-2181.965,601.352-2430.275,730.738-2616.488,728.996z" />
 	        </svg>
 				</div>
+
 				<div className={css.info}>
-			    <h1 className={css.title}>{content.title} <span>{content.highlight}</span></h1>
-			    {content.description.map((text, index) => (
+			    <h1 className={css.title}>{i18n('intro.title', lang)}<span>{i18n('intro.highlight', lang)}</span></h1>
+			    {i18n('intro.description', lang).map((text, index) => (
 			    	<p key={index}>{text}</p>
 			    ))}
 			    <button onClick={this.onScroll}>
 			    	<Arrow arrowColor={this.props.arrowColor}/>
 			    </button>
 		    </div>
+
 		  </section>
 		);
 	}
