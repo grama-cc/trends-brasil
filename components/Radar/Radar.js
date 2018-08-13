@@ -93,7 +93,7 @@ class RadarChart extends React.Component {
       return <div className={css.loading}>Loading...</div>
     } else {
 
-      // console.log(this.state.radar[0].categories)
+      // console.log(this.state.radar.categories)
 
       const circles = this.circleLevels();
       //const w = this.config.width;
@@ -120,7 +120,7 @@ class RadarChart extends React.Component {
         return 0;
       });
 
-      // console.log(radar[0].categories)
+      // console.log(radar)
 
       /* Tentar remover =============================== */
 

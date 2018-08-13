@@ -26,6 +26,7 @@
       span {
         font-size: 56px;
         font-family: $roboto;
+        display: block;
       }
     }
     p {
@@ -64,8 +65,10 @@
       color: #b4b4b4;
       padding: 0 10px;
       font-family: $robotoLight;
+      transition: color .5s ease;
       &[disabled] {
         color: #4b4b4b;
+        transition: color .5s ease;
       }
     }
   }
