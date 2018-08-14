@@ -11,8 +11,8 @@ class Graphic extends React.Component {
   constructor (props) {
     super(props)
     this.config = {
-      width: 300,
-      height: 300,
+      width: 270,
+      height: 270,
       padding: 20
     }
   }
@@ -56,7 +56,9 @@ class Graphic extends React.Component {
     const filter = this.props.filter;
 
     const children = {'children': data.map((d) => (d))};
+
     const bubble = d3.pack(children).size([this.config.width, this.config.height]).padding(this.config.padding); 
+    
     const nodes = d3.hierarchy(children).sum(function(d) { return d.size; });
 
     let circles = bubble(nodes).leaves();
@@ -70,7 +72,6 @@ class Graphic extends React.Component {
       }
       return 0;
     })
-
 
     return(
       <div 
@@ -126,7 +127,7 @@ class Graphic extends React.Component {
           })}
         </svg>
 
-        {this.props.filter ? this.renderModalWords() : null}
+        {filter ? this.renderModalWords() : null}
 
       </div>
     )

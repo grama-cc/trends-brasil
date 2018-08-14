@@ -63,17 +63,14 @@ class RadarChart extends React.Component {
     const max = Math.max(this.config.maxValue, d3.max(data,
       ((array) => (
         d3.max(array.categories.map(
-          (item) => ( item.percent / 100 )
-          // (item) => ( 1 )
+          (item) => ( (item.percent / 100) + 0.01 )
         ))
       )))
     );
-
-    console.log(max)
     
 
     const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
-    const angles = Math.PI * 2 / 6;
+    const angles = - Math.PI * 2 / 6;
     return {
       "max": max,
       "scale": scale,
@@ -95,26 +92,18 @@ class RadarChart extends React.Component {
 
   renderChart () {
     if(!this.state.radar && !this.props.candidates) {
+
       return <div className={css.loading}>Loading...</div>
+
     } else {
 
-      // console.log(this.state.radar.categories)
-
       const circles = this.circleLevels();
-      //const w = this.config.width;
-      //const h = this.config.height;
-
-      /* Tentar remover =============================== */
       let radar = this.state.radar || [];
       const axis = this.axisPosition(radar);
       const values = this.values(radar);
 
-      // curveCardinalClosed 
-
-      console.log(values)
-
       const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
-        values.scale( (d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
+        values.scale( -(d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
       );
       const filter = this.props.filter;
 
@@ -130,18 +119,14 @@ class RadarChart extends React.Component {
         return 0;
       });
 
+      const w = this.config.width + 10;
+      const h = this.config.height + 10;
+
       console.log(radar)
-
-      /* Tentar remover =============================== */
-
-      // const w = this.config.width * this.config.padding + 50;
-      // const h = this.config.height * this.config.padding + 50;
-
-      const w = this.config.width + 5 * 2;
-      const h = this.config.height + 5 * 2;
 
       return (
         <React.Fragment>
+
           <div className={css.categories}>
             {axis.map((point, idx) => (
               <p className={css.name} key={idx}>
@@ -149,6 +134,28 @@ class RadarChart extends React.Component {
               </p>
             ))}
           </div>
+
+          {radar.map((candidate, idx) => {
+
+            const empty = candidate.categories.filter((c) => c.percent === 0)
+
+            if (empty.length === 6 ) {
+              console.log(candidate.name, candidate.id, filter)
+              return (
+                <div
+                  style={{
+                    backgroundColor: candidate.color
+                  }}
+                  className={filter === candidate.id ? css.empty : `${css.none} ${css.empty}`}
+                  key={idx}
+                > 
+                  <h4>Oops :(</h4>
+                  <p>O candidato não teve buscas suficientes para gerar a visualização</p>
+                </div>
+              )
+            }
+          })}
+
           <svg 
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${w} ${h}`}
@@ -195,24 +202,25 @@ class RadarChart extends React.Component {
                 ))}
               </g>
               <g className={css.areaContainer}>
-              {radar.map((curves, idx) => (
-                <g className={css.wrap} key={idx} id={curves.id}>
-                  <path
-                    className={css.area}
-                    d={radarLine(curves.categories)}
-                    fill="none"
-                  />
-                  
-                  <path
-                    className={idx == radar.length - 1 && filter ? css.stroke : null}
-                    d={radarLine(curves.categories)}
-                    strokeWidth={idx == radar.length - 1 && filter ? 2 : 1}
-                    stroke={idx == radar.length - 1 && filter ? "#fff" : "#4b4b4b"}
-                    opacity={idx == radar.length - 1 && filter ? 1 : .4}
-                    fill={idx == radar.length - 1 && filter ? "url(#grad)" : "none" }
-                  />
-                </g>
-              ))}
+              {radar.map((curves, idx) => {
+                return (
+                  <g className={css.wrap} key={idx} id={curves.id}>
+                    <path
+                      className={css.area}
+                      d={radarLine(curves.categories)}
+                      fill="none"
+                    />
+                    <path
+                      className={idx == radar.length - 1 && filter ? css.stroke : null}
+                      d={radarLine(curves.categories)}
+                      strokeWidth={idx == radar.length - 1 && filter ? 2 : 1}
+                      stroke={idx == radar.length - 1 && filter ? "#fff" : "#4b4b4b"}
+                      opacity={idx == radar.length - 1 && filter ? 1 : .3}
+                      fill={idx == radar.length - 1 && filter ? "url(#grad)" : "none" }
+                    />
+                  </g>
+                )
+              })}
               </g>
             </g>
           </svg>
