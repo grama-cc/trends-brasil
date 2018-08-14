@@ -93,10 +93,7 @@ class Category extends React.Component {
         > 
           {bars.map((category, idx) => (
             <div key={idx}>
-
               <h2>{category.name}</h2>
-
-
             </div>
 
           ))}
