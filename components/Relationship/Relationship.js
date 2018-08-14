@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Relationship.scss';
-// import Api from '../../lib/Api';
+import Api from '../../lib/Api';
 import content from '../../static/json/relationship.json';
 
 import Description from '../Description.js';
@@ -10,6 +10,25 @@ import Filter from '../Filter.js';
 import Cloud from '../Cloud.js';
 
 class Relationship extends React.Component {
+
+  /*
+    constructor (props) {
+      super(props)
+
+      this.state = {
+        relationship: null,
+      };
+    }
+
+    getData = async () => {
+      const relationship = await Api.getRelationship();
+      this.setState({ relationship });
+    }
+
+    componentDidMount() {
+      this.getData();
+    }
+  */
 
   renderChart () {
     if (!this.props.candidates && !this.props.words) {
