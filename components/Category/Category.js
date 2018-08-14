@@ -102,7 +102,7 @@ class Category extends React.Component {
           ))}
         </Slider>
 
-        {/*<Chart />*/}
+        <Chart />
         </React.Fragment>
       )
     }
