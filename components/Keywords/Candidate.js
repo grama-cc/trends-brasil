@@ -1,10 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick'
-import PropTypes from 'prop-types';
-import Media from "react-media";
 
 import css from './Candidate.scss';
 import Cloud from '../Cloud.js';
+import {i18n} from "../../common/locale/i18n";
 
 class Candidate extends React.Component {
 
@@ -85,7 +84,7 @@ class Candidate extends React.Component {
           // beforeChange={this.slider.slickGoTo(index + 1)}
         > 
           <div className={`${css.info} ${css.choose}`}>
-            <h3><span>{content.buttons.choose_candidate}</span></h3>
+            <h3><span>{i18n('keywords.buttons.choose_candidate', null)}</span></h3>
           </div>
           {candidates.map((item, j) => (
             <div className={css.info} key={j}>

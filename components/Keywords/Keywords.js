@@ -1,17 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import css from './Keywords.scss';
-import content from '../../static/json/keywords.json'
-
 import Description from '../Description.js';
 import Select from './Select.js';
-import Period from '../Period/Period.js';
 import Candidate from './Candidate.js';
 import Graphic from './Graphic.js';
 import Social from '../Social/Social.js';
-
-import Api from '../../lib/Api';
 
 class Keywords extends React.Component {
   constructor (props) {
@@ -26,6 +19,7 @@ class Keywords extends React.Component {
   }
 
   renderChart(candidates, words, view) {
+
     if(!this.props.candidates && !this.props.words) {
       return <div className={css.loading}>Loading...</div>
     } else {
@@ -44,7 +38,7 @@ class Keywords extends React.Component {
             words={words}
             onFilter={this.props.onFilter} 
             filter={this.props.filter}
-            content={content}
+            content='keywords'
           />
         </React.Fragment>
       )
@@ -56,12 +50,11 @@ class Keywords extends React.Component {
     const candidates = this.props.candidates
     const words = this.props.words
     const view = this.state.view;
-
     return (
       <section className={css.keywords} id='keywords'>
         <div className={css.info}>
           <Description
-            content={content.description}
+            content='keywords'
             arrowColor={this.props.arrowColor}
           />
         </div>
@@ -69,7 +62,7 @@ class Keywords extends React.Component {
           <Select
             click={this.onChangeView}
             val={view}
-            content={content.select}
+            content='keywords.select'
           />
           { this.renderChart(candidates, words, view) }
         </div>

@@ -34,11 +34,18 @@ export const i18n_pt_br = {
 	  description: "A popularidade dos candidatos na busca do Google.",
 	  button: "Saiba mais",
 	  more: [
-	  	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-			"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-			"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-	  ]
+	  	"O gráfico de bolas representa a relevância dos candidatos à presidência nas eleições de 2018 no Brasil, ",
+		  "e a nuvem de palavras mostra os termos mais buscados no Google para cada candidato. ",
+		  "Os termos e candidatos mais frequentes aparecem maiores."
+	  ],
+	  select: {
+	  	graphic: "Gráfico",
+	  	candidate: "Candidato"
+	},
+
+	buttons: {
+		choose_candidate: "Clique em um candidato"
+	}
 	},
 
   relationship: {
@@ -49,6 +56,25 @@ export const i18n_pt_br = {
 	  	"A comparação dos termos de cada candidato destaca a interessante relação das buscas tanto ideológicas quanto à aspectos de individuais, ",
 		  "como biografia ou figuras políticas, e pode evidenciar posicionamentos opostos nos termos não comuns a ambos. ",
 		  "Para evitar redundâncias, buscas como “proposta de Bolsonaro” e “proposta Bolsonaro” foram agrupados em “proposta”."
+	  ]
+	},
+  orbit: {
+	  title: "Quem está na órbita",
+	  description: "Personalidades e figuras políticas relacionadas ao candidato, e a frequência com que aparecem em suas buscas.",
+	  button: "Saiba mais",
+	  more: [
+	  	"A análise inicial dos dados coletados mostrou uma quantidade relevante de nomes de personalidades associada ao de candidatos. ",
+		"A visualização mede a intensidade dessa busca relacionada, distribuindo os nomes de acordo com a sua relevância, ",
+		"sendo que buscas mais frequentes se mantém próximas ao centro."
+	  ]
+	},
+  radar: {
+	  title: "Como buscam",
+	  description: "O gráfico mostra o interesse nos diferentes temas para cada candidato.",
+	  button: "Saiba mais",
+	  more: [
+	  	"O gráfico ajuda a entender melhor a curiosidade do usuário pelo candidato, revelando a distribuição de buscas pelos temas. ",
+		  "Dessa forma, é possível acompanhar uma transformação de interesses ao longo do tempo com os filtros."
 	  ]
 	},
   search: {

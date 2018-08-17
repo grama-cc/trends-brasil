@@ -1,8 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import css from './Relationship.scss';
-import Api from '../../lib/Api';
-import content from '../../static/json/relationship.json';
 
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
@@ -81,7 +78,7 @@ class Relationship extends React.Component {
         <div className={css.content}>
           <div className={css.info}>
             <Description
-              content={content.description}
+              content='relationship'
               arrowColor={this.props.arrowColor}
             />
           </div>

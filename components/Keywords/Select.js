@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import PropTypes from 'prop-types';
 
 import css from './Select.scss';
+import {i18n} from "../../common/locale/i18n";
 
 class Select extends React.Component {
 
@@ -21,15 +22,13 @@ class Select extends React.Component {
           value='balls'
           onClick={this.onClick}
           disabled={val === 'balls'}
-        >
-          {content.graphic} 
+        >{i18n(content +'.graphic', null)}
         </button>
         <button
           value='words'
           onClick={this.onClick}
           disabled={val === 'words'}
-        >
-          {content.candidate}
+        >{i18n(content +'.candidate', null)}
         </button>
       </div>
     )

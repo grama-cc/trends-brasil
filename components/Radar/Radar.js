@@ -1,17 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import css from './Radar.scss';
 import * as d3 from "d3";
 
 import Api from '../../lib/Api';
-import content from '../../static/json/radar.json'
 
-import Filter from '../Filter.js';
-import Description from '../Description.js';
 import Section from '../SectionWithFilter/SectionWithFilter.js';
-// import CircleChart from '../CircleChart/CircleChart.js';
-
-import Social from '../Social/Social.js';
 
 class RadarChart extends React.Component {
   constructor (props) {
@@ -235,7 +228,7 @@ class RadarChart extends React.Component {
         onFilter={this.props.onFilter} 
         filter={this.props.filter}
         candidates={this.props.candidates}
-        content={content}
+        content='radar'
         arrowColor={this.props.arrowColor}
       >
         <div className={css.radar}>

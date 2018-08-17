@@ -7,7 +7,6 @@ import Slider from 'react-slick';
 import Chart from './Bars/Chart/Chart'
 
 import css from './Category.scss';
-import content from '../../static/json/category.json';
 
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
@@ -116,7 +115,7 @@ class Category extends React.Component {
           <div className={css.info}>
 
             <Description
-              content={content.description}
+              content='category'
               arrowColor={this.props.arrowColor}
             />
 
