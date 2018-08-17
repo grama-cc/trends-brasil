@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import css from './Clipping.scss';
+import {i18n} from "../../common/locale/i18n";
 
-import content from '../../static/json/footer.json';
 
 class Clipping extends React.Component {
   render() {
     return (
       <section className={css.clipping}>
         <ul>
-          {content.clipping.list.map((item, index) => (
+          {i18n('footer.clipping.list', null).map((item, index) => (
             <li key={index}>
               <h2>{item.title}</h2>
               <p>{item.text}</p>

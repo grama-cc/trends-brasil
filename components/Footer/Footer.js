@@ -1,11 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import css from './Footer.scss';
-import content from '../../static/json/footer.json';
-
 import Social from '../Social/Social.js';
-import Clipping from './Clipping.js';
+import {i18n} from "../../common/locale/i18n";
 
 class Footer extends React.Component {
 
@@ -14,27 +10,29 @@ class Footer extends React.Component {
       <section className={css.footer}>
         <div className={css.container}>
           <div className={css.project}>
-            <h2>{content.project.title}</h2>
+            <h2>{i18n('footer.project.title', null)}</h2>
             <div className={css.content}>
               <div>
-                {content.project.columnLeft.map((text, index) => (
+                {i18n('footer.project.columnLeft', null).map((text, index) => (
                   <p key={index}>{text}</p>
                 ))}
               </div>
               <div>
-                {content.project.columnRight.map((text, index) => (
+                {i18n('footer.project.columnRight', null).map((text, index) => (
                   <p key={index}>{text}</p>
                 ))}
               </div>
             </div>
           </div>
           <div className={css.team}>
-            <h2>{content.team.title}</h2>
+            <h2>{i18n('footer.team.title', null)}</h2>
             <ul>
-              {content.team.list.map((text, index) => (
+              {i18n('footer.team.list', null).map((text, index) => (
                 <li key={index}>
                   <h3>{text.title}</h3>
-                  <p>{text.name}</p>
+                  <a href={text.link}>
+                    <p>{text.name}</p>
+                  </a>
                 </li>
               ))}
             </ul>

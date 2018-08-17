@@ -80,5 +80,66 @@ export const i18n_pt_br = {
   search: {
     input: 'Search for topic or category',
   },
+ footer:{
+	project: {
+  	title: "O projeto",
+	  columnLeft: [
+	  	"“Na busca do Candidato” é um projeto do Google News Initiative feito com designer e programadoras brasileiras.",
+		  "Analisamos os dados de pesquisas no Google relacionados à campanha eleitoral de 2018.\n",
+		  "Buscamos entender o que mais interessa ao eleitor brasileiro sobre os candidatos ao cargo de Presidente da República.",
+
+	  ],
+	   columnRight: [
+	   	"Vamos acompanhar os resultados até outubro de 2018, mês das eleições.",
+	  		"O Google Trends analisa uma amostra aleatória das buscas feitas pelo Google em um período específico de tempo e as classifica em uma escala de 0 a 100, ",
+		   "sendo 100 o termo de maior interesse de pesquisa. A partir daí, os outros resultados ganham valores relativos.\n"
+	   	]
+	},
+  	team: {
+	  title: "Equipe",
+	  list: [
+	  	{
+	  		title: "Carol Cavaleiro",
+	  		name: "Direção de arte, edição e design",
+			link: ""
+	  	},
+	  	{
+	  		title: "Thais Viana",
+	  		name: "hub9 | Compreensão de Dados",
+			link: "https://hub9.co/"
+	  	},
+	  	{
+	  		title: "Tainá Simões",
+	  		name: "Grama | Programação Criativa",
+			link: "https://grama.cc/"
+	  	},
+	  	{
+	  		title: "Google News Lab",
+	  		name: "Marco Túlio Pires e Simon Rogers"
+	  	},
+	  	{
+	  		title: "Consultor de projetos",
+	  		name: "Alberto Cairo"
+	  	}
+	  ]
+	},
+
+	clipping: {
+	  list: [
+	  	{
+	  		title: "Making Of",
+	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  	},
+	  	{
+	  		title: "Link 2",
+	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  	},
+	  	{
+	  		title: "Link 3",
+	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  	}
+	  ]
+	}
+  }
 
 }
