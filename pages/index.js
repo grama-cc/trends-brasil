@@ -86,6 +86,8 @@ class Home extends React.Component {
         <Category
           arrowColor='#b4b4b4'
           lang={this.state.lang}
+          candidates={candidates}
+          words={words}
         />
 
         <Radar

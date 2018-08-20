@@ -1,6 +1,12 @@
 @import '../lib/scss/variables.scss';
 
 .cloud {
+	display: none;
+	&[type='terms'] {
+		display: block;
+	}
+
+	text-align: center;
 	a {
 		text-align: center;
 		padding: 3px;

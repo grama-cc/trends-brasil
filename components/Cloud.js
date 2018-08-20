@@ -30,7 +30,7 @@ class Cloud extends React.Component {
     const words = this.getWords();
 
     return (
-      <div className={css.cloud}>
+      <div className={css.cloud} type={this.props.type}>
         {words.map((word, idx) => {
 
           const font = this.props.keywords ? `calc(2vw * ${word.size/100} + 14px)` : `calc(2vw * ${word.size/100} + 12px)`
@@ -47,6 +47,7 @@ class Cloud extends React.Component {
               }}
             > 
               {`${word.text} `}
+              
             </a>
         )})}
       </div>
