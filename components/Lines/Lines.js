@@ -30,13 +30,65 @@ class Lines extends React.Component {
   }
 
   renderChart () {
-    if (!this.props.candidates) {
-      return <div className={css.loading}>Loading...</div>
-    } else {
-      return (
-        <h2>Linhas</h2>
-      )
-    }
+    const data = { 
+      series0: [ { x: 0, y: 20 }, { x: 1, y: 30 }, { x: 2, y: 10 }, { x: 3, y: 5 }, { x: 4, y: 8 }, { x: 5, y: 15 }, { x: 6, y: 10 } ],
+      series1: [ { x: 0, y: 8 }, { x: 1, y: 5 }, { x: 2, y: 20 }, { x: 3, y: 12 }, { x: 4, y: 4 }, { x: 5, y: 6 }, { x: 6, y: 2 } ],
+      series2: [ { x: 0, y: 0 }, { x: 1, y: 5 }, { x: 2, y: 8 }, { x: 3, y: 2 }, { x: 4, y: 6 }, { x: 5, y: 4 }, { x: 6, y: 2 } ]          
+    };
+
+    const epa = [
+      {title: '2' , value: 13.37 , year: 1987},
+      {title: '1', value: 6.74, year: 1987},
+      {title: '12', value: 18.34, year: 1987},
+      {title: '4', value: 32.7, year: 1987},
+      {title: '21', value: 0, year: 1987},
+      {title: '5', value: 53.21, year: 1987},
+      {title: '8', value: 20.79, year: 1987},
+      {title: '3', value: 30.43, year: 1987},
+      {title: '9', value: 30.53, year: 1987},
+      {title: '22', value: 0, year: 1987},
+      {title: '19', value: 29.6, year: 1987},
+    ]
+
+    const size = { width: 900, height: 300 };
+
+    const xScale = d3.scaleLinear()
+      .domain([0, 6])
+      .range([0, 900]);
+
+    const yScale = d3.scaleLinear()
+      .domain([0, 100])
+      .range([300, 0]);
+
+    const path = d3.line()
+    .x(function(d) { return xScale(d.x); })
+    .y(function(d) { return yScale(d.y); })
+
+    return (
+      <svg 
+        width={900} 
+        height={300}
+      >
+        <path
+          d={path(data.series0)}
+          stroke={`#000`}
+          strokeWidth={2}
+          fill="none"
+        />
+        <path 
+          d={path(data.series1)}
+          stroke={`#000`}
+          strokeWidth={2}
+          fill="none"
+        />
+        <path 
+          d={path(data.series2)}
+          stroke={`#000`}
+          strokeWidth={2}
+          fill="none"
+        />
+      </svg>
+    )
   }
 
   render() {

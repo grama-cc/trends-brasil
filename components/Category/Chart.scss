@@ -1,0 +1,47 @@
+@import '../../lib/scss/variables.scss';
+
+
+.container {
+  display: none;
+  &[type='bars'] {
+    display: block;
+  }
+}
+.chart {
+
+  path {
+    stroke: none;
+  }
+  line {
+    stroke-dasharray: 2px;
+  }
+
+  rect {
+    transition: height 1s ease;
+  }
+
+}
+
+.oi {
+  margin: 0 0 30px;
+}
+
+.container {
+  // width: 100%;
+  // height: 30vh;
+}
+
+.list {
+  display: flex;
+  margin: 0 20px 0 25px;
+  justify-content: space-between;
+  li {
+    width: 30px;
+    img {
+      display: block;
+      width: 100%;
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
+  }
+}

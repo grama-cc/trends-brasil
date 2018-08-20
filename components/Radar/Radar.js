@@ -122,7 +122,7 @@ class RadarChart extends React.Component {
       const w = this.config.width + 10;
       const h = this.config.height + 10;
 
-      console.log(radar)
+      // console.log(radar)
 
       return (
         <React.Fragment>
@@ -140,7 +140,7 @@ class RadarChart extends React.Component {
             const empty = candidate.categories.filter((c) => c.percent === 0)
 
             if (empty.length === 6 ) {
-              console.log(candidate.name, candidate.id, filter)
+              // console.log(candidate.name, candidate.id, filter)
               return (
                 <div
                   style={{
