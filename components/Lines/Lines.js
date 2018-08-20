@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Lines.scss';
+
 import * as d3 from "d3";
+import * as d3Axis from 'd3-axis'
 
 import Api from '../../lib/Api';
 import content from '../../static/json/lines.json'
+
+import data from './data.js'
 
 import Filter from '../Filter.js';
 import Period from '../Period/Period.js';
@@ -12,6 +16,21 @@ import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
 class Lines extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.cfg = {
+      width: 1000,
+      height: 420,
+      rect: 20,
+      margin: { top: 0, right: 0, bottom: 0, left: 30 },
+      padding: 10,
+    }
+  }
+
+  componentDidMount() {
+    this.renderAxis();
+  }
 
   renderFilter () {
     if (!this.props.candidates) {
@@ -29,72 +48,99 @@ class Lines extends React.Component {
     }
   }
 
+  timeConverter = (timestamp) => {
+    const stamp = new Date(timestamp * 1000);
+    const months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
+    const year = stamp.getFullYear();
+    const month = months[stamp.getMonth()];
+    const date = stamp.getDate();
+    const hour = stamp.getHours();
+    const min = stamp.getMinutes();
+    const sec = stamp.getSeconds();
+    const time = date + '/' + month;
+    return time;
+  }
+
+  renderAxis() {
+
+    const epa = data[0].lines[0].timestamp;
+    console.log(this.timeConverter(epa));
+
+    const xScale = d3.scaleBand()
+      .padding(0.5)
+      .domain(data[0].lines.map(d => this.timeConverter(d.timestamp)))
+      .range([0, this.cfg.width])
+    
+    const axisType = `axisBottom`
+    const axis = d3Axis[axisType]()
+      .scale(xScale)
+      .tickSize(-((this.cfg.height - 50) - this.cfg.margin.top - this.cfg.margin.bottom ))
+      .tickPadding([12])
+      .ticks([4])
+
+    d3.select(this.axisElement).call(axis)
+  }
+
   renderChart () {
-    const data = { 
-      series0: [ { x: 0, y: 20 }, { x: 1, y: 30 }, { x: 2, y: 10 }, { x: 3, y: 5 }, { x: 4, y: 8 }, { x: 5, y: 15 }, { x: 6, y: 10 } ],
-      series1: [ { x: 0, y: 8 }, { x: 1, y: 5 }, { x: 2, y: 20 }, { x: 3, y: 12 }, { x: 4, y: 4 }, { x: 5, y: 6 }, { x: 6, y: 2 } ],
-      series2: [ { x: 0, y: 0 }, { x: 1, y: 5 }, { x: 2, y: 8 }, { x: 3, y: 2 }, { x: 4, y: 6 }, { x: 5, y: 4 }, { x: 6, y: 2 } ]          
-    };
+    const h = this.cfg.height - 50;
 
-    const epa = [
-      {title: '2' , value: 13.37 , year: 1987},
-      {title: '1', value: 6.74, year: 1987},
-      {title: '12', value: 18.34, year: 1987},
-      {title: '4', value: 32.7, year: 1987},
-      {title: '21', value: 0, year: 1987},
-      {title: '5', value: 53.21, year: 1987},
-      {title: '8', value: 20.79, year: 1987},
-      {title: '3', value: 30.43, year: 1987},
-      {title: '9', value: 30.53, year: 1987},
-      {title: '22', value: 0, year: 1987},
-      {title: '19', value: 29.6, year: 1987},
-    ]
-
-    const size = { width: 900, height: 300 };
-
-    const xScale = d3.scaleLinear()
-      .domain([0, 6])
+    const xepa = d3.scaleLinear()
+      .domain([0, 4])
       .range([0, 900]);
 
-    const yScale = d3.scaleLinear()
+    const yepa = d3.scaleLinear()
       .domain([0, 100])
       .range([300, 0]);
 
-    const path = d3.line()
-    .x(function(d) { return xScale(d.x); })
-    .y(function(d) { return yScale(d.y); })
-
+  
     return (
-      <svg 
-        width={900} 
-        height={300}
-      >
-        <path
-          d={path(data.series0)}
-          stroke={`#000`}
-          strokeWidth={2}
-          fill="none"
-        />
-        <path 
-          d={path(data.series1)}
-          stroke={`#000`}
-          strokeWidth={2}
-          fill="none"
-        />
-        <path 
-          d={path(data.series2)}
-          stroke={`#000`}
-          strokeWidth={2}
-          fill="none"
-        />
-      </svg>
+      <React.Fragment>
+        <svg 
+          className={css.chart}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox={`0 0 ${this.cfg.width} ${h}`}
+          preserveAspectRatio="none"
+          style={{
+            padding: `${this.cfg.padding}px 0`
+          }}
+        >
+          <g
+            transform={`translate(0, ${this.cfg.height - 65 - this.cfg.margin.bottom})`}
+          >
+            <g
+              className={css.axis}
+              ref={(y) => { this.axisElement = y; }}
+            />
+
+            {data.map((d, i) => {
+                const path = d3.line()
+                .x((l) => { return xepa(l.timestamp/1000000) })
+                .y((l) => { return xepa(l.timestamp/1000000) })
+
+                console.log(path(d.lines))
+              
+              return (
+                <path
+                  key={i}
+                  d={path(d.lines)}
+                  stroke={`#000`}
+                  strokeWidth={2}
+                  fill="none"
+                />
+              )
+            
+            })}
+          </g>
+        </svg>
+
+      
+      </React.Fragment>
     )
   }
 
   render() {
     return (
       <section className={css.lines}>
-
         <div className={css.info}>
           <Description
             content={content.description}
@@ -102,20 +148,20 @@ class Lines extends React.Component {
           />
           {this.renderFilter()}
         </div>
+        
+        {this.renderChart()}
 
-        <div className={css.chart}>
-          {this.renderChart()}
-        </div>
-
-				{/*<Period
+				<Period
           bgColor='#fff'
           color='#b4b4b4'
           arrowColor={this.props.arrowColor}
-        />*/}
+          all
+        />
 				<Social stroke='#b4b4b4' />
       </section>
     )
   }
+
 }
 
 export default Lines;

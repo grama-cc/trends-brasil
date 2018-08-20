@@ -128,7 +128,9 @@ class Filter extends React.Component {
           >
             Todos os candidatos
           </p>
-          <ul>
+          <ul
+            className={this.props.all ? css.gray : null}
+          >
             {candidates.map((c, idx) => {
               return(
                 <li 
