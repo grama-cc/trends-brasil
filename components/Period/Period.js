@@ -33,7 +33,7 @@ class Period extends React.Component {
     return (
       <ul
         onClick={this.onDropdown}
-        className={`${css.period} ${this.props.bottom ? css.bottom : null}`}
+        className={`${css.period} ${this.props.bottom ? css.bottom : null} ${this.props.all ? css.all : null}`}
         style={{
           background: this.props.bgColor
         }}
