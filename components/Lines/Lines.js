@@ -117,7 +117,7 @@ class Lines extends React.Component {
                 .x((l) => { return xepa(l.timestamp/1000000) })
                 .y((l) => { return xepa(l.timestamp/1000000) })
 
-                console.log(path(d.lines))
+                // console.log(path(d.lines))
               
               return (
                 <path

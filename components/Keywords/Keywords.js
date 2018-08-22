@@ -17,7 +17,7 @@ class Keywords extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      view: 'balls'
+      view: 'balls',
     }
   }
 
@@ -27,28 +27,30 @@ class Keywords extends React.Component {
 
   renderChart(candidates, words, view) {
     if(!this.props.candidates && !this.props.words) {
+
       return <div className={css.loading}>Loading...</div>
-    } else {
-      return (
-        <React.Fragment>
-          <Graphic
-            val={view}
-            candidates={candidates}
-            words={words}
-            onFilter={this.props.onFilter} 
-            filter={this.props.filter}
-          />
-          <Candidate
-            val={view}
-            candidates={candidates}
-            words={words}
-            onFilter={this.props.onFilter} 
-            filter={this.props.filter}
-            content={content}
-          />
-        </React.Fragment>
-      )
-    }
+      
+    } 
+
+    return (
+      <React.Fragment>
+        <Graphic
+          val={view}
+          candidates={this.props.candidates}
+          words={this.props.words}
+          onFilter={this.props.onFilter} 
+          filter={this.props.filter}
+        />
+        <Candidate
+          val={view}
+          candidates={this.props.candidates}
+          words={this.props.words}
+          onFilter={this.props.onFilter}
+          filter={this.props.filter}
+          content={content}
+        />
+      </React.Fragment>
+    )
   }
 
   render() {
