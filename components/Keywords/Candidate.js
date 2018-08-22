@@ -128,6 +128,7 @@ class Candidate extends React.Component {
                       height: filter === d.id ? '100%' : '60px',
                     }}
                   />
+                {/*<span>1</span>*/}
                 </li>
               )
             })}

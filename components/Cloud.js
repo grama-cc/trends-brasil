@@ -46,7 +46,6 @@ class Cloud extends React.Component {
     const words = this.getWords();
     // let oi = document.getElementsByTagName('a').innerWidth();
     
-
     return (
       <div className={css.cloud} type={this.props.type}>
         {words.map((word, idx) => {
@@ -61,7 +60,7 @@ class Cloud extends React.Component {
               target="_blank"
               style={{
                 fontSize: font,
-                color: word.color,
+                color: this.props.color ? this.props.color : word.color,
                 left: `${ this.props.keywords ? 0 : this.isOdd(idx) === 0 ? - (6 * idx) - 20 : (idx * 4) + 20 }px`
               }}
             > 
