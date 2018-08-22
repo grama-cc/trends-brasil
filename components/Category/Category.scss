@@ -23,7 +23,10 @@
   		}
 
       .nav {
-        font-size: 20px;
+        display: none;
+        @media screen and (min-width: $medium-devices) {
+          display: block;
+        }
         .item {
           margin: 0 0 24px;
           background-repeat: no-repeat;
@@ -34,30 +37,79 @@
           display: flex;
           flex-direction: column;
           justify-content: center;
-          cursor: pointer;
-
+          font-family: $robotoLight;
+          font-size: 20px;
+          opacity: 0.5;
+          &.clicked {
+            opacity: 1;
+            font-family: $robotoMedium;
+          }
         }
-        
       }
   	}
 
   	.chart {
-      height: 80vh;
+      header {
+        display: flex;
+        justify-content: space-between;
+        .arrow {
+          font-size: 16px;
+          color: #fff;
+          padding: 10px;
+          background-image: url(/static/img/slider_arrow.svg);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          background-position: center;
+          width: 32px;
+          &.prev {
+            transform: rotate(-180deg);
+          }
+        }
 
+        .text {
+          max-width: 340px;
+          h2 { 
+            color: $black;
+            margin: 0 0 15px;
+          }
+          text-align: center;
+        }
+      }
 
-  		// Provisorio //////////////////////////////////
-
-	    border: 2px solid #b4b4b4; // provisorio
-	    // display: flex; // provisorio
-	    // justify-content: center; // provisorio
-	    // align-items: center; // provisorio
-
-	    h2 {
-	      color: #b4b4b4; // provisorio
+      .bars {
         text-align: center;
-	    }
-	    // Provisorio //////////////////////////////////
+        // background: yellow;
+        display: none;
+        &[val='bars'] {
+          display: block;
+        }
 
+      }
+
+      .terms {
+        text-align: center;
+         // background: yellow;
+        display: none;
+        &[val='terms'] {
+          display: block;
+        }
+      }
+
+      .nav {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0 0;
+        button {
+          width: 12px;
+          height: 12px;
+          border-radius: 100%;
+          background: $grayLight;
+          margin: 0 10px;
+          &.clicked {
+            background: $grayDark;
+          }
+        }
+      }
 	    @media screen and (min-width: $medium-devices) {
 	    	width: 70%;
   		}

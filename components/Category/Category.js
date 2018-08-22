@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Api from '../../lib/Api';
 
-import Slider from 'react-slick';
-
-import Chart from './Bars/Chart/Chart'
-
+import data from './data'
 import css from './Category.scss';
 
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
+import Select from './Select.js';
+import Chart from './Chart'
+import Cloud from '../Cloud.js';
+
+// import Slider from './Slider.js';
+
 
 class Category extends React.Component {
 
@@ -17,9 +20,32 @@ class Category extends React.Component {
     super(props);
     this.state = {
       bars: null,
-      nav: null,
-      slider: null,
+      idx: 0,
+      view: 'bars',
     };
+  }
+
+  onClick = (e) => {
+    const idx = Number(e.currentTarget.dataset.idx)
+    this.setState({ idx: idx })
+  }
+
+  onClickPrev = () => {
+    if(this.state.idx > 0) {
+      this.setState({ idx: this.state.idx - 1 })
+    }
+  }
+
+  onClickNext = () => {
+    const size = data.length - 1;
+
+    if(this.state.idx < size) {
+      this.setState({ idx: this.state.idx + 1 })
+    }
+  }
+
+  onChangeView = (val) => {
+    this.setState({ view: val })
   }
 
   getData = async () => {
@@ -29,103 +55,90 @@ class Category extends React.Component {
 
   componentDidMount() {
     this.getData();
-    this.setState({
-      nav: this.nav,
-      slider: this.slider,
-    });
   }
 
-  renderChartNav () {
-    if (!this.state.bars) {
+  renderNav (type) {
+    const idx = this.state.idx;
 
-      return
-
-    } else {
-
-      const bars = this.state.bars;
-      return (
-        <Slider
-          className={`${css.nav} barsNav`}
-          asNavFor={this.state.nav}
-          ref={ slider => ( this.slider = slider) }
-          slidesToShow={6}
-          swipeToSlide={true}
-          focusOnSelect={true}
-          variableWidth={true}
-        >
-        {bars.map((category, idx) => (
-          <div key={idx}>
-            <p
-              className={css.item}
+    return(
+      <nav className={css.nav}>
+        {data.map((d, i) => {
+          return(
+            <button 
+              className={idx === i ? `${css.clicked} ${css.item}` : `${css.item}` }
+              key={i}
+              data-idx={i}
+              onClick={this.onClick}
               style={{
-                backgroundImage: `url(/static/img/categories/${category.id}.svg)`,
+                backgroundImage: type === 'btn' ? null : `url(/static/img/categories/${d.id}.svg)`
               }}
             >
-              {category.name}
-            </p>
-          </div>
-        ))}
-        </Slider>
-      )
-    }
-  }
-
-  renderChart () {
-    if (!this.state.bars) {
-
-      return <div className={css.loading}>Loading...</div>
-
-    } else {
-
-      const bars = this.state.bars;
-
-      return (
-        <React.Fragment>
-        <Slider
-          className={`slider`}
-          asNavFor={this.state.slider}
-          ref={ slider => ( this.nav = slider ) }
-          arrows={true}
-          slidesToShow={1}
-          initialSlide={0}
-          dots={true}
-        > 
-          {bars.map((category, idx) => (
-            <div key={idx}>
-
-              <h2>{category.name}</h2>
-
-
-            </div>
-
-          ))}
-        </Slider>
-
-        {/*<Chart />*/}
-        </React.Fragment>
-      )
-    }
+              {type === 'btn' ? null : d.name}
+            </button>
+          )
+        })}
+    </nav>
+    )
   }
 
   render() {
+
+    const idx = this.state.idx;
+    const view = this.state.view;
+
+    if(!this.props.candidates && !this.props.words) {
+      return <div className={css.loading}>Loading...</div>
+    }
+
     return (
       <section className={css.category}>
 
         <div className={css.content}>
-          <div className={css.info}>
 
+          <div className={css.info}>
             <Description
               content='category'
               arrowColor={this.props.arrowColor}
             />
-
-            {this.renderChartNav()}
+            {this.renderNav()}
           </div>
 
           <div className={css.chart}>
-            {this.renderChart()}
-          </div>
 
+            <header>
+              <button
+                className={`${css.arrow} ${css.prev}`}
+                onClick={this.onClickPrev}
+              /> 
+
+              <div className={css.text}>
+                <h2>{data[idx].name}</h2>
+                <p>Perguntas sobre idade, casamento, cargos ocupados e outras buscas biográficas sobre os candidatos</p>
+              </div>
+
+              <button
+                className={`${css.arrow} ${css.next}`}
+                onClick={this.onClickNext}
+              /> 
+
+            </header>
+          
+            <Select
+              click={this.onChangeView}
+              val={view}
+              content={content.select}
+            />
+
+            <Chart type={view} data={data[idx]}/>
+            <Cloud 
+              type={view}
+              id={data[idx].id} 
+              candidates={this.props.candidates}
+              words={this.props.words} 
+              keywords
+            />
+            {this.renderNav('btn')}
+          </div>
         </div>
 
         <Social stroke='#b4b4b4' />

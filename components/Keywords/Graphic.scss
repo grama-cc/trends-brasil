@@ -1,19 +1,34 @@
 @import '../../lib/scss/variables.scss';
 
 .graphic {
-  position: absolute;
   width: 100%;
+  position: absolute;
+  display: block;
+  // position: static;
+
+  // top: 0;
   opacity: 1;
   z-index: 1;
+
   &[type='words'] {
-    // display: none;
+    display: none;
     opacity: 0;
-    z-index: 0;
+    z-index: -1;
   }
   @media screen and (min-width: 1100px) {
-    position: static;
+    //position: absolute;
+    width: auto;
+    top: 0;
+    right: 0;
+
+    // top: 0;
+    opacity: 1;
+    z-index: 1;
+
     &[type='words'] {
-      //display: block;
+      display: block;
+
+      // top: 0;
       opacity: 1;
       z-index: 1;
     }
@@ -26,10 +41,11 @@
     }
     @media screen and (min-width: 1100px) {
       // width: 60% !important;
-      height: 110vh;
-      position: absolute;
-      top: 0;
-      right: 0;
+      height: 100vh;
+      //position: absolute;
+      margin: 0;
+      //top: 0;
+      //right: 0;
     }
 
     @media screen and (max-width: 1100px) {
@@ -67,6 +83,8 @@
   h3 {
     text-align: center;
     font-size: responsive(20, 24);
+    position: relative;
+    top: -8px;
   }
 	p {
   	position: absolute;
@@ -95,7 +113,7 @@
     background-color: $white;
     border-radius: 0;
     padding: 8px 5px;
-    font-size: responsive(14, 24, 320, 800);
+    font-size: responsive(12, 24, 320, 800);
   }
 }
 

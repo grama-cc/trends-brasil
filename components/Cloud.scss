@@ -1,6 +1,16 @@
 @import '../lib/scss/variables.scss';
 
 .cloud {
+	display: none;
+	&[type='terms'] {
+		display: block;
+	}
+
+	&[type='candidate'] {
+		display: block;
+	}
+	
+	text-align: center;
 	a {
 		text-align: center;
 		padding: 3px;
@@ -10,6 +20,6 @@
 
 	@media screen and (min-width: $medium-devices) {
     // width: calc(100% - 60px);
-    width: calc(100%);
+    width: 100%;
   }
 }
