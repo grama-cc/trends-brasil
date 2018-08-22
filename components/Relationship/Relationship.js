@@ -8,24 +8,22 @@ import Cloud from '../Cloud.js';
 
 class Relationship extends React.Component {
 
-  /*
-    constructor (props) {
-      super(props)
+  /*constructor (props) {
+    super(props)
 
-      this.state = {
-        relationship: null,
-      };
-    }
+    this.state = {
+      relationship: null,
+    };
+  }
 
-    getData = async () => {
-      const relationship = await Api.getRelationship();
-      this.setState({ relationship });
-    }
+  getData = async () => {
+    const relationship = await Api.getRelationship();
+    this.setState({ relationship });
+  }
 
-    componentDidMount() {
-      this.getData();
-    }
-  */
+  componentDidMount() {
+    this.getData();
+  }*/
 
   renderChart () {
     if (!this.props.candidates && !this.props.words) {

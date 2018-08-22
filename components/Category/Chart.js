@@ -56,22 +56,42 @@ class Chart extends React.Component {
           <g
             transform={`translate(${this.cfg.margin.left}, ${this.cfg.margin.bottom})`}
           >
-
             <g
               className={css.axis}
               ref={(y) => { this.axisElement = y; }}
+              //transform="scale(1,-1) translate(0,-200)"
+              
             />
 
+            <g 
+              //transform={`scale(1,-1) translate(0, -${this.cfg.width/2})`}
+
+              transform={`scale(1,-1) translate(0, -${h})`}
+            >
             {this.props.data.values.map((d, i) => (
               <rect
+                // transform="rotate(180 0 0)"
                 key={i}
                 x={(this.cfg.width / this.props.data.values.length) * i}
-                y={yScale(d.value)}
+                //y={yScale(d.value)}
+                y={0}
+                // height={20}
                 height={h - yScale(d.value)}
                 width={this.cfg.rect}
                 fill={d.color}
-              />
+              >
+              {/*<animate 
+                     attributeName="height" 
+                     from="0" 
+                     to="20"
+                     dur="3s"
+                     fill="freeze"/>*/}
+              </rect>
+
             ))}
+            </g>
+
+
           </g>
         </svg>
 
