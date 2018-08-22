@@ -54,11 +54,11 @@ class Description extends React.Component {
 }
 
 Description.propTypes = {
-  content: PropTypes.object
+  content: PropTypes.string
 };
 
 Description.defaultProps = {
-  content: {}
+  content: ''
 };
 
 export default Description;
