@@ -4,7 +4,6 @@ import Api from '../../lib/Api';
 
 import data from './data'
 import css from './Category.scss';
-import content from '../../static/json/category.json';
 
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
@@ -54,6 +53,11 @@ class Category extends React.Component {
     this.setState({ bars });
   }
 
+  onChangeLang = (e) => {
+    const lang = e.currentTarget.lang
+    this.props.onChangeLang(lang)
+  }
+
   componentDidMount() {
     this.getData();
   }
@@ -87,6 +91,8 @@ class Category extends React.Component {
     const idx = this.state.idx;
     const view = this.state.view;
 
+    const lang = this.props.lang
+
     if(!this.props.candidates && !this.props.words) {
       return <div className={css.loading}>Loading...</div>
     }
@@ -98,8 +104,9 @@ class Category extends React.Component {
 
           <div className={css.info}>
             <Description
-              content={content.description}
+              content='category'
               arrowColor={this.props.arrowColor}
+              lang={this.props.lang}
             />
             {this.renderNav()}
           </div>
@@ -123,12 +130,19 @@ class Category extends React.Component {
               /> 
 
             </header>
-          
+
             <Select
               click={this.onChangeView}
               val={view}
-              content={content.select}
+              content='keywords.select'
+              lang={this.props.lang}
             />
+          
+            {/*<Select
+              click={this.onChangeView}
+              val={view}
+              content={content.select}
+            />*/}
 
             <Chart type={view} data={data[idx]}/>
             <Cloud 

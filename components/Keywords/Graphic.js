@@ -1,10 +1,6 @@
 import React from 'react';
-import Slider from 'react-slick'
-import PropTypes from 'prop-types';
-import Media from "react-media";
 import css from './Graphic.scss';
 import * as d3 from "d3";
-import Api from '../../lib/Api';
 
 class Graphic extends React.Component {
 

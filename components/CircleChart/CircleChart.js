@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import css from './CircleChart.scss';
 import * as d3 from "d3";
 
 class CircleChart extends React.Component {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import css from './Lines.scss';
 
 import * as d3 from "d3";
@@ -10,8 +9,8 @@ import content from '../../static/json/lines.json'
 
 import data from './data.js'
 
-import Filter from '../Filter.js';
 import Period from '../Period/Period.js';
+import Filter from '../Filter.js';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
@@ -143,8 +142,9 @@ class Lines extends React.Component {
       <section className={css.lines}>
         <div className={css.info}>
           <Description
-            content={content.description}
+            content='lines'
             arrowColor={this.props.arrowColor}
+            lang={this.props.lang}
           />
           {this.renderFilter()}
         </div>

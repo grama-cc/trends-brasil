@@ -123,7 +123,9 @@ class Home extends React.Component {
           arrowColor='#fff'
           lang={this.state.lang}
         />
-        <Footer />
+        <Footer
+          lang={this.state.lang}
+        />
         <Clipping />
       </Layout>
     );

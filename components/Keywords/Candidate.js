@@ -1,10 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick'
-import PropTypes from 'prop-types';
-import Media from "react-media";
 
 import css from './Candidate.scss';
 import Cloud from '../Cloud.js';
+import {i18n} from "../../common/locale/i18n";
 
 class Candidate extends React.Component {
 
@@ -61,6 +60,11 @@ class Candidate extends React.Component {
     return node
   }
 
+  onChangeLang = (e) => {
+    const lang = e.currentTarget.lang
+    this.props.onChangeLang(lang)
+  }
+
 
   render() {
     const candidates = this.props.candidates;
@@ -73,6 +77,8 @@ class Candidate extends React.Component {
     const list = 90
 
     const move = ( list * ( - idx ) );
+
+    const lang = this.props.lang
 
     return (
       <div className={`${css.candidate}`} type={this.props.val}>
@@ -128,7 +134,7 @@ class Candidate extends React.Component {
           </ul>
 
           <h3 className={css.title}>
-            {!filter ? 'Clique em um candidato' : <span>{candidates[idx].name}</span>}
+            {!filter ? i18n('keywords.buttons.choose_candidate', lang) : <span>{candidates[idx].name}</span>}
           </h3>
 
           <Cloud 

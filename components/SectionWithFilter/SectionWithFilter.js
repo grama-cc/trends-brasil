@@ -32,7 +32,7 @@ class Section extends React.Component {
     const content = this.props.content;
     const candidates = this.props.candidates || [];
     const currentCandidate = candidates.find((c) => this.props.filter === c.id)
-
+    
     const bg = currentCandidate ? `${currentCandidate.slug}.png` : 'none.svg';
     const name = currentCandidate ? currentCandidate.name : 'Escolha um candidato';
 
@@ -46,9 +46,11 @@ class Section extends React.Component {
         <div className={css.container}>
 
           <div className={css.info}>
+
             <Description
-              content={content.description}
+              content={content}
               arrowColor={this.props.arrowColor}
+              lang={this.props.lang}
             />
 
             <ul 
