@@ -100,7 +100,7 @@ export const i18n_en_us = {
 	  	{
 	  		title: "Carol Cavaleiro",
 	  		name: "Art director and design",
-			link: ""
+				link: "https://carolcavaleiro.com/portfolio/"
 	  	},
 	  	{
 	  		title: "Thais Viana",
