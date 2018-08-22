@@ -53,10 +53,17 @@ class Home extends React.Component {
   }
 
   render() {
+    
+
+    //if(!this.state.candidates && !this.state.words) {
+      //return <div className={css.loading}>Loading...</div>
+    //} 
+
     const candidates = this.state.candidates;
     const words = this.state.words;
 
     return (
+
       <Layout>
         <Head title="Trends Brasil" />
          
