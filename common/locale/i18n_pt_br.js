@@ -23,8 +23,7 @@ export const i18n_pt_br = {
 	description: 'Interesse pelos candidatos ao longo do tempo.',
 	button: 'Saiba mais',
 	more: [
-	  'O Google Trends disponibiliza a informação de interesse ao longo do tempo para cada candidato em valores indexados de 0 a 100,',
-      'sendo 100 o ponto mais alto do gráfico. ',
+	  	'O Google Trends disponibiliza a informação de interesse ao longo do tempo para cada candidato em valores indexados de 0 a 100, sendo 100 o ponto mais alto do gráfico. ',
       'Todos os outros valores são por comparação. ',
       'É possível visualizar a evolução temporal do volume de busca dos candidato com os filtros por semana, mês e ano, e sua evolução individual',
     ],
@@ -102,7 +101,7 @@ export const i18n_pt_br = {
 	  	{
 	  		title: "Carol Cavaleiro",
 	  		name: "Direção de arte, edição e design",
-			link: ""
+				link: "https://carolcavaleiro.com/portfolio/"
 	  	},
 	  	{
 	  		title: "Thais Viana",

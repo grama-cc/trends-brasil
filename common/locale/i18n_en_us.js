@@ -23,8 +23,7 @@ export const i18n_en_us = {
 	description: 'Interest in the candidates over time.',
 	button: 'Learn more',
 	more: [
-	  "Google Trends tracks the interests over time for each candidate and the data are displayed with an index of 0 to 100,",
-      " where 100 is the highest pick of the chart. All the other values are set in comparison. ",
+	  "Google Trends tracks the interests over time for each candidate and the data are displayed with an index of 0 to 100, where 100 is the highest pick of the chart. All the other values are set in comparison. ",
       "It is possible to visualize the evolution of the candidates search through time with filters by week, ",
       "month and year and one candidate's personal evolution"
 	],
@@ -100,7 +99,7 @@ export const i18n_en_us = {
 	  	{
 	  		title: "Carol Cavaleiro",
 	  		name: "Art director and design",
-			link: ""
+				link: "https://carolcavaleiro.com/portfolio/"
 	  	},
 	  	{
 	  		title: "Thais Viana",
