@@ -28,6 +28,9 @@ class Lines extends React.Component {
   }
 
   componentDidMount() {
+    // http://brasil-trends.herokuapp.com/v1/dates/1/
+    // http://brasil-trends.herokuapp.com/v1/candidate_line/?candidate_id=2
+    // http://brasil-trends.herokuapp.com/v1/aggregated_line/
     this.renderAxis();
   }
 
@@ -149,7 +152,7 @@ class Lines extends React.Component {
           {this.renderFilter()}
         </div>
         
-        {this.renderChart()}
+        {/* {this.renderChart()} */}
 
 				<Period
           bgColor='#fff'
