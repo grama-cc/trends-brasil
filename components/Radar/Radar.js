@@ -230,6 +230,7 @@ class RadarChart extends React.Component {
         candidates={this.props.candidates}
         content='radar'
         arrowColor={this.props.arrowColor}
+        lang={this.props.lang}
       >
         <div className={css.radar}>
           {this.renderChart()}

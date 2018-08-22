@@ -60,6 +60,11 @@ class Candidate extends React.Component {
     return node
   }
 
+  onChangeLang = (e) => {
+    const lang = e.currentTarget.lang
+    this.props.onChangeLang(lang)
+  }
+
 
   render() {
     const candidates = this.props.candidates;
@@ -72,6 +77,8 @@ class Candidate extends React.Component {
     const list = 90
 
     const move = ( list * ( - idx ) );
+
+    const lang = this.props.lang
 
     return (
       <div className={`${css.candidate}`} type={this.props.val}>
@@ -127,7 +134,7 @@ class Candidate extends React.Component {
           </ul>
 
           <h3 className={css.title}>
-            {!filter ? i18n('keywords.buttons.choose_candidate', null) : <span>{candidates[idx].name}</span>}
+            {!filter ? i18n('keywords.buttons.choose_candidate', lang) : <span>{candidates[idx].name}</span>}
           </h3>
 
           <Cloud 

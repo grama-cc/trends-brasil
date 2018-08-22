@@ -16,36 +16,40 @@ class Description extends React.Component {
 
   open = () => this.setState({ open: !this.state.open })
 
+  onChangeLang = (e) => {
+    const lang = e.currentTarget.lang
+    this.props.onChangeLang(lang)
+  }
+
   render() {
 
-      const content = this.props.content
-      if (content) {
-          return (
-              <div className={css.description}>
+    const content = this.props.content;
+    const lang = this.props.lang
 
+    if (content) {
+      return (
+        <div className={css.description}>
+          <h2>{i18n(content + '.title', lang)}</h2>
+          <p>{i18n(content + '.description', lang)}</p>
 
-                  <h2>{i18n(content + '.title', null)}</h2>
-                  <p>{i18n(content + '.description', null)}</p>
+          <button
+            onClick={this.open}
+            className={this.state.open ? css.open : null}
+          >
+            <span>{i18n(content + '.button', lang)}</span>
+            <Arrow arrowColor={this.props.arrowColor}/>
+          </button>
 
-                  <button
-                      onClick={this.open}
-                      className={this.state.open ? css.open : null}
-                  >
-                      <span>{i18n(content + '.button', null)}</span>
-                      <Arrow arrowColor={this.props.arrowColor}/>
-                  </button>
-
-                  <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>
-                      {i18n(content + '.more', null).map((text, index) => (
-                          <p key={index}>{text}</p>
-                      ))}
-                  </div>
-
-              </div>
-          )
-      } else {
-          return (<div><p>Erro</p></div>)
-      }
+          <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>
+            {i18n(content + '.more', lang).map((text, index) => (
+              <p key={index}>{text}</p>
+            ))}
+          </div>
+        </div>
+      )
+    } else {
+      return (<div><p>Erro</p></div>)
+    }
   }
 }
 

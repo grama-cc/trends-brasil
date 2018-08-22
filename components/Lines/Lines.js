@@ -9,6 +9,7 @@ import content from '../../static/json/lines.json'
 
 import data from './data.js'
 
+import Period from '../Period/Period.js';
 import Filter from '../Filter.js';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
@@ -143,6 +144,7 @@ class Lines extends React.Component {
           <Description
             content='lines'
             arrowColor={this.props.arrowColor}
+            lang={this.props.lang}
           />
           {this.renderFilter()}
         </div>

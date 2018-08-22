@@ -209,6 +209,7 @@ class Orbital extends React.Component {
         candidates={this.props.candidates}
         content='orbit'
         arrowColor={this.props.arrowColor}
+        lang={this.props.lang}
       >
         <div className={css.orbital}>
           {this.renderChart()}

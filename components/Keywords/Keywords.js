@@ -32,6 +32,7 @@ class Keywords extends React.Component {
             words={this.props.words}
             onFilter={this.props.onFilter} 
             filter={this.props.filter}
+            lang={this.props.lang}
           />
           <Candidate
             val={view}
@@ -40,6 +41,7 @@ class Keywords extends React.Component {
             onFilter={this.props.onFilter}
             filter={this.props.filter}
             content='keywords'
+            lang={this.props.lang}
           />
         </React.Fragment>
       )
@@ -57,6 +59,7 @@ class Keywords extends React.Component {
           <Description
             content='keywords'
             arrowColor={this.props.arrowColor}
+            lang={this.props.lang}
           />
         </div>
         <div className={css.container}>
@@ -64,6 +67,7 @@ class Keywords extends React.Component {
             click={this.onChangeView}
             val={view}
             content='keywords.select'
+            lang={this.props.lang}
           />
           { this.renderChart(candidates, words, view) }
         </div>

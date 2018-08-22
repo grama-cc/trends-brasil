@@ -80,6 +80,7 @@ class Relationship extends React.Component {
             <Description
               content='relationship'
               arrowColor={this.props.arrowColor}
+              lang={this.props.lang}
             />
           </div>
 
