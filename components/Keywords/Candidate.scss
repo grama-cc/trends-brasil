@@ -3,10 +3,8 @@
 .candidate {
   display: flex;
   position: absolute;
-  // top: 0;
   opacity: 1;
   z-index: 1;
-
   left: 50%;
   transform: translateX(-50%);
 
@@ -42,43 +40,36 @@
     height: 100%;
     z-index: 2;
 
-    //background-color: rgba(255, 0, 0, .5);
-
     &.prev {
     	transform: scaleX(-1);
       left: 0;
+      @media screen and (min-width: 500px) {
+        left: -30px;
+      }
     }
 
     &.next {
       right: 0;
+      @media screen and (min-width: 500px) {
+        right: -30px;
+      }
     }
 
     position: absolute;
-
-    //@media screen and (min-width: 1100px) {
-      //position: relative;
-    //}
   }
 
   .content {
   	max-width: 300px;
     width: 100%;
   	overflow: hidden;
-    //background-color: pink;
-   // margin: 0 auto;
-
-
-
-    @media screen and (min-width: 1100px) {
+    @media screen and (min-width: 500px) {
       max-width: 450px;
       width: 450px;
-      //margin: 0;
     }
 
   	.nav {
   		display: flex;
       justify-content: flex-start;
-      // margin: 10px 0;
       position: relative;
       transition: left .4s ease;
 
