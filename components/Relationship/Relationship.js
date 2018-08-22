@@ -74,7 +74,6 @@ class Relationship extends React.Component {
   }
 
   render() {
-
     return (
       <section className={css.relationship}>
 
@@ -92,7 +91,7 @@ class Relationship extends React.Component {
 
         </div>
 
-        <Social stroke='#b4b4b4' />
+        <Social stroke='#b4b4b4' parent="Relationship_clouds_ybJRI"/>
         
       </section>
     )

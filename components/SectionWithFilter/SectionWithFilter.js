@@ -1,10 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import css from './SectionWithFilter.scss';
-// import * as d3 from "d3";
-
-// import Api from '../../lib/Api';
-import content from '../../static/json/keywords.json'
 import Filter from '../Filter.js';
 import Period from '../Period/Period.js';
 import Description from '../Description.js';
@@ -35,6 +30,7 @@ class Section extends React.Component {
 
     const bg = currentCandidate ? `${currentCandidate.slug}.png` : 'none.svg';
     const name = currentCandidate ? currentCandidate.name : 'Escolha um candidato';
+
 
     return (
       <section
@@ -74,7 +70,7 @@ class Section extends React.Component {
               color='#fff'
               arrowColor={this.props.arrowColor}
             />
-            <Social stroke='#fff' />
+            <Social stroke='#fff' parent={this.props.children.props.className}/>
 
           </div>
         </div>

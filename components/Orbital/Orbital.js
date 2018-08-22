@@ -96,7 +96,8 @@ class Orbital extends React.Component {
       return ( 
         <React.Fragment>
         <p className={css.middle}>{filter ? candidates[0].name : null}</p>
-        <svg 
+        <svg
+          className="Orbital_chart"
           xmlns="http://www.w3.org/2000/svg"
           viewBox={`0 0 ${w} ${h}`}
           preserveAspectRatio="none"
