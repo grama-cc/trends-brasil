@@ -4,9 +4,6 @@
   width: 100%;
   position: absolute;
   display: block;
-  // position: static;
-
-  // top: 0;
   opacity: 1;
   z-index: 1;
 
@@ -16,19 +13,14 @@
     z-index: -1;
   }
   @media screen and (min-width: 1100px) {
-    //position: absolute;
     width: auto;
     top: 0;
     right: 0;
-
-    // top: 0;
     opacity: 1;
     z-index: 1;
 
     &[type='words'] {
       display: block;
-
-      // top: 0;
       opacity: 1;
       z-index: 1;
     }
@@ -40,13 +32,13 @@
       height: 70vh;
     }
     @media screen and (min-width: 1100px) {
-      // width: 60% !important;
       height: 100vh;
-      //position: absolute;
       margin: 0;
-      //top: 0;
-      //right: 0;
     }
+
+    //g {
+      //transition: transform .4s ease;
+    //}
 
     @media screen and (max-width: 1100px) {
       g { 
@@ -55,8 +47,9 @@
         }
         &.open {
           position: absolute;
-          transform: translateX(50%) translateY(50%);
+          transform: translate(50%, 50%);
           z-index: 1;
+          transition: transform .4s ease;
           circle {
             r: 50;
           }

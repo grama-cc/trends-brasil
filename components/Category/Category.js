@@ -11,9 +11,6 @@ import Select from './Select.js';
 import Chart from './Chart'
 import Cloud from '../Cloud.js';
 
-// import Slider from './Slider.js';
-
-
 class Category extends React.Component {
 
   constructor(props) {
@@ -130,19 +127,13 @@ class Category extends React.Component {
               /> 
 
             </header>
-
+            
             <Select
               click={this.onChangeView}
               val={view}
               content='keywords.select'
               lang={this.props.lang}
             />
-          
-            {/*<Select
-              click={this.onChangeView}
-              val={view}
-              content={content.select}
-            />*/}
 
             <Chart type={view} data={data[idx]}/>
             <Cloud 
@@ -151,6 +142,7 @@ class Category extends React.Component {
               candidates={this.props.candidates}
               words={this.props.words} 
               keywords
+              color='#b4b4b4'
             />
             {this.renderNav('btn')}
           </div>
