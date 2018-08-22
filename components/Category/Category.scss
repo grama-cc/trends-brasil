@@ -49,6 +49,11 @@
   	}
 
   	.chart {
+
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
+
       header {
         display: flex;
         justify-content: space-between;
@@ -78,7 +83,7 @@
 
       .bars {
         text-align: center;
-        background: yellow;
+        // background: yellow;
         display: none;
         &[val='bars'] {
           display: block;
@@ -88,7 +93,7 @@
 
       .terms {
         text-align: center;
-         background: yellow;
+         // background: yellow;
         display: none;
         &[val='terms'] {
           display: block;

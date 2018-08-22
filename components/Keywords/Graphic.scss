@@ -1,19 +1,26 @@
 @import '../../lib/scss/variables.scss';
 
 .graphic {
-  position: absolute;
   width: 100%;
+  position: absolute;
+  display: block;
   opacity: 1;
   z-index: 1;
+
   &[type='words'] {
-    // display: none;
+    display: none;
     opacity: 0;
-    z-index: 0;
+    z-index: -1;
   }
   @media screen and (min-width: 1100px) {
-    position: static;
+    width: auto;
+    top: 0;
+    right: 0;
+    opacity: 1;
+    z-index: 1;
+
     &[type='words'] {
-      //display: block;
+      display: block;
       opacity: 1;
       z-index: 1;
     }
@@ -25,12 +32,13 @@
       height: 70vh;
     }
     @media screen and (min-width: 1100px) {
-      // width: 60% !important;
-      height: 110vh;
-      position: absolute;
-      top: 0;
-      right: 0;
+      height: 100vh;
+      margin: 0;
     }
+
+    //g {
+      //transition: transform .4s ease;
+    //}
 
     @media screen and (max-width: 1100px) {
       g { 
@@ -39,8 +47,9 @@
         }
         &.open {
           position: absolute;
-          transform: translateX(50%) translateY(50%);
+          transform: translate(50%, 50%);
           z-index: 1;
+          transition: transform .4s ease;
           circle {
             r: 50;
           }
@@ -67,6 +76,8 @@
   h3 {
     text-align: center;
     font-size: responsive(20, 24);
+    position: relative;
+    top: -8px;
   }
 	p {
   	position: absolute;
@@ -95,7 +106,7 @@
     background-color: $white;
     border-radius: 0;
     padding: 8px 5px;
-    font-size: responsive(14, 24, 320, 800);
+    font-size: responsive(12, 24, 320, 800);
   }
 }
 

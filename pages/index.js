@@ -53,10 +53,17 @@ class Home extends React.Component {
   }
 
   render() {
+    
+
+    //if(!this.state.candidates && !this.state.words) {
+      //return <div className={css.loading}>Loading...</div>
+    //} 
+
     const candidates = this.state.candidates;
     const words = this.state.words;
 
     return (
+
       <Layout>
         <Head title="Trends Brasil" />
          
@@ -75,13 +82,13 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        <Lines
+        {/*<Lines
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
-        />
+        />*/}
 
         <Category
           arrowColor='#b4b4b4'
@@ -116,8 +123,10 @@ class Home extends React.Component {
           arrowColor='#fff'
           lang={this.state.lang}
         />
-        <Footer />
-        <Clipping />
+        <Footer
+          lang={this.state.lang}
+        />
+        {/*<Clipping />*/}
       </Layout>
     );
   }

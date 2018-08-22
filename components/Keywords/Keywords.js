@@ -1,23 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import css from './Keywords.scss';
-import content from '../../static/json/keywords.json'
-
 import Description from '../Description.js';
 import Select from './Select.js';
-import Period from '../Period/Period.js';
 import Candidate from './Candidate.js';
 import Graphic from './Graphic.js';
 import Social from '../Social/Social.js';
-
-import Api from '../../lib/Api';
 
 class Keywords extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      view: 'balls'
+      view: 'balls',
     }
   }
 
@@ -26,25 +19,29 @@ class Keywords extends React.Component {
   }
 
   renderChart(candidates, words, view) {
+
     if(!this.props.candidates && !this.props.words) {
+
       return <div className={css.loading}>Loading...</div>
     } else {
       return (
         <React.Fragment>
           <Graphic
             val={view}
-            candidates={candidates}
-            words={words}
+            candidates={this.props.candidates}
+            words={this.props.words}
             onFilter={this.props.onFilter} 
             filter={this.props.filter}
+            lang={this.props.lang}
           />
           <Candidate
             val={view}
-            candidates={candidates}
-            words={words}
-            onFilter={this.props.onFilter} 
+            candidates={this.props.candidates}
+            words={this.props.words}
+            onFilter={this.props.onFilter}
             filter={this.props.filter}
-            content={content}
+            content='keywords'
+            lang={this.props.lang}
           />
         </React.Fragment>
       )
@@ -56,20 +53,21 @@ class Keywords extends React.Component {
     const candidates = this.props.candidates
     const words = this.props.words
     const view = this.state.view;
-
     return (
       <section className={css.keywords} id='keywords'>
         <div className={css.info}>
           <Description
-            content={content.description}
+            content='keywords'
             arrowColor={this.props.arrowColor}
+            lang={this.props.lang}
           />
         </div>
         <div className={css.container}>
           <Select
             click={this.onChangeView}
             val={view}
-            content={content.select}
+            content='keywords.select'
+            lang={this.props.lang}
           />
           { this.renderChart(candidates, words, view) }
         </div>

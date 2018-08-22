@@ -208,8 +208,9 @@ class Orbital extends React.Component {
         onFilter={this.props.onFilter} 
         filter={this.props.filter}
         candidates={this.props.candidates}
-        content={content}
+        content='orbit'
         arrowColor={this.props.arrowColor}
+        lang={this.props.lang}
       >
         <div className={css.orbital}>
           {this.renderChart()}

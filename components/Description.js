@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import css from './Description.scss';
 
 import Arrow from './Arrow.js';
+import {i18n} from "../common/locale/i18n";
 
 class Description extends React.Component {
 
@@ -15,32 +16,40 @@ class Description extends React.Component {
 
   open = () => this.setState({ open: !this.state.open })
 
+  onChangeLang = (e) => {
+    const lang = e.currentTarget.lang
+    this.props.onChangeLang(lang)
+  }
+
   render() {
 
-    const content = this.props.content
+    const content = this.props.content;
+    const lang = this.props.lang
 
-    return (
-      <div className={css.description}>
+    if (content) {
+      return (
+        <div className={css.description}>
+          <h2>{i18n(content + '.title', lang)}</h2>
+          <p>{i18n(content + '.description', lang)}</p>
 
-        <h2>{content.title}</h2>
-        <p>{content.description}</p>
+          <button
+            onClick={this.open}
+            className={this.state.open ? css.open : null}
+          >
+            <span>{i18n(content + '.button', lang)}</span>
+            <Arrow arrowColor={this.props.arrowColor}/>
+          </button>
 
-        <button
-          onClick={this.open}
-          className={this.state.open ? css.open : null}
-        >
-          <span>{content.button}</span>
-          <Arrow arrowColor={this.props.arrowColor}/>
-        </button>
-
-        <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>
-          {content.more.map((text, index) => (
-            <p key={index}>{text}</p>
-          ))}
+          <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>
+            {i18n(content + '.more', lang).map((text, index) => (
+              <p key={index}>{text}</p>
+            ))}
+          </div>
         </div>
-        
-      </div>
-    )
+      )
+    } else {
+      return (<div><p>Erro</p></div>)
+    }
   }
 }
 
