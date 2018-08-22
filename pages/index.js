@@ -126,7 +126,7 @@ class Home extends React.Component {
         <Footer
           lang={this.state.lang}
         />
-        <Clipping />
+        {/*<Clipping />*/}
       </Layout>
     );
   }
