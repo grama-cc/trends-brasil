@@ -31,7 +31,18 @@ class Lines extends React.Component {
     // http://brasil-trends.herokuapp.com/v1/dates/1/
     // http://brasil-trends.herokuapp.com/v1/candidate_line/?candidate_id=2
     // http://brasil-trends.herokuapp.com/v1/aggregated_line/
-    this.renderAxis();
+    // this.renderAxis();
+
+    this.getData();
+  }
+
+  getData = async () => {
+    const dates = await Api.getDates();
+    const aggregatedLine = await Api.getAggregatedLine();
+    const candidateLine = await Api.getCandidateLine(3);
+    console.log(dates)
+    console.log(aggregatedLine)
+    console.log(candidateLine)
   }
 
   renderFilter () {
