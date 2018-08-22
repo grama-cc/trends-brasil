@@ -20,7 +20,7 @@ export const i18n_en_us = {
   },
   lines: {
     title: 'Search performance',
-	description: 'Interesse pelos candidatos ao longo do tempo.',
+	description: 'Interest in the candidates over time.',
 	button: 'Learn more',
 	more: [
 	  "Google Trends tracks the interests over time for each candidate and the data are displayed with an index of 0 to 100,",
@@ -32,7 +32,7 @@ export const i18n_en_us = {
   keywords: {
 	  title: "Who do people search on Google?",
 	  description: "Candidate's popularity on Google search and most common search terms associated to them.",
-	  button: "Saiba mais",
+	  button: 'Learn more',
 	  more: [
 	  	"The bubble chart represents the relevance of each candidate for the Brazil 2018 presidential race. ",
 		  "The word cloud shows the most common search terms on Google for each candidate. ",
@@ -79,6 +79,7 @@ export const i18n_en_us = {
     input: 'Search for topic or category',
   },
   footer:{
+  	share: "Share this project",
  	project: {
           title: "The project",
           columnLeft: [

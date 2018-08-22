@@ -31,7 +31,7 @@ export const i18n_pt_br = {
   },
   keywords: {
 	  title: "Por quem buscam",
-	  description: "A popularidade dos candidatos na busca do Google.",
+	  description: "A popularidade dos candidatos na busca do Google e os termos mais comuns associados a ele.",
 	  button: "Saiba mais",
 	  more: [
 	  	"O gráfico de bolas representa a relevância dos candidatos à presidência nas eleições de 2018 no Brasil, ",
@@ -81,6 +81,7 @@ export const i18n_pt_br = {
     input: 'Search for topic or category',
   },
  footer:{
+  	share: "Compartilhe esse projeto",
 	project: {
   	title: "O projeto",
 	  columnLeft: [

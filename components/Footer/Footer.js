@@ -49,7 +49,7 @@ class Footer extends React.Component {
 
         <div className={css.socialContainer}>
           <Social share stroke="#4b4b4b">
-            <h4>Compartilhe esse projeto</h4>
+            <h4>{i18n('footer.share', lang)}</h4>
           </Social>
         </div>
         
