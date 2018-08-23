@@ -22,6 +22,7 @@ class Lines extends React.Component {
     this.state = {
       data: null, //data
       dates: null, //specialDates
+      period: 'month',
     };
     this.cfg = {
       width: 1000,
@@ -40,7 +41,7 @@ class Lines extends React.Component {
   }
 
   componentWillReceiveProps() {
-    console.log(1231)
+    console.log('componentWillReceiveProps')
   }
 
   componentDidUpdate() {
@@ -58,14 +59,33 @@ class Lines extends React.Component {
 
   getData = async () => {
     const dates = await Api.getDates();
-    const aggregatedLine = await Api.getAggregatedLine();
-    const candidateLine = await Api.getCandidateLine(3);
+    const data = await this.getData2();
 
     this.setState({
       dates,
-      data: aggregatedLine,
-      candidateLine,
+      data,
     });
+  }
+
+  getData2 = async (period, candidate) => {
+    if (candidate) {
+      return await Api.getCandidateLine(3);
+    } else {
+      return await Api.getAggregatedLine(period)
+    } 
+
+    // http://brasil-trends.herokuapp.com/v1/aggregated_line/?period=now%207-d
+    // http://brasil-trends.herokuapp.com/v1/aggregated_line/?period=today%201-m
+
+    // const dates = await Api.getDates();
+    // const aggregatedLine = await Api.getAggregatedLine();
+    // const candidateLine = await Api.getCandidateLine(3);
+
+    // this.setState({
+    //   dates,
+    //   data: candidateLine,
+    //   candidateLine,
+    // });
   }
 
   getDate = (timezone) => {
@@ -79,6 +99,16 @@ class Lines extends React.Component {
       this.getDate(l.date).getTime() === this.getDate(date).getTime()
     ))
     return line ? line.percent : 0;
+  }
+
+  onClickPeriod = async (period) => {
+    // const period = e.target.value
+    // this.setState({ period: period });
+    // console.log(123);
+    // const candi
+    console.log(period)
+    const data = await this.getData2(period);
+    this.setState({ period, data });
   }
 
   renderFilter () {
@@ -104,7 +134,7 @@ class Lines extends React.Component {
 
     const lastDate = data[0].lines[data[0].lines.length-1].date;
     const end = this.getDate(lastDate);
-    const start = d3.timeDay.offset(end, -30); // TODO colocar no setState opção de 7 ou 30 dias
+    const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -30);
 
     // axis
     const scaleTime = d3.scaleTime()
@@ -194,6 +224,7 @@ class Lines extends React.Component {
           color='#b4b4b4'
           arrowColor={this.props.arrowColor}
           all
+          onClickPeriod={this.onClickPeriod}
         />
 				<Social stroke='#b4b4b4' />
       </section>
