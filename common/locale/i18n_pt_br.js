@@ -92,8 +92,7 @@ export const i18n_pt_br = {
 	  ],
 	   columnRight: [
 	   	"Vamos acompanhar os resultados até outubro de 2018, mês das eleições.",
-	  		"O Google Trends analisa uma amostra aleatória das buscas feitas pelo Google em um período específico de tempo e as classifica em uma escala de 0 a 100, ",
-		   "sendo 100 o termo de maior interesse de pesquisa. A partir daí, os outros resultados ganham valores relativos.\n"
+	  		"O Google Trends analisa uma amostra aleatória das buscas feitas pelo Google em um período específico de tempo e as classifica em uma escala de 0 a 100, sendo 100 o termo de maior interesse de pesquisa. A partir daí, os outros resultados ganham valores relativos.\n"
 	   	]
 	},
   	team: {

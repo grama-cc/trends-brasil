@@ -23,10 +23,8 @@ export const i18n_en_us = {
 	description: 'Interest in the candidates over time.',
 	button: 'Learn more',
 	more: [
-	  "Google Trends tracks the interests over time for each candidate and the data are displayed with an index of 0 to 100,",
-      " where 100 is the highest pick of the chart. All the other values are set in comparison. ",
-      "It is possible to visualize the evolution of the candidates search through time with filters by week, ",
-      "month and year and one candidate's personal evolution"
+	  "Google Trends tracks the interests over time for each candidate and the data are displayed with an index of 0 to 100, where 100 is the highest pick of the chart. All the other values are set in comparison. ",
+      "It is possible to visualize the evolution of the candidates search through time with filters by week, month and year and one candidate's personal evolution"
 	],
   },
   keywords: {
@@ -51,8 +49,7 @@ export const i18n_en_us = {
 	  description: 'The most common and the most unusual search terms between two candidates. Choose two candidates to compare.',
 	  button: "Learn more",
 	  more: [
-	  	"The comparison between the search therms of two candidates highlights the interesting search correlations among ideological and individual aspects, ",
-		  "such as biography or political figures, and may point out opposite points of view in search terms not common between them. ",
+	  	"The comparison between the search therms of two candidates highlights the interesting search correlations among ideological and individual aspects, such as biography or political figures, and may point out opposite points of view in search terms not common between them. ",
 		  "Equivalent search terms are grouped together, for instance: “proposta de Bolsonaro” and “proposta Bolsonaro” appear as “proposta”"
 	  ]
 	},
@@ -62,8 +59,7 @@ export const i18n_en_us = {
 	  button: "Learn more",
 	  more: [
 	  	"The initial data gathered presented a relevant amount of celebrities names on the candidates related search. ",
-		  "The visualization measures the volume of these searches, displaying the names accordingly their relevance, ",
-		  "where the most frequent searches appear near the center."
+		  "The visualization measures the volume of these searches, displaying the names accordingly their relevance, where the most frequent searches appear near the center."
 	  ]
 	},
 	radar: {
