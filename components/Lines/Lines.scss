@@ -24,7 +24,7 @@
     order: 2;
     width: 100%;
     box-sizing: border-box;
-    padding: 50px;
+    padding: responsive(10, 50);
     margin: 20px 0px;
     min-height: 50vh; // provisorio
 
@@ -43,8 +43,16 @@
       line {
         stroke: $black;
       }
+
+      rect {
+        fill: $black;
+      }
+
       text {
-        fill: red;
+        fill: $white;
+        font-size: 10px;
+        font-weight: 500;
+        text-transform: uppercase;
       }
     }
 

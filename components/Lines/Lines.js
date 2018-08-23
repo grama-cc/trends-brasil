@@ -36,6 +36,19 @@ class Lines extends React.Component {
     this.getData();
   }
 
+  componentDidUpdate() {
+    const svg = d3.select(this.svg);
+
+    svg.selectAll(`.${css.date}`).each(function() {
+      const text = d3.select(this).select('text');
+      const width = text.node().getBBox().width + 20;
+
+      d3.select(this).select('rect')
+        .attr('width', width)
+        .attr('x', -width / 2)
+    });
+  }
+
   getData = async () => {
     const dates = await Api.getDates();
     const aggregatedLine = await Api.getAggregatedLine();
@@ -106,11 +119,12 @@ class Lines extends React.Component {
           xmlns="http://www.w3.org/2000/svg"
           viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
           preserveAspectRatio="none"
+          ref={(c) => { this.svg = c; }}
         >
           <g
             className={css.axis}
             transform={`translate(0, ${this.cfg.height})`}
-            ref={(y) => { this.axisElement = y; }}
+            ref={(c) => { this.axisElement = c; }}
           />
           {specialDates.map((date) => (
             <g
@@ -119,15 +133,20 @@ class Lines extends React.Component {
               transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
             >
               <line
-                x1={0}
-                y1={0}
-                x2={0}
+                x1="0"
+                y1="0"
+                x2="0"
                 y2={this.cfg.height}
               />
-              <text
-                fontSize={10}
-                textAnchor="middle"
-              >
+              <rect
+                x="0"
+                y="-13"
+                width="0"
+                height="20"
+                rx="8"
+                ry="8"
+              />
+              <text textAnchor="middle">
                 {date.text}
               </text>
             </g>
