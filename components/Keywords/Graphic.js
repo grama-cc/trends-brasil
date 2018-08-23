@@ -23,9 +23,8 @@ class Graphic extends React.Component {
   }
 
   renderModalWords () {
-    const candidates = this.props.candidates.filter((c) => this.props.filter === c.id);
-    const words = candidates[0].words.slice(0, 8);
-    const name = candidates[0].name;
+    let words = this.props.words.filter((c) => this.props.filter === c.candidate);
+    words = words.slice(0, 8);
 
     return (
       <div className={css.modal} onClick={this.closeModal}>
