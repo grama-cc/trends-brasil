@@ -48,7 +48,7 @@ const Social = props => (
       {!props.share ?
       <li><a onClick={(e) => handleClick(e, props.parent)}><Media stroke={props.stroke} /></a></li> : null}
       <li><a onClick={(e) => twitterShare(e)}><Twitter stroke={props.stroke} /></a></li>
-      <li><a href="#"><Facebook stroke={props.stroke} /></a></li>
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//trends-brasil.herokuapp.com/" target="_blank"><Facebook stroke={props.stroke} /></a></li>
       <li><a href="#"><Whatsapp stroke={props.stroke} /></a></li>
     </ul>
   </React.Fragment>
