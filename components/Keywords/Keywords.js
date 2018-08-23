@@ -82,7 +82,7 @@ class Keywords extends React.Component {
           bottom
           arrowColor={this.props.arrowColor}
         />
-        <Social stroke='#b4b4b4' bottom />
+        <Social stroke='#b4b4b4' bottom parent="Graphic_graphic_IWdTV"/>
       </section>
     )
   }

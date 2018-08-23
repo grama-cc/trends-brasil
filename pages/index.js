@@ -79,7 +79,11 @@ class Home extends React.Component {
     return (
 
       <Layout>
-        <Head title="Trends Brasil" />
+        <Head
+            title="Trends Brasil"
+            description="Na busca do candidato"
+            image="/static/img/share.jpg"
+        />
          
         <Intro
           arrowColor='#b4b4b4'
