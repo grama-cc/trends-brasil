@@ -39,6 +39,10 @@ class Lines extends React.Component {
     this.getData();
   }
 
+  componentWillReceiveProps() {
+    console.log(1231)
+  }
+
   componentDidUpdate() {
     const svg = d3.select(this.svg);
 
