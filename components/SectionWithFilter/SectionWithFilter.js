@@ -31,7 +31,6 @@ class Section extends React.Component {
     const bg = currentCandidate ? `${currentCandidate.slug}.png` : 'none.svg';
     const name = currentCandidate ? currentCandidate.name : 'Escolha um candidato';
 
-
     return (
       <section
         className={css.section}

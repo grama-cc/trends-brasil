@@ -8,20 +8,30 @@ import Facebook from './Facebook.js';
 import Whatsapp from './Whatsapp.js';
 import { saveAs } from 'file-saver/FileSaver';
 
-function writeDownloadLink(svgData){
+function writeDownloadLink(svgData,parentName){
+    console.log(svgData)
     try {
         var isFileSaverSupported = !!new Blob();
     } catch (e) {
         alert("blob not supported");
     }
     var blob = new Blob([svgData], {type: "image/svg+xml"});
-    saveAs(blob, "barChart.svg");
+    saveAs(blob, parentName+".svg");
 };
 
 function handleClick(event, parentName) {
   var elements = document.getElementsByClassName(parentName)
-  var svgContent= elements[0].outerHTML
-  writeDownloadLink(svgContent)
+  var svgContent = ''
+  for(var i = 0; i < elements[0].childNodes.length; i++){
+      console.log(elements[0].childNodes[i].nodeName)
+      if(elements[0].childNodes[i].nodeName === 'svg'){
+        svgContent = elements[0].childNodes[i].cloneNode(true)
+        svgContent.style.backgroundColor = "#ececec"
+        svgContent.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink")
+        svgContent = svgContent.outerHTML
+      }
+  }
+  writeDownloadLink(svgContent, parentName)
 }
 
 
