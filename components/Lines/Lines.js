@@ -32,7 +32,6 @@ class Lines extends React.Component {
     // http://brasil-trends.herokuapp.com/v1/dates/1/
     // http://brasil-trends.herokuapp.com/v1/candidate_line/?candidate_id=2
     // http://brasil-trends.herokuapp.com/v1/aggregated_line/
-    // this.renderAxis();
 
     this.getData();
   }
@@ -77,129 +76,7 @@ class Lines extends React.Component {
     return time;
   }
 
-  renderAxis() {
-
-    // const epa = data[0].lines[0].timestamp;
-    // console.log(this.timeConverter(epa));
-
-    // const xScale = d3.scaleBand()
-    //   .padding(0.5)
-    //   .domain(data[0].lines.map(d => this.timeConverter(d.timestamp)))
-    //   .range([0, this.cfg.width])
-    
-    // const axisType = `axisBottom`
-    // const axis = d3Axis[axisType]()
-    //   .scale(xScale)
-    //   .tickSize(-((this.cfg.height - 50) - this.cfg.margin.top - this.cfg.margin.bottom ))
-    //   .tickPadding([12])
-    //   .ticks([4])
-
-    // d3.select(this.axisElement).call(axis)
-  }
-
   renderChart () {
-    // const h = this.cfg.height - 50;
-
-    // const xepa = d3.scaleLinear()
-    //   .domain([0, 4])
-    //   .range([0, 900]);
-
-    // const yepa = d3.scaleLinear()
-    //   .domain([0, 100])
-    //   .range([300, 0]);
-
-
-    // var x = d3.scaleLinear()
-    // .domain([10, 130]) // input
-    // .range([0, 960]); // output
-
-// console.log(x(10));
-// console.log(new Date(1534204800 * 1000))
-
-
-
-var margin = {top: 100, right: 100, bottom: 100, left: 100},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-
-// console.log(d3)
-var x = d3.scaleTime()
-    .domain([new Date, new Date])
-    .nice(d3.timeWeek)
-    .range([0, width]);
-
-// var svg = d3.select(".Lines_lines_q3Iso").append("svg")
-//     .attr("width", width + margin.left + margin.right)
-//     .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// svg.append("g")
-    // .attr("class", "x axis")
-    // .call(d3.svg.axis().scale(x).orient("bottom"));
-    // .call(d3Axis['axisLeft']().scale(x).orient("bottom"));
-    
-    const yScale = d3.scaleLinear()
-      .domain([0, 100])
-      .range([0, 200])
-
-    // const axis = d3Axis.axisBottom()
-    //   .scale(yScale)
-    //   .tickSize(-(500 - 200))
-    //   .tickPadding([12])
-    //   .ticks([4])
-    // d3.select(this.axisElement).call(axis)
-
-    const x = d3.scaleLinear()
-      .domain([0, 100])
-      .range([0, 800])
-
-    var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    const axis = d3Axis.axisBottom()
-      .scale(x)
-      .tickSize(100)
-      .tickPadding([10])
-      .ticks([7])
-      .tickFormat(function(d, i){
-        return week[d]
-      })
-    d3.select(this.axisElement).call(axis)
-
-// var xAxis = d3.svg.axis()
-//         .scale(x)
-//         .ticks(6)
-//         .tickSubdivide(true)
-//         .tickSize(6, 3, 0)
-//         .tickFormat(d3.time.format("%A"))
-//         .orient("bottom");
-
-
-
-    // const axisType = `axisLeft`
-    // const axis2 = d3Axis.axisTop()
-    //   .scale(yScale)
-    //   .tickSize(-(500 - 200))
-    //   .tickPadding([12])
-    //   .ticks([4])
-    // d3.select(this.axisElement).call(axis2)
-
-
-// d3.select("body").append("svg")
-//     .attr("width", 1440)
-//     .attr("height", 30)
-//   .append("g")
-//     .attr("transform", "translate(0,30)")
-    // .call(axis);
-
-// TODO datas são em segundos, tem que multiplicar por 1000
-
-      // x(20); // 80
-      // x(50); // 320
-
-
-
     let minTimestamp = Infinity;
     let maxTimestamp = 0;
     let minPercent = Infinity;   
@@ -238,6 +115,22 @@ var x = d3.scaleTime()
       .x(d => scaleTime(d.timestamp))
       .y(d => scalePercent(d.percent))
 
+    const end = new Date(maxTimestamp * 1000);
+    const start = d3.timeDay.offset(end, -7); // TODO colocar no setState opção de 7 ou 30 dias
+
+    const x = d3.scaleTime()
+      .domain([start, end])
+      .range([0, this.cfg.width])
+
+    const axis = d3Axis.axisBottom()
+      .scale(x)
+      .tickSize(-this.cfg.height)
+      .tickPadding([12])
+      .tickFormat(d => `${d.getDate()}/${d.getMonth()+1}`)
+      .ticks(d3.timeDay.every(1));
+
+    d3.select(this.axisElement).call(axis)
+
     return (
       <React.Fragment>
         <svg 
@@ -250,16 +143,6 @@ var x = d3.scaleTime()
             backgroundColor: `purple`,
           }}
         >
-          <g
-            transform={`translate(100, ${100})`}
-            // transform={`translate(0, ${this.cfg.height - 65 - this.cfg.margin.bottom})`}
-          >
-          </g>
-          {/* horizontal axis */}
-          <g
-            className={css.axis}
-            ref={(y) => { this.axisElement = y; }}
-          />
           <g className={css.lines}>
             {data.map((d, i) => (
               <path
@@ -270,6 +153,11 @@ var x = d3.scaleTime()
               />
             ))}
           </g>
+          <g
+            className={css.axis}
+            transform={`translate(0, ${this.cfg.height})`}
+            ref={(y) => { this.axisElement = y; }}
+          />
         </svg>
       </React.Fragment>
     )
