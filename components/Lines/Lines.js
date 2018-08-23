@@ -67,6 +67,13 @@ class Lines extends React.Component {
     return d3.timeDay.floor(new Date(safeTime));
   }
 
+  getPercent = (candidate, date) => {
+    const line = candidate.lines.find(l => (
+      this.getDate(l.date).getTime() === this.getDate(date).getTime()
+    ))
+    return line ? line.percent : 0;
+  }
+
   renderFilter () {
     if (!this.props.candidates) {
       return
@@ -126,31 +133,6 @@ class Lines extends React.Component {
             transform={`translate(0, ${this.cfg.height})`}
             ref={(c) => { this.axisElement = c; }}
           />
-          {specialDates.map((date) => (
-            <g
-              key={date.id}
-              className={css.date}
-              transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
-            >
-              <line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2={this.cfg.height}
-              />
-              <rect
-                x="0"
-                y="-13"
-                width="0"
-                height="20"
-                rx="8"
-                ry="8"
-              />
-              <text textAnchor="middle">
-                {date.text}
-              </text>
-            </g>
-          ))}
           <g className={css.lines}>
             {data.map((candidate) => (
               <path
@@ -160,6 +142,25 @@ class Lines extends React.Component {
               />
             ))}
           </g>
+          {specialDates.map((date) => (
+            <g
+              key={date.id}
+              className={css.date}
+              transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
+            >
+              <line y2={this.cfg.height} />
+              <rect y="-13" height="20" rx="8" ry="8" />
+              <text textAnchor="middle">{date.text}</text>
+              {data.map((candidate, i) => (
+                <circle
+                  key={candidate.id}
+                  r="4"
+                  cy={scalePercent(this.getPercent(candidate, date.date))}
+                  stroke={candidate.color}
+                />
+              ))}
+            </g>
+          ))}
         </svg>
       </React.Fragment>
     )

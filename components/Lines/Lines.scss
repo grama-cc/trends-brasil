@@ -54,6 +54,11 @@
         font-weight: 500;
         text-transform: uppercase;
       }
+
+      circle {
+        fill: $white;
+        stroke-width: 2px;
+      }
     }
 
     .lines {
