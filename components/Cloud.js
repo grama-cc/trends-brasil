@@ -41,7 +41,7 @@ class Cloud extends React.Component {
       <div className={css.cloud} type={this.props.type}>
         {words.map((word, idx) => {
 
-          const size = this.props.keywords ? word.size*(screen.width < 800 ? 30 : 50)/maxValue : word.size*(screen.width < 800 ? 5 : 30)/maxValue; 
+          const size = this.props.keywords ? word.size*(screen.width < 800 ? 12 : 40)/maxValue : word.size*(screen.width < 800 ? 10 : 30)/maxValue; 
 
           return(
             <a

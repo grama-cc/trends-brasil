@@ -39,26 +39,18 @@ class Orbital extends React.Component {
   }
 
   onClickPeriod = (period) => {
-    // const period = e.target.value
     this.setState({ period: period })
-
     this.getData(period);
   }
 
   getData = async (period) => {
     const orbital = await Api.getOrbit(period);
-
-    //if(period ==='week') {
-      //const orbital = await Api.getOrbitWeek();
-    //}
-
     this.setState({ orbital });
   }
 
   componentDidMount() {
     this.getData();
   }
-
 
   values = (data) => {
     const max = Math.max(this.config.maxValue, d3.max(data,

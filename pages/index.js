@@ -26,7 +26,8 @@ class Home extends React.Component {
       words: null,
       relationship: null,
       bars: null,
-      lang: 'port'
+      lang: 'port',
+      period: 'month'
     };
   }
 
@@ -56,13 +57,20 @@ class Home extends React.Component {
     this.setState({ lang: lang })
   }
 
-  getData = async () => {
+  onClickPeriod = (period) => {
+    this.setState({ period: period })
+    this.getData(period);
+  }
+
+  getData = async (period) => {
     const candidates = await Api.getCandidates();
     this.setState({ candidates });
-    const words = await Api.getWords();
+
+    const words = await Api.getWords(period);
     this.setState({ words });
+
     const bars = await Api.getBar();
-    const teste = await Api.getBar();
+    // const teste = await Api.getBar();
     this.setState({ bars });
   }
 
@@ -80,9 +88,9 @@ class Home extends React.Component {
 
       <Layout>
         <Head
-            title="Trends Brasil"
-            description="Na busca do candidato"
-            image="/static/img/share.jpg"
+          title="Trends Brasil"
+          description="Na busca do candidato"
+          image="/static/img/share.jpg"
         />
          
         <Intro
@@ -98,6 +106,9 @@ class Home extends React.Component {
           filter={this.state.filter}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
+
+          period={this.state.period}
+          onClickPeriod={this.onClickPeriod}
         />
 
         <Lines
