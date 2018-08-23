@@ -3,6 +3,7 @@
 .description {
 	margin: 0 0 20px;
 	text-align: center;
+	position: relative;
 	@media screen and (min-width: $medium-devices) {
     width: 70%;
     text-align: left;
@@ -44,16 +45,19 @@
 	}
 	.more {
 		text-align: left;
-		margin: 0 10px;
-		padding: 0 10px;
+		margin: 0;
+		padding: 0;
 		max-height: 0;
 		overflow: hidden;
-		transition: max-height .6s ease, margin .6s ease, padding .6s ease;
+		transition: max-height .4s ease, margin .4s ease, padding .4s ease;
+		position: absolute;
+		z-index: 2;
+		background-color: #fff;
+
 		&.open {
 			max-height: 1000px;
-			margin: 10px;
-			padding: 10px;
-			transition: max-height .6s ease, margin .6s ease, padding .6s ease;
+			padding: 20px 0;
+			transition: max-height .4s ease, margin .4s ease, padding .4s ease;
 		}
 	}
 }

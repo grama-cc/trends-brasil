@@ -7,28 +7,83 @@ import * as d3Axis from 'd3-axis'
 import Api from '../../lib/Api';
 import content from '../../static/json/lines.json'
 
-import data from './data.js'
-
 import Period from '../Period/Period.js';
 import Filter from '../Filter.js';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
 class Lines extends React.Component {
-
   constructor(props) {
     super(props);
+    this.state = {
+      data: null,
+      specialDates: null,
+      period: 'month',
+    };
     this.cfg = {
       width: 1000,
       height: 420,
       rect: 20,
       margin: { top: 0, right: 0, bottom: 0, left: 30 },
-      padding: 10,
     }
   }
 
   componentDidMount() {
-    this.renderAxis();
+    this.setupFirstData();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.filter !== this.props.filter) {
+      this.updateCandidate()
+    }
+
+    const svg = d3.select(this.svg);
+
+    svg.selectAll(`.${css.date}`).each(function() {
+      const text = d3.select(this).select('text');
+      const width = text.node().getBBox().width + 20;
+
+      d3.select(this).select('rect')
+        .attr('width', width)
+        .attr('x', -width / 2)
+    });
+  }
+
+  setupFirstData = async () => {
+    const data = await this.getData();
+    const specialDates = await Api.getDates();
+    this.setState({ data, specialDates });
+  }
+
+  getData = async (period) => {
+    if (this.props.filter) {
+      return [await Api.getCandidateLine(period, this.props.filter)];
+    } else {
+      return await Api.getAggregatedLine(period)
+    }
+  }
+
+  updateCandidate = async () => {
+    const data = await this.getData(this.state.period);
+    this.setState({ data });
+  }
+
+  updatePeriod = async (period) => {
+    const data = await this.getData(period);
+    this.setState({ period, data });
+  }
+
+  getDate = (timezone) => {
+    // hard convert to midday, so no timezone will modify the day
+    const safeTime = `${timezone.substring(0,10)}T12:00:00-03:00`;
+    return d3.timeDay.floor(new Date(safeTime));
+  }
+
+  getPercent = (candidate, date) => {
+    const line = candidate.lines.find(l => (
+      this.getDate(l.date).getTime() === this.getDate(date).getTime()
+    ))
+    return line ? line.percent : 0;
   }
 
   renderFilter () {
@@ -47,93 +102,82 @@ class Lines extends React.Component {
     }
   }
 
-  timeConverter = (timestamp) => {
-    const stamp = new Date(timestamp * 1000);
-    const months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
-    const year = stamp.getFullYear();
-    const month = months[stamp.getMonth()];
-    const date = stamp.getDate();
-    const hour = stamp.getHours();
-    const min = stamp.getMinutes();
-    const sec = stamp.getSeconds();
-    const time = date + '/' + month;
-    return time;
-  }
-
-  renderAxis() {
-
-    const epa = data[0].lines[0].timestamp;
-    console.log(this.timeConverter(epa));
-
-    const xScale = d3.scaleBand()
-      .padding(0.5)
-      .domain(data[0].lines.map(d => this.timeConverter(d.timestamp)))
-      .range([0, this.cfg.width])
-    
-    const axisType = `axisBottom`
-    const axis = d3Axis[axisType]()
-      .scale(xScale)
-      .tickSize(-((this.cfg.height - 50) - this.cfg.margin.top - this.cfg.margin.bottom ))
-      .tickPadding([12])
-      .ticks([4])
-
-    d3.select(this.axisElement).call(axis)
-  }
-
   renderChart () {
-    const h = this.cfg.height - 50;
+    if (!this.state.data || !this.state.specialDates) {
+      return <div>Loading...</div>
+    }
 
-    const xepa = d3.scaleLinear()
-      .domain([0, 4])
-      .range([0, 900]);
+    const firstLines = this.state.data[0].lines;
+    const lastDate = firstLines[firstLines.length-1].date;
+    const end = this.getDate(lastDate);
+    const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -30);
 
-    const yepa = d3.scaleLinear()
+    // axis
+    const scaleTime = d3.scaleTime()
+      .domain([start, end])
+      .range([0, this.cfg.width])
+
+    const axis = d3Axis.axisBottom()
+      .scale(scaleTime)
+      .tickSize(-this.cfg.height) // vertical line height
+      .tickPadding([5]) // text padding
+      .tickFormat(d => `${d.getDate()}/${d.getMonth()+1}`)
+      .ticks(d3.timeDay.every(1));
+
+    d3.select(this.axisElement).call(axis);
+
+    // lines
+    const scalePercent = d3.scaleLinear()
       .domain([0, 100])
-      .range([300, 0]);
+      .range([this.cfg.height - 12, 12])
 
-  
+    const lineGenerator = d3.line()
+      .curve(d3.curveMonotoneX)
+      .x(d => scaleTime(this.getDate(d.date)))
+      .y(d => scalePercent(d.percent))
+
     return (
-      <React.Fragment>
-        <svg 
-          className={css.chart}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox={`0 0 ${this.cfg.width} ${h}`}
-          preserveAspectRatio="none"
-          style={{
-            padding: `${this.cfg.padding}px 0`
-          }}
-        >
-          <g
-            transform={`translate(0, ${this.cfg.height - 65 - this.cfg.margin.bottom})`}
-          >
-            <g
-              className={css.axis}
-              ref={(y) => { this.axisElement = y; }}
+      <svg 
+        className={css.chart}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
+        preserveAspectRatio="none"
+        ref={(c) => { this.svg = c; }}
+      >
+        <g
+          className={css.axis}
+          transform={`translate(0, ${this.cfg.height})`}
+          ref={(c) => { this.axisElement = c; }}
+        />
+        <g className={css.lines}>
+          {this.state.data.map((candidate) => (
+            <path
+              key={candidate.id}
+              d={lineGenerator(candidate.lines)}
+              stroke={candidate.color}
             />
-
-            {data.map((d, i) => {
-                const path = d3.line()
-                .x((l) => { return xepa(l.timestamp/1000000) })
-                .y((l) => { return xepa(l.timestamp/1000000) })
-
-                // console.log(path(d.lines))
-              
-              return (
-                <path
-                  key={i}
-                  d={path(d.lines)}
-                  stroke={`#000`}
-                  strokeWidth={2}
-                  fill="none"
-                />
-              )
-            
-            })}
+          ))}
+        </g>
+        {this.state.specialDates.map((date) => (
+          <g
+            key={date.id}
+            className={css.date}
+            transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
+          >
+            <line y2={this.cfg.height} />
+            <rect y="-13" height="20" rx="8" ry="8" />
+            <text textAnchor="middle">{date.text}</text>
+            {this.state.data.map((candidate, i) => (
+              <circle
+                key={candidate.id}
+                r="4"
+                cy={scalePercent(this.getPercent(candidate, date.date))}
+                stroke={candidate.color}
+              />
+            ))}
           </g>
-        </svg>
-
-      
-      </React.Fragment>
+        ))}
+      </svg>
     )
   }
 
@@ -156,6 +200,7 @@ class Lines extends React.Component {
           color='#b4b4b4'
           arrowColor={this.props.arrowColor}
           all
+          onClickPeriod={this.updatePeriod}
         />
 				<Social stroke='#b4b4b4' />
       </section>

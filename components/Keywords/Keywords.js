@@ -1,5 +1,8 @@
 import React from 'react';
 import css from './Keywords.scss';
+
+import Period from '../Period/Period.js';
+
 import Description from '../Description.js';
 import Select from './Select.js';
 import Candidate from './Candidate.js';
@@ -60,6 +63,7 @@ class Keywords extends React.Component {
             content='keywords'
             arrowColor={this.props.arrowColor}
             lang={this.props.lang}
+            color='#f8f8f8'
           />
         </div>
         <div className={css.container}>
@@ -72,12 +76,12 @@ class Keywords extends React.Component {
           { this.renderChart(candidates, words, view) }
         </div>
 
-        {/*<Period 
+        <Period 
           bgColor='#f8f8f8'
           color='#b4b4b4'
           bottom
           arrowColor={this.props.arrowColor}
-        />*/}
+        />
         <Social stroke='#b4b4b4' bottom />
       </section>
     )

@@ -6,20 +6,31 @@ import content from '../../static/json/geral.json'
 
 import Arrow from '../Arrow.js';
 
+/*
+
+  'now 1-d', 'today',
+  'now 7-d', 'week',
+  'today 1-m', 'month',
+  'today 1-y', 'year',
+  Por default funciona por mes
+
+*/
+
 class Period extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      val: 'week'
+      //val: 'month'
     };
   }
 
   onClick = (e) => {
-    let val = e.target.value
-    console.log(val)
-    this.setState({val: val})
+    let period = e.target.value
+
+    this.props.onClickPeriod(period)
+    //this.setState({val: val})
   }
 
   onDropdown = () => {
@@ -29,7 +40,9 @@ class Period extends React.Component {
   }
 
   render() {
-    const val = this.state.val;
+    const period = this.props.period;
+
+    // console.log(period)
     return (
       <ul
         onClick={this.onDropdown}
@@ -45,33 +58,37 @@ class Period extends React.Component {
           <span style={{ color: this.props.color }}>
             {content.buttons.period}:
           </span>
-          <p> {this.state.val === 'week' ? content.buttons.week : content.buttons.month} </p>
+          <p> {period === 'week' ? content.buttons.week : content.buttons.month} </p>
           <Arrow arrowColor={this.props.arrowColor} />
         </li>
 
-        <div className={`${css.dropdown} ${this.state.open ? css.open : null}`}>
+        <div 
+          className={`${css.dropdown} ${this.state.open ? css.open : null}`}
+          style={{ background: this.props.bgColor }}
+        >
+
           <li>
             <button
               onClick={this.onClick}
-              value='week'
-              disabled={val === 'week'}
+              value='month'
+              disabled={period === 'month'}
               style={{ 
-                color: val === 'week' ? this.props.color : '#4b4b4b',
+                color: period === 'month' ? this.props.color : '#4b4b4b',
               }}
             >
-              {content.buttons.week}
+              {content.buttons.month}
             </button>
           </li>
           <li>
             <button
               onClick={this.onClick}
-              value='month'
-              disabled={val === 'month'}
+              value='week'
+              disabled={period === 'week'}
               style={{ 
-                color: val === 'month' ? this.props.color : '#4b4b4b',
+                color: period === 'week' ? this.props.color : '#4b4b4b',
               }}
             >
-              {content.buttons.month}
+              {content.buttons.week}
             </button>
           </li>
         </div>

@@ -18,6 +18,7 @@ class Orbital extends React.Component {
     this.state = {
       orbital: null,
       id: null,
+      period: 'month'
     };
 
     this.config = {
@@ -37,14 +38,27 @@ class Orbital extends React.Component {
     this.radius = Math.min(this.config.width / 2, this.config.width / 2);
   }
 
-  getData = async () => {
-    const orbital = await Api.getOrbit();
+  onClickPeriod = (period) => {
+    // const period = e.target.value
+    this.setState({ period: period })
+
+    this.getData(period);
+  }
+
+  getData = async (period) => {
+    const orbital = await Api.getOrbit(period);
+
+    //if(period ==='week') {
+      //const orbital = await Api.getOrbitWeek();
+    //}
+
     this.setState({ orbital });
   }
 
   componentDidMount() {
     this.getData();
   }
+
 
   values = (data) => {
     const max = Math.max(this.config.maxValue, d3.max(data,
@@ -81,6 +95,8 @@ class Orbital extends React.Component {
     } else {
 
       const orbital = this.state.orbital;
+
+      console.log(orbital)
 
       const w = this.config.width * 1.08;
       const h = this.config.height * 1.08;
@@ -210,6 +226,8 @@ class Orbital extends React.Component {
         content='orbit'
         arrowColor={this.props.arrowColor}
         lang={this.props.lang}
+        period={this.state.period}
+        onClickPeriod={this.onClickPeriod}
       >
         <div className={css.orbital}>
           {this.renderChart()}
