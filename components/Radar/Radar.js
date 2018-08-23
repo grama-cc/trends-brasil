@@ -13,6 +13,7 @@ class RadarChart extends React.Component {
     this.state = {
       radar: null,
       id: null,
+      period: 'month'
     };
 
     this.config = {
@@ -35,8 +36,16 @@ class RadarChart extends React.Component {
     this.radius = Math.min(this.config.width / 2, this.config.width / 2);
   }
 
-  getData = async () => {
-    const radar = await Api.getRadar();
+  onClickPeriod = (period) => {
+    // const period = e.target.value
+    this.setState({ period: period })
+
+    this.getData(period);
+  }
+
+
+  getData = async (period) => {
+    const radar = await Api.getRadar(period);
     this.setState({ radar });
   }
 
@@ -231,6 +240,8 @@ class RadarChart extends React.Component {
         content='radar'
         arrowColor={this.props.arrowColor}
         lang={this.props.lang}
+        period={this.state.period}
+        onClickPeriod={this.onClickPeriod}
       >
         <div className={css.radar}>
           {this.renderChart()}

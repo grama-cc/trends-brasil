@@ -46,12 +46,18 @@
       @media screen and (min-width: 500px) {
         left: -30px;
       }
+      @media screen and (min-width: 1100px) {
+        left: 0;
+      }
     }
 
     &.next {
       right: 0;
       @media screen and (min-width: 500px) {
         right: -30px;
+      }
+      @media screen and (min-width: 1100px) {
+        right: 0;
       }
     }
 
@@ -95,6 +101,26 @@
 					height: 60px;
 					transition: width .4s ease, height .4s ease, opacity .4s ease;
 				}
+        .order {
+          background-color: #fff;
+          position: absolute;
+          width: 35px;
+          height: 35px;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          border-radius: 100%;
+          bottom: -15px;
+          display: none;
+        }
+
+        &.current {
+          .order{
+            display: flex;
+          }
+          }
+          
+
       }
   	}
 

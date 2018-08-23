@@ -82,13 +82,13 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        {/*<Lines
+        <Lines
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
-        />*/}
+        />
 
         <Category
           arrowColor='#b4b4b4'
