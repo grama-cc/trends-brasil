@@ -63,73 +63,31 @@ class Lines extends React.Component {
     }
   }
 
-  timeConverter = (timestamp) => {
-    const stamp = new Date(timestamp * 1000);
-    const months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
-    const year = stamp.getFullYear();
-    const month = months[stamp.getMonth()];
-    const date = stamp.getDate();
-    const hour = stamp.getHours();
-    const min = stamp.getMinutes();
-    const sec = stamp.getSeconds();
-    const time = date + '/' + month;
-    return time;
-  }
-
   renderChart () {
-    let minTimestamp = Infinity;
-    let maxTimestamp = 0;
-    let minPercent = Infinity;   
-    let maxPercent = 0;
-
-    data.forEach(candidate => {
-      candidate.lines.forEach(line => {
-        if (line.timestamp < minTimestamp) {
-          minTimestamp = line.timestamp;
-        }
-        if (line.timestamp > maxTimestamp) {
-          maxTimestamp = line.timestamp;
-        }
-        if (line.percent < minPercent) {
-          minPercent = line.percent;
-        }
-        if (line.percent > maxPercent) {
-          maxPercent = line.percent;
-        }
-      })
-    })
-
-    // TODO usar uma semana ou um mês
-    // atualmente estamos usando todo o timestamp
-    // desde o início até o fim
-    // https://github.com/d3/d3-scale#time-scales  
-    const scaleTime = d3.scaleTime()
-      .domain([minTimestamp, maxTimestamp])
-      .range([0, this.cfg.width])
-
-    const scalePercent = d3.scaleLinear()
-      .domain([minPercent, maxPercent])
-      .range([this.cfg.height, 0])
-
-    const linePath = d3.line()
-      .x(d => scaleTime(d.timestamp))
-      .y(d => scalePercent(d.percent))
-
-    const end = new Date(maxTimestamp * 1000);
+    const lastTimestamp = data[0].lines[data[0].lines.length-1].timestamp;
+    const end = new Date(lastTimestamp * 1000);
     const start = d3.timeDay.offset(end, -7); // TODO colocar no setState opção de 7 ou 30 dias
 
-    const x = d3.scaleTime()
+    const scaleTime = d3.scaleTime()
       .domain([start, end])
       .range([0, this.cfg.width])
 
     const axis = d3Axis.axisBottom()
-      .scale(x)
+      .scale(scaleTime)
       .tickSize(-this.cfg.height)
       .tickPadding([12])
       .tickFormat(d => `${d.getDate()}/${d.getMonth()+1}`)
       .ticks(d3.timeDay.every(1));
 
-    d3.select(this.axisElement).call(axis)
+    d3.select(this.axisElement).call(axis);
+
+    const scalePercent = d3.scaleLinear()
+      .domain([0, 100])
+      .range([this.cfg.height, 0])
+
+    const linePath = d3.line()
+      .x(d => scaleTime(new Date(d.timestamp * 1000)))
+      .y(d => scalePercent(d.percent))
 
     return (
       <React.Fragment>
@@ -164,7 +122,6 @@ class Lines extends React.Component {
   }
 
   render() {
-    if (!this.state.dates) return null;
     return (
       <section className={css.lines}>
         <div className={css.info}>
