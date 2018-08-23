@@ -7,21 +7,17 @@ import * as d3Axis from 'd3-axis'
 import Api from '../../lib/Api';
 import content from '../../static/json/lines.json'
 
-import data from './data.js'
-import specialDates from './specialDates.js'
-
 import Period from '../Period/Period.js';
 import Filter from '../Filter.js';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 
 class Lines extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      data: null, //data
-      specialDates: null, //specialDates
+      data: null,
+      specialDates: null,
       period: 'month',
     };
     this.cfg = {
@@ -111,7 +107,8 @@ class Lines extends React.Component {
       return <div>Loading...</div>
     }
 
-    const lastDate = data[0].lines[data[0].lines.length-1].date;
+    const firstLines = this.state.data[0].lines;
+    const lastDate = firstLines[firstLines.length-1].date;
     const end = this.getDate(lastDate);
     const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -30);
 
@@ -127,7 +124,6 @@ class Lines extends React.Component {
       .tickFormat(d => `${d.getDate()}/${d.getMonth()+1}`)
       .ticks(d3.timeDay.every(1));
 
-    // TODO atualizar o d3 no componentDidUpdate
     d3.select(this.axisElement).call(axis);
 
     // lines

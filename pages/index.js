@@ -67,7 +67,7 @@ class Home extends React.Component {
       <Layout>
         <Head title="Trends Brasil" />
          
-        {/* <Intro
+        <Intro
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
@@ -80,7 +80,7 @@ class Home extends React.Component {
           filter={this.state.filter}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
-        /> */}
+        />
 
         <Lines
           onFilter={this.onFilter} 
@@ -90,7 +90,7 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        {/* <Category
+        <Category
           arrowColor='#b4b4b4'
           lang={this.state.lang}
           candidates={candidates}
@@ -125,7 +125,7 @@ class Home extends React.Component {
         />
         <Footer
           lang={this.state.lang}
-        /> */}
+        />
         {/*<Clipping />*/}
       </Layout>
     );
