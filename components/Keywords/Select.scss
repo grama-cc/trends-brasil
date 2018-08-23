@@ -3,7 +3,7 @@
 .selected {
 	display: flex;
 	justify-content: center;
-	margin: 0 auto responsive(20, 40);
+	margin: 0 auto responsive(15, 30);
 	@media screen and (min-width: 1100px) {
     display: none;
   }

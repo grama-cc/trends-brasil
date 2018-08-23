@@ -72,11 +72,11 @@ class Candidate extends React.Component {
     const content = this.props.content;
     const filter = this.props.filter
 
-    console.log(this.state.width)
+    console.log(this.props.filter)
 
     const idx = !filter ? null : this.findIndex(candidates, 'id', filter);
     const list = 90;
-    const move = ( list * ( - idx ) ) + (this.state.width / 2) - 45;
+    const move = ( list * ( - idx ) ) + (this.state.width / 2) - list / 2;
     const lang = this.props.lang;
 
     return (
@@ -116,6 +116,7 @@ class Candidate extends React.Component {
                   key={i}
                   onClick={this.onFilter}
                   data-id={d.id}
+                  className={this.props.filter === d.id ? css.current : null}
                 >
                   <div
                     className={css.image}
@@ -127,14 +128,21 @@ class Candidate extends React.Component {
                       height: filter === d.id ? '100%' : '60px',
                     }}
                   />
-                {/*<span>1</span>*/}
+                  <span className={css.order}>{i+1}&#186;</span>
                 </li>
               )
             })}
           </ul>
 
           <h3 className={css.title}>
-            {!filter ? i18n('keywords.buttons.choose_candidate', lang) : <span>{candidates[idx].name}</span>}
+            {!filter ? 
+              <span
+                style={{
+                  backgroundColor: 'transparent'
+                }}
+              >{i18n('keywords.buttons.choose_candidate', lang)}</span> : 
+              <span>{candidates[idx].name}</span>
+            }
           </h3>
 
           <Cloud 

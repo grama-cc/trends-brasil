@@ -75,6 +75,8 @@ class Section extends React.Component {
               bgColor={currentCandidate ? currentCandidate.color : '#b4b4b4'}
               color='#fff'
               arrowColor={this.props.arrowColor}
+              period={this.props.period}
+              onClickPeriod={this.props.onClickPeriod}
             />
             <Social stroke='#fff' />
 
