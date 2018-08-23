@@ -34,6 +34,12 @@ function handleClick(event, parentName) {
   writeDownloadLink(svgContent, parentName)
 }
 
+function twitterShare(event) {
+  const url = 'https://trends-brasil.herokuapp.com/'
+  const twitterShareUrl = `https://twitter.com/home?status=${encodeURIComponent(url)}`
+  window.open(twitterShareUrl, '_blank', 'noopener')
+}
+
 
 const Social = props => (
   <React.Fragment>
@@ -41,7 +47,7 @@ const Social = props => (
     <ul className={`${css.social} ${props.bottom ? css.bottom : null} ${props.share ? css.share : null}`}>
       {!props.share ?
       <li><a onClick={(e) => handleClick(e, props.parent)}><Media stroke={props.stroke} /></a></li> : null}
-      <li><a href="#"><Twitter stroke={props.stroke} /></a></li>
+      <li><a onClick={(e) => twitterShare(e)}><Twitter stroke={props.stroke} /></a></li>
       <li><a href="#"><Facebook stroke={props.stroke} /></a></li>
       <li><a href="#"><Whatsapp stroke={props.stroke} /></a></li>
     </ul>
