@@ -120,49 +120,47 @@ class Lines extends React.Component {
       .y(d => scalePercent(d.percent))
 
     return (
-      <React.Fragment>
-        <svg 
-          className={css.chart}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
-          preserveAspectRatio="none"
-          ref={(c) => { this.svg = c; }}
-        >
+      <svg 
+        className={css.chart}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
+        preserveAspectRatio="none"
+        ref={(c) => { this.svg = c; }}
+      >
+        <g
+          className={css.axis}
+          transform={`translate(0, ${this.cfg.height})`}
+          ref={(c) => { this.axisElement = c; }}
+        />
+        <g className={css.lines}>
+          {data.map((candidate) => (
+            <path
+              key={candidate.id}
+              d={lineGenerator(candidate.lines)}
+              stroke={candidate.color}
+            />
+          ))}
+        </g>
+        {specialDates.map((date) => (
           <g
-            className={css.axis}
-            transform={`translate(0, ${this.cfg.height})`}
-            ref={(c) => { this.axisElement = c; }}
-          />
-          <g className={css.lines}>
-            {data.map((candidate) => (
-              <path
+            key={date.id}
+            className={css.date}
+            transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
+          >
+            <line y2={this.cfg.height} />
+            <rect y="-13" height="20" rx="8" ry="8" />
+            <text textAnchor="middle">{date.text}</text>
+            {data.map((candidate, i) => (
+              <circle
                 key={candidate.id}
-                d={lineGenerator(candidate.lines)}
+                r="4"
+                cy={scalePercent(this.getPercent(candidate, date.date))}
                 stroke={candidate.color}
               />
             ))}
           </g>
-          {specialDates.map((date) => (
-            <g
-              key={date.id}
-              className={css.date}
-              transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
-            >
-              <line y2={this.cfg.height} />
-              <rect y="-13" height="20" rx="8" ry="8" />
-              <text textAnchor="middle">{date.text}</text>
-              {data.map((candidate, i) => (
-                <circle
-                  key={candidate.id}
-                  r="4"
-                  cy={scalePercent(this.getPercent(candidate, date.date))}
-                  stroke={candidate.color}
-                />
-              ))}
-            </g>
-          ))}
-        </svg>
-      </React.Fragment>
+        ))}
+      </svg>
     )
   }
 
