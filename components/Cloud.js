@@ -44,13 +44,16 @@ class Cloud extends React.Component {
 
   render() {
     const words = this.getWords();
+    let maxValue = 0;
+    words.forEach((el)=>{
+      el.size > maxValue ? maxValue = el.size : null;
+    });
+
     // let oi = document.getElementsByTagName('a').innerWidth();
     
     return (
       <div className={css.cloud} type={this.props.type}>
         {words.map((word, idx) => {
-
-          const font = this.props.keywords ? `calc(2vw * ${word.size/100} + 14px)` : `calc(2vw * ${word.size/100} + 12px)`
 
           return(
             <a
@@ -59,9 +62,14 @@ class Cloud extends React.Component {
               href={`https://www.google.com.br/search?q=${word.query_text.replace(/ /g,"+")}`}
               target="_blank"
               style={{
-                fontSize: font,
+                fontSize: `calc( ${word.size*(screen.width < 800 ? 5 : 30)/maxValue}px + 12px)`,
                 color: this.props.color ? this.props.color : word.color,
-                left: `${ this.props.keywords ? 0 : this.isOdd(idx) === 0 ? - (6 * idx) - 20 : (idx * 4) + 20 }px`
+                left: `${ this.props.keywords ? 0 : 
+                  this.props.position == 'left' ?
+                    Math.floor(Math.random() * 40) + 10
+                  : Math.floor(Math.random() * 45) + 20
+                }%`,
+                transform: `${word.size*40/maxValue > 30 ? 'translateX(-20%)' : ''}`
               }}
             > 
               {`${word.text} `}

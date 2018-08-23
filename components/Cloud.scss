@@ -8,14 +8,23 @@
 
 	&[type='candidate'] {
 		display: block;
+		align-items: center;
+		@media screen and (min-width: $medium-devices) {
+			align-items: initial;
+		}
 	}
 	
 	text-align: center;
 	a {
-		text-align: center;
-		padding: 3px;
 		display: inline;
+		width: max-content;
 		position: relative;
+		margin-top: 17px;
+		transform: translateX(10%) !important;
+		@media screen and (min-width: $medium-devices) {
+			transform: translateX(-10%) !important;
+			margin-top: 0;
+		}
 	}
 
 	@media screen and (min-width: $medium-devices) {

@@ -45,23 +45,13 @@ class Category extends React.Component {
     this.setState({ view: val })
   }
 
-  getData = async () => {
-    const bars = await Api.getBars();
-    this.setState({ bars });
-  }
-
   onChangeLang = (e) => {
     const lang = e.currentTarget.lang
     this.props.onChangeLang(lang)
   }
 
-  componentDidMount() {
-    this.getData();
-  }
-
   renderNav (type) {
     const idx = this.state.idx;
-
     return(
       <nav className={css.nav}>
         {data.map((d, i) => {
@@ -134,16 +124,21 @@ class Category extends React.Component {
               content='keywords.select'
               lang={this.props.lang}
             />
-
-            <Chart type={view} data={data[idx]}/>
-            <Cloud 
-              type={view}
-              id={data[idx].id} 
-              candidates={this.props.candidates}
-              words={this.props.words} 
-              keywords
-              color='#b4b4b4'
-            />
+            {this.props.bars ? 
+              <Chart type={view} data={this.props.bars[idx]}/> 
+              : 'Loaging...'
+            }
+            {this.props.words && this.props.candidates ? 
+                <Cloud 
+                  type={view}
+                  id={data[idx].id} 
+                  candidates={this.props.candidates}
+                  words={this.props.words} 
+                  keywords
+                  color='#b4b4b4'
+                />
+            : 'Loading'}
+           
             {this.renderNav('btn')}
           </div>
         </div>

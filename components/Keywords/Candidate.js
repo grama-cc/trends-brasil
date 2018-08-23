@@ -137,14 +137,16 @@ class Candidate extends React.Component {
           <h3 className={css.title}>
             {!filter ? i18n('keywords.buttons.choose_candidate', lang) : <span>{candidates[idx].name}</span>}
           </h3>
-
-          <Cloud 
-            id={!filter ? [] : candidates[idx].id} 
-            candidates={candidates}
-            words={words} 
-            type='candidate'
-            keywords
-          />
+          {candidates && words? 
+            <Cloud 
+              id={!filter ? [] : candidates[idx].id} 
+              candidates={candidates}
+              words={words} 
+              type='candidate'
+              keywords
+            />
+          : 'Loading...'}
+          
 
         </div>
 
