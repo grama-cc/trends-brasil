@@ -63,6 +63,7 @@ class Keywords extends React.Component {
             content='keywords'
             arrowColor={this.props.arrowColor}
             lang={this.props.lang}
+            color='#f8f8f8'
           />
         </div>
         <div className={css.container}>
