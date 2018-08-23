@@ -28,6 +28,17 @@
     margin: 20px 0px;
     min-height: 50vh; // provisorio
 
+    .axis {
+      line {
+        opacity: 0.2;
+        stroke-dasharray: 1px;
+      }
+
+      path {
+        visibility: hidden;
+      }
+    }
+
     .lines {
       path {
         fill: none;

@@ -63,6 +63,8 @@ class Lines extends React.Component {
   }
 
   renderChart () {
+    const axisExtraMargin = 12;
+
     const lastTimestamp = data[0].lines[data[0].lines.length-1].timestamp;
     const end = new Date(lastTimestamp * 1000);
     const start = d3.timeDay.offset(end, -7); // TODO colocar no setState opção de 7 ou 30 dias
@@ -73,8 +75,8 @@ class Lines extends React.Component {
 
     const axis = d3Axis.axisBottom()
       .scale(scaleTime)
-      .tickSize(-this.cfg.height)
-      .tickPadding([12])
+      .tickSize(-this.cfg.height - 2*axisExtraMargin) // line-height
+      .tickPadding([5]) // text padding
       .tickFormat(d => `${d.getDate()}/${d.getMonth()+1}`)
       .ticks(d3.timeDay.every(1));
 
@@ -103,13 +105,12 @@ class Lines extends React.Component {
                 key={i}
                 d={lineGenerator(candidate.lines)}
                 stroke={candidate.color}
-                // TODO desenhar linhas suaves com bezier(?)
               />
             ))}
           </g>
           <g
             className={css.axis}
-            transform={`translate(0, ${this.cfg.height})`}
+            transform={`translate(0, ${this.cfg.height + axisExtraMargin})`}
             ref={(y) => { this.axisElement = y; }}
           />
         </svg>
