@@ -19,7 +19,10 @@ class Lines extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      data: null, //data
+      dates: null, //specialDates
+    };
     this.cfg = {
       width: 1000,
       height: 420,
@@ -56,7 +59,7 @@ class Lines extends React.Component {
 
     this.setState({
       dates,
-      aggregatedLine,
+      data: aggregatedLine,
       candidateLine,
     });
   }
@@ -91,6 +94,10 @@ class Lines extends React.Component {
   }
 
   renderChart () {
+    if (!this.state.dates && !this.state.data) {
+      return <div>Loading...</div>
+    }
+
     const lastDate = data[0].lines[data[0].lines.length-1].date;
     const end = this.getDate(lastDate);
     const start = d3.timeDay.offset(end, -30); // TODO colocar no setState opção de 7 ou 30 dias
@@ -133,7 +140,7 @@ class Lines extends React.Component {
           ref={(c) => { this.axisElement = c; }}
         />
         <g className={css.lines}>
-          {data.map((candidate) => (
+          {this.state.data.map((candidate) => (
             <path
               key={candidate.id}
               d={lineGenerator(candidate.lines)}
@@ -141,7 +148,7 @@ class Lines extends React.Component {
             />
           ))}
         </g>
-        {specialDates.map((date) => (
+        {this.state.dates.map((date) => (
           <g
             key={date.id}
             className={css.date}
@@ -150,7 +157,7 @@ class Lines extends React.Component {
             <line y2={this.cfg.height} />
             <rect y="-13" height="20" rx="8" ry="8" />
             <text textAnchor="middle">{date.text}</text>
-            {data.map((candidate, i) => (
+            {this.state.data.map((candidate, i) => (
               <circle
                 key={candidate.id}
                 r="4"
