@@ -39,6 +39,15 @@
       }
     }
 
+    .date {
+      line {
+        stroke: $black;
+      }
+      text {
+        fill: red;
+      }
+    }
+
     .lines {
       path {
         fill: none;

@@ -8,6 +8,7 @@ import Api from '../../lib/Api';
 import content from '../../static/json/lines.json'
 
 import data from './data.js'
+import specialDates from './specialDates.js'
 
 import Period from '../Period/Period.js';
 import Filter from '../Filter.js';
@@ -39,11 +40,18 @@ class Lines extends React.Component {
     const dates = await Api.getDates();
     const aggregatedLine = await Api.getAggregatedLine();
     const candidateLine = await Api.getCandidateLine(3);
+
     this.setState({
       dates,
       aggregatedLine,
       candidateLine,
     });
+  }
+
+  getDate = (timezone) => {
+    // hard convert to midday, so no timezone will modify the day
+    const safeTime = `${timezone.substring(0,11)}12:00:00-03:00`;
+    return d3.timeDay.floor(new Date(safeTime));
   }
 
   renderFilter () {
@@ -63,32 +71,32 @@ class Lines extends React.Component {
   }
 
   renderChart () {
-    const axisExtraMargin = 12;
+    const lastDate = data[0].lines[data[0].lines.length-1].date;
+    const end = this.getDate(lastDate);
+    const start = d3.timeDay.offset(end, -30); // TODO colocar no setState opção de 7 ou 30 dias
 
-    const lastTimestamp = data[0].lines[data[0].lines.length-1].timestamp;
-    const end = new Date(lastTimestamp * 1000);
-    const start = d3.timeDay.offset(end, -7); // TODO colocar no setState opção de 7 ou 30 dias
-
+    // axis
     const scaleTime = d3.scaleTime()
       .domain([start, end])
       .range([0, this.cfg.width])
 
     const axis = d3Axis.axisBottom()
       .scale(scaleTime)
-      .tickSize(-this.cfg.height - 2*axisExtraMargin) // line-height
+      .tickSize(-this.cfg.height) // vertical line height
       .tickPadding([5]) // text padding
       .tickFormat(d => `${d.getDate()}/${d.getMonth()+1}`)
       .ticks(d3.timeDay.every(1));
 
     d3.select(this.axisElement).call(axis);
 
+    // lines
     const scalePercent = d3.scaleLinear()
       .domain([0, 100])
-      .range([this.cfg.height, 0])
+      .range([this.cfg.height - 12, 12])
 
     const lineGenerator = d3.line()
-      .curve(d3.curveCatmullRom.alpha(1))
-      .x(d => scaleTime(new Date(d.timestamp * 1000)))
+      .curve(d3.curveMonotoneX)
+      .x(d => scaleTime(this.getDate(d.date)))
       .y(d => scalePercent(d.percent))
 
     return (
@@ -99,20 +107,40 @@ class Lines extends React.Component {
           viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
           preserveAspectRatio="none"
         >
+          <g
+            className={css.axis}
+            transform={`translate(0, ${this.cfg.height})`}
+            ref={(y) => { this.axisElement = y; }}
+          />
+          {specialDates.map((date) => (
+            <g
+              key={date.id}
+              className={css.date}
+              transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
+            >
+              <line
+                x1={0}
+                y1={0}
+                x2={0}
+                y2={this.cfg.height}
+              />
+              <text
+                fontSize={10}
+                textAnchor="middle"
+              >
+                {date.text}
+              </text>
+            </g>
+          ))}
           <g className={css.lines}>
-            {data.map((candidate, i) => (
+            {data.map((candidate) => (
               <path
-                key={i}
+                key={candidate.id}
                 d={lineGenerator(candidate.lines)}
                 stroke={candidate.color}
               />
             ))}
           </g>
-          <g
-            className={css.axis}
-            transform={`translate(0, ${this.cfg.height + axisExtraMargin})`}
-            ref={(y) => { this.axisElement = y; }}
-          />
         </svg>
       </React.Fragment>
     )
