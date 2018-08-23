@@ -24,21 +24,15 @@
     order: 2;
     width: 100%;
     box-sizing: border-box;
-
-  	// Provisorio //////////////////////////////////
+    padding: 50px;
+    margin: 20px 0px;
     min-height: 50vh; // provisorio
-    margin: 20px 0 0; // provisorio
-    border: 2px solid #b4b4b4; // provisorio
-    display: flex; // provisorio
-    justify-content: center; // provisorio
-    align-items: center; // provisorio
-    // Provisorio //////////////////////////////////
 
     .lines {
       path {
         fill: none;
-        stroke: rgba($white, 0.5);
         stroke-width: 5px;
+        opacity: 0.5;
       }
     }
   }

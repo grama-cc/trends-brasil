@@ -24,7 +24,6 @@ class Lines extends React.Component {
       height: 420,
       rect: 20,
       margin: { top: 0, right: 0, bottom: 0, left: 30 },
-      padding: 50,
     }
   }
 
@@ -96,17 +95,13 @@ class Lines extends React.Component {
           xmlns="http://www.w3.org/2000/svg"
           viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
           preserveAspectRatio="none"
-          style={{
-            padding: `${this.cfg.padding}px`,
-            backgroundColor: `purple`,
-          }}
         >
           <g className={css.lines}>
-            {data.map((d, i) => (
+            {data.map((candidate, i) => (
               <path
                 key={i}
-                d={linePath(d.lines)}
-                // TODO aplicar uma cor para cada candidato
+                d={linePath(candidate.lines)}
+                stroke={candidate.color}
                 // TODO desenhar linhas suaves com bezier(?)
               />
             ))}
