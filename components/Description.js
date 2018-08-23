@@ -40,7 +40,12 @@ class Description extends React.Component {
             <Arrow arrowColor={this.props.arrowColor}/>
           </button>
 
-          <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>
+          <div 
+            className={this.state.open ? `${css.more} ${css.open}` : css.more}
+            style={{
+              backgroundColor: this.props.color ? this.props.color : '#fff'
+            }}
+          >
             {i18n(`${content}.more`, lang).map((text, index) => (
               <p key={index}>{text}</p>
             ))}

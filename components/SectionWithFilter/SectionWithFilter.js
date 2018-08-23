@@ -51,6 +51,7 @@ class Section extends React.Component {
               content={content}
               arrowColor={this.props.arrowColor}
               lang={this.props.lang}
+              color={currentCandidate ? currentCandidate.color : '#b4b4b4'}
             />
 
             <ul 

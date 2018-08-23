@@ -104,6 +104,7 @@ class Category extends React.Component {
               content='category'
               arrowColor={this.props.arrowColor}
               lang={this.props.lang}
+              color='#f8f8f8'
             />
             {this.renderNav()}
           </div>
