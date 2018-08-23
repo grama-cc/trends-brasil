@@ -84,7 +84,8 @@ class Lines extends React.Component {
       .domain([0, 100])
       .range([this.cfg.height, 0])
 
-    const linePath = d3.line()
+    const lineGenerator = d3.line()
+      .curve(d3.curveCatmullRom.alpha(1))
       .x(d => scaleTime(new Date(d.timestamp * 1000)))
       .y(d => scalePercent(d.percent))
 
@@ -100,7 +101,7 @@ class Lines extends React.Component {
             {data.map((candidate, i) => (
               <path
                 key={i}
-                d={linePath(candidate.lines)}
+                d={lineGenerator(candidate.lines)}
                 stroke={candidate.color}
                 // TODO desenhar linhas suaves com bezier(?)
               />
