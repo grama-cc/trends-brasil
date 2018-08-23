@@ -21,7 +21,7 @@ class Lines extends React.Component {
     super(props);
     this.state = {
       data: null, //data
-      dates: null, //specialDates
+      specialDates: null, //specialDates
       period: 'month',
     };
     this.cfg = {
@@ -33,18 +33,14 @@ class Lines extends React.Component {
   }
 
   componentDidMount() {
-    // http://brasil-trends.herokuapp.com/v1/dates/1/
-    // http://brasil-trends.herokuapp.com/v1/candidate_line/?candidate_id=2
-    // http://brasil-trends.herokuapp.com/v1/aggregated_line/
-
-    this.getData();
+    this.setupFirstData();
   }
 
-  componentWillReceiveProps() {
-    console.log('componentWillReceiveProps')
-  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.filter !== this.props.filter) {
+      this.updateCandidate()
+    }
 
-  componentDidUpdate() {
     const svg = d3.select(this.svg);
 
     svg.selectAll(`.${css.date}`).each(function() {
@@ -57,40 +53,33 @@ class Lines extends React.Component {
     });
   }
 
-  getData = async () => {
-    const dates = await Api.getDates();
-    const data = await this.getData2();
-
-    this.setState({
-      dates,
-      data,
-    });
+  setupFirstData = async () => {
+    const data = await this.getData();
+    const specialDates = await Api.getDates();
+    this.setState({ data, specialDates });
   }
 
-  getData2 = async (period, candidate) => {
-    if (candidate) {
-      return await Api.getCandidateLine(3);
+  getData = async (period) => {
+    if (this.props.filter) {
+      return [await Api.getCandidateLine(period, this.props.filter)];
     } else {
       return await Api.getAggregatedLine(period)
-    } 
+    }
+  }
 
-    // http://brasil-trends.herokuapp.com/v1/aggregated_line/?period=now%207-d
-    // http://brasil-trends.herokuapp.com/v1/aggregated_line/?period=today%201-m
+  updateCandidate = async () => {
+    const data = await this.getData(this.state.period);
+    this.setState({ data });
+  }
 
-    // const dates = await Api.getDates();
-    // const aggregatedLine = await Api.getAggregatedLine();
-    // const candidateLine = await Api.getCandidateLine(3);
-
-    // this.setState({
-    //   dates,
-    //   data: candidateLine,
-    //   candidateLine,
-    // });
+  updatePeriod = async (period) => {
+    const data = await this.getData(period);
+    this.setState({ period, data });
   }
 
   getDate = (timezone) => {
     // hard convert to midday, so no timezone will modify the day
-    const safeTime = `${timezone.substring(0,11)}12:00:00-03:00`;
+    const safeTime = `${timezone.substring(0,10)}T12:00:00-03:00`;
     return d3.timeDay.floor(new Date(safeTime));
   }
 
@@ -99,16 +88,6 @@ class Lines extends React.Component {
       this.getDate(l.date).getTime() === this.getDate(date).getTime()
     ))
     return line ? line.percent : 0;
-  }
-
-  onClickPeriod = async (period) => {
-    // const period = e.target.value
-    // this.setState({ period: period });
-    // console.log(123);
-    // const candi
-    console.log(period)
-    const data = await this.getData2(period);
-    this.setState({ period, data });
   }
 
   renderFilter () {
@@ -128,7 +107,7 @@ class Lines extends React.Component {
   }
 
   renderChart () {
-    if (!this.state.dates && !this.state.data) {
+    if (!this.state.data || !this.state.specialDates) {
       return <div>Loading...</div>
     }
 
@@ -148,6 +127,7 @@ class Lines extends React.Component {
       .tickFormat(d => `${d.getDate()}/${d.getMonth()+1}`)
       .ticks(d3.timeDay.every(1));
 
+    // TODO atualizar o d3 no componentDidUpdate
     d3.select(this.axisElement).call(axis);
 
     // lines
@@ -182,7 +162,7 @@ class Lines extends React.Component {
             />
           ))}
         </g>
-        {this.state.dates.map((date) => (
+        {this.state.specialDates.map((date) => (
           <g
             key={date.id}
             className={css.date}
@@ -224,7 +204,7 @@ class Lines extends React.Component {
           color='#b4b4b4'
           arrowColor={this.props.arrowColor}
           all
-          onClickPeriod={this.onClickPeriod}
+          onClickPeriod={this.updatePeriod}
         />
 				<Social stroke='#b4b4b4' />
       </section>
