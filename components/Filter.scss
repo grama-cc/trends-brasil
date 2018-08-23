@@ -4,6 +4,7 @@
 .container {
 	display: flex;
   flex-direction: column-reverse;
+  align-items: center;
   z-index: 2;
   order: 2;
 

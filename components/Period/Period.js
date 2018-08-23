@@ -42,7 +42,6 @@ class Period extends React.Component {
   render() {
     const period = this.props.period;
 
-    // console.log(period)
     return (
       <ul
         onClick={this.onDropdown}

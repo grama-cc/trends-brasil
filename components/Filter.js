@@ -25,15 +25,6 @@ class Filter extends React.Component {
   }
 
   onDropdownFilter = (e) => {
-
-    // console.log(e.target.offsetTop, e.target.offsetLeft)
-
-    // console.log(e.offsetTop)
-
-    // console.log(e.pageX, e.pageY)
-
-    // console.log(e.clientX, e.clientY)
-
     this.setState({
       openFilter: !this.state.openFilter
     })
@@ -45,9 +36,6 @@ class Filter extends React.Component {
   }
 
   onDropdownCompare = (e) => {
-
-    // console.log(e.clientX, e.clientY)
-
     this.setState({ 
       openCompare: !this.state.openCompare
     })

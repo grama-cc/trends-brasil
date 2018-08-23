@@ -137,6 +137,7 @@ class Lines extends React.Component {
       .y(d => scalePercent(d.percent))
 
     return (
+      <div className={css.chart_container}>
       <svg 
         className={css.chart}
         xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +166,7 @@ class Lines extends React.Component {
             transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
           >
             <line y2={this.cfg.height} />
-            <rect y="-13" height="20" rx="8" ry="8" />
+            <rect y="-17" height="25" rx="9" ry="9" />
             <text textAnchor="middle">{date.text}</text>
             {this.state.data.map((candidate, i) => (
               <circle
@@ -178,6 +179,7 @@ class Lines extends React.Component {
           </g>
         ))}
       </svg>
+      </div>
     )
   }
 
@@ -190,7 +192,7 @@ class Lines extends React.Component {
             arrowColor={this.props.arrowColor}
             lang={this.props.lang}
           />
-          {this.renderFilter()}
+          <div className={css.line_filter}>{this.renderFilter()}</div>
         </div>
         
         {this.renderChart()}
