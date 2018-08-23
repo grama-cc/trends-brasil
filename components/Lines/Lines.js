@@ -200,8 +200,8 @@ var x = d3.scaleTime()
 
 
 
-    let minTimestamp = Infinity; //1534204800
-    let maxTimestamp = 0;// 1534820400
+    let minTimestamp = Infinity;
+    let maxTimestamp = 0;
     let minPercent = Infinity;   
     let maxPercent = 0;
 
@@ -221,7 +221,11 @@ var x = d3.scaleTime()
         }
       })
     })
-  
+
+    // TODO usar uma semana ou um mês
+    // atualmente estamos usando todo o timestamp
+    // desde o início até o fim
+    // https://github.com/d3/d3-scale#time-scales  
     const scaleTime = d3.scaleTime()
       .domain([minTimestamp, maxTimestamp])
       .range([0, this.cfg.width])
@@ -230,23 +234,10 @@ var x = d3.scaleTime()
       .domain([minPercent, maxPercent])
       .range([this.cfg.height, 0])
 
-    console.log(minTimestamp, maxTimestamp)
-    console.log(minPercent, maxPercent)
-    // {
-    //   "date": "2018-08-14",
-    //   "timestamp": 1534204800,
-    //   "percent": 2
-    // },
+    const linePath = d3.line()
+      .x(d => scaleTime(d.timestamp))
+      .y(d => scalePercent(d.percent))
 
-
-
-    // this.cfg = {
-    //   width: 1000,
-    //   height: 420,
-    //   rect: 20,
-    //   margin: { top: 0, right: 0, bottom: 0, left: 30 },
-    //   padding: 10,
-    // }
     return (
       <React.Fragment>
         <svg 
@@ -263,31 +254,21 @@ var x = d3.scaleTime()
             transform={`translate(100, ${100})`}
             // transform={`translate(0, ${this.cfg.height - 65 - this.cfg.margin.bottom})`}
           >
-            <g
-              className={css.axis}
-              ref={(y) => { this.axisElement = y; }}
-            />
           </g>
-          <g>
-              {/* Lines */}
-              {data.map((d, i) => {
-                const path = d3.line()
-                  .x((d) => { return scaleTime(d.timestamp) })
-                  .y((d) => { 
-                    return scalePercent(d.percent);
-                    return (15 * i);//  + Math.random()*10 +  (d.percent * 100)
-                    // return (15 * i) 
-                  })
-                return (
-                  <path
-                    key={i}
-                    d={path(d.lines)}
-                    stroke={`#000`}
-                    strokeWidth={2}
-                    fill="none"
-                  />
-                )
-              })}
+          {/* horizontal axis */}
+          <g
+            className={css.axis}
+            ref={(y) => { this.axisElement = y; }}
+          />
+          <g className={css.lines}>
+            {data.map((d, i) => (
+              <path
+                key={i}
+                d={linePath(d.lines)}
+                // TODO aplicar uma cor para cada candidato
+                // TODO desenhar linhas suaves com bezier(?)
+              />
+            ))}
           </g>
         </svg>
       </React.Fragment>

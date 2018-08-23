@@ -23,7 +23,7 @@
   .chart {
     order: 2;
     width: 100%;
-
+    box-sizing: border-box;
 
   	// Provisorio //////////////////////////////////
     min-height: 50vh; // provisorio
@@ -34,8 +34,13 @@
     align-items: center; // provisorio
     // Provisorio //////////////////////////////////
 
-
-
+    .lines {
+      path {
+        fill: none;
+        stroke: rgba($white, 0.5);
+        stroke-width: 5px;
+      }
+    }
   }
 }
 
