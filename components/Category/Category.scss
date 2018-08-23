@@ -49,11 +49,6 @@
   	}
 
   	.chart {
-
-      // display: flex;
-      // flex-direction: column;
-      // justify-content: space-between;
-
       header {
         display: flex;
         justify-content: space-between;
@@ -119,6 +114,24 @@
 	    	width: 70%;
   		}
   	}
+
+    .cloud_container {
+      display: none;
+
+      &[type='terms'] {
+        display: flex;
+      }
+
+      min-height: 50vh;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+
+      @media screen and (min-width: $medium-devices) {
+        margin: 0 auto;
+        width: 60%;
+      }
+    }
 
   }
 }

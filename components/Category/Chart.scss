@@ -29,10 +29,22 @@
 
 .list {
   display: flex;
-  margin: 0 20px 0 25px;
+  margin: 0;
   justify-content: space-between;
+
+  @media screen and (min-width: 500px) {
+    margin: 0 0 0 5px;
+  }
+
+  @media screen and (min-width: 800px) {
+    margin: 0 20px 0 25px;
+  }
+
   li {
-    width: 30px;
+    width: 18px;
+    @media screen and (min-width: 500px) {
+      width: 30px;
+    }
     img {
       display: block;
       width: 100%;

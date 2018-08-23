@@ -4,21 +4,9 @@ import css from './Cloud.scss';
 import Api from '../lib/Api';
 
 class Cloud extends React.Component {
-
-
   constructor (props) {
     super(props)
     this.width = 100;
-
-    // this.myInput = React.createRef()
-
-  }
-
-  componentDidMount () {
-    // let oi = document.getElementsByTagName('a').offsetWidth;
-    // console.log(oi)
-
-    //console.log(this.myInput.current.clientHeight)
   }
 
   // Reorder by category or candidate
@@ -45,24 +33,24 @@ class Cloud extends React.Component {
   render() {
     const words = this.getWords();
     let maxValue = 0;
-    words.forEach((el)=>{
+    words.forEach((el)=> {
       el.size > maxValue ? maxValue = el.size : null;
     });
 
-    // let oi = document.getElementsByTagName('a').innerWidth();
-    
     return (
       <div className={css.cloud} type={this.props.type}>
         {words.map((word, idx) => {
 
+          const size = this.props.keywords ? word.size*(screen.width < 800 ? 30 : 50)/maxValue : word.size*(screen.width < 800 ? 5 : 30)/maxValue; 
+
           return(
             <a
-              ref={(ref) => this.myInput = ref}
               key={idx}
               href={`https://www.google.com.br/search?q=${word.query_text.replace(/ /g,"+")}`}
               target="_blank"
               style={{
-                fontSize: `calc( ${word.size*(screen.width < 800 ? 5 : 30)/maxValue}px + 12px)`,
+                //fontSize: `calc( ${word.size*(screen.width < 800 ? 5 : 30)/maxValue}px + 12px)`,
+                fontSize: `calc( ${size}px + 12px)`,
                 color: this.props.color ? this.props.color : word.color,
                 left: `${ this.props.keywords ? 0 : 
                   this.props.position == 'left' ?

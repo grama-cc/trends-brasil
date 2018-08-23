@@ -80,6 +80,8 @@ class Category extends React.Component {
 
     const lang = this.props.lang
 
+    // console.log(screen.width)
+
     if(!this.props.candidates && !this.props.words) {
       return <div className={css.loading}>Loading...</div>
     }
@@ -127,18 +129,19 @@ class Category extends React.Component {
             />
             {this.props.bars ? 
               <Chart type={view} data={this.props.bars[idx]}/> 
-              : 'Loaging...'
+              : 'Loading...'
             }
+            <div type={view} className={css.cloud_container}>
             {this.props.words && this.props.candidates ? 
-                <Cloud 
-                  type={view}
-                  id={data[idx].id} 
-                  candidates={this.props.candidates}
-                  words={this.props.words} 
-                  keywords
-                  color='#b4b4b4'
-                />
+              <Cloud 
+                id={data[idx].id} 
+                candidates={this.props.candidates}
+                words={this.props.words} 
+                keywords
+                color='#b4b4b4'
+              />
             : 'Loading'}
+            </div>
            
             {this.renderNav('btn')}
           </div>
