@@ -23,13 +23,16 @@ class Graphic extends React.Component {
   }
 
   renderModalWords () {
-    const candidates = this.props.candidates.filter((c) => this.props.filter === c.id);
-    const words = candidates[0].words.slice(0, 8);
-    const name = candidates[0].name;
+
+    const candidate= this.props.candidates.filter((c) => this.props.filter === c.id);
+    let words = this.props.words.filter((c) => this.props.filter === c.candidate);
+    words = words.slice(0, 8);
+
+    console.log(candidate)
 
     return (
       <div className={css.modal} onClick={this.closeModal}>
-        <h3>{name}</h3>
+        <h3>{candidate[0].name}</h3>
         {words.map((word, index) => (
           <p key={index}>
             <a
@@ -76,7 +79,8 @@ class Graphic extends React.Component {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox={`0 0 ${this.config.width} ${this.config.height}`}
+          viewBox='20 25 220 220'
+          // viewBox={`0 0 ${this.config.width} ${this.config.height}`}
           preserveAspectRatio="none"
         >
           <defs>
@@ -93,9 +97,15 @@ class Graphic extends React.Component {
                   <rect height="100%" width="100%" fill={c.data.color} />
                   <image 
                     x="0" 
-                    y="0" 
-                    height={c.r === 0 ? 20 : c.r * 2} 
-                    width={c.r === 0 ? 20 : c.r * 2}
+                    y="0"
+
+                    // height={c.r === 0 ? 20 : c.r * 2} 
+                    // width={c.r === 0 ? 20 : c.r * 2}
+
+                    height={c.r < 10 ? 20 : c.r * 2} 
+                    width={c.r < 10 ? 20 : c.r * 2}
+
+
                     xlinkHref={`/static/img/candidates/${c.data.slug}.png`}
                     className={filter === c.data.id ? css.openImage : null}
                   />
@@ -115,7 +125,8 @@ class Graphic extends React.Component {
                 className={filter === c.data.id ? css.open : null}
               >
                 <circle
-                  r={c.r === 0 ? 10 : c.r}
+                  r={c.r < 10 ? 10 : c.r}
+                  // r={c.r === 0 ? 10 : c.r}
                   fill={`url(#img${idx})`}
                 />
               </g>

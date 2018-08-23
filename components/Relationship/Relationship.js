@@ -48,20 +48,36 @@ class Relationship extends React.Component {
             />
           </div>
           <div className={css.clouds}>
-            <Cloud 
-              id={this.props.filter} 
-              candidates={this.props.candidates}
-              words={this.props.words} 
-              type='candidate' 
-            />
+            {this.props.candidates && this.props.words ? 
+              <Cloud 
+                id={this.props.filter} 
+                candidates={this.props.candidates}
+                words={this.props.words} 
+                type='candidate' 
+                position='left'
+              />
+            : 'Loading...'}
             {/*<Cloud id={this.props.filter} type='candidate' />*/}
-            <div className={css.common}>mais<br/>comuns</div>
-            <Cloud 
-              id={this.props.compare}
-              candidates={this.props.candidates}
-              words={this.props.words} 
-              type='candidate'
-            />
+            <div className={css.common}>mais<br/>comuns
+               {this.props.relationship ?
+                this.props.relationship.map((word,index) => 
+                  <div 
+                    className={css.relationship_words}
+                    style={{top: (index+1)*8 + '%'}}>
+                    {word}
+                  </div>
+                )
+              : null}
+            </div>
+            {this.props.candidates && this.props.words ? 
+              <Cloud 
+                id={this.props.compare}
+                candidates={this.props.candidates}
+                words={this.props.words} 
+                type='candidate'
+                position='right'
+              />
+            : 'Loading...'}
           </div>
         </React.Fragment>
       )

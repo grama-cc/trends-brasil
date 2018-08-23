@@ -46,6 +46,7 @@ class Section extends React.Component {
               content={content}
               arrowColor={this.props.arrowColor}
               lang={this.props.lang}
+              color={currentCandidate ? currentCandidate.color : '#b4b4b4'}
             />
 
             <ul 
@@ -70,6 +71,8 @@ class Section extends React.Component {
               bgColor={currentCandidate ? currentCandidate.color : '#b4b4b4'}
               color='#fff'
               arrowColor={this.props.arrowColor}
+              period={this.props.period}
+              onClickPeriod={this.props.onClickPeriod}
             />
             <Social stroke='#fff' parent={this.props.children.props.className}/>
 

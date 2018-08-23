@@ -5,14 +5,13 @@
 	justify-content: center;
 	margin: 20px 0 0;
 	width: 100%;
-	z-index: 100;
-
 	order: 2;
+	z-index: 2;
 	
 	&.bottom {
 		position: absolute;
 		width: calc(100vw - 80px);
-		bottom: responsive(10, 60);
+		bottom: responsive(25, 60);
 		left: 50%;
 		transform: translateX(-50%);
 	}

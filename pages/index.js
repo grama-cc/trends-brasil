@@ -16,8 +16,6 @@ import Orbital from '../components/Orbital/Orbital';
 import Footer from '../components/Footer/Footer';
 import Clipping from '../components/Footer/Clipping';
 
-// import { i18n } from '../common/locale/i18n';
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -26,16 +24,32 @@ class Home extends React.Component {
       compare: null,
       candidates: null,
       words: null,
+      relationship: null,
+      bars: null,
       lang: 'port'
     };
   }
 
-  onFilter = (id) => {
-    this.setState({ filter: id })
+  onFilter = async (id) => {
+    this.setState({ filter: id });
+
+    if(id && this.state.compare) {
+      const relationship = await Api.getRelationship(id, this.state.compare);
+      this.setState({relationship: relationship.intersection});
+    } else {
+      this.setState({relationship: null});
+    }
   }
 
-  onCompare = (id) => {
-    this.setState({ compare: id })
+  onCompare = async (id) => {
+    this.setState({ compare: id });
+   
+    if(this.state.filter && id) {
+      const relationship = await Api.getRelationship(this.state.filter, id);
+      this.setState({relationship: relationship.intersection});
+    } else {
+      this.setState({relationship: null});
+    }
   }
 
   onChangeLang = (lang) => {
@@ -44,8 +58,12 @@ class Home extends React.Component {
 
   getData = async () => {
     const candidates = await Api.getCandidates();
+    this.setState({ candidates });
     const words = await Api.getWords();
-    this.setState({ candidates, words });
+    this.setState({ words });
+    const bars = await Api.getBar();
+    const teste = await Api.getBar();
+    this.setState({ bars });
   }
 
   componentDidMount() {
@@ -53,14 +71,10 @@ class Home extends React.Component {
   }
 
   render() {
-    
-
-    //if(!this.state.candidates && !this.state.words) {
-      //return <div className={css.loading}>Loading...</div>
-    //} 
 
     const candidates = this.state.candidates;
     const words = this.state.words;
+    const bars = this.state.bars;
 
     return (
 
@@ -86,19 +100,20 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        {/*<Lines
+        <Lines
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
-        />*/}
+        />
 
         <Category
           arrowColor='#b4b4b4'
           lang={this.state.lang}
           candidates={candidates}
           words={words}
+          bars={bars}
         />
 
         <Radar
@@ -116,6 +131,7 @@ class Home extends React.Component {
           compare={this.state.compare}
           candidates={candidates}
           words={words}
+          relationship={this.state.relationship}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
         />

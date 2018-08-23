@@ -29,19 +29,24 @@ class Description extends React.Component {
     if (content) {
       return (
         <div className={css.description}>
-          <h2>{i18n(content + '.title', lang)}</h2>
-          <p>{i18n(content + '.description', lang)}</p>
+          <h2>{i18n(`${content}.title`, lang)}</h2>
+          <p>{i18n(`${content}.description`, lang)}</p>
 
           <button
             onClick={this.open}
             className={this.state.open ? css.open : null}
           >
-            <span>{i18n(content + '.button', lang)}</span>
+            <span>{i18n(`${content}.button`, lang)}</span>
             <Arrow arrowColor={this.props.arrowColor}/>
           </button>
 
-          <div className={this.state.open ? `${css.more} ${css.open}` : css.more}>
-            {i18n(content + '.more', lang).map((text, index) => (
+          <div 
+            className={this.state.open ? `${css.more} ${css.open}` : css.more}
+            style={{
+              backgroundColor: this.props.color ? this.props.color : '#fff'
+            }}
+          >
+            {i18n(`${content}.more`, lang).map((text, index) => (
               <p key={index}>{text}</p>
             ))}
           </div>
@@ -52,13 +57,5 @@ class Description extends React.Component {
     }
   }
 }
-
-Description.propTypes = {
-  content: PropTypes.object
-};
-
-Description.defaultProps = {
-  content: {}
-};
 
 export default Description;
