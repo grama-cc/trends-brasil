@@ -51,7 +51,11 @@ const Social = props => (
 
       {/*<li><a onClick={(e) => twitterShare(e)}><Twitter stroke={props.stroke} /></a></li>*/}
       <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//trends-brasil.herokuapp.com/" target="_blank"><Facebook stroke={props.stroke} /></a></li>
-      <li><a href="whatsapp://send" data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" data-href="https://trends-brasil.herokuapp.com/"><Whatsapp stroke={props.stroke} /></a></li>
+      <li><a 
+        href="whatsapp://send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://trends-brasil.herokuapp.com/" 
+        data-action="share/whatsapp/share" 
+        data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
+        data-href="https://trends-brasil.herokuapp.com/"><Whatsapp stroke={props.stroke} /></a></li>
     </ul>
   </React.Fragment>
 );
