@@ -8,23 +8,6 @@ import Cloud from '../Cloud.js';
 
 class Relationship extends React.Component {
 
-  /*constructor (props) {
-    super(props)
-
-    this.state = {
-      relationship: null,
-    };
-  }
-
-  getData = async () => {
-    const relationship = await Api.getRelationship();
-    this.setState({ relationship });
-  }
-
-  componentDidMount() {
-    this.getData();
-  }*/
-
   renderChart () {
     if (!this.props.candidates && !this.props.words) {
 
@@ -57,13 +40,14 @@ class Relationship extends React.Component {
                 position='left'
               />
             : 'Loading...'}
-            {/*<Cloud id={this.props.filter} type='candidate' />*/}
             <div className={css.common}>mais<br/>comuns
                {this.props.relationship ?
-                this.props.relationship.map((word,index) => 
+                this.props.relationship.map((word, index) => 
                   <div 
+                    key={index}
                     className={css.relationship_words}
-                    style={{top: (index+1)*8 + '%'}}>
+                    //style={{top: (index+1)*8 + '%'}}
+                  >
                     {word}
                   </div>
                 )
@@ -94,6 +78,7 @@ class Relationship extends React.Component {
               content='relationship'
               arrowColor={this.props.arrowColor}
               lang={this.props.lang}
+              color='#f8f8f8'
             />
           </div>
 

@@ -1,16 +1,17 @@
 @import '../lib/scss/variables.scss';
 
 .cloud {
-	display: none;
-	&[type='terms'] {
-		display: block;
-	}
+	// display: none;
+	// &[type='terms'] {
+		// display: block;
+	// }
 
 	&[type='candidate'] {
 		display: block;
 		align-items: center;
 		@media screen and (min-width: $medium-devices) {
 			align-items: initial;
+			margin: 40px 0 0;
 		}
 	}
 	
@@ -22,6 +23,7 @@
 		margin-top: 17px;
 		transform: translateX(10%) !important;
 		@media screen and (min-width: $medium-devices) {
+			max-width: 240px;
 			transform: translateX(-10%) !important;
 			margin-top: 0;
 		}

@@ -26,7 +26,9 @@ class Keywords extends React.Component {
     if(!this.props.candidates && !this.props.words) {
 
       return <div className={css.loading}>Loading...</div>
+
     } else {
+
       return (
         <React.Fragment>
           <Graphic
@@ -48,14 +50,17 @@ class Keywords extends React.Component {
           />
         </React.Fragment>
       )
+
     }
   }
 
   render() {
-
     const candidates = this.props.candidates
     const words = this.props.words
     const view = this.state.view;
+
+    console.log(candidates)
+    
     return (
       <section className={css.keywords} id='keywords'>
         <div className={css.info}>
@@ -75,14 +80,20 @@ class Keywords extends React.Component {
           />
           { this.renderChart(candidates, words, view) }
         </div>
-
         <Period 
           bgColor='#f8f8f8'
           color='#b4b4b4'
           bottom
           arrowColor={this.props.arrowColor}
+
+          period={this.props.period}
+          onClickPeriod={this.props.onClickPeriod}
         />
-        <Social stroke='#b4b4b4' bottom parent="Graphic_graphic_IWdTV"/>
+        <Social 
+          stroke='#b4b4b4' 
+          bottom 
+          parent="Graphic_graphic_IWdTV"
+        />
       </section>
     )
   }

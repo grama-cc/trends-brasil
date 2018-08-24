@@ -1,25 +1,14 @@
 @import '../../lib/scss/variables.scss';
 
 .keywords {
-
-
   @include grid();
-
-  //padding: responsive(25, 60) responsive(10, 80);
-  min-height: calc(100vh - 20px);
-  //transition: background .4s ease;
-
-  background-color: #f8f8f8;
-
-  //display: flex;
-  //flex-direction: column;
-  // justify-content: space-around;
-  //position: relative; 
+  min-height: calc( 100vh + 40px );
+  background-color: #f8f8f8; 
   overflow: hidden;
 
   @media screen and (min-width: 1100px) {
-    //justify-content: flex-start;
     align-items: flex-start;
+    min-height: calc( 100vh - 40px);
   }
 
   .info {
@@ -31,6 +20,7 @@
   .container {
     position: relative;
     width: 100%;
+    margin: 0 0 20px;
   	@media screen and (min-width: 1100px) {
       position: static;
     }

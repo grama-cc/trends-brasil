@@ -13,19 +13,15 @@
   order: 2;
 
   &.all {
-    position: absolute;
-    z-index: 2;
     margin: 8px 0;
+    @media screen and (min-width: $medium-devices) {
+      position: absolute;
+    }
   }
 
   &.bottom {
     position: absolute;
-    z-index: 2;
-
-    //bottom: 40px;
-
     bottom: responsive(65, 100);
-
     left: 50%;
     transform: translateX(-50%);
   }
@@ -82,13 +78,7 @@
     width: 46px;
 
     &.open {
-    	// height: 60px;
-
-      height: 60px;
-    
-    /* top: 61px; */
-    
-
+      height: 56px;
     }
     button {
 			color: #4b4b4b;
