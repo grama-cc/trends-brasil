@@ -47,20 +47,14 @@ const Social = props => (
     <ul className={`${css.social} ${props.bottom ? css.bottom : null} ${props.share ? css.share : null}`}>
       {!props.share ?
       <li><a onClick={(e) => handleClick(e, props.parent)}><Media stroke={props.stroke} /></a></li> : null}
-      <li><a onClick={(e) => twitterShare(e)}><Twitter stroke={props.stroke} /></a></li>
+      <li><a href={`https://twitter.com/home?status=Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018? https%3A//trends-brasil.herokuapp.com/`}><Twitter stroke={props.stroke} /></a></li>
+
+      {/*<li><a onClick={(e) => twitterShare(e)}><Twitter stroke={props.stroke} /></a></li>*/}
       <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//trends-brasil.herokuapp.com/" target="_blank"><Facebook stroke={props.stroke} /></a></li>
-      <li><a href="#"><Whatsapp stroke={props.stroke} /></a></li>
+      <li><a href="whatsapp://send" data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" data-href="https://trends-brasil.herokuapp.com/"><Whatsapp stroke={props.stroke} /></a></li>
     </ul>
   </React.Fragment>
 );
-
-Social.propTypes = {
-  children: PropTypes.node
-};
-
-Social.defaultProps = {
-  children: null
-};
 
 
 export default Social;

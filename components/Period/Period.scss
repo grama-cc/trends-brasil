@@ -6,14 +6,13 @@
   flex-direction: column;
   width: 140px;
   align-items: flex-end;
-
   position: relative;
   z-index: 3;
-
   order: 2;
+  margin: 20px 0 0;
 
   &.all {
-    margin: 8px 0;
+    // margin: 8px 0;
     @media screen and (min-width: $medium-devices) {
       position: absolute;
     }

@@ -58,8 +58,6 @@ class Keywords extends React.Component {
     const candidates = this.props.candidates
     const words = this.props.words
     const view = this.state.view;
-
-    console.log(candidates)
     
     return (
       <section className={css.keywords} id='keywords'>

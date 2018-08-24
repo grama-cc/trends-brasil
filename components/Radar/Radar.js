@@ -97,14 +97,16 @@ class RadarChart extends React.Component {
           "x": values.scale( values.max ) * Math.sin( values.angles * i - Math.PI / 2 ), 
           "y": values.scale( values.max ) * Math.cos( values.angles * i - Math.PI / 2 )
         }
-      }) : null;
+      }) : [];
+
+      // hauhsuhas
 
       const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
         values.scale( -(d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
       );
       const filter = this.props.filter;
 
-      const candidates = radar.filter((c) => filter === c.id);
+      const candidates = this.state.radar ? radar.filter((c) => filter === c.id) : [];
 
       radar = radar.sort((a, b) => {
         if (a.id === filter) {
@@ -235,8 +237,12 @@ class RadarChart extends React.Component {
         period={this.state.period}
         onClickPeriod={this.onClickPeriod}
       >
-        <div className={css.radar}>
-          {this.renderChart()}
+
+        <div className={css.chart_container}>
+          <p className={css.legend}>Porcentagem das categorias (%) entre as buscas feitas para cada candidato</p>
+          <div className={css.radar}>
+            {this.renderChart()}
+          </div>
         </div>
       </Section>
     )

@@ -35,9 +35,11 @@ class Home extends React.Component {
     this.setState({ filter: id });
 
     if(id && this.state.compare) {
+
       const relationship = await Api.getRelationship(id, this.state.compare);
       this.setState({relationship: relationship.intersection});
     } else {
+
       this.setState({relationship: null});
     }
   }
@@ -70,7 +72,7 @@ class Home extends React.Component {
     this.setState({ words });
 
     const bars = await Api.getBar();
-    // const teste = await Api.getBar();
+
     this.setState({ bars });
   }
 
@@ -127,13 +129,13 @@ class Home extends React.Component {
           bars={bars}
         />
 
-        {/*<Radar
+        <Radar
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
           arrowColor='#fff'
           lang={this.state.lang}
-        />*/}
+        />
 
         <Relationship 
           onFilter={this.onFilter} 

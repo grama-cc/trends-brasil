@@ -30,11 +30,10 @@ export const i18n_pt_br = {
   },
   keywords: {
 	  title: "Por quem buscam",
-	  description: "A popularidade dos candidatos na busca do Google e os termos mais comuns associados a ele.",
+	  description: "O gráfico representa a popularidade dos candidatos na busca do Google e os termos mais comuns associados a ele.  Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
 	  button: "Saiba mais",
 	  more: [
-	  	"O gráfico de bolas representa a relevância dos candidatos à presidência nas eleições de 2018 no Brasil, ",
-		  "e a nuvem de palavras mostra os termos mais buscados no Google para cada candidato. ",
+	  	"O gráfico de bolas representa a relevância dos candidatos à presidência nas eleições de 2018 no Brasil, e a nuvem de palavras mostra os termos mais buscados no Google para cada candidato. ",
 		  "Os termos e candidatos mais frequentes aparecem maiores."
 	  ],
 	  select: {
@@ -52,8 +51,7 @@ export const i18n_pt_br = {
 	  description: "Os termos de busca que são mais comuns entre dois políticos. Escolha dois candidatos para comparação.",
 	  button: "Saiba mais",
 	  more: [
-	  	"A comparação dos termos de cada candidato destaca a interessante relação das buscas tanto ideológicas quanto à aspectos de individuais, ",
-		  "como biografia ou figuras políticas, e pode evidenciar posicionamentos opostos nos termos não comuns a ambos. ",
+	  	"A comparação dos termos de cada candidato destaca a interessante relação das buscas tanto ideológicas quanto à aspectos de individuais, como biografia ou figuras políticas, e pode evidenciar posicionamentos opostos nos termos não comuns a ambos. ",
 		  "Para evitar redundâncias, buscas como “proposta de Bolsonaro” e “proposta Bolsonaro” foram agrupados em “proposta”."
 	  ]
 	},
@@ -68,7 +66,7 @@ export const i18n_pt_br = {
 	},
   radar: {
 	  title: "Como buscam",
-	  description: "O gráfico mostra o interesse nos diferentes temas para cada candidato.",
+	  description: "A região do gráfico indica o interesse nos diferentes temas. O deslocamento da área em relação ao centro revela a importância de cada tema na busca dos candidatos.",
 	  button: "Saiba mais",
 	  more: [
 	  	"O gráfico ajuda a entender melhor a curiosidade do usuário pelo candidato, revelando a distribuição de buscas pelos temas. ",
