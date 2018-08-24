@@ -30,6 +30,17 @@ const Head = (props) => {
 
       <link rel="stylesheet" href="/_next/static/style.css" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+      
+      <script
+        dangerouslySetInnerHTML={{__html: (`
+          window.ga=window.ga || function(){(ga.q=ga.q||[]).push(arguments)};
+          ga.l=+new Date;
+          ga('create', 'UA-31800465-2', 'auto');
+          ga('send', 'pageview');
+        `)}}
+      />
+      <script async src='https://www.google-analytics.com/analytics.js'></script>
+
     </NextHead>
   );
 };
