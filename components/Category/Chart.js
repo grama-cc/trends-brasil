@@ -50,9 +50,6 @@ class Chart extends React.Component {
           xmlns="http://www.w3.org/2000/svg"
           viewBox={`0 0 ${this.cfg.width} ${h}`}
           preserveAspectRatio="none"
-          style={{
-            padding: `${this.cfg.padding}px`
-          }}
         >
           <g
             transform={`translate(${this.cfg.margin.left}, ${this.cfg.margin.bottom})`}

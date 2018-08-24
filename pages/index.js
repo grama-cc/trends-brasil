@@ -93,7 +93,7 @@ class Home extends React.Component {
           image="/static/img/share.jpg"
         />
          
-        {/*<Intro
+        <Intro
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
@@ -117,7 +117,7 @@ class Home extends React.Component {
           candidates={candidates}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
-        />*/}
+        />
 
         <Category
           arrowColor='#b4b4b4'
@@ -133,7 +133,7 @@ class Home extends React.Component {
           candidates={candidates}
           arrowColor='#fff'
           lang={this.state.lang}
-        />
+        />*/}
 
         <Relationship 
           onFilter={this.onFilter} 
@@ -157,7 +157,7 @@ class Home extends React.Component {
 
         <Footer
           lang={this.state.lang}
-        />*/}
+        />
 
         {/*<Clipping />*/}
       </Layout>

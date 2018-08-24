@@ -71,8 +71,14 @@
           h2 { 
             color: $black;
             margin: 0 0 15px;
+            font-size: responsive(20, 24);
+            font-family: $robotoMedium;
           }
           text-align: center;
+          p {
+            font-size: responsive(14, 16);
+            line-height: responsive(18, 24);
+          }
         }
       }
 

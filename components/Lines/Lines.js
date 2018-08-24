@@ -21,8 +21,8 @@ class Lines extends React.Component {
       period: 'month',
     };
     this.cfg = {
-      width: 1000,
-      height: 420,
+      width: 900,
+      height: 320,
       rect: 20,
       margin: { top: 0, right: 0, bottom: 0, left: 30 },
     }
@@ -137,58 +137,61 @@ class Lines extends React.Component {
       .y(d => scalePercent(d.percent))
 
     return (
-      <div className={css.chart_container}>
-      <svg 
-        className={css.chart}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
-        preserveAspectRatio="none"
-        ref={(c) => { this.svg = c; }}
-      >
-        <g
-          className={css.axis}
-          transform={`translate(0, ${this.cfg.height})`}
-          ref={(c) => { this.axisElement = c; }}
-        />
-        <g className={css.lines}>
-          {this.state.data.map((candidate) => (
-            <path
-              key={candidate.id}
-              d={lineGenerator(candidate.lines)}
-              stroke={candidate.color}
-            />
-          ))}
-        </g>
-        {this.state.specialDates.map((date) => (
-          <g
-            key={date.id}
-            className={css.date}
-            transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
+      <React.Fragment>
+        <p className={css.percent}>Valores entre 0 e 100 indexados pelo Google Trends</p>
+        <div className={css.chart_container}>
+          <svg 
+            className={css.chart}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
+            preserveAspectRatio="none"
+            ref={(c) => { this.svg = c; }}
           >
-            <line y2={this.cfg.height} />
-            <rect 
-              y="-30"
-              height="25"
-              rx="12"
-              ry="12"
+            <g
+              className={css.axis}
+              transform={`translate(0, ${this.cfg.height})`}
+              ref={(c) => { this.axisElement = c; }}
             />
-            <text 
-              textAnchor="middle"
-            >            
-              {date.text}
-            </text>
-            {this.state.data.map((candidate, i) => (
-              <circle
-                key={candidate.id}
-                r="4"
-                cy={scalePercent(this.getPercent(candidate, date.date))}
-                stroke={candidate.color}
-              />
+            <g className={css.lines}>
+              {this.state.data.map((candidate) => (
+                <path
+                  key={candidate.id}
+                  d={lineGenerator(candidate.lines)}
+                  stroke={candidate.color}
+                />
+              ))}
+            </g>
+            {this.state.specialDates.map((date) => (
+              <g
+                key={date.id}
+                className={css.date}
+                transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
+              >
+                <line y2={this.cfg.height} />
+                <rect 
+                  y="-25"
+                  height="20"
+                  rx="10"
+                  ry="10"
+                />
+                <text 
+                  textAnchor="middle"
+                >            
+                  {date.text}
+                </text>
+                {this.state.data.map((candidate, i) => (
+                  <circle
+                    key={candidate.id}
+                    r="4"
+                    cy={scalePercent(this.getPercent(candidate, date.date))}
+                    stroke={candidate.color}
+                  />
+                ))}
+              </g>
             ))}
-          </g>
-        ))}
-      </svg>
-      </div>
+          </svg>
+        </div>
+      </React.Fragment>
     )
   }
 

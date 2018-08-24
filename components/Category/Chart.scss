@@ -12,6 +12,11 @@
   text-align: center;
 }
 .chart {
+  padding: 10px 0;
+
+  @media screen and (min-width: $medium-devices) {
+    padding: 10px;
+  }
 
   path {
     stroke: none;

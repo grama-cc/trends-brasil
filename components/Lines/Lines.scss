@@ -27,13 +27,30 @@
     }
   }
 
+  .percent {
+    order: 2;
+    text-align: center;
+    font-size: 12px;
+    margin: 20px 0 10px;
+
+    @media screen and (min-width: $medium-devices) {
+      position: absolute;
+      top: 55%;
+      transform: translateY(-50%) rotate(-90deg);
+      left: -108px;
+      margin: 0;
+    }
+  }
+
   .chart_container {
     order: 2;
     width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     min-height: 50vh;
-    margin: 20px 0 0;
+    // 
+
+    position: relative;
 
     &::-webkit-scrollbar { height: 5px; width: 5px; } // width and height
 
@@ -42,11 +59,13 @@
     &::-webkit-scrollbar-thumb { background: #b4b4b4; } // handle
 
     @media screen and (min-width: $medium-devices) {
+      overflow: none;
+      margin: 20px 0 0;
+
       &::-webkit-scrollbar {
         display: none;
       }
     }
-
   }
 
   .chart {
@@ -86,8 +105,8 @@
 
       text {
         fill: $white;
-        font-size: 11px;
-        transform: translateY(-13.5px);
+        font-size: 10px;
+        transform: translateY(-11px);
         font-weight: 500;
         text-transform: uppercase;
       }
@@ -101,7 +120,7 @@
     .lines {
       path {
         fill: none;
-        stroke-width: 5px;
+        stroke-width: 3px;
         opacity: 0.5;
         transition: all .4s ease;
       }
