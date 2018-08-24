@@ -33,24 +33,25 @@ class Chart extends React.Component {
       .scale(yScale)
       .tickSize(-(this.cfg.width - this.cfg.margin.left))
       .tickPadding([12])
-      .ticks([4])
+      .ticks(4)
     d3.select(this.axisElement).call(axis)
   }
 
   render() {
-
+    
     const h = this.cfg.height - 45;
     const yScale = d3.scaleLinear().domain([0, this.props.data.max_value]).range([h, this.cfg.margin.top]);
 
     return (
       <div className={css.container} type={this.props.type}>
-        <svg 
+        <p className={css.percent}>Porcentagem das categorias (%) entre as buscas feitas para cada candidato</p>
+        <svg
           className={css.chart}
           xmlns="http://www.w3.org/2000/svg"
           viewBox={`0 0 ${this.cfg.width} ${h}`}
           preserveAspectRatio="none"
           style={{
-            padding: `${this.cfg.padding}px 0`
+            padding: `${this.cfg.padding}px`
           }}
         >
           <g
@@ -59,39 +60,20 @@ class Chart extends React.Component {
             <g
               className={css.axis}
               ref={(y) => { this.axisElement = y; }}
-              //transform="scale(1,-1) translate(0,-200)"
-              
             />
-
-            <g 
-              //transform={`scale(1,-1) translate(0, -${this.cfg.width/2})`}
-
-              transform={`scale(1,-1) translate(0, -${h})`}
-            >
-            {this.props.data.values.map((d, i) => (
-              <rect
-                // transform="rotate(180 0 0)"
-                key={i}
-                x={(this.cfg.width / this.props.data.values.length) * i}
-                //y={yScale(d.value)}
-                y={0}
-                // height={20}
-                height={h - yScale(d.value)}
-                width={this.cfg.rect}
-                fill={d.color}
-              >
-              {/*<animate 
-                     attributeName="height" 
-                     from="0" 
-                     to="20"
-                     dur="3s"
-                     fill="freeze"/>*/}
-              </rect>
-
-            ))}
+            <g transform={`scale(1,-1) translate(0, -${h})`}>
+              {this.props.data.values.map((d, i) => (
+                <rect
+                  key={i}
+                  x={(this.cfg.width / this.props.data.values.length) * i}
+                  y={0}
+                  height={h - yScale(d.value)}
+                  width={this.cfg.rect}
+                  fill={d.color}
+                >
+                </rect>
+              ))}
             </g>
-
-
           </g>
         </svg>
 

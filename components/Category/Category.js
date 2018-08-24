@@ -82,6 +82,15 @@ class Category extends React.Component {
 
     // console.log(screen.width)
 
+    const text = [
+      "Personalidades do mundo político, como ministros do supremo, juízes federais e outros políticos, que aparecem como busca relacionada",
+      "Buscas relacionadas a notícias e seus veículos de publicação, como jornais, sites ou programas de TV",
+      "Todos os termos relacionados à ideologia política dos candidatos, como plano de governo e declarações",
+      "Cantores, atores, ex-BBBs… quem orbita os candidatos à Presidência na busca relacionada",
+      "Buscas sobre idade, casamento, cargos ocupados e outros temas relacionados à biografia dos candidatos",
+      "Buscas que não classificamos nos outros temas, mas que são referências relevantes para os os candidatos",
+    ]
+    
     if(!this.props.candidates && !this.props.words) {
       return <div className={css.loading}>Loading...</div>
     }
@@ -111,7 +120,7 @@ class Category extends React.Component {
 
               <div className={css.text}>
                 <h2>{data[idx].name}</h2>
-                <p>Perguntas sobre idade, casamento, cargos ocupados e outras buscas biográficas sobre os candidatos</p>
+                <p>{text[idx]}</p>
               </div>
 
               <button
