@@ -72,8 +72,6 @@ class Candidate extends React.Component {
     const content = this.props.content;
     const filter = this.props.filter
 
-    console.log(this.props.filter)
-
     const idx = !filter ? null : this.findIndex(candidates, 'id', filter);
     const list = 90;
     const move = ( list * ( - idx ) ) + (this.state.width / 2) - list / 2;

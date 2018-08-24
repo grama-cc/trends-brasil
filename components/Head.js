@@ -12,12 +12,15 @@ const Head = (props) => {
       <meta name="description" content={props.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/static/img/favicon.png?v=2" />
+
       <meta property="og:url" content={url} />
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={props.description} />
+
       <meta name="twitter:site" content={url} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={props.image} />
+      
       <meta property="og:image" content={props.image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
