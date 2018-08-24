@@ -99,9 +99,8 @@ class Graphic extends React.Component {
                     // height={c.r === 0 ? 20 : c.r * 2} 
                     // width={c.r === 0 ? 20 : c.r * 2}
 
-                    height={c.r < 10 ? 20 : c.r * 2} 
-                    width={c.r < 10 ? 20 : c.r * 2}
-
+                    height={c.r < 10 ? 20 : filter === c.data.id ? 100 : c.r * 2} 
+                    width={c.r < 10 ? 20 : filter === c.data.id ? 100 : c.r * 2}
 
                     xlinkHref={`/static/img/candidates/${c.data.slug}.png`}
                     className={filter === c.data.id ? css.openImage : null}
