@@ -93,6 +93,7 @@ class Home extends React.Component {
           title="Trends Brasil"
           description="Na busca do candidato"
           image="/static/img/share.jpg"
+          url='https://trends-brasil.herokuapp.com'
         />
          
         <Intro
