@@ -32,7 +32,7 @@ class Intro extends React.Component {
 		return (
 			<section className={css.intro}>
 
-				<ul className={css.translate}>
+				{/*<ul className={css.translate}>
 					<li>
 						<button
 							onClick={this.onChangeLang}
@@ -51,7 +51,7 @@ class Intro extends React.Component {
 							EN
 						</button>
 					</li>
-				</ul>
+				</ul>*/}
 
 				<div className={css.boxAnimation}>
 	       	<svg
