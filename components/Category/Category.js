@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Api from '../../lib/Api';
 
-import data from './data'
+// import data from './data'
 import css from './Category.scss';
 
 import Description from '../Description.js';
@@ -34,7 +34,7 @@ class Category extends React.Component {
   }
 
   onClickNext = () => {
-    const size = data.length - 1;
+    const size = this.props.bars.length - 1;
 
     if(this.state.idx < size) {
       this.setState({ idx: this.state.idx + 1 })
@@ -54,7 +54,7 @@ class Category extends React.Component {
     const idx = this.state.idx;
     return(
       <nav className={css.nav}>
-        {data.map((d, i) => {
+        {this.props.bars ? this.props.bars.map((d, i) => {
           return(
             <button 
               className={idx === i ? `${css.clicked} ${css.item}` : `${css.item}` }
@@ -68,7 +68,7 @@ class Category extends React.Component {
               {type === 'btn' ? null : d.name}
             </button>
           )
-        })}
+        }) : null}
     </nav>
     )
   }
@@ -77,18 +77,20 @@ class Category extends React.Component {
 
     const idx = this.state.idx;
     const view = this.state.view;
-
     const lang = this.props.lang
 
-    // console.log(screen.width)
-
     const text = [
-      "Personalidades do mundo político, como ministros do supremo, juízes federais e outros políticos, que aparecem como busca relacionada",
-      "Buscas relacionadas a notícias e seus veículos de publicação, como jornais, sites ou programas de TV",
-      "Todos os termos relacionados à ideologia política dos candidatos, como plano de governo e declarações",
-      "Cantores, atores, ex-BBBs… quem orbita os candidatos à Presidência na busca relacionada",
-      "Buscas sobre idade, casamento, cargos ocupados e outros temas relacionados à biografia dos candidatos",
-      "Buscas que não classificamos nos outros temas, mas que são referências relevantes para os os candidatos",
+      "Políticos em mantado ativo e demais personalidades do mundo político, como ministros do supremo e juízes federais.",
+      
+      "Buscas relacionadas a notícias e seus veículos de publicação, como jornais, sites ou programas de TV.",
+      
+      "Todos os termos relacionados à ideologia política dos candidatos, como partido, plano de governo e declarações.",
+      
+      "Cantores, atores, ex-BBBs… quem orbitaos candidatos à Presidência na busca relacionada.",
+      
+      "Buscas sobre a vida pública dos candidatos, como cargos ocupados  ou pretendidos e envolvimento em casos de corrupção.",
+      
+      "Termos amplamente buscados que não se enquadram em nenhuma classificação.",
     ]
     
     if(!this.props.candidates && !this.props.words) {
@@ -119,7 +121,7 @@ class Category extends React.Component {
               /> 
 
               <div className={css.text}>
-                <h2>{data[idx].name}</h2>
+                <h2>{this.props.bars ? this.props.bars[idx].name : null}</h2>
                 <p>{text[idx]}</p>
               </div>
 
@@ -141,9 +143,9 @@ class Category extends React.Component {
               : 'Loading...'
             }
             <div type={view} className={css.cloud_container}>
-            {this.props.words && this.props.candidates ? 
+            {this.props.words && this.props.candidates && this.props.bars ? 
               <Cloud 
-                id={data[idx].id} 
+                id={this.props.bars[idx].id} 
                 candidates={this.props.candidates}
                 words={this.props.words} 
                 keywords

@@ -23,8 +23,7 @@ export const i18n_pt_br = {
 	description: 'Interesse pelos candidatos ao longo do tempo.',
 	button: 'Saiba mais',
 	more: [
-	  'O Google Trends disponibiliza a informação de interesse ao longo do tempo para cada candidato em valores indexados de 0 a 100,',
-      'sendo 100 o ponto mais alto do gráfico. ',
+	  'O Google Trends disponibiliza a informação de interesse ao longo do tempo para cada candidato em valores indexados de 0 a 100, sendo 100 o ponto mais alto do gráfico. ',
       'Todos os outros valores são por comparação. ',
       'É possível visualizar a evolução temporal do volume de busca dos candidato com os filtros por semana, mês e ano, e sua evolução individual',
     ],
@@ -60,12 +59,11 @@ export const i18n_pt_br = {
 	},
   orbit: {
 	  title: "Quem está na órbita",
-	  description: "Personalidades e figuras políticas relacionadas ao candidato, e a frequência com que aparecem em suas buscas.",
+	  description: "A frequência que personalidades e figuras políticas aparecem nas buscas. A proximidade do centro indica um maior volume de busca correlacionadas entre o candidato e a celebridade.",
 	  button: "Saiba mais",
 	  more: [
 	  	"A análise inicial dos dados coletados mostrou uma quantidade relevante de nomes de personalidades associada ao de candidatos. ",
-		"A visualização mede a intensidade dessa busca relacionada, distribuindo os nomes de acordo com a sua relevância, ",
-		"sendo que buscas mais frequentes se mantém próximas ao centro."
+		"A visualização mede a intensidade dessa busca relacionada, distribuindo os nomes de acordo com a sua relevância, sendo que buscas mais frequentes se mantém próximas ao centro."
 	  ]
 	},
   radar: {

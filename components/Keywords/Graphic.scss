@@ -27,7 +27,7 @@
   }
   svg {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
     @media screen and (min-width: 1000px) {
       height: 70vh;
     }
@@ -36,10 +36,6 @@
       margin: 60px auto 0;
     }
 
-    //g {
-      //transition: transform .4s ease;
-    //}
-
     @media screen and (max-width: 1100px) {
       g { 
         &:hover {
@@ -47,8 +43,7 @@
         }
         &.open {
           position: absolute;
-          // transform: translate(50%, 50%);
-          transform: translate(60%, 66%);
+          transform: translate(50%, 50%);
           z-index: 1;
           transition: transform .4s ease;
           circle {

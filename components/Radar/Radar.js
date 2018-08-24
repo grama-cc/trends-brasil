@@ -71,6 +71,7 @@ class RadarChart extends React.Component {
     );
     const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
     const angles = - Math.PI * 2 / 6;
+
     return {
       "max": max,
       "scale": scale,
@@ -90,13 +91,13 @@ class RadarChart extends React.Component {
 
       const values = this.values(radar);
 
-      const axis = radar[0].categories.map((d, i) => {
+      const axis = this.state.radar ? radar[0].categories.map((d, i) => {
         return {
           "name": d.name,
           "x": values.scale( values.max ) * Math.sin( values.angles * i - Math.PI / 2 ), 
           "y": values.scale( values.max ) * Math.cos( values.angles * i - Math.PI / 2 )
         }
-      });
+      }) : null;
 
       const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
         values.scale( -(d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )

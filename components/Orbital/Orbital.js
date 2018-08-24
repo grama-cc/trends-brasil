@@ -101,108 +101,108 @@ class Orbital extends React.Component {
 
       return ( 
         <React.Fragment>
-        <p className={css.middle}>{filter ? candidates[0].name : null}</p>
-        <svg
-          className="Orbital_chart"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox={`0 0 ${w} ${h}`}
-          preserveAspectRatio="none"
-        >
-          <g transform={`translate(${w / 2}, ${h / 2})`}>
-            <g className='base'>
-              {circles.map((diameter, idx) => (
-                <circle
-                  key={idx}
-                  className={css.grid}
-                  fill="none"
-                  stroke="#fff"
-                  strokeDasharray={1}
-                  r={diameter}
-                />
-              ))}
+          <p className={css.middle}>{filter ? candidates[0].name : null}</p>
+          <svg
+            className="Orbital_chart"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox={`0 0 ${w} ${h}`}
+            preserveAspectRatio="none"
+          >
+            <g transform={`translate(${w / 2}, ${h / 2})`}>
+              <g className='base'>
+                {circles.map((diameter, idx) => (
+                  <circle
+                    key={idx}
+                    className={css.grid}
+                    fill="none"
+                    stroke="#fff"
+                    strokeDasharray={1}
+                    r={diameter}
+                  />
+                ))}
 
-              <g>
-                {levels.map((l, i) => (
-                  <g key={i}>
-                    <rect
-                      width='30'
-                      height='20'
-                      fill={filter ? candidates[0].color : '#b4b4b4'}
-                      stroke='none'
-                      className={css.rect}
-                      x={-14}
-                      y={(-l * this.radius / 3) - 10}
-                    />
-                    <text
-                      x={i != 2 ? -5 : -8}
-                      y={-l * this.radius / 3}
-                      dy='0.4em'
-                      fontSize='10px'
-                      fill='#4b4b4b'
-                      className={css.text}
-                    >
-                      {i === 0 ? 10 : ( i * 5 ) * 10}
-                    </text>
+                <g>
+                  {levels.map((l, i) => (
+                    <g key={i}>
+                      <rect
+                        width='30'
+                        height='20'
+                        fill={filter ? candidates[0].color : '#b4b4b4'}
+                        stroke='none'
+                        className={css.rect}
+                        x={-14}
+                        y={(-l * this.radius / 3) - 10}
+                      />
+                      <text
+                        x={i != 2 ? -5 : -8}
+                        y={-l * this.radius / 3}
+                        dy='0.4em'
+                        fontSize='10px'
+                        fill='#4b4b4b'
+                        className={css.text}
+                      >
+                        {i === 0 ? 10 : ( i * 5 ) * 10}
+                      </text>
+                    </g>
+                  ))}
+                </g>
+              </g>
+              <g className='dots'>
+
+                {orbital.map((points, idx) => (
+                  <g className='candidates' key={idx}>
+
+                    {points.id === filter ?
+                      <g>
+                        <circle
+                          r={15}
+                          cx={0}
+                          cy={0}
+                          fill='#fff'
+                        />
+                      </g>
+                    : null}
+
+                    {points.id === filter ? points.people.map((dot, i) => {
+
+                      const r = dot.size === 0 ? 7.5 : 7.5
+                      let x = values.scale( dot.size / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
+                      let y = values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
+
+                      y = y + r + 15;
+
+                      // console.log(dot.is_candidate, points.id)
+
+                      return(
+
+                        <g 
+                          key={i} 
+                          className={css.point}
+                        >
+                          <circle
+                            r={7.5}
+                            cx={x < -132 ? -132 : x > 132 ? 132 : x}
+                            cy={y < -132 ? -132 : y > 132 ? 132 : y}
+                            fill='#fff'
+                          />
+                          <text
+                            x={x < -132 ? -132 : x > 132 ? 132 : x}
+                            y={y < -120 ? -120 : y > 120 ? 120 : y - 12}
+                            fontSize={11}
+                            textAnchor="middle"
+                            fill='#fff'
+                          >
+                            {dot.text}
+                          </text>
+                        </g>
+
+                    )}) : null}
+
                   </g>
                 ))}
               </g>
             </g>
-            <g className='dots'>
-
-              {orbital.map((points, idx) => (
-                <g className='candidates' key={idx}>
-
-                  {points.id === filter ?
-                    <g>
-                      <circle
-                        r={15}
-                        cx={0}
-                        cy={0}
-                        fill='#fff'
-                      />
-                    </g>
-                  : null}
-
-                  {points.id === filter ? points.people.map((dot, i) => {
-
-                    const r = dot.size === 0 ? 7.5 : 7.5
-                    let x = values.scale( dot.size / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
-                    let y = values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
-
-                    y = y + r + 15;
-
-                    // console.log(dot.is_candidate, points.id)
-
-                    return(
-
-                      <g 
-                        key={i} 
-                        className={css.point}
-                      >
-                        <circle
-                          r={7.5}
-                          cx={x < -132 ? -132 : x > 132 ? 132 : x}
-                          cy={y < -132 ? -132 : y > 132 ? 132 : y}
-                          fill='#fff'
-                        />
-                        <text
-                          x={x < -132 ? -132 : x > 132 ? 132 : x}
-                          y={y < -120 ? -120 : y > 120 ? 120 : y - 12}
-                          fontSize={11}
-                          textAnchor="middle"
-                          fill='#fff'
-                        >
-                          {dot.text}
-                        </text>
-                      </g>
-
-                  )}) : null}
-
-                </g>
-              ))}
-            </g>
-          </g>
-        </svg>
+          </svg>
         </React.Fragment>
       )
     }
@@ -220,8 +220,11 @@ class Orbital extends React.Component {
         period={this.state.period}
         onClickPeriod={this.onClickPeriod}
       >
-        <div className={css.orbital}>
-          {this.renderChart()}
+        <div className={css.chart_container}>
+          <p className={css.legend}>Valores de 0 a 100 indexados pelo Google Trends</p>
+          <div className={css.orbital}>
+            {this.renderChart()}
+          </div>
         </div>
       </Section>
     )
