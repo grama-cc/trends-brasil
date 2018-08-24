@@ -3,7 +3,7 @@
 .selected {
 	display: flex;
 	justify-content: center;
-	margin: 15px auto responsive(20, 30);
+	margin: 15px auto 20px;
 
 	button {
 		background-color: $white;

@@ -7,6 +7,10 @@
     display: block;
   }
 }
+.percent {
+  font-size: 12px;
+  text-align: center;
+}
 .chart {
 
   path {
@@ -14,18 +18,20 @@
   }
   line {
     stroke-dasharray: 2px;
+    stroke: #b4b4b4;
   }
 
   rect {
     transition: height .8s ease;
   }
+  text {
+    font-size: 14px;
+    color: #4B4B4B;
+    opacity: .8;
+  }
 
 }
 
-.container {
-  // width: 100%;
-  // height: 30vh;
-}
 
 .list {
   display: flex;
@@ -37,7 +43,7 @@
   }
 
   @media screen and (min-width: 800px) {
-    margin: 0 20px 0 25px;
+    margin: 0 0 0 25px;
   }
 
   li {
