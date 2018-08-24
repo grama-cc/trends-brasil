@@ -77,7 +77,6 @@ class Graphic extends React.Component {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          // viewBox='20 25 220 220'
           viewBox={`0 0 ${this.config.width} ${this.config.height}`}
           preserveAspectRatio="none"
         >

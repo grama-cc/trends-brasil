@@ -68,7 +68,7 @@ class Lines extends React.Component {
     this.setState({ data });
   }
 
-  updatePeriod = async (period) => {
+  onClickPeriod = async (period) => {
     const data = await this.getData(period);
     this.setState({ period, data });
   }
@@ -166,8 +166,17 @@ class Lines extends React.Component {
             transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
           >
             <line y2={this.cfg.height} />
-            <rect y="-17" height="25" rx="9" ry="9" />
-            <text textAnchor="middle">{date.text}</text>
+            <rect 
+              y="-30"
+              height="25"
+              rx="12"
+              ry="12"
+            />
+            <text 
+              textAnchor="middle"
+            >            
+              {date.text}
+            </text>
             {this.state.data.map((candidate, i) => (
               <circle
                 key={candidate.id}
@@ -202,7 +211,8 @@ class Lines extends React.Component {
           color='#b4b4b4'
           arrowColor={this.props.arrowColor}
           all
-          onClickPeriod={this.updatePeriod}
+          period={this.state.period}
+          onClickPeriod={this.onClickPeriod}
         />
 				<Social stroke='#b4b4b4' />
       </section>

@@ -84,8 +84,6 @@ class Home extends React.Component {
     const words = this.state.words;
     const bars = this.state.bars;
 
-    console.log(candidates)
-
     return (
 
       <Layout>
@@ -95,7 +93,7 @@ class Home extends React.Component {
           image="/static/img/share.jpg"
         />
          
-        <Intro
+        {/*<Intro
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
@@ -111,7 +109,7 @@ class Home extends React.Component {
 
           period={this.state.period}
           onClickPeriod={this.onClickPeriod}
-        />
+        />*/}
 
         <Lines
           onFilter={this.onFilter} 
@@ -121,7 +119,7 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        <Category
+        {/*<Category
           arrowColor='#b4b4b4'
           lang={this.state.lang}
           candidates={candidates}
@@ -159,7 +157,7 @@ class Home extends React.Component {
 
         <Footer
           lang={this.state.lang}
-        />
+        />*/}
 
         {/*<Clipping />*/}
       </Layout>
