@@ -84,6 +84,8 @@ class Home extends React.Component {
     const words = this.state.words;
     const bars = this.state.bars;
 
+    console.log(candidates)
+
     return (
 
       <Layout>
@@ -154,6 +156,7 @@ class Home extends React.Component {
           arrowColor='#fff'
           lang={this.state.lang}
         />
+
         <Footer
           lang={this.state.lang}
         />

@@ -8,6 +8,8 @@
   width: 80%;
   height: 80%;
 
+  position: relative;
+
   order: 2;
   margin: responsive(40, 50) auto;
 
@@ -18,10 +20,12 @@
 
   .middle {
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-weight: bold;
     text-align: center;
-    max-width: 60px;
-    font-size: 10px;
+    max-width: 70px;
+    font-size: 12px;
     display: none;
     @media screen and (min-width: $medium-devices){
       display: block;
@@ -30,7 +34,8 @@
   }
 
   svg {
-    margin: 0 auto;
+    // margin: 0 auto;
+    padding: 0 20px;
     // transform: rotate(90deg);
     //.stroke {
       //transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
@@ -41,17 +46,17 @@
     .point {
       cursor: pointer;
       circle, text {
-        transition: fill .5s ease;
+        transition: fill .4s ease;
       }
       &:hover {
         circle, text {
           fill: #4b4b4b;
-          transition: fill .5s ease;
+          transition: fill .4s ease;
         }
       }
     }
     .rect {
-      transition: fill .5s ease;
+      transition: fill .4s ease;
     }
   }
 }

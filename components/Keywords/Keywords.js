@@ -17,11 +17,6 @@ class Keywords extends React.Component {
     }
   }
 
-  /*onClickPeriod = (period) => {
-    this.setState({ period: period })
-    this.getData(period);
-  }*/
-
   onChangeView = (val) => {
     this.setState({ view: val })
   }
@@ -63,6 +58,9 @@ class Keywords extends React.Component {
     const candidates = this.props.candidates
     const words = this.props.words
     const view = this.state.view;
+
+    console.log(candidates)
+    
     return (
       <section className={css.keywords} id='keywords'>
         <div className={css.info}>

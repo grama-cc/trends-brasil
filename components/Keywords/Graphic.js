@@ -23,12 +23,10 @@ class Graphic extends React.Component {
   }
 
   renderModalWords () {
-
     const candidate= this.props.candidates.filter((c) => this.props.filter === c.id);
+    
     let words = this.props.words.filter((c) => this.props.filter === c.candidate);
     words = words.slice(0, 8);
-
-    console.log(candidate)
 
     return (
       <div className={css.modal} onClick={this.closeModal}>
@@ -79,8 +77,8 @@ class Graphic extends React.Component {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox='20 25 220 220'
-          // viewBox={`0 0 ${this.config.width} ${this.config.height}`}
+          // viewBox='20 25 220 220'
+          viewBox={`0 0 ${this.config.width} ${this.config.height}`}
           preserveAspectRatio="none"
         >
           <defs>
@@ -134,7 +132,7 @@ class Graphic extends React.Component {
           })}
         </svg>
 
-        {filter ? this.renderModalWords() : null}
+        {!filter ? null : this.renderModalWords()}
 
       </div>
     )
