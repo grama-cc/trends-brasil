@@ -80,13 +80,13 @@ class Category extends React.Component {
     const lang = this.props.lang
 
     const text = [
-      "Políticos em mantado ativo e demais personalidades do mundo político, como ministros do supremo e juízes federais.",
+      "Políticos em mandato ativo e demais personalidades do mundo político, como ministros do Supremo e juízes federais.",
       
       "Buscas relacionadas a notícias e seus veículos de publicação, como jornais, sites ou programas de TV.",
       
       "Todos os termos relacionados à ideologia política dos candidatos, como partido, plano de governo e declarações.",
       
-      "Cantores, atores, ex-BBBs… quem orbitaos candidatos à Presidência na busca relacionada.",
+      "Cantores, atores, ex-BBBs… quem orbita os candidatos à Presidência na busca relacionada.",
       
       "Buscas sobre a vida pública dos candidatos, como cargos ocupados  ou pretendidos e envolvimento em casos de corrupção.",
       

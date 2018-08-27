@@ -32,15 +32,18 @@ class Relationship extends React.Component {
           </div>
           <div className={css.clouds}>
             {this.props.candidates && this.props.words ? 
-              <Cloud 
-                id={this.props.filter} 
-                candidates={this.props.candidates}
-                words={this.props.words} 
-                type='candidate' 
-                position='left'
-              />
+              <React.Fragment>
+                <p className={css.legend}>Relacionadas ao candidato</p>
+                <Cloud 
+                  id={this.props.filter} 
+                  candidates={this.props.candidates}
+                  words={this.props.words} 
+                  type='candidate' 
+                  position='left'
+                />
+              </React.Fragment>
             : 'Loading...'}
-            <div className={css.common}>mais<br/>comuns
+            <div className={css.common}>em<br/>comum
                {this.props.relationship ?
                 this.props.relationship.map((word, index) => 
                   <div 
@@ -54,13 +57,16 @@ class Relationship extends React.Component {
               : null}
             </div>
             {this.props.candidates && this.props.words ? 
-              <Cloud 
-                id={this.props.compare}
-                candidates={this.props.candidates}
-                words={this.props.words} 
-                type='candidate'
-                position='right'
-              />
+              <React.Fragment>
+                <p className={`${css.legend} ${css.right}`}>Relacionadas ao candidato</p>
+                <Cloud 
+                  id={this.props.compare}
+                  candidates={this.props.candidates}
+                  words={this.props.words} 
+                  type='candidate'
+                  position='right'
+                />
+              </React.Fragment>
             : 'Loading...'}
           </div>
         </React.Fragment>
