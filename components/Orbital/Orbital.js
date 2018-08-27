@@ -221,7 +221,7 @@ class Orbital extends React.Component {
         onClickPeriod={this.onClickPeriod}
       >
         <div className={css.chart_container}>
-          <p className={css.legend}>Valores de 0 a 100 indexados pelo Google Trends</p>
+          <p className={css.legend}>Personalidades na busca relacionada ao candidato, em valores de 0 a 100, indexados pelo Google Trends</p>
           <div className={css.orbital}>
             {this.renderChart()}
           </div>

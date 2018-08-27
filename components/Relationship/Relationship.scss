@@ -26,6 +26,7 @@
   .compare {
   	width: 100%;
   	min-height: 80vh;
+  	// position: relative;
 
   	@media screen and (min-width: $medium-devices) {
   		width: 70%;
@@ -40,6 +41,22 @@
 		display: flex;
 		justify-content: space-between;
 		min-height: 70vh;
+		position: relative;
+
+		.legend {
+			font-size: 12px;
+			font-family: $robotoMedium;
+			position: absolute;
+
+			left: 0;
+			top: 10px; 
+
+			&.right {
+				left: auto;
+				right: 0;
+			}
+
+		}
 
 		>div {
 			display: flex;

@@ -30,8 +30,7 @@ class Description extends React.Component {
       return (
         <div className={css.description}>
           <h2>{i18n(`${content}.title`, lang)}</h2>
-          <p>{i18n(`${content}.description`, lang)}</p>
-
+          <p>{i18n(`${content}.description`, lang)} <b>{i18n(`${content}.highlight`, lang)}</b></p>
           <button
             onClick={this.open}
             className={this.state.open ? css.open : null}
