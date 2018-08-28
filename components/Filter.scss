@@ -28,6 +28,13 @@
 }
 
 .legend {
+	text-align: center;
+	margin: 10px 0 0;
+
+	@media screen and (min-width: $medium-devices) {
+		text-align: left;
+		margin: 0;
+	}
 	display: inline-block !important;
 	// margin: 10px 0 0 responsive(55, 110);
 	font-size: 12px;
@@ -42,9 +49,16 @@
 	position: relative;
 	display: block;
 		p {
-			opacity: 0;
-			// display: none;
+			// opacity: 0;
+			display: none;
 		}
+		@media screen and (min-width: $medium-devices) {
+			p {
+				opacity: 0;
+				display: block;
+			}
+		}
+
 		li {
 		font-size: responsive(12, 22);
 		position: relative;

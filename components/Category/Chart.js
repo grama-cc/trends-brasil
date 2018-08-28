@@ -83,6 +83,7 @@ class Chart extends React.Component {
             )
           })}
         </ul>
+        
       </div>
     )
   }

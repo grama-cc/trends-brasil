@@ -86,7 +86,7 @@ class Filter extends React.Component {
           ))}
         </div>
 
-        <p className={css.legend}>Relacionadas ao candidato</p>
+        {this.props.relationship ? <p className={css.legend}>Relacionadas ao candidato</p> : null}
       </ul>
     )
   }

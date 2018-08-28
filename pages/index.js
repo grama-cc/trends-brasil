@@ -97,10 +97,10 @@ class Home extends React.Component {
           title="Trends Brasil"
           description="Na busca do candidato"
           image="/static/img/share.jpg"
-          url='http://nabuscadocandidato.com.br/'
+          url='http://www.nabuscadocandidato.com.br/'
         />
          
-        {/*<Intro
+        <Intro
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
@@ -140,7 +140,7 @@ class Home extends React.Component {
           candidates={candidates}
           arrowColor='#fff'
           lang={this.state.lang}
-        />*/}
+        />
 
         <Relationship 
           onFilter={this.onFilter} 
@@ -154,7 +154,7 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        {/*<Orbital
+        <Orbital
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
@@ -164,7 +164,7 @@ class Home extends React.Component {
 
         <Footer
           lang={this.state.lang}
-        />*/}
+        />
 
         {/*<Clipping />*/}
       </Layout>
