@@ -38,6 +38,7 @@ class Home extends React.Component {
 
       const relationship = await Api.getRelationship(id, this.state.compare);
       this.setState({relationship: relationship.intersection});
+      
     } else {
 
       this.setState({relationship: null});
@@ -48,9 +49,12 @@ class Home extends React.Component {
     this.setState({ compare: id });
    
     if(this.state.filter && id) {
+
       const relationship = await Api.getRelationship(this.state.filter, id);
       this.setState({relationship: relationship.intersection});
+
     } else {
+
       this.setState({relationship: null});
     }
   }
@@ -93,10 +97,10 @@ class Home extends React.Component {
           title="Trends Brasil"
           description="Na busca do candidato"
           image="/static/img/share.jpg"
-          url='https://trends-brasil.herokuapp.com'
+          url='http://nabuscadocandidato.com.br/'
         />
          
-        <Intro
+        {/*<Intro
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
@@ -136,7 +140,7 @@ class Home extends React.Component {
           candidates={candidates}
           arrowColor='#fff'
           lang={this.state.lang}
-        />
+        />*/}
 
         <Relationship 
           onFilter={this.onFilter} 
@@ -150,7 +154,7 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        <Orbital
+        {/*<Orbital
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
@@ -160,7 +164,7 @@ class Home extends React.Component {
 
         <Footer
           lang={this.state.lang}
-        />
+        />*/}
 
         {/*<Clipping />*/}
       </Layout>

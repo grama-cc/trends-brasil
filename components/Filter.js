@@ -85,6 +85,8 @@ class Filter extends React.Component {
             </li>
           ))}
         </div>
+
+        <p className={css.legend}>Relacionadas ao candidato</p>
       </ul>
     )
   }
@@ -138,16 +140,18 @@ class Filter extends React.Component {
         </div>
 
         <div className={`${css.container} ${css.filter} ${relationship ? css.show : null}`}>
-          {relationship ? this.renderImage(f.length, filterSlug, filterColor) : null}
-
-          {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
+          <div>
+            {relationship ? this.renderImage(f.length, filterSlug, filterColor) : null}
+            {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
+          </div>
         </div>
 
         {relationship ? 
           <div className={`${css.container} ${css.compare} ${relationship ? css.show : null}`}>
-          {relationship ? this.renderImage(c.length, compareSlug, compareColor) : null}
-          
-          {this.renderDropdown(this.onDropdownCompare, compare, selectedNameCompare, this.state.openCompare, filter, this.onCompare)}
+            <div>
+              {relationship ? this.renderImage(c.length, compareSlug, compareColor) : null}
+              {this.renderDropdown(this.onDropdownCompare, compare, selectedNameCompare, this.state.openCompare, filter, this.onCompare)}
+            </div>
           </div>
         : null}
       </React.Fragment>
