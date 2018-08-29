@@ -48,8 +48,6 @@
     overflow-x: scroll;
     overflow-y: hidden;
     min-height: 50vh;
-    // 
-
     position: relative;
 
     &::-webkit-scrollbar { height: 5px; width: 5px; } // width and height
@@ -64,6 +62,19 @@
 
       &::-webkit-scrollbar {
         display: none;
+      }
+    }
+
+    h3 {
+      position: absolute;
+      //margin: 35px 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      span {
+        background: $grayLight;
+        padding: 12px 20px;
+        border-radius: 50px;
       }
     }
   }
@@ -119,10 +130,21 @@
 
     .lines {
       path {
-        fill: none;
-        stroke-width: 3px;
-        opacity: 0.5;
-        transition: all .4s ease;
+        //fill: none;
+        //stroke-width: 3px;
+        // opacity: 0.5;
+        // transition: d .4s ease;
+        //rgb
+
+        &.clicked {
+          stroke: #ff0000 !important;
+        }
+        &.igual {
+          stroke: #00ff00 !important;
+        }
+        &.outra {
+          stroke: #0000ff !important;
+        }
       }
     }
   }

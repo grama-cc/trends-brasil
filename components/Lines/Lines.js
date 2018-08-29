@@ -56,11 +56,7 @@ class Lines extends React.Component {
   }
 
   getData = async (period) => {
-    if (this.props.filter) {
-      return [await Api.getCandidateLine(period, this.props.filter)];
-    } else {
-      return await Api.getAggregatedLine(period)
-    }
+    return await Api.getAggregatedLine(period)
   }
 
   updateCandidate = async () => {
@@ -75,13 +71,19 @@ class Lines extends React.Component {
 
   getDate = (timezone) => {
     // hard convert to midday, so no timezone will modify the day
-    const safeTime = `${timezone.substring(0,10)}T12:00:00-03:00`;
+
+    // const safeTime = `${timezone.substring(0,10)}T12:00:00-03:00`;
+    const safeTime = `${timezone}T12:00:00-03:00`
     return d3.timeDay.floor(new Date(safeTime));
   }
 
   getPercent = (candidate, date) => {
     const line = candidate.lines.find(l => (
-      this.getDate(l.date).getTime() === this.getDate(date).getTime()
+      // this.getDate(l.date) === this.getDate(date)
+
+      this.getDate(l.date) === this.getDate(date)
+
+      // this.getDate(l.date).getTime() === this.getDate(date).getTime()
     ))
     return line ? line.percent : 0;
   }
@@ -97,6 +99,7 @@ class Lines extends React.Component {
           candidates={this.props.candidates}
           all
           arrowColor='#b4b4b4'
+          lineFilter
         />
       )
     }
@@ -108,7 +111,7 @@ class Lines extends React.Component {
     }
 
     const firstLines = this.state.data[0].lines;
-    const lastDate = firstLines[firstLines.length-1].date;
+    const lastDate = firstLines[firstLines.length-1].day;
     const end = this.getDate(lastDate);
     const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -30);
 
@@ -132,14 +135,29 @@ class Lines extends React.Component {
       .range([this.cfg.height - 12, 12])
 
     const lineGenerator = d3.line()
-      .curve(d3.curveMonotoneX)
-      .x(d => scaleTime(this.getDate(d.date)))
+      .curve(d3.curveBasis)
+      .x(d => scaleTime(this.getDate(d.day)))
       .y(d => scalePercent(d.percent))
+
+    const filter = this.props.filter;
+
+    const candidates = this.state.data ? this.state.data.filter((c) => filter === c.id) : [];
+
+    this.state.data = this.state.data.sort((a, b) => {
+      if (a.id === filter) {
+        return 1;
+      }
+      if (b.id === filter) {
+        return -1;
+      }
+      return 0;
+    });
 
     return (
       <React.Fragment>
         <p className={css.percent}>Valores entre 0 e 100 indexados pelo Google Trends</p>
         <div className={css.chart_container}>
+          {/*filter ? <h3><span>{candidates[0].name}</span></h3> : null*/}
           <svg 
             className={css.chart}
             xmlns="http://www.w3.org/2000/svg"
@@ -152,12 +170,21 @@ class Lines extends React.Component {
               transform={`translate(0, ${this.cfg.height})`}
               ref={(c) => { this.axisElement = c; }}
             />
-            <g className={css.lines}>
+            <g 
+              className={css.lines}
+              fill='none'
+            >
+
               {this.state.data.map((candidate) => (
                 <path
                   key={candidate.id}
                   d={lineGenerator(candidate.lines)}
-                  stroke={candidate.color}
+                  fillOpacity={this.props.filter === candidate.id ? .5 : 0}
+                  fill={this.props.filter === candidate.id ? candidate.color : 'none'}
+                  data-id={candidate.id}
+                  opacity={this.props.filter === candidate.id ? 1 : 0.5}
+                  strokeWidth={this.props.filter && this.props.filter != candidate.id ? 2 : 3}
+                  stroke={this.props.filter && this.props.filter != candidate.id ? '#ccc' : candidate.color}
                 />
               ))}
             </g>
@@ -165,8 +192,9 @@ class Lines extends React.Component {
               <g
                 key={date.id}
                 className={css.date}
-                transform={`translate(${scaleTime(this.getDate(date.date))}, 0)`}
+                transform={`translate(${scaleTime(this.getDate(date.day))}, 0)`}
               >
+              {console.log(date)} 
                 <line y2={this.cfg.height} />
                 <rect 
                   y="-25"
@@ -183,8 +211,8 @@ class Lines extends React.Component {
                   <circle
                     key={candidate.id}
                     r="4"
-                    cy={scalePercent(this.getPercent(candidate, date.date))}
-                    stroke={candidate.color}
+                    cy={scalePercent(this.getPercent(candidate, date.day))}
+                    stroke={this.props.filter && this.props.filter != candidate.id ? '#b4b4b4' : candidate.color}
                   />
                 ))}
               </g>

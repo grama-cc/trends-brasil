@@ -43,21 +43,6 @@
 		min-height: 70vh;
 		position: relative;
 
-		.legend {
-			font-size: 12px;
-			font-family: $robotoMedium;
-			position: absolute;
-
-			left: 0;
-			top: 10px; 
-
-			&.right {
-				left: auto;
-				right: 0;
-			}
-
-		}
-
 		>div {
 			display: flex;
 			flex-direction: column;

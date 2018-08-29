@@ -38,6 +38,7 @@ class Home extends React.Component {
 
       const relationship = await Api.getRelationship(id, this.state.compare);
       this.setState({relationship: relationship.intersection});
+      
     } else {
 
       this.setState({relationship: null});
@@ -48,9 +49,12 @@ class Home extends React.Component {
     this.setState({ compare: id });
    
     if(this.state.filter && id) {
+
       const relationship = await Api.getRelationship(this.state.filter, id);
       this.setState({relationship: relationship.intersection});
+
     } else {
+
       this.setState({relationship: null});
     }
   }
@@ -93,7 +97,7 @@ class Home extends React.Component {
           title="Trends Brasil"
           description="Na busca do candidato"
           image="/static/img/share.jpg"
-          url='https://trends-brasil.herokuapp.com'
+          url='http://www.nabuscadocandidato.com.br/'
         />
          
         <Intro

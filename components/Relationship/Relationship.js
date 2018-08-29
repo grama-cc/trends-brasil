@@ -33,7 +33,6 @@ class Relationship extends React.Component {
           <div className={css.clouds}>
             {this.props.candidates && this.props.words ? 
               <React.Fragment>
-                <p className={css.legend}>Relacionadas ao candidato</p>
                 <Cloud 
                   id={this.props.filter} 
                   candidates={this.props.candidates}
@@ -58,7 +57,6 @@ class Relationship extends React.Component {
             </div>
             {this.props.candidates && this.props.words ? 
               <React.Fragment>
-                <p className={`${css.legend} ${css.right}`}>Relacionadas ao candidato</p>
                 <Cloud 
                   id={this.props.compare}
                   candidates={this.props.candidates}

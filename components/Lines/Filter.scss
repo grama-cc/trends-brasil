@@ -196,7 +196,7 @@ $circle-size: responsive(20, 60);
     display: none;
     flex-direction: column;
     justify-content: center;
-    margin: 0 0 20px;
+    margin: 0 0 40px;
     font-size: 24px;
     font-family: $robotoLight;
     cursor: pointer;
@@ -212,8 +212,6 @@ $circle-size: responsive(20, 60);
 		display: flex;
 		// justify-content: space-around;
 		justify-content: space-between;
-
-		align-items: flex-start;
 
 		&.gray {
 			.disabled {
@@ -234,8 +232,6 @@ $circle-size: responsive(20, 60);
 			box-shadow: 0 0 0 3px #fff;
 			transition: background .4s ease;
 			cursor: pointer;
-
-			margin: 0 0 5px;
 
 			&.disabled {
 				box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);

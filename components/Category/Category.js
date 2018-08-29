@@ -11,6 +11,8 @@ import Select from './Select.js';
 import Chart from './Chart'
 import Cloud from '../Cloud.js';
 
+import ChartVertical from './ChartVertical'
+
 class Category extends React.Component {
 
   constructor(props) {
@@ -28,17 +30,26 @@ class Category extends React.Component {
   }
 
   onClickPrev = () => {
-    if(this.state.idx > 0) {
-      this.setState({ idx: this.state.idx - 1 })
+    const size = this.props.bars.length - 1;
+    const idx = this.state.idx;
+
+    if(idx > 0) {
+      this.setState({ idx: idx - 1 })
+    } else if (idx === 0) {
+      this.setState({ idx: size })
     }
   }
 
   onClickNext = () => {
     const size = this.props.bars.length - 1;
+    const idx = this.state.idx;
 
-    if(this.state.idx < size) {
-      this.setState({ idx: this.state.idx + 1 })
+    if(idx < size) {
+      this.setState({ idx: idx + 1 })
+    } else if (idx === size) {
+      this.setState({ idx: 0 })
     }
+
   }
 
   onChangeView = (val) => {
@@ -139,7 +150,10 @@ class Category extends React.Component {
               lang={this.props.lang}
             />
             {this.props.bars ? 
-              <Chart type={view} data={this.props.bars[idx]}/> 
+              <React.Fragment>
+                <div className={css.desk}><Chart type={view} data={this.props.bars[idx]}/></div>
+                <div className={css.mobile}><ChartVertical type={view} data={this.props.bars[idx]}/></div>
+              </React.Fragment>
               : 'Loading...'
             }
             <div type={view} className={css.cloud_container}>
