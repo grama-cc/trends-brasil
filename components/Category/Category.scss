@@ -27,6 +27,12 @@
         @media screen and (min-width: $medium-devices) {
           display: block;
         }
+
+        @media screen and (min-width: $medium-devices) {
+          &.btn {
+            display: none;
+          }
+        }
         .item {
           margin: 0 0 24px;
           background-repeat: no-repeat;
@@ -107,6 +113,13 @@
         display: flex;
         justify-content: center;
         margin: 15px 0 0;
+
+        @media screen and (min-width: $medium-devices) {
+          &.btn {
+            display: none;
+          }
+        }
+        
         button {
           width: 12px;
           height: 12px;
