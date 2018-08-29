@@ -11,6 +11,8 @@ import Select from './Select.js';
 import Chart from './Chart'
 import Cloud from '../Cloud.js';
 
+import ChartVertical from './ChartVertical'
+
 class Category extends React.Component {
 
   constructor(props) {
@@ -148,7 +150,10 @@ class Category extends React.Component {
               lang={this.props.lang}
             />
             {this.props.bars ? 
-              <Chart type={view} data={this.props.bars[idx]}/> 
+              <React.Fragment>
+                <div className={css.desk}><Chart type={view} data={this.props.bars[idx]}/></div>
+                <div className={css.mobile}><ChartVertical type={view} data={this.props.bars[idx]}/></div>
+              </React.Fragment>
               : 'Loading...'
             }
             <div type={view} className={css.cloud_container}>

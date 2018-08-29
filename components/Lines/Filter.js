@@ -123,17 +123,8 @@ class Filter extends React.Component {
           >
             {candidates.map((c, idx) => {
               return(
-                <div
-                  key={idx}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '44px'
-                  }}
-                >
                 <li 
+                  key={idx}
                   value={c.id}
                   data-name={c.name}
                   onClick={this.onFilter}
@@ -143,14 +134,6 @@ class Filter extends React.Component {
                     backgroundColor: filter === c.id ? c.color : null,
                   }}
                 />
-                {this.props.lineFilter && filter === c.id ? <span
-                  style={{
-                    fontSize: '10px',
-                    display: 'block',
-                    textAlign: 'center'
-                  }}
-                >{c.name}</span> : null }
-                </div>
               )
             })}
           </ul>
