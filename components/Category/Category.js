@@ -64,11 +64,11 @@ class Category extends React.Component {
   renderNav (type) {
     const idx = this.state.idx;
     return(
-      <nav className={css.nav}>
+      <nav className={type === 'btn' ? `${css.btn} ${css.nav}` : `${css.nav}`}>
         {this.props.bars ? this.props.bars.map((d, i) => {
           return(
             <button 
-              className={idx === i ? `${css.clicked} ${css.item}` : `${css.item}` }
+              className={idx === i ? `${css.clicked} ${css.item}` : `${css.item}`  }
               key={i}
               data-idx={i}
               onClick={this.onClick}
