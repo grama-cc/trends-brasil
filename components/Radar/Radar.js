@@ -26,7 +26,7 @@ class RadarChart extends React.Component {
         left: 100 
       },
       dash: 1,
-      levels: 1,
+      levels: 2,
       padding: 1.3,
       labelsCirles: 1.2, // circle label distance
       maxValue: 1/6, // biggest circle will value

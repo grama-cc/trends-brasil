@@ -113,12 +113,12 @@ class Lines extends React.Component {
     const firstLines = this.state.data[0].lines;
     const lastDate = firstLines[firstLines.length-1].day;
     const end = this.getDate(lastDate);
-    const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -30);
+    const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -29);
 
     // axis
     const scaleTime = d3.scaleTime()
       .domain([start, end])
-      .range([0, this.cfg.width])
+      .range([-24, ( this.cfg.width + 24 )])
 
     const axis = d3Axis.axisBottom()
       .scale(scaleTime)
@@ -157,7 +157,7 @@ class Lines extends React.Component {
       <React.Fragment>
         <p className={css.percent}>Valores entre 0 e 100 indexados pelo Google Trends</p>
         <div className={css.chart_container}>
-          {/*filter ? <h3><span>{candidates[0].name}</span></h3> : null*/}
+          <div className={css.space}/>
           <svg 
             className={css.chart}
             xmlns="http://www.w3.org/2000/svg"
@@ -220,6 +220,7 @@ class Lines extends React.Component {
               </g>
             ))}
           </svg>
+          <div className={`${css.space} ${css.right}`}/>
         </div>
       </React.Fragment>
     )

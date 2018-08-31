@@ -165,13 +165,11 @@ class Orbital extends React.Component {
 
                     {points.id === filter ? points.people.map((dot, i) => {
 
-                      const r = dot.size === 0 ? 7.5 : 7.5
+                      const r = dot.size === 0 ? 7 : 7
                       let x = values.scale( dot.size / 100 ) * Math.sin( values.angles * i - Math.PI / 2 )
                       let y = values.scale( dot.size / 100 ) * Math.cos( values.angles * i - Math.PI / 2 )
 
-                      y = y + r + 15;
-
-                      // console.log(dot.is_candidate, points.id)
+                      const color = orbital.filter((o) => dot.is_candidate === o.id);
 
                       return(
 
@@ -180,15 +178,16 @@ class Orbital extends React.Component {
                           className={css.point}
                         >
                           <circle
-                            r={7.5}
+                            r={7}
                             cx={x < -132 ? -132 : x > 132 ? 132 : x}
                             cy={y < -132 ? -132 : y > 132 ? 132 : y}
-                            fill='#fff'
+                            stroke='#fff'
+                            fill={dot.is_candidate ? color[0].color : '#fff'}
                           />
                           <text
                             x={x < -132 ? -132 : x > 132 ? 132 : x}
                             y={y < -120 ? -120 : y > 120 ? 120 : y - 12}
-                            fontSize={11}
+                            fontSize={10}
                             textAnchor="middle"
                             fill='#fff'
                           >
@@ -221,7 +220,7 @@ class Orbital extends React.Component {
         onClickPeriod={this.onClickPeriod}
       >
         <div className={css.chart_container}>
-          <p className={css.legend}>Personalidades na busca relacionada ao candidato, em valores de 0 a 100, indexados pelo Google Trends</p>
+          <p className={css.legend}>Personalidades na busca relacionado ao candidato, em valores de 0 a 100, indexados pelo Google Trends</p>
           <div className={css.orbital}>
             {this.renderChart()}
           </div>
