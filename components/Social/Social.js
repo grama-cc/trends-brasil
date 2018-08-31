@@ -46,17 +46,49 @@ const Social = props => (
     {props.children}
     <ul className={`${css.social} ${props.bottom ? css.bottom : null} ${props.share ? css.share : null}`}>
       {!props.share ?
-      <li><a onClick={(e) => handleClick(e, props.parent)}><Media stroke={props.stroke} /></a></li> : null}
-      <li><a href={`https://twitter.com/home?status=Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018? https%3A//www.nabuscadocandidato.com.br/`}><Twitter stroke={props.stroke} /></a></li>
-
-      {/*<li><a onClick={(e) => twitterShare(e)}><Twitter stroke={props.stroke} /></a></li>*/}
-      <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//trends-brasil.herokuapp.com/" target="_blank"><Facebook stroke={props.stroke} /></a></li>
+      <li>
+        <a
+          target="_blank"
+          onClick={(e) => handleClick(e, props.parent)}
+        >
+          <Media stroke={props.stroke} />
+        </a>
+      </li> : null}
       <li>
         <a 
-          href="whatsapp://send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? http://www.nabuscadocandidato.com.br/" 
+          target="_blank"
+          href={`https://twitter.com/home?status=Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018? https%3A//www.nabuscadocandidato.com.br/`}
+        >
+          <Twitter stroke={props.stroke} />
+        </a>
+      </li>
+      <li>
+        <a 
+          target="_blank" 
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A//trends-brasil.herokuapp.com/"
+        >
+          <Facebook stroke={props.stroke} />
+        </a>
+      </li>
+      <li className={css.whats}>
+        <a
+          
+          target="_blank"
+          href="whatsapp://send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
           data-action="share/whatsapp/share" 
           data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
-          data-href="http://www.nabuscadocandidato.com.br/">
+          data-href="https://www.nabuscadocandidato.com.br/">
+          <Whatsapp stroke={props.stroke} />
+        </a>
+      </li>
+      <li className={css.webwhats}>
+        <a
+          
+          target="_blank"
+          href="https://web.whatsapp.com/send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
+          data-action="share/whatsapp/share" 
+          data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
+          data-href="https://www.nabuscadocandidato.com.br/">
           <Whatsapp stroke={props.stroke} />
         </a>
       </li>

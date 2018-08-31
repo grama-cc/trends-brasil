@@ -106,8 +106,9 @@ class Home extends React.Component {
         <Head
           title="Trends Brasil"
           description="Na busca do candidato"
-          image="/static/img/share.jpg"
-          url='http://www.nabuscadocandidato.com.br/'
+          image="https://www.nabuscadocandidato.com.br/static/img/share.jpg"
+          twitter="https://www.nabuscadocandidato.com.br/static/img/twt.jpg"
+          url='https://www.nabuscadocandidato.com.br/'
         />
          
         <Intro
