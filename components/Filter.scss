@@ -30,6 +30,7 @@
 .legend {
 	text-align: center;
 	margin: 10px 0 0;
+	text-transform: uppercase;
 
 	@media screen and (min-width: $medium-devices) {
 		text-align: left;
@@ -37,9 +38,10 @@
 	}
 	display: inline-block !important;
 	// margin: 10px 0 0 responsive(55, 110);
-	font-size: 12px;
+	font-size: 10px;
 	opacity: 1 !important;
 	font-family: $robotoMedium;
+	font-weight: bold;
 }
 
 
@@ -174,6 +176,10 @@
 }
 
 $circle-size: responsive(20, 60);
+
+.icons {
+	width: responsive(20, 60);
+}
 
 // If desktop filter and not relationship
 .list {

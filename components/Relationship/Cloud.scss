@@ -1,0 +1,30 @@
+@import '../../lib/scss/variables.scss';
+
+.cloud {
+	&[type='candidate'] {
+		display: block;
+		align-items: center;
+		@media screen and (min-width: $medium-devices) {
+			align-items: initial;
+			margin: 40px 0 0;
+		}
+	}
+	text-align: center;
+
+	a {
+		display: inline;
+		position: relative;
+		margin-top: 17px;
+		// transform: translateX(-20%) !important;
+		@media screen and (min-width: $medium-devices) {
+			max-width: 240px;
+			transform: translateX(-10%) !important;
+			margin-top: 0;
+			width: max-content;
+		}
+	}
+
+	@media screen and (min-width: $medium-devices) {
+    width: 100%;
+  }
+}

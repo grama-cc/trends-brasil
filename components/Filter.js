@@ -124,13 +124,13 @@ class Filter extends React.Component {
             {candidates.map((c, idx) => {
               return(
                 <div
+                  className={css.icons}
                   key={idx}
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: '44px'
                   }}
                 >
                 <li 

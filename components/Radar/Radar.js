@@ -65,11 +65,12 @@ class RadarChart extends React.Component {
     const max = Math.max(this.config.maxValue, d3.max(data,
       ((array) => (
         d3.max(array.categories.map(
-          (item) => ( (item.percent / 100) + 0.01 )
+          (item) => ( (item.percent / 100) + 0.15 )
         ))
       )))
     );
-    const scale = d3.scaleLinear().range([0, this.radius]).domain([0, max]);
+
+    const scale = d3.scaleLinear().range([-10, this.radius]).domain([0, max]);
     const angles = - Math.PI * 2 / 6;
 
     return {
@@ -85,8 +86,8 @@ class RadarChart extends React.Component {
       return <div className={css.loading}>Loading...</div>
 
     } else {
-
       const circles = this.circleLevels();
+
       let radar = this.state.radar || [];
 
       const values = this.values(radar);
@@ -99,13 +100,10 @@ class RadarChart extends React.Component {
         }
       }) : [];
 
-      // hauhsuhas
-
       const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
         values.scale( -(d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
       );
       const filter = this.props.filter;
-
       const candidates = this.state.radar ? radar.filter((c) => filter === c.id) : [];
 
       radar = radar.sort((a, b) => {

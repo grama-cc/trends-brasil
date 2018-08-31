@@ -34,14 +34,20 @@ class Home extends React.Component {
   onFilter = async (id) => {
     this.setState({ filter: id });
 
+    // console.log(this.state.relationship)
+
     if(id && this.state.compare) {
 
       const relationship = await Api.getRelationship(id, this.state.compare);
-      this.setState({relationship: relationship.intersection});
+      // this.setState({relationship: relationship.intersection});
+
+      this.setState({relationship: relationship});
       
     } else {
 
-      this.setState({relationship: null});
+      const relationship = await Api.getRelationship(id, id);
+
+      this.setState({relationship: relationship});
     }
   }
 
@@ -51,11 +57,15 @@ class Home extends React.Component {
     if(this.state.filter && id) {
 
       const relationship = await Api.getRelationship(this.state.filter, id);
-      this.setState({relationship: relationship.intersection});
+      // this.setState({relationship: relationship.intersection});
+
+      this.setState({relationship: relationship});
 
     } else {
 
-      this.setState({relationship: null});
+      const relationship = await Api.getRelationship(id, id);
+
+      this.setState({relationship: relationship});
     }
   }
 
@@ -147,6 +157,7 @@ class Home extends React.Component {
           onCompare={this.onCompare}
           filter={this.state.filter}
           compare={this.state.compare}
+
           candidates={candidates}
           words={words}
           relationship={this.state.relationship}

@@ -71,9 +71,9 @@
         position: absolute;
         left: 50%;
         transform: translate(-50%);
-        bottom: 30px;
+        bottom: 25px;
         &.empty {
-          background: transparent;
+          background: #b4b4b4;
         }
       }
     }

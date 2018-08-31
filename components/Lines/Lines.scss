@@ -128,24 +128,13 @@
       }
     }
 
-    .lines {
-      path {
-        //fill: none;
-        //stroke-width: 3px;
-        // opacity: 0.5;
-        // transition: d .4s ease;
-        //rgb
+    // .tem {
+      // transition: all 1s ease; 
+    // }
 
-        &.clicked {
-          stroke: #ff0000 !important;
-        }
-        &.igual {
-          stroke: #00ff00 !important;
-        }
-        &.outra {
-          stroke: #0000ff !important;
-        }
-      }
+    .lines {
+
+      
     }
   }
 }

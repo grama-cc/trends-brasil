@@ -4,7 +4,10 @@ import css from './Relationship.scss';
 import Description from '../Description.js';
 import Social from '../Social/Social.js';
 import Filter from '../Filter.js';
-import Cloud from '../Cloud.js';
+
+import Cloud from './Cloud.js';
+
+import Api from '../../lib/Api';
 
 class Relationship extends React.Component {
 
@@ -17,6 +20,7 @@ class Relationship extends React.Component {
 
       return (
         <React.Fragment>
+
           <div className={css.container}>
             <Filter 
               onFilter={this.props.onFilter} 
@@ -30,42 +34,37 @@ class Relationship extends React.Component {
               relationship
             />
           </div>
+
           <div className={css.clouds}>
-            {this.props.candidates && this.props.words ? 
-              <React.Fragment>
-                <Cloud 
-                  id={this.props.filter} 
-                  candidates={this.props.candidates}
-                  words={this.props.words} 
-                  type='candidate' 
-                  position='left'
-                />
-              </React.Fragment>
-            : 'Loading...'}
+
+            {this.props.relationship ?
+              <Cloud 
+                words={this.props.relationship.candidato_1} 
+                position='left'
+              />
+            : <div/> }
+
+
             <div className={css.common}>em<br/>comum
-               {this.props.relationship ?
-                this.props.relationship.map((word, index) => 
+               {this.props.relationship && this.props.relationship.candidato_1.words != 0 ?
+                this.props.relationship.intersection.map((word, index) => 
                   <div 
                     key={index}
                     className={css.relationship_words}
-                    //style={{top: (index+1)*8 + '%'}}
                   >
                     {word}
                   </div>
                 )
               : null}
             </div>
-            {this.props.candidates && this.props.words ? 
-              <React.Fragment>
+
+            {this.props.relationship ?
                 <Cloud 
-                  id={this.props.compare}
-                  candidates={this.props.candidates}
-                  words={this.props.words} 
-                  type='candidate'
+                  words={this.props.relationship.candidato_2} 
                   position='right'
                 />
-              </React.Fragment>
-            : 'Loading...'}
+            : <div/>}
+
           </div>
         </React.Fragment>
       )

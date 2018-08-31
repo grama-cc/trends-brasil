@@ -170,6 +170,7 @@ class Lines extends React.Component {
               transform={`translate(0, ${this.cfg.height})`}
               ref={(c) => { this.axisElement = c; }}
             />
+
             <g 
               className={css.lines}
               fill='none'
@@ -177,6 +178,7 @@ class Lines extends React.Component {
 
               {this.state.data.map((candidate) => (
                 <path
+                  // className={this.props.filter && this.props.filter != candidate.id ? null : css.tem}
                   key={candidate.id}
                   d={lineGenerator(candidate.lines)}
                   fillOpacity={this.props.filter === candidate.id ? .5 : 0}
@@ -188,13 +190,13 @@ class Lines extends React.Component {
                 />
               ))}
             </g>
+
             {this.state.specialDates.map((date) => (
               <g
                 key={date.id}
                 className={css.date}
                 transform={`translate(${scaleTime(this.getDate(date.day))}, 0)`}
               >
-              {console.log(date)} 
                 <line y2={this.cfg.height} />
                 <rect 
                   y="-25"
@@ -207,14 +209,14 @@ class Lines extends React.Component {
                 >            
                   {date.text}
                 </text>
-                {this.state.data.map((candidate, i) => (
+                {/*this.state.data.map((candidate, i) => (
                   <circle
                     key={candidate.id}
                     r="4"
                     cy={scalePercent(this.getPercent(candidate, date.day))}
                     stroke={this.props.filter && this.props.filter != candidate.id ? '#b4b4b4' : candidate.color}
                   />
-                ))}
+                ))*/}
               </g>
             ))}
           </svg>

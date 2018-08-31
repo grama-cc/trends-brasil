@@ -69,9 +69,12 @@
 		width: auto;
 		top: -35px;
 		max-height: 610px;
+		margin: 20px 0 0 !important;
+		font-weight: bold;
 
 		@media screen and (min-width: $medium-devices) {
 			top: 0;
+			margin: -20px 0 0 !important;
 		}
 		
 		&:before {
