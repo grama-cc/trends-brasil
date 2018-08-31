@@ -47,7 +47,7 @@
           z-index: 1;
           transition: transform .4s ease;
           circle {
-            r: 50;
+            r: 50!important;
           }
         }
       }
