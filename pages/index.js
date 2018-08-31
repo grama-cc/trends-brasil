@@ -107,15 +107,15 @@ class Home extends React.Component {
           title="Trends Brasil"
           description="Na busca do candidato"
           image="https://www.nabuscadocandidato.com.br/static/img/share.jpg"
-          twitter="https://www.nabuscadocandidato.com.br/static/img/twt.jpg"
+          twitter="https://www.nabuscadocandidato.com.br/static/img/twt.png"
           url='https://www.nabuscadocandidato.com.br/'
         />
          
-        <Intro
+        {/*<Intro
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
-        />
+        />*/}
 
         <Keywords
           candidates={candidates}
@@ -124,7 +124,6 @@ class Home extends React.Component {
           filter={this.state.filter}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
-
           period={this.state.period}
           onClickPeriod={this.onClickPeriod}
         />
@@ -137,7 +136,7 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        <Category
+        {/*<Category
           arrowColor='#b4b4b4'
           lang={this.state.lang}
           candidates={candidates}
@@ -176,7 +175,7 @@ class Home extends React.Component {
 
         <Footer
           lang={this.state.lang}
-        />
+        />*/}
 
         {/*<Clipping />*/}
       </Layout>

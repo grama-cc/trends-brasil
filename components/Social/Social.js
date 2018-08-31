@@ -8,7 +8,17 @@ import Facebook from './Facebook.js';
 import Whatsapp from './Whatsapp.js';
 import { saveAs } from 'file-saver/FileSaver';
 
-function writeDownloadLink(svgData,parentName){
+class Social extends React.Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      open: null,
+      modal: false
+    }
+  }
+
+  writeDownloadLink = (svgData,parentName) => {
     console.log(svgData)
     try {
         var isFileSaverSupported = !!new Blob();
@@ -17,84 +27,152 @@ function writeDownloadLink(svgData,parentName){
     }
     var blob = new Blob([svgData], {type: "image/svg+xml"});
     saveAs(blob, parentName+".svg");
-};
-
-function handleClick(event, parentName) {
-  var elements = document.getElementsByClassName(parentName)
-  var svgContent = ''
-  for(var i = 0; i < elements[0].childNodes.length; i++){
-      console.log(elements[0].childNodes[i].nodeName)
-      if(elements[0].childNodes[i].nodeName === 'svg'){
-        svgContent = elements[0].childNodes[i].cloneNode(true)
-        svgContent.style.backgroundColor = "#ececec"
-        svgContent.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink")
-        svgContent = svgContent.outerHTML
-      }
   }
-  writeDownloadLink(svgContent, parentName)
-}
 
-function twitterShare(event) {
-  const url = 'http://www.nabuscadocandidato.com.br/'
-  const twitterShareUrl = `https://twitter.com/home?status=${encodeURIComponent(url)}`
-  window.open(twitterShareUrl, '_blank', 'noopener')
-}
+  handleClick = (event, parentName)  => {
+    var elements = document.getElementsByClassName(parentName)
+    var svgContent = ''
+    for(var i = 0; i < elements[0].childNodes.length; i++){
+        console.log(elements[0].childNodes[i].nodeName)
+        if(elements[0].childNodes[i].nodeName === 'svg'){
+          svgContent = elements[0].childNodes[i].cloneNode(true)
+          svgContent.style.backgroundColor = "#ececec"
+          svgContent.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink")
+          svgContent = svgContent.outerHTML
+        }
+    }
+    this.writeDownloadLink(svgContent, parentName)
+  }
 
+  openModal = () => {
+    this.setState({modal: true})
+  }
 
-const Social = props => (
-  <React.Fragment>
-    {props.children}
-    <ul className={`${css.social} ${props.bottom ? css.bottom : null} ${props.share ? css.share : null}`}>
-      {!props.share ?
-      <li>
-        <a
-          target="_blank"
-          onClick={(e) => handleClick(e, props.parent)}
-        >
-          <Media stroke={props.stroke} />
-        </a>
-      </li> : null}
-      <li>
-        <a 
-          target="_blank"
-          href={`https://twitter.com/home?status=Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018? https%3A//www.nabuscadocandidato.com.br/`}
-        >
-          <Twitter stroke={props.stroke} />
-        </a>
-      </li>
-      <li>
-        <a 
-          target="_blank" 
-          href="https://www.facebook.com/sharer/sharer.php?u=https%3A//trends-brasil.herokuapp.com/"
-        >
-          <Facebook stroke={props.stroke} />
-        </a>
-      </li>
-      <li className={css.whats}>
-        <a
-          
-          target="_blank"
-          href="whatsapp://send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
-          data-action="share/whatsapp/share" 
-          data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
-          data-href="https://www.nabuscadocandidato.com.br/">
-          <Whatsapp stroke={props.stroke} />
-        </a>
-      </li>
-      <li className={css.webwhats}>
-        <a
-          
-          target="_blank"
-          href="https://web.whatsapp.com/send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
-          data-action="share/whatsapp/share" 
-          data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
-          data-href="https://www.nabuscadocandidato.com.br/">
-          <Whatsapp stroke={props.stroke} />
-        </a>
-      </li>
-    </ul>
-  </React.Fragment>
-);
+  closeModal = () => {
+    this.setState({modal: false})
+  }
+
+  open = (e) => {
+    const type = e.currentTarget.dataset.type
+    this.setState({ open: type })
+  }
+
+  copy = (e) => {
+    // execCommand()
+  }
+
+    render () {
+      return (
+        <React.Fragment>
+
+          <div className={css.modal}>
+            <nav>
+              <h3 
+                onClick={this.open}
+                data-type='download'
+              >
+                Download
+              </h3>
+              <h3
+                onClick={this.open}
+                data-type='embed'
+              >
+                Embed
+              </h3>
+              <h3
+                onClick={this.open}
+                data-type='link'
+              >
+                Link
+              </h3>
+            </nav>
+
+            <ul>
+
+              <li
+                type='download'
+                className={this.state.open === 'download' ? css.open : css.close}
+              >
+                <button 
+                  onClick={(e) => this.handleClick(e, this.props.parent)}
+                >
+                  .svg
+                </button>
+                <button>.json</button>
+              </li>
+
+              <li className={this.state.open === 'embed' ? css.open : css.close}>
+                  <h4>Codigo</h4>
+                  <p>uhuahsuhuahshahshahsuhasuha</p>
+                  <button>Copiar</button>
+              </li>
+
+              <li className={this.state.open === 'link' ? css.open : css.close}>
+                  <h4>Link</h4>
+                  <p>{`https://www.nabuscadocandidato.com.br/#${this.props.id}`}</p>
+                  <button>Copiar</button>
+              </li>
+
+            </ul>
+          </div>
+
+          {this.props.children}
+
+          <ul className={`${css.social} ${this.props.bottom ? css.bottom : null} ${this.props.share ? css.share : null}`}>
+            {!this.props.share ?
+            <li>
+              <a
+                target="_blank"
+                // onClick={(e) => handleClick(e, this.props.parent)}
+                href='javascript:void(0)'
+                onClick={this.openModal}
+              >
+                <Media stroke={this.props.stroke} />
+              </a>
+            </li> : null}
+            <li>
+              <a 
+                target="_blank"
+                href={`https://twitter.com/home?status=Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018? https%3A//www.nabuscadocandidato.com.br/`}
+              >
+                <Twitter stroke={this.props.stroke} />
+              </a>
+            </li>
+            <li>
+              <a 
+                target="_blank" 
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A//trends-brasil.herokuapp.com/"
+              >
+                <Facebook stroke={this.props.stroke} />
+              </a>
+            </li>
+            <li className={css.whats}>
+              <a
+                
+                target="_blank"
+                href="whatsapp://send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
+                data-action="share/whatsapp/share" 
+                data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
+                data-href="https://www.nabuscadocandidato.com.br/">
+                <Whatsapp stroke={this.props.stroke} />
+              </a>
+            </li>
+            <li className={css.webwhats}>
+              <a
+                
+                target="_blank"
+                href="https://web.whatsapp.com/send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
+                data-action="share/whatsapp/share" 
+                data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
+                data-href="https://www.nabuscadocandidato.com.br/">
+                <Whatsapp stroke={this.props.stroke} />
+              </a>
+            </li>
+          </ul>
+        </React.Fragment>
+      )
+    }
+  }
 
 
 export default Social;

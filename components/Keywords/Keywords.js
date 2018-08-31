@@ -91,6 +91,7 @@ class Keywords extends React.Component {
           stroke='#b4b4b4' 
           bottom 
           parent="Graphic_graphic_IWdTV"
+          id='keywords'
         />
       </section>
     )
