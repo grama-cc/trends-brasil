@@ -50,9 +50,12 @@
 		max-height: 0;
 		overflow: hidden;
 		transition: max-height .4s ease, margin .4s ease, padding .4s ease;
-		position: absolute;
 		z-index: 3;
 		background-color: #fff;
+
+		@media screen and (min-width: $medium-devices) {
+			position: absolute;
+		}
 
 		&.open {
 			max-height: 1000px;

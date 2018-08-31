@@ -95,8 +95,6 @@ class Graphic extends React.Component {
                   <image 
                     x="0" 
                     y="0"
-                    // height={c.r < 10 ? 20 : c.r * 2} 
-                    // width={c.r < 10 ? 20 : c.r * 2}
 
                     height={c.r < 10 ? 20 : filter === c.data.id ? 100 : c.r * 2} 
                     width={c.r < 10 ? 20 : filter === c.data.id ? 100 : c.r * 2}
