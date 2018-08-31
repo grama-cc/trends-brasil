@@ -20,7 +20,49 @@ class Section extends React.Component {
         />
       )
     }
-    
+  }
+
+
+  onPrev = (e) => {
+    const idx = Number(e.currentTarget.dataset.index);
+    const candidates = this.props.candidates;
+
+    if(idx > 0) {
+
+      this.props.onFilter(candidates[idx - 1].id)
+
+    } else if(idx === 0) {
+
+      this.props.onFilter(candidates[candidates.length - 1].id)
+
+    }
+  }
+
+  onNext = (e) => {
+    const idx = Number(e.currentTarget.dataset.index)
+    const candidates = this.props.candidates;
+
+    if(!idx) {
+      this.props.onFilter(candidates[0].id)
+    }
+
+    if(idx < candidates.length - 1) {
+
+      this.props.onFilter(candidates[idx + 1].id)
+
+    } else if(idx === candidates.length - 1) {
+
+      this.props.onFilter(candidates[0].id)
+    }
+  }
+
+  findIndex = (array, attr, value) => {
+    for(var i = 0; i < array.length; i += 1) {
+      if(array[i][attr] === value) {
+        return i;
+      }
+    }
+    return 0;
   }
 
   render() {
@@ -30,6 +72,8 @@ class Section extends React.Component {
     
     const bg = currentCandidate ? `${currentCandidate.slug}.png` : 'none.svg';
     const name = currentCandidate ? currentCandidate.name : 'Escolha um candidato';
+
+    const idx = !this.props.filter ? null : this.findIndex(candidates, 'id', this.props.filter);
 
     return (
       <section
@@ -49,18 +93,31 @@ class Section extends React.Component {
               color={currentCandidate ? currentCandidate.color : '#b4b4b4'}
             />
 
-            <ul 
-              className={css.slider}
-              style={{
-                justifyContent: currentCandidate ? 'flex-end' : 'flex-start'
-              }}
-            > 
-              <li>
-                <img src={`/static/img/busto/${bg}`} alt={name} />
-                <h3 className={!this.props.filter ? css.empty : null}>{name}</h3>
-              </li>
-            </ul>
+            <div className={css.slider_container}>
+              <button 
+                onClick={this.onPrev}
+                data-index={idx}
+                className={`${css.arrow} ${css.prev}`}
+              />
 
+              <ul 
+                className={css.slider}
+                style={{
+                  justifyContent: currentCandidate ? 'flex-end' : 'flex-start'
+                }}
+              > 
+                <li>
+                  <img src={`/static/img/busto/${bg}`} alt={name} />
+                  <h3 className={!this.props.filter ? css.empty : null}>{name}</h3>
+                </li>
+              </ul>
+
+              <button
+                onClick={this.onNext}
+                data-index={idx}
+                className={`${css.arrow} ${css.next}`}
+              />
+            </div>
           </div>
 
           <div className={css.chart}>

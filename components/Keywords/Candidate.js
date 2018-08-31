@@ -20,7 +20,7 @@ class Candidate extends React.Component {
     this.props.onFilter(id)
   }
 
-  onPrev = (e) => {
+  /*onPrev = (e) => {
     const idx = Number(e.currentTarget.dataset.index);
     const candidates = this.props.candidates;
 
@@ -39,6 +39,39 @@ class Candidate extends React.Component {
 
     if(idx < candidates.length - 1) {
       this.props.onFilter(candidates[idx + 1].id)
+    }
+  }*/
+
+  onPrev = (e) => {
+    const idx = Number(e.currentTarget.dataset.index);
+    const candidates = this.props.candidates;
+
+    if(idx > 0) {
+
+      this.props.onFilter(candidates[idx - 1].id)
+
+    } else if(idx === 0) {
+
+      this.props.onFilter(candidates[candidates.length - 1].id)
+
+    }
+  }
+
+  onNext = (e) => {
+    const idx = Number(e.currentTarget.dataset.index)
+    const candidates = this.props.candidates;
+
+    if(!idx) {
+      this.props.onFilter(candidates[0].id)
+    }
+
+    if(idx < candidates.length - 1) {
+
+      this.props.onFilter(candidates[idx + 1].id)
+
+    } else if(idx === candidates.length - 1) {
+
+      this.props.onFilter(candidates[0].id)
     }
   }
 
