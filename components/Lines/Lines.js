@@ -228,7 +228,7 @@ class Lines extends React.Component {
 
   render() {
     return (
-      <section className={css.lines}>
+      <section className={css.lines} id='lines'>
         <div className={css.info}>
           <Description
             content='lines'
@@ -248,7 +248,10 @@ class Lines extends React.Component {
           period={this.state.period}
           onClickPeriod={this.onClickPeriod}
         />
-				<Social stroke='#b4b4b4' />
+				<Social
+          stroke='#b4b4b4'
+          id='lines'
+        />
       </section>
     )
   }
