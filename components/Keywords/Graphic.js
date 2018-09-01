@@ -9,7 +9,7 @@ class Graphic extends React.Component {
     this.config = {
       width: 270,
       height: 270,
-      padding: 20
+      padding: 30
     }
   }
 
@@ -96,10 +96,10 @@ class Graphic extends React.Component {
                     x="0" 
                     y="0"
 
-                    height={c.r < 10 ? 20 : filter === c.data.id ? 100 : c.r * 2} 
-                    width={c.r < 10 ? 20 : filter === c.data.id ? 100 : c.r * 2}
+                    height={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
+                    width={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2}
 
-                    xlinkHref={`/static/img/candidates/${c.data.slug}.png`}
+                    xlinkHref={`https://www.nabuscadocandidato.com.br/static/img/candidates/${c.data.slug}.png`}
                     className={filter === c.data.id ? css.openImage : null}
                   />
                 </pattern>
