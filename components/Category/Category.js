@@ -5,7 +5,7 @@ import Api from '../../lib/Api';
 // import data from './data'
 import css from './Category.scss';
 
-import Description from '../Description.js';
+import Description from '../Description/Description.js';
 import Social from '../Social/Social.js';
 import Select from './Select.js';
 import Chart from './Chart'

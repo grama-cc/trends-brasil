@@ -106,8 +106,8 @@
 	
 	&.bottom {
 		position: absolute;
-		width: calc(100vw - 80px);
-		bottom: responsive(25, 60);
+		width: calc(100vw - 112px);
+		bottom: responsive(20, 80);
 		left: 50%;
 		transform: translateX(-50%);
 	}

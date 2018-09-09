@@ -7,7 +7,7 @@ import Api from '../../lib/Api';
 import content from '../../static/json/orbital.json'
 
 import Filter from '../Filter.js';
-import Description from '../Description.js';
+import Description from '../Description/Description.js';
 import Section from '../SectionWithFilter/SectionWithFilter.js';
 import Social from '../Social/Social.js';
 

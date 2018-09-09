@@ -3,7 +3,7 @@ import css from './Keywords.scss';
 
 import Period from '../Period/Period.js';
 
-import Description from '../Description.js';
+import Description from '../Description/Description.js';
 import Select from './Select.js';
 import Candidate from './Candidate.js';
 import Graphic from './Graphic.js';
@@ -60,7 +60,7 @@ class Keywords extends React.Component {
     const view = this.state.view;
     
     return (
-      <section className={css.keywords} id='keywords'>
+      <section className={css.keywords}>
         <div className={css.info}>
           <Description
             content='keywords'
@@ -83,7 +83,6 @@ class Keywords extends React.Component {
           color='#b4b4b4'
           bottom
           arrowColor={this.props.arrowColor}
-
           period={this.props.period}
           onClickPeriod={this.props.onClickPeriod}
         />
