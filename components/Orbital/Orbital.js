@@ -11,6 +11,8 @@ import Description from '../Description/Description.js';
 import Section from '../SectionWithFilter/SectionWithFilter.js';
 import Social from '../Social/Social.js';
 
+import {i18n} from '../../common/locale/i18n';
+
 class Orbital extends React.Component {
   constructor (props) {
     super(props)
@@ -208,6 +210,7 @@ class Orbital extends React.Component {
   }
 
   render() {
+    const lang = this.props.lang
     return (
       <Section
         onFilter={this.props.onFilter} 
@@ -220,7 +223,9 @@ class Orbital extends React.Component {
         onClickPeriod={this.onClickPeriod}
       >
         <div className={css.chart_container}>
-          <p className={css.legend}>Personalidades na busca relacionada ao candidato, em valores de 0 a 100, indexados pelo Google Trends</p>
+          <p className={css.legend}>
+            {i18n('orbit.legend', lang)}
+          </p>
           <div className={css.orbital}>
             {this.renderChart()}
           </div>

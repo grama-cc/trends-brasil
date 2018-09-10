@@ -5,6 +5,8 @@ import Period from '../Period/Period.js';
 import Description from '../Description/Description.js';
 import Social from '../Social/Social.js';
 
+import {i18n} from '../../common/locale/i18n';
+
 class Section extends React.Component {
 
   renderFilter () {
@@ -68,10 +70,11 @@ class Section extends React.Component {
   render() {
     const content = this.props.content;
     const candidates = this.props.candidates || [];
-    const currentCandidate = candidates.find((c) => this.props.filter === c.id)
+    const currentCandidate = candidates.find((c) => this.props.filter === c.id);
+    const lang = this.props.lang;
     
     const bg = currentCandidate ? `${currentCandidate.slug}.png` : 'none.svg';
-    const name = currentCandidate ? currentCandidate.name : 'Escolha um candidato';
+    const name = currentCandidate ? currentCandidate.name : i18n('slider.choose', lang);
 
     const idx = !this.props.filter ? null : this.findIndex(candidates, 'id', this.props.filter);
 
@@ -130,6 +133,7 @@ class Section extends React.Component {
               arrowColor={this.props.arrowColor}
               period={this.props.period}
               onClickPeriod={this.props.onClickPeriod}
+              lang={this.props.lang}
             />
             <Social stroke='#fff' parent={this.props.children.props.className}/>
 

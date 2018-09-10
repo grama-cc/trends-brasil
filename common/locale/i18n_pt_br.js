@@ -19,6 +19,10 @@ export const i18n_pt_br = {
 		terms: "Termos"
 	},
 
+	slider: {
+		choose: "Escolha um candidato"
+	},
+
   intro: {
     meta_tags: {
       title: 'Na busca do candidato',
@@ -110,11 +114,21 @@ export const i18n_pt_br = {
   radar: {
 	  title: "Como buscam",
 	  description: "A região do gráfico indica o interesse nos diferentes temas. O deslocamento da área em relação ao centro revela a importância de cada tema na busca dos candidatos.",
-	  highlight: '',
+	  highlight: "",
+	  legend: "Porcentagem das categorias (%) entre as buscas feitas para cada candidato",
 	  button: "Saiba mais",
 	  more: [
 	  	"O gráfico ajuda a entender melhor a curiosidade do usuário pelo candidato, revelando a distribuição de buscas pelos temas. ",
 		  "Dessa forma, é possível acompanhar uma transformação de interesses ao longo do tempo com os filtros."
+	  ],
+
+	  names:[
+			"Figuras políticas",
+			"Mídia",
+			"Ideologia",
+			"Celebridades",
+			"Biografia",
+			"Outros"
 	  ]
 	},
 
@@ -126,13 +140,15 @@ export const i18n_pt_br = {
 	  more: [
 	  	"A comparação dos termos de cada candidato destaca a interessante relação das buscas tanto ideológicas quanto à aspectos de individuais, como biografia ou figuras políticas, e pode evidenciar posicionamentos opostos nos termos não comuns a ambos. ",
 		  "Para evitar redundâncias, buscas como “proposta de Bolsonaro” e “proposta Bolsonaro” foram agrupados em “proposta”."
-	  ]
+	  ],
+	  common:'em comum'
 	},
 
 	orbit: {
 	  title: "Quem está na órbita",
 	  description: "A frequência com que celebridades e figuras políticas aparecem nas buscas. A proximidade do centro indica um maior volume de busca correlacionadas entre o candidato e a personalidade.",
 	  highlight: '',
+	  legend: "Personalidades na busca relacionada ao candidato, em valores de 0 a 100, indexados pelo Google Trends",
 	  button: "Saiba mais",
 	  more: [
 	  	"A análise inicial dos dados coletados mostrou uma quantidade relevante de nomes de personalidades associada ao de candidatos. ",

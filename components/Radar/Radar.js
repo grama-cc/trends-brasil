@@ -6,6 +6,8 @@ import Api from '../../lib/Api';
 
 import Section from '../SectionWithFilter/SectionWithFilter.js';
 
+import {i18n} from '../../common/locale/i18n';
+
 class RadarChart extends React.Component {
   constructor (props) {
     super(props)
@@ -119,13 +121,15 @@ class RadarChart extends React.Component {
       const w = this.config.width + 10;
       const h = this.config.height + 10;
 
+      const lang = this.props.lang;
+
       return (
         <React.Fragment>
 
           <div className={css.categories}>
-            {axis.map((point, idx) => (
+            {i18n('radar.names', lang).map((point, idx) => (
               <p className={css.name} key={idx}>
-                {point.name}
+                {point}
               </p>
             ))}
           </div>
@@ -224,6 +228,8 @@ class RadarChart extends React.Component {
   }
 
   render() {
+    const lang = this.props.lang;
+
     return (
       <Section
         onFilter={this.props.onFilter} 
@@ -237,7 +243,9 @@ class RadarChart extends React.Component {
       >
 
         <div className={css.chart_container}>
-          <p className={css.legend}>Porcentagem das categorias (%) entre as buscas feitas para cada candidato</p>
+          <p className={css.legend}>
+            {i18n('radar.legend', lang)}
+          </p>
           <div className={css.radar}>
             {this.renderChart()}
           </div>
