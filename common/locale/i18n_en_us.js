@@ -19,6 +19,10 @@ export const i18n_en_us = {
 		terms: "Terms"
 	},
 
+	slider: {
+		choose: "Choose a candidate"
+	},
+
  	intro: {
     meta_tags: {
       title: "On the search for a candidate",
@@ -113,88 +117,97 @@ export const i18n_en_us = {
   },
 
   radar: {
-	  title: "How do they search for?",
-	  description: "The radar chart shows how much each subject was searched.",
+	  title: "How do they search?",
+	  description: "The radar chart shows the search interest among the themes. The distance of the area from the center reveals the importance of each theme in the search for candidates.",
+	  highlight: "",
+	  legend: "Theme percentage (%) of the search interest made on each candidate",
 	  button: "Learn more",
 	  more: [
 	  	"The chart helps to understand the users' curiosity of a candidate, revealing the search distribution by themes.",
-		  "It is possible to track the transition of interests over time with the filters."
+	  	"It is possible to track the transition of interests over time with the filters."
+	  ],
+
+	  names:[
+	  	"Political figures",
+	  	"Media",
+	  	"Ideology",
+	  	"Celebrities",
+	  	"Biography",
+	  	"Others"
 	  ]
 	},
 
-  
-
-  
-
-
-
-  
   relationship: {
 	  title: 'How do they correlate?',
 	  description: 'The most common and the most unusual search terms between two candidates. Choose two candidates to compare.',
+	  highlight: '',
 	  button: "Learn more",
 	  more: [
-	  	"The comparison between the search therms of two candidates highlights the interesting search correlations among ideological and individual aspects, such as biography or political figures, and may point out opposite points of view in search terms not common between them. ",
-		  "Equivalent search terms are grouped together, for instance: “proposta de Bolsonaro” and “proposta Bolsonaro” appear as “proposta”"
-	  ]
+	  	"The comparison between the search terms of two candidates highlights the interesting search correlations among ideological and individual aspects, such as biography or political figures, and may point out opposite points of view in search terms not common between them.",
+	  	"Equivalent search terms are grouped together, for instance: “proposta de Bolsonaro” and “proposta Bolsonaro” appear as “proposta”"
+	  ],
+	  common: 'common'
 	},
+
 	orbit: {
 	  title: "Who orbits the candidate",
-	  description: "How often celebrities and other politicians appear in the candidate's related searches.",
+	  description: "How often celebrities and other politicians appear in the candidate related searches. The center proximity indicates a bigger correlated search volume between the candidate and the celebrity.",
+	  highlight: '',
+	  legend: "Personalities in the candidate's related search, in values ​​from 0 to 100, indexed by Google Trends",
 	  button: "Learn more",
 	  more: [
-	  	"The initial data gathered presented a relevant amount of celebrities names on the candidates related search. ",
-		  "The visualization measures the volume of these searches, displaying the names accordingly their relevance, where the most frequent searches appear near the center."
+	  	"The initial data gathered presented a relevant amount of celebrities names on the candidates related search.",
+	  	"The image measures the volume of these searches, displaying the names accordingly their relevance, where the most frequent searches appear near the center."
 	  ]
 	},
 	
   search: {
     input: 'Search for topic or category',
   },
+
   footer:{
   	share: "Share this project",
- 	project: {
-          title: "The project",
-          columnLeft: [
-              "“Searching for a candidate” is a project done by Google News Initiative with Brazilians designer and programmers. ",
-			  "We gathered and analyzed search interest data on Google Trends related to the 2018's election campaign.",
-			  "We try to understand what catches the interest from Brazilian voters about the candidates running for presidency.",
+ 		project: {
+			title: "The project",
+			columnLeft: [
+				"“Searching for a candidate” is a project created by Brazilian designers and programmers with Google News Initiative. We gathered and analyzed search interest data on Google Trends related to the 2018's election campaign.",
+				"We try to understand what catches the interest of Brazilian voters about the candidates running for presidency.",
+			],
+			columnRight: [
+				"We will track the results until the election month, on Oct.2018",
+				"Google Trends analyzes a random sample of Google searches in a specific time period and indexes them from 0 to 100,",
+				"where 100 is the most searched interest. All the other values are set in comparison."
+			]
+		},
 
-          ],
-          columnRight: [
-          	"We will track down the results until the election month, on Oct.2018",
-              "Google Trends analyzes a random sample of Google searches in a specific time period and gives it an index from 0 to 100, ",
-			  "where 100 has the most searched interest. All the other values are set in comparison."
-          ]
-      },
-	team: {
-	  title: "Team",
-	  list: [
-	  	{
-	  		title: "Carol Cavaleiro",
-	  		name: "Art director and design",
-				link: "https://carolcavaleiro.com/portfolio/"
-	  	},
-	  	{
-	  		title: "Thais Viana",
-	  		name: "hub | Data Comprehension",
-			link: "https://hub9.co/"
-	  	},
-	  	{
-	  		title: "Tainá Simões",
-	  		name: "Grama | Criative Coding",
-			link: "https://grama.cc/"
-	  	},
-	  	{
-	  		title: "Google News Lab",
-	  		name: "Marco Túlio Pires e Simon Rogers"
-	  	},
-	  	{
-	  		title: "Project Consultant",
-	  		name: "Alberto Cairo"
-	  	}
-	  ]
-	},
+		team: {
+		  title: "Team",
+		  list: [
+		  	{
+		  		title: "Carol Cavaleiro",
+		  		name: "Art director and design",
+					link: "https://carolcavaleiro.com/portfolio/"
+		  	},
+		  	{
+		  		title: "Thais Viana",
+		  		name: "hub | Data Comprehension",
+				link: "https://hub9.co/"
+		  	},
+		  	{
+		  		title: "Tainá Simões",
+		  		name: "Grama | Criative Coding",
+				link: "https://grama.cc/"
+		  	},
+		  	{
+		  		title: "Google News Lab",
+		  		name: "Marco Túlio Pires e Simon Rogers"
+		  	},
+		  	{
+		  		title: "Project Consultant",
+		  		name: "Alberto Cairo"
+		  	}
+		  ]
+		},
 
 	clipping: {
 	  list: [

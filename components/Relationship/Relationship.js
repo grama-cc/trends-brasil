@@ -9,6 +9,8 @@ import Cloud from './Cloud.js';
 
 import Api from '../../lib/Api';
 
+import {i18n} from '../../common/locale/i18n';
+
 class Relationship extends React.Component {
 
   renderChart () {
@@ -18,7 +20,10 @@ class Relationship extends React.Component {
 
     } else {
 
+      const lang = this.props.lang; 
+
       return (
+
         <React.Fragment>
 
           <div className={css.container}>
@@ -32,6 +37,7 @@ class Relationship extends React.Component {
               candidates={this.props.candidates} 
               arrowColor={this.props.arrowColor}
               relationship
+              lang={this.props.lang}
             />
           </div>
 
@@ -45,8 +51,11 @@ class Relationship extends React.Component {
             : <div/> }
 
 
-            <div className={css.common}>em<br/>comum
-               {this.props.relationship && this.props.relationship.candidato_1.words != 0 ?
+            <div className={css.common}>
+
+              {i18n('relationship.common', lang)}
+
+              {this.props.relationship && this.props.relationship.candidato_1.words != 0 ?
                 this.props.relationship.intersection.map((word, index) => 
                   <div 
                     key={index}
