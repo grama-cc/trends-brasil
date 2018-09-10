@@ -128,7 +128,7 @@ class Home extends React.Component {
           onClickPeriod={this.onClickPeriod}
         />
 
-        {/*<Lines
+        <Lines
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
@@ -175,7 +175,7 @@ class Home extends React.Component {
 
         <Footer
           lang={this.state.lang}
-        />*/}
+        />
 
         {/*<Clipping />*/}
       </Layout>

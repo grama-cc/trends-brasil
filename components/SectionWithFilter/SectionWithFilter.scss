@@ -36,7 +36,6 @@
   }
 
   .info {
-
     @media screen and (min-width: $medium-devices) {
       width: 40%;
       display: flex;
@@ -74,7 +73,7 @@
         position: absolute;
         left: 50%;
         transform: translate(-50%);
-        bottom: 25px;
+        bottom: 40px;
         &.empty {
           background: #b4b4b4;
         }
@@ -89,7 +88,7 @@
     background-image: url(/static/img/slider_arrow_white.svg);
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: center bottom 25px;
+    background-position: center bottom 40px;
     width: responsive(20, 32);
     height: 100%;
     z-index: 2;
