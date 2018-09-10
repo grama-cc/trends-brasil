@@ -134,7 +134,8 @@ export const i18n_en_us = {
 	  	"Celebrities",
 	  	"Biography",
 	  	"Others"
-	  ]
+	  ],
+	  empty: "The candidate did not have enough searches to generate the view"
 	},
 
   relationship: {
@@ -158,7 +159,8 @@ export const i18n_en_us = {
 	  more: [
 	  	"The initial data gathered presented a relevant amount of celebrities names on the candidates related search.",
 	  	"The image measures the volume of these searches, displaying the names accordingly their relevance, where the most frequent searches appear near the center."
-	  ]
+	  ],
+	  empty: "The candidate did not have enough searches to generate the view"
 	},
 	
   search: {

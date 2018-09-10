@@ -101,9 +101,31 @@ class Orbital extends React.Component {
 
       const candidates = orbital.filter((c) => filter === c.id);
 
+      const lang = this.props.lang
+
       return ( 
         <React.Fragment>
           <p className={css.middle}>{filter ? candidates[0].name : null}</p>
+
+          {orbital.map((candidate, idx) => {
+
+            if (candidate.people.length === 0 && candidate.id === filter) {
+              return (
+                <div
+                  style={{
+                    backgroundColor: candidate.color
+                  }}
+                  className={filter === candidate.id ? css.empty : `${css.none} ${css.empty}`}
+                  key={idx}
+                > 
+                  <h4>Oops :(</h4>
+                  <p>{i18n('orbit.empty', lang)}</p>
+                </div>
+              )
+            }
+          })}
+
+
           <svg
             className="Orbital_chart"
             xmlns="http://www.w3.org/2000/svg"
