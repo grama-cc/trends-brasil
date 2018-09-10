@@ -7,7 +7,7 @@ import Api from '../../lib/Api';
 import content from '../../static/json/orbital.json'
 
 import Filter from '../Filter.js';
-import Description from '../Description.js';
+import Description from '../Description/Description.js';
 import Section from '../SectionWithFilter/SectionWithFilter.js';
 import Social from '../Social/Social.js';
 
@@ -220,7 +220,7 @@ class Orbital extends React.Component {
         onClickPeriod={this.onClickPeriod}
       >
         <div className={css.chart_container}>
-          <p className={css.legend}>Personalidades na busca relacionado ao candidato, em valores de 0 a 100, indexados pelo Google Trends</p>
+          <p className={css.legend}>Personalidades na busca relacionada ao candidato, em valores de 0 a 100, indexados pelo Google Trends</p>
           <div className={css.orbital}>
             {this.renderChart()}
           </div>

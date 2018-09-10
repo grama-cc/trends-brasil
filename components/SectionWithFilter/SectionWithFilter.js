@@ -2,7 +2,7 @@ import React from 'react';
 import css from './SectionWithFilter.scss';
 import Filter from '../Filter.js';
 import Period from '../Period/Period.js';
-import Description from '../Description.js';
+import Description from '../Description/Description.js';
 import Social from '../Social/Social.js';
 
 class Section extends React.Component {

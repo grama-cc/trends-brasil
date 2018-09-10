@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './Relationship.scss';
 
-import Description from '../Description.js';
+import Description from '../Description/Description.js';
 import Social from '../Social/Social.js';
 import Filter from '../Filter.js';
 

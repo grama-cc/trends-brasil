@@ -1,7 +1,7 @@
 @import '../../lib/scss/variables.scss';
 
 .footer {
-	padding: responsive(25, 60) responsive(10, 80);
+	padding: responsive(20, 80) responsive(20, 80);
   .container, .content {
   	display: flex;
 	  flex-direction: column;

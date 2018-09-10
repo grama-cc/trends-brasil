@@ -9,7 +9,7 @@ import content from '../../static/json/lines.json'
 
 import Period from '../Period/Period.js';
 import Filter from '../Filter.js';
-import Description from '../Description.js';
+import Description from '../Description/Description.js';
 import Social from '../Social/Social.js';
 
 class Lines extends React.Component {

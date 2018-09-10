@@ -20,7 +20,7 @@ $rot: 0;
 
 // Componentes base grid
 @mixin grid {
-  padding: responsive(20, 40) responsive(20, 40);
+  padding: responsive(20, 70) responsive(20, 80);
   transition: background .4s ease;
   display: flex;
   flex-direction: column;
