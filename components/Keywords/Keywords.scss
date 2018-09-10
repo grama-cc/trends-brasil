@@ -2,7 +2,7 @@
 
 .keywords {
   @include grid();
-  min-height: calc( 100vh + 40px );
+  min-height: calc( 100vh + 100px );
   background-color: #f8f8f8; 
   overflow: hidden;
 

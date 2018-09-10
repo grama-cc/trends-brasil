@@ -60,7 +60,7 @@ class Keywords extends React.Component {
     const view = this.state.view;
     
     return (
-      <section className={css.keywords}>
+      <section className={css.keywords} id='keywords'>
         <div className={css.info}>
           <Description
             content='keywords'
