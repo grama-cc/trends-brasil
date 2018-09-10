@@ -41,6 +41,7 @@ export const i18n_pt_br = {
 	  description: "O gráfico representa a popularidade dos candidatos na busca diária do Google e os termos mais comuns associados a ele durante a semana. Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
 	  highlight: "Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
 	  button: "Saiba mais",
+	  legend: "Palavras relacionadas",
 	  more: [
 	  	'O gráfico de bolas representa a relevância das buscas dos candidatos à presidência nas eleições de 2018 no Brasil, e a nuvem de palavras mostra os termos mais buscados no Google para cada candidato. Os termos e candidatos mais frequentes aparecem maiores.'
 	  ],

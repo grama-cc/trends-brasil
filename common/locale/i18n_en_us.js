@@ -40,7 +40,7 @@ export const i18n_en_us = {
 	  title: "Who do people search for on Google?",
 	  description: "The graphic represents the candidate's daily popularity on Google Search and the most common search terms associated to them during the week.",
 	  highlight: "The more frequent the search, the bigger the candidate and terms are.",
-	  
+	  legend: "Related words",
 	  button: 'Learn more',
 
 	  more: [
