@@ -12,10 +12,10 @@ class Select extends React.Component {
     this.props.click(val)
   }
 
-  onChangeLang = (e) => {
+  /*onChangeLang = (e) => {
     const lang = e.currentTarget.lang
     this.props.onChangeLang(lang)
-  }
+  }*/
 
   render() {
     const val = this.props.val
@@ -29,13 +29,15 @@ class Select extends React.Component {
           value='balls'
           onClick={this.onClick}
           disabled={val === 'balls'}
-        >{i18n(content +'.graphic', lang)}
+        >
+          {i18n(content +'.graphic', lang)}
         </button>
         <button
           value='words'
           onClick={this.onClick}
           disabled={val === 'words'}
-        >{i18n(content +'.candidate', lang)}
+        >
+          {i18n(content +'.candidate', lang)}
         </button>
       </div>
     )

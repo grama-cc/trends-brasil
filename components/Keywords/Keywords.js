@@ -85,6 +85,7 @@ class Keywords extends React.Component {
           arrowColor={this.props.arrowColor}
           period={this.props.period}
           onClickPeriod={this.props.onClickPeriod}
+          lang={this.props.lang}
         />
         <Social 
           stroke='#b4b4b4' 

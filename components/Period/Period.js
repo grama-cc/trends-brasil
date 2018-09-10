@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import css from './Period.scss';
-import content from '../../static/json/geral.json'
+// import content from '../../static/json/geral.json'
+
+import {i18n} from '../../common/locale/i18n';
 
 import Arrow from '../Arrow.js';
 
 /*
-
   'now 1-d', 'today',
   'now 7-d', 'week',
   'today 1-m', 'month',
   'today 1-y', 'year',
-  Por default funciona por mes
-
+  Default - month
 */
 
 class Period extends React.Component {
@@ -41,6 +41,9 @@ class Period extends React.Component {
 
   render() {
     const period = this.props.period;
+    const lang = this.props.lang
+
+    // console.log(i18n('period.title', lang))
 
     return (
       <ul
@@ -55,9 +58,9 @@ class Period extends React.Component {
           style={{borderColor: this.props.color}}
         >
           <span style={{ color: this.props.color }}>
-            {content.buttons.period}:
+            {i18n('period.title', lang)}:
           </span>
-          <p> {period === 'week' ? content.buttons.week : content.buttons.month} </p>
+          <p> {period === 'week' ? i18n('period.week', lang) : i18n('period.month', lang)} </p>
           <Arrow arrowColor={this.props.arrowColor} />
         </li>
 
@@ -75,7 +78,7 @@ class Period extends React.Component {
                 color: period === 'month' ? this.props.color : '#4b4b4b',
               }}
             >
-              {content.buttons.month}
+              {i18n('period.month', lang)}
             </button>
           </li>
           <li>
@@ -87,7 +90,7 @@ class Period extends React.Component {
                 color: period === 'week' ? this.props.color : '#4b4b4b',
               }}
             >
-              {content.buttons.week}
+              {i18n('period.week', lang)}
             </button>
           </li>
         </div>
