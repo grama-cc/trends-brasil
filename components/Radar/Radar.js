@@ -67,12 +67,12 @@ class RadarChart extends React.Component {
     const max = Math.max(this.config.maxValue, d3.max(data,
       ((array) => (
         d3.max(array.categories.map(
-          (item) => ( (item.percent / 100) + 0.15 )
+          (item) => ( (item.percent / 100) + 0.27 )
         ))
       )))
     );
 
-    const scale = d3.scaleLinear().range([-10, this.radius]).domain([0, max]);
+    const scale = d3.scaleLinear().range([-15, this.radius]).domain([0, max]);
     const angles = - Math.PI * 2 / 6;
 
     return {
@@ -136,7 +136,7 @@ class RadarChart extends React.Component {
 
           {radar.map((candidate, idx) => {
 
-            const empty = candidate.categories.filter((c) => c.percent === 0)
+            const empty = candidate.categories.filter((c) => c.percent === 1)
 
             if (empty.length === 6 ) {
               return (
@@ -148,7 +148,7 @@ class RadarChart extends React.Component {
                   key={idx}
                 > 
                   <h4>Oops :(</h4>
-                  <p>O candidato não teve buscas suficientes para gerar a visualização</p>
+                  <p>{i18n('orbit.empty', lang)}</p>
                 </div>
               )
             }

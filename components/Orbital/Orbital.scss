@@ -71,4 +71,35 @@
       transition: fill .4s ease;
     }
   }
+
+  .empty {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 100%;
+    z-index: 1;
+
+    width: responsive(200, 300);
+    height: responsive(200, 300);
+    opacity: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+    transition: background .5s ease; 
+
+    h4 {
+      font-size: responsive(22, 24);
+      margin: 0 0 18px;
+    }
+    p {
+      font-size: responsive(12, 14);
+      line-height: 20px;
+      padding: 0 20px;
+    }
+  }
 }
+

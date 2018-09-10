@@ -57,10 +57,15 @@
   }
 
   .slider {
+    position: relative;
+    height: 55vh;
     li {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
       img {
         display: block;
-        width: 100%;
+        //width: 100%;
         transition: all .4s ease;
       }
       h3 {
@@ -77,6 +82,10 @@
         &.empty {
           background: #b4b4b4;
         }
+      }
+
+      &.empty_container {
+        height: 55vh;
       }
     }
   }

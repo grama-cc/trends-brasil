@@ -41,6 +41,7 @@ export const i18n_pt_br = {
 	  description: "O gráfico representa a popularidade dos candidatos na busca diária do Google e os termos mais comuns associados a ele durante a semana. Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
 	  highlight: "Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
 	  button: "Saiba mais",
+	  legend: "Palavras relacionadas",
 	  more: [
 	  	'O gráfico de bolas representa a relevância das buscas dos candidatos à presidência nas eleições de 2018 no Brasil, e a nuvem de palavras mostra os termos mais buscados no Google para cada candidato. Os termos e candidatos mais frequentes aparecem maiores.'
 	  ],
@@ -121,7 +122,6 @@ export const i18n_pt_br = {
 	  	"O gráfico ajuda a entender melhor a curiosidade do usuário pelo candidato, revelando a distribuição de buscas pelos temas. ",
 		  "Dessa forma, é possível acompanhar uma transformação de interesses ao longo do tempo com os filtros."
 	  ],
-
 	  names:[
 			"Figuras políticas",
 			"Mídia",
@@ -129,7 +129,9 @@ export const i18n_pt_br = {
 			"Celebridades",
 			"Biografia",
 			"Outros"
-	  ]
+	  ],
+
+	  empty: "O candidato não teve buscas suficientes para gerar a visualização"
 	},
 
 	relationship: {
@@ -153,7 +155,8 @@ export const i18n_pt_br = {
 	  more: [
 	  	"A análise inicial dos dados coletados mostrou uma quantidade relevante de nomes de personalidades associada ao de candidatos. ",
 			"A visualização mede a intensidade dessa busca relacionada, distribuindo os nomes de acordo com a sua relevância, sendo que buscas mais frequentes se mantém próximas ao centro."
-	  ]
+	  ],
+	  empty: "O candidato não teve buscas suficientes para gerar a visualização"
 	},
 
   search: {
