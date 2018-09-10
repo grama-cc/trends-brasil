@@ -4,9 +4,9 @@
 	&[type='candidate'] {
 		display: block;
 		align-items: center;
+		margin: 20px 0 0;
 		@media screen and (min-width: $medium-devices) {
 			align-items: initial;
-			margin: 40px 0 0;
 		}
 	}
 	text-align: center;
