@@ -109,10 +109,29 @@ class Section extends React.Component {
                   justifyContent: currentCandidate ? 'flex-end' : 'flex-start'
                 }}
               > 
-                <li>
-                  <img src={`/static/img/busto/${bg}`} alt={name} />
-                  <h3 className={!this.props.filter ? css.empty : null}>{name}</h3>
+                <li 
+                  className={css.empty_container}
+                  style={{
+                    opacity: !this.props.filter ? 1 : 0
+                  }}
+                >
+                  <img src='/static/img/busto/none.svg' alt={i18n('slider.choose', lang)} />
+                  <h3 className={css.empty}>{i18n('slider.choose', lang)}</h3>
                 </li>
+
+                {candidates.map((c, i) => {
+                  return (
+                    <li
+                      key={i}
+                      style={{
+                        opacity: this.props.filter === c.id ? 1 : 0
+                      }}
+                    >
+                      <img src={`/static/img/busto/${c.slug}.png`} alt={c.name} />
+                      <h3>{c.name}</h3>
+                    </li>
+                  )
+                })}
               </ul>
 
               <button
