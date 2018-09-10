@@ -38,7 +38,7 @@ export const i18n_pt_br = {
 
   keywords: {
 	  title: "Por quem buscam",
-	  description: "O gráfico representa a popularidade dos candidatos na busca do Google e os termos mais comuns associados a ele.",
+	  description: "O gráfico representa a popularidade dos candidatos na busca diária do Google e os termos mais comuns associados a ele durante a semana. Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
 	  highlight: "Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
 	  button: "Saiba mais",
 	  more: [
