@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import css from './Select.scss';
 
+import {i18n} from "../../common/locale/i18n";
+
 class Select extends React.Component {
 
   onClick = (e) => {
@@ -13,7 +15,7 @@ class Select extends React.Component {
 
   render() {
     const val = this.props.val
-    const content = this.props.content
+    const lang = this.props.lang
 
     return (
       <div className={css.selected}>
@@ -22,14 +24,14 @@ class Select extends React.Component {
           onClick={this.onClick}
           disabled={val === 'bars'}
         >
-          Gráfico
+          {i18n('select.graphic', lang)}
         </button>
         <button
           value='terms'
           onClick={this.onClick}
           disabled={val === 'terms'}
         >
-          Termos
+          {i18n('select.terms', lang)}
         </button>
       </div>
     )

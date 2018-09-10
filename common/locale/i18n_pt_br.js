@@ -1,4 +1,24 @@
 export const i18n_pt_br = {
+
+	period: {
+		title: "Período",
+		week: "Semana",
+		month: "Mês"
+	},
+
+	filter: {
+		all: "Todos",
+		choose: "Escolha...",
+		related: "Relacionadas ao candidato",
+		candidates: "Todos os candidatos",
+		two: "Escolha dois candidatos:"
+	},
+
+	select: {
+		graphic: "Gráfico",
+		terms: "Termos"
+	},
+
   intro: {
     meta_tags: {
       title: 'Na busca do candidato',
@@ -33,6 +53,7 @@ export const i18n_pt_br = {
     title: 'O desempenho nas buscas',
 		description: 'Interesse pelos candidatos ao longo do tempo.',
 		highlight: '',
+		legend: "Interesse de busca por candidato, em valores de 0 a 100, indexados pelo Google Trends",
 		button: 'Saiba mais',
 		more: [
 	  	'O Google Trends disponibiliza a informação de interesse ao longo do tempo para cada candidato em valores indexados de 0 a 100, sendo 100 o ponto mais alto do gráfico. ',
@@ -45,21 +66,44 @@ export const i18n_pt_br = {
 	  title: 'O que buscam?',
 	  description: 'A comparação dos termos mais buscados em cinco temas predominantes.',
 	  highlight: '',
+	  legend: "Porcentagem das categorias (%) entre as buscas feitas para cada candidato",
 	  button: 'Saiba mais',
 	  more: [
 	  	'A análise dos termos de busca revelou a curiosidade por diferentes aspectos de cada candidato.',
-      ' Foi possível agrupar os dados iniciais em cinco grandes temas fornecendo um novo entendimento sobre o interesse dos usuários.'
+      'Foi possível agrupar os dados iniciais em cinco grandes temas fornecendo um novo entendimento sobre o interesse dos usuários.'
 	  ],
-	},
-  
-  relationship: {
-	  title: "Como os candidatos se relacionam",
-	  description: "As palavras de busca relacionada de cada candidato. Para descobrir quais termos são comum a ambos, escolha dois políticos para comparação.",
-	  highlight: '',
-	  button: "Saiba mais",
-	  more: [
-	  	"A comparação dos termos de cada candidato destaca a interessante relação das buscas tanto ideológicas quanto à aspectos de individuais, como biografia ou figuras políticas, e pode evidenciar posicionamentos opostos nos termos não comuns a ambos. ",
-		  "Para evitar redundâncias, buscas como “proposta de Bolsonaro” e “proposta Bolsonaro” foram agrupados em “proposta”."
+
+	  list:[
+	  	{
+	  		id: 6,
+	  		name:"Figuras políticas",
+	  		text:"Políticos em mandato ativo e demais personalidades do mundo político, como ministros do Supremo e juízes federais."
+	  	},
+	  	{
+	  		id: 5,
+	  		name:"Mídia",
+	  		text:"Buscas relacionadas a notícias e seus veículos de publicação, como jornais, sites ou programas de TV."
+	  	},
+	  	{
+	  		id: 4,
+	  		name:"Ideologia",
+	  		text:"Todos os termos relacionados à ideologia política dos candidatos, como plano de governo e declarações."
+	  	},
+	  	{
+	  		id: 3,
+	  		name:"Celebridades",
+	  		text:"Cantores, atores, ex-BBBs… quem orbita os candidatos à Presidência na busca relacionada."
+	  	},
+	  	{
+	  		id: 1,
+	  		name:"Biografia",
+	  		text:"Buscas sobre a vida pública dos candidatos, como cargos ocupados ou pretendidos e envolvimento em casos de corrupção."
+	  	},
+	  	{
+	  		id: 2,
+	  		name:"Outros",
+	  		text:"Termos amplamente buscados que não se enquadram em nenhuma classificação."
+	  	}
 	  ]
 	},
 
@@ -71,6 +115,17 @@ export const i18n_pt_br = {
 	  more: [
 	  	"O gráfico ajuda a entender melhor a curiosidade do usuário pelo candidato, revelando a distribuição de buscas pelos temas. ",
 		  "Dessa forma, é possível acompanhar uma transformação de interesses ao longo do tempo com os filtros."
+	  ]
+	},
+
+	relationship: {
+	  title: "Como os candidatos se relacionam",
+	  description: "As palavras de busca relacionada de cada candidato. Para descobrir quais termos são comum a ambos, escolha dois políticos para comparação.",
+	  highlight: '',
+	  button: "Saiba mais",
+	  more: [
+	  	"A comparação dos termos de cada candidato destaca a interessante relação das buscas tanto ideológicas quanto à aspectos de individuais, como biografia ou figuras políticas, e pode evidenciar posicionamentos opostos nos termos não comuns a ambos. ",
+		  "Para evitar redundâncias, buscas como “proposta de Bolsonaro” e “proposta Bolsonaro” foram agrupados em “proposta”."
 	  ]
 	},
 

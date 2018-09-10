@@ -6,6 +6,8 @@ import * as d3Axis from 'd3-axis'
 
 import css from './ChartVertical.scss'
 
+import {i18n} from '../../common/locale/i18n';
+
 class Chart extends React.Component { 
 
   constructor(props) {
@@ -43,10 +45,12 @@ class Chart extends React.Component {
       .domain([0, this.props.data.max_value])
       .range([this.cfg.width, this.cfg.margin.left]);
 
+    const lang = this.props.lang;
+
     return (
       <div className={css.container} type={this.props.type}>
 
-        <p className={css.percent}>Porcentagem das categorias (%) entre as buscas feitas para cada candidato</p>
+        <p className={css.percent}>{i18n('category.legend', lang)}</p>
 
         <div className={css.content}>
           <svg

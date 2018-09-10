@@ -16,10 +16,10 @@ class Description extends React.Component {
 
   open = () => this.setState({ open: !this.state.open })
 
-  onChangeLang = (e) => {
+  /*onChangeLang = (e) => {
     const lang = e.currentTarget.lang
     this.props.onChangeLang(lang)
-  }
+  }*/
 
   render() {
 

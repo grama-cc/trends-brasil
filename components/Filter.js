@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import css from './Filter.scss';
 import Arrow from './Arrow.js';
 
+import {i18n} from '../common/locale/i18n';
+
 class Filter extends React.Component {
 
   constructor(props) {
@@ -55,15 +57,16 @@ class Filter extends React.Component {
 
   renderDropdown(dropdown, dropdownFilter, dropdownSelected, dropdownState, dropdownCompare, dropdownFunc) {
     const candidates = this.props.candidates;
+    const lang = this.props.lang;
 
     return (
       <ul onClick={dropdown} className={css.selected} >
         <p className={!this.props.filter ? css.show : null}>
-          Escolha dois candidatos:
+          {i18n('filter.two', lang)}
         </p>
 
         <li className={css.choose}>
-          <span>{dropdownFilter ? dropdownSelected : this.props.all ? 'Todos' : 'Escolha...'}</span>
+          <span>{dropdownFilter ? dropdownSelected : this.props.all ? i18n('filter.all', lang) : i18n('filter.choose', lang)}</span>
           <Arrow arrowColor={this.props.arrowColor} />
         </li>
 
@@ -72,7 +75,7 @@ class Filter extends React.Component {
             onClick={this.onClickClear}
             className={!this.props.filter ? css.disabled : null}
           >
-            {this.props.all ? 'Todos' : 'Escolha...'}
+            {this.props.all ?  i18n('filter.all', lang) :  i18n('filter.choose', lang)}
           </li>
           {candidates.map((c, idx) => (
             <li 
@@ -86,7 +89,7 @@ class Filter extends React.Component {
           ))}
         </div>
 
-        {this.props.relationship ? <p className={css.legend}>Relacionadas ao candidato</p> : null}
+        {this.props.relationship ? <p className={css.legend}>{i18n('filter.related', lang)}</p> : null}
       </ul>
     )
   }
@@ -96,12 +99,13 @@ class Filter extends React.Component {
     const filter = this.props.filter;
     const compare = this.props.compare;
     const relationship = this.props.relationship;
+    const lang = this.props.lang;
 
     const f = candidates.filter(c => c.id == filter);
     const c = candidates.filter(c => c.id == compare);
 
-    const selectedNameFilter = filter ? f[0].name : 'Escolha...';
-    const selectedNameCompare = compare ? c[0].name : 'Escolha...';
+    const selectedNameFilter = filter ? f[0].name : i18n('filter.choose', lang);
+    const selectedNameCompare = compare ? c[0].name : i18n('filter.choose', lang);
 
     const filterSlug = filter ? f[0].slug + '.png' : 'none.svg';
     const filterColor = filter ? f[0].color : null;
@@ -116,7 +120,7 @@ class Filter extends React.Component {
             onClick={this.onClickClear}
             className={`${!this.props.filter ? css.disabled : null} ${this.props.all ? css.show : null}`}
           >
-            Todos os candidatos
+            {i18n('filter.candidates', lang)}
           </p>
           <ul
             className={this.props.all ? css.gray : null}

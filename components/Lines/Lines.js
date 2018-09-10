@@ -5,7 +5,9 @@ import * as d3 from "d3";
 import * as d3Axis from 'd3-axis'
 
 import Api from '../../lib/Api';
-import content from '../../static/json/lines.json'
+// import content from '../../static/json/lines.json'
+
+import {i18n} from '../../common/locale/i18n';
 
 import Period from '../Period/Period.js';
 import Filter from '../Filter.js';
@@ -100,6 +102,7 @@ class Lines extends React.Component {
           all
           arrowColor='#b4b4b4'
           lineFilter
+          lang={this.props.lang}
         />
       )
     }
@@ -153,9 +156,11 @@ class Lines extends React.Component {
       return 0;
     });
 
+    const lang = this.props.lang;
+
     return (
       <React.Fragment>
-        <p className={css.percent}>Valores entre 0 e 100 indexados pelo Google Trends</p>
+        <p className={css.percent}>{i18n('lines.legend', lang)}</p>
         <div className={css.chart_container}>
           <div className={css.space}/>
           <svg 
@@ -247,6 +252,7 @@ class Lines extends React.Component {
           all
           period={this.state.period}
           onClickPeriod={this.onClickPeriod}
+          lang={this.props.lang}
         />
 				<Social
           stroke='#b4b4b4'

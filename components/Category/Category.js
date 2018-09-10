@@ -11,7 +11,9 @@ import Select from './Select.js';
 import Chart from './Chart'
 import Cloud from '../Cloud.js';
 
-import ChartVertical from './ChartVertical'
+import ChartVertical from './ChartVertical';
+
+import {i18n} from '../../common/locale/i18n';
 
 class Category extends React.Component {
 
@@ -56,16 +58,20 @@ class Category extends React.Component {
     this.setState({ view: val })
   }
 
-  onChangeLang = (e) => {
+  /*onChangeLang = (e) => {
     const lang = e.currentTarget.lang
     this.props.onChangeLang(lang)
-  }
+  }*/
 
   renderNav (type) {
     const idx = this.state.idx;
+    const lang = this.props.lang
+
     return(
       <nav className={type === 'btn' ? `${css.btn} ${css.nav}` : `${css.nav}`}>
-        {this.props.bars ? this.props.bars.map((d, i) => {
+
+      {/*this.props.bars ? this.props.bars.map((d, i) => {*/}
+        {i18n('category.list', lang).map((d, i) => {
           return(
             <button 
               className={idx === i ? `${css.clicked} ${css.item}` : `${css.item}`  }
@@ -79,7 +85,7 @@ class Category extends React.Component {
               {type === 'btn' ? null : d.name}
             </button>
           )
-        }) : null}
+        })}
     </nav>
     )
   }
@@ -88,9 +94,9 @@ class Category extends React.Component {
 
     const idx = this.state.idx;
     const view = this.state.view;
-    const lang = this.props.lang
+    const lang = this.props.lang;
 
-    const text = [
+    /*const text = [
       "Políticos em mandato ativo e demais personalidades do mundo político, como ministros do Supremo e juízes federais.",
       
       "Buscas relacionadas a notícias e seus veículos de publicação, como jornais, sites ou programas de TV.",
@@ -102,7 +108,7 @@ class Category extends React.Component {
       "Buscas sobre a vida pública dos candidatos, como cargos ocupados  ou pretendidos e envolvimento em casos de corrupção.",
       
       "Termos amplamente buscados que não se enquadram em nenhuma classificação.",
-    ]
+    ]*/
     
     if(!this.props.candidates && !this.props.words) {
       return <div className={css.loading}>Loading...</div>
@@ -132,8 +138,8 @@ class Category extends React.Component {
               /> 
 
               <div className={css.text}>
-                <h2>{this.props.bars ? this.props.bars[idx].name : null}</h2>
-                <p>{text[idx]}</p>
+                <h2>{i18n(`category.list`, lang)[idx].name}</h2>
+                <p>{i18n(`category.list`, lang)[idx].text}</p>
               </div>
 
               <button
@@ -151,8 +157,20 @@ class Category extends React.Component {
             />
             {this.props.bars ? 
               <React.Fragment>
-                <div className={css.desk}><Chart type={view} data={this.props.bars[idx]}/></div>
-                <div className={css.mobile}><ChartVertical type={view} data={this.props.bars[idx]}/></div>
+                <div className={css.desk}>
+                  <Chart 
+                    lang={this.props.lang}
+                    type={view} 
+                    data={this.props.bars[idx]}
+                  />
+                </div>
+                <div className={css.mobile}>
+                  <ChartVertical
+                    lang={this.props.lang}
+                    type={view}
+                    data={this.props.bars[idx]}
+                  />
+                </div>
               </React.Fragment>
               : 'Loading...'
             }

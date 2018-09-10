@@ -1,49 +1,134 @@
 export const i18n_en_us = {
- intro: {
+
+	period: {
+		title: "Period",
+		week: "Week",
+		month: "Month"
+	},
+
+	filter: {
+		all: "All",
+		choose: "Choose...",
+		related: "Related to candidate",
+		candidates: "All candidates",
+		two: "Choose two candidates:"
+	},
+
+	select: {
+		graphic: "Graphic",
+		terms: "Terms"
+	},
+
+ 	intro: {
     meta_tags: {
-      title: 'On the search for a candidate',
+      title: "On the search for a candidate",
       description: 'Google',
     },
-    title: 'On the search for a',
-    highlight: 'candidate',
-    description: ["What are brazilians googling on 2018's elections?",
-      'Take a look at what they search about the candidates for president.'],
+    title: "In search of the",
+    highlight: "candidate",
+    description: [
+    	"What are Brazilians googling about on the 2018 elections?",
+    	"Check out what searches are being made about president candidates."
+    ],
   },
+
+  keywords: {
+	  title: "Who do people search for on Google?",
+	  description: "The graphic represents the candidate's daily popularity on Google Search and the most common search terms associated to them during the week.",
+	  highlight: "The more frequent the search, the bigger the candidate and terms are.",
+	  
+	  button: 'Learn more',
+
+	  more: [
+	  	"The bubble chart represents the search relevance for each of Brazil’s 2018th presidential race candidate.",
+	  	"The word cloud shows the most common search terms on Google about each candidate.",
+	  	"The more frequent the search, the bigger the candidate and terms are."
+	  ],
+
+	  select: {
+	  	graphic: "Graphic",
+	  	candidate: "Candidate"
+		},
+
+		buttons: {
+			choose_candidate: "Click in a candidate"
+		}
+	},
+
+	lines: {
+    title: 'Search performance',
+		description: 'Interest in the candidates over time.',
+		highlight: "",
+		legend: "Search interest for each candidate, from 0 to 100, indexed by Google Trends",
+		button: 'Learn more',
+		more: [
+			"Google Trends tracks the interests over time for each candidate and displays the data in an index from 0 to 100, where 100 is the highest peak of the chart, and all the other values are set in comparison.",
+			"It is possible to visualize how each candidate's search develops over time with filters by week, month and year and every candidate's personal evolution.",
+		],
+  },
+
   category: {
     title: 'What do they search for?',
-    description: 'The comparison of the most searched terms in five predominant themes.',
-	button: 'Learn more',
-	more: [
-	  "The analysis of search terms revealed the user's curiosity about different aspects of each candidate.",
-      " It was possible to sort the initial data into five major themes and provide a new understanding of the user's interest." ,
-	]
+    description: "The comparison of the most searched terms in five predominant themes.",
+		highlight: "",
+		legend: "Percentage of each researched category (%) for each candidate",
+		button: 'Learn more',
+		more: [
+			"The analysis of search terms revealed users’ curiosity about different aspects of each candidate.",
+			"It was possible to sort the initial data into five major themes and provide a new understanding of the users’ interest."
+		],
+
+		list:[
+	  	{
+	  		id: 6,
+	  		name:"Political figures",
+	  		text:"Politicians in office and other personalities from the political world, such as Supreme ministers, federal judges."
+	  	},
+	  	{
+	  		id: 5,
+	  		name:"Media",
+	  		text:"Related searches about news and publishers, such as newspapers, websites or TV shows."
+	  	},
+	  	{
+	  		id: 4,
+	  		name:"Ideology",
+	  		text:"All searches about candidate's ideology, such as government plans and statements."
+	  	},
+	  	{
+	  		id: 3,
+	  		name:"Celebrities",
+	  		text:"Singers, actors, ex-BBBs...those orbiting the Presidential candidates in the related searches."
+	  	},
+	  	{
+	  		id: 1,
+	  		name:"Biography",
+	  		text:"Searches about politician's lives, such as positions held or wanted and involvement in cases of corruption."
+	  	},
+	  	{
+	  		id: 2,
+	  		name:"Others",
+	  		text:"Relevant search terms that do not fit under any classification."
+	  	}
+	  ]
   },
-  lines: {
-    title: 'Search performance',
-	description: 'Interest in the candidates over time.',
-	button: 'Learn more',
-	more: [
-	  "Google Trends tracks the interests over time for each candidate and the data are displayed with an index of 0 to 100, where 100 is the highest pick of the chart. All the other values are set in comparison. ",
-      "It is possible to visualize the evolution of the candidates search through time with filters by week, month and year and one candidate's personal evolution"
-	],
-  },
-  keywords: {
-	  title: "Who do people search on Google?",
-	  description: "Candidate's popularity on Google search and most common search terms associated to them.",
-	  button: 'Learn more',
+
+  radar: {
+	  title: "How do they search for?",
+	  description: "The radar chart shows how much each subject was searched.",
+	  button: "Learn more",
 	  more: [
-	  	"The bubble chart represents the relevance of each candidate for the Brazil 2018 presidential race. ",
-		  "The word cloud shows the most common search terms on Google for each candidate. ",
-		  "The more frequent the search, bigger is the candidate and the terms."
-	  ],
-	  select: {
-	  graphic: "Graphic",
-	  candidate: "Candidate"
+	  	"The chart helps to understand the users' curiosity of a candidate, revealing the search distribution by themes.",
+		  "It is possible to track the transition of interests over time with the filters."
+	  ]
 	},
-	buttons: {
-		"choose_candidate": "Click in a candidate"
-	}
-	},
+
+  
+
+  
+
+
+
+  
   relationship: {
 	  title: 'How do they correlate?',
 	  description: 'The most common and the most unusual search terms between two candidates. Choose two candidates to compare.',
@@ -62,15 +147,7 @@ export const i18n_en_us = {
 		  "The visualization measures the volume of these searches, displaying the names accordingly their relevance, where the most frequent searches appear near the center."
 	  ]
 	},
-	radar: {
-	  title: "How do they search for?",
-	  description: "The radar chart shows how much each subject was searched.",
-	  button: "Learn more",
-	  more: [
-	  	"The chart helps to understand the users' curiosity of a candidate, revealing the search distribution by themes.",
-		  "It is possible to track the transition of interests over time with the filters."
-	  ]
-	},
+	
   search: {
     input: 'Search for topic or category',
   },
