@@ -107,9 +107,7 @@ class Orbital extends React.Component {
 
       const lang = this.props.lang;
 
-
       const slug = this.props.candidates ? this.props.candidates.filter((c) => filter === c.id) : [];
-
 
       return ( 
         <React.Fragment>

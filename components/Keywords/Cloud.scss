@@ -1,4 +1,4 @@
-@import '../lib/scss/variables.scss';
+@import '../../lib/scss/variables.scss';
 
 .cloud {
 	overflow: hidden;
@@ -16,7 +16,7 @@
 		display: inline;
 		position: relative;
 		margin-top: 17px;
-		padding: 0 5px;
+		padding: 5px;
 
 		transition: opacity .4s ease;
     animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);

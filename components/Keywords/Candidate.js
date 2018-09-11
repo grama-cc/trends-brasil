@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick'
 
 import css from './Candidate.scss';
-import Cloud from '../Cloud.js';
+import Cloud from './Cloud.js';
 import {i18n} from "../../common/locale/i18n";
 
 class Candidate extends React.Component {
@@ -19,28 +19,6 @@ class Candidate extends React.Component {
     const id = Number(e.currentTarget.dataset.id)
     this.props.onFilter(id)
   }
-
-  /*onPrev = (e) => {
-    const idx = Number(e.currentTarget.dataset.index);
-    const candidates = this.props.candidates;
-
-    if(idx > 0) {
-      this.props.onFilter(candidates[idx - 1].id)
-    }
-  }
-
-  onNext = (e) => {
-    const idx = Number(e.currentTarget.dataset.index)
-    const candidates = this.props.candidates;
-
-    if(!idx) {
-      this.props.onFilter(candidates[0].id)
-    }
-
-    if(idx < candidates.length - 1) {
-      this.props.onFilter(candidates[idx + 1].id)
-    }
-  }*/
 
   onPrev = (e) => {
     const idx = Number(e.currentTarget.dataset.index);

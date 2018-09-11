@@ -92,7 +92,6 @@
 
       .bars {
         text-align: center;
-        // background: yellow;
         display: none;
         &[val='bars'] {
           display: block;
@@ -102,7 +101,7 @@
 
       .terms {
         text-align: center;
-         // background: yellow;
+        overflow: hidden;
         display: none;
         &[val='terms'] {
           display: block;
