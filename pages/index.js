@@ -142,7 +142,7 @@ class Home extends React.Component {
           candidates={candidates}
           words={words}
           bars={bars}
-        />
+        />*/}
 
         <Radar
           onFilter={this.onFilter} 
@@ -152,7 +152,7 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        <Relationship 
+        {/*<Relationship 
           onFilter={this.onFilter} 
           onCompare={this.onCompare}
           filter={this.state.filter}
@@ -165,13 +165,13 @@ class Home extends React.Component {
           lang={this.state.lang}
         />*/}
 
-        <Orbital
+        {/*<Orbital
           onFilter={this.onFilter} 
           filter={this.state.filter}
           candidates={candidates}
           arrowColor='#fff'
           lang={this.state.lang}
-        />
+        />*/}
 
         {/*<Footer
           lang={this.state.lang}
