@@ -111,7 +111,7 @@ class Home extends React.Component {
           url='https://www.nabuscadocandidato.com.br/'
         />
          
-        <Intro
+        {/*<Intro
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
@@ -163,7 +163,7 @@ class Home extends React.Component {
           relationship={this.state.relationship}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
-        />
+        />*/}
 
         <Orbital
           onFilter={this.onFilter} 
@@ -173,9 +173,9 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        <Footer
+        {/*<Footer
           lang={this.state.lang}
-        />
+        />*/}
 
         {/*<Clipping />*/}
       </Layout>

@@ -30,6 +30,18 @@
     height: 60vh;
   }
 
+  .image {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-size: 100%;
+    border-radius: 100%;
+
+    @media screen and (min-width: $medium-devices){
+      display: none;
+    }
+  }
+
   .middle {
     position: absolute;
     left: 50%;
@@ -46,25 +58,58 @@
   }
 
   svg {
-    // margin: 0 auto;
     padding: 0 20px;
-    // transform: rotate(90deg);
-    //.stroke {
-      //transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
-    //}
     .text {
       font-weight: bold;
     }
     .point {
       cursor: pointer;
-      circle, text {
-        transition: fill .4s ease;
+      position: absolute;
+
+      animation-timing-function: linear;
+      animation-duration: 100s;
+      animation-delay: 1s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+      animation-direction: normal;
+
+      &:nth-child(odd) {
+        animation-direction: reverse;
       }
+
       &:hover {
         circle, text {
           fill: #4b4b4b;
           transition: fill .4s ease;
         }
+      }
+
+      circle, text {
+        transition: fill .4s ease;
+      }
+
+      circle{
+        @keyframes circleIntro {
+          0% { r: 0px }
+          100% { r: 7px }
+        }
+        animation-name: circleIntro;
+        animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        r: 0px
+      }
+
+      text {
+        @keyframes textIntro {
+          0% { font-size: 0px }
+          100% { font-size: 10px }
+        }
+        animation-name: textIntro;
+        animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        font-size: 0px
       }
     }
     .rect {
