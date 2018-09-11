@@ -82,6 +82,27 @@ class Graphic extends React.Component {
         >
           <defs>
             {circles.map((c, idx) => {
+              /*let styleSheet = document.styleSheets[0];
+
+              let opa = `
+              @keyframes oi${idx} {
+                0% {
+                  width: 0;
+                  height: 0;
+                }
+                100% {
+                  width: ${c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2}
+                  height: ${c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
+                }
+              }`;
+
+              styleSheet.insertRule(opa, styleSheet.cssRules.length);
+              
+              let epa = {
+                animationName: `oi${idx}`,
+                animationDelay: `${0.2*idx}s`
+              };*/
+
               return (
                 <pattern 
                   key={idx}
@@ -96,6 +117,8 @@ class Graphic extends React.Component {
                     x="0" 
                     y="0"
 
+                    // style={epa}
+
                     height={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
                     width={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2}
 
@@ -108,6 +131,27 @@ class Graphic extends React.Component {
           </defs>
 
           {circles.map((c, idx) => {
+
+            let styleSheet = document.styleSheets[0];
+
+            let keyframes = `
+            @keyframes animation${idx} {
+              0% {
+                r:0;
+              }
+              100% {
+                r:${c.r < 10 ? 10 : c.r};
+              }
+            }`;
+
+            styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+            
+            let style = {
+              animationName: `animation${idx}`,
+              animationDelay: `${0.2*idx}s`
+              //transform:`translate(${x}px, ${y}px)`,
+            };
+
             return (
               <g
                 key={idx}
@@ -119,8 +163,8 @@ class Graphic extends React.Component {
               >
                 <circle
                   r={c.r < 10 ? 10 : c.r}
-                  // r={c.r === 0 ? 10 : c.r}
                   fill={`url(#img${idx})`}
+                  // style={style}
                 />
               </g>
             )

@@ -239,7 +239,7 @@ $circle-size: responsive(20, 60);
 			background-repeat: no-repeat;
 			background-size: 100%;
 			box-shadow: 0 0 0 3px #fff;
-			transition: background .4s ease;
+			transition: background .4s ease, box-shadow .4s ease;
 			cursor: pointer;
 
 			margin: 0 0 5px;
