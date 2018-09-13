@@ -27,7 +27,7 @@ class Home extends React.Component {
       relationship: null,
       bars: null,
       lang: 'port',
-      period: 'month'
+      period: 'month',
     };
   }
 

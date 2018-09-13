@@ -30,6 +30,22 @@ class Graphic extends React.Component {
 
     return (
       <div className={css.modal} onClick={this.closeModal}>
+        <button>
+          <svg 
+            width="18px" 
+            height="18px" 
+            viewBox="0 0 18 18" 
+          >
+            <g 
+              stroke="#4a4a4a"
+              strokeWidth="1"
+              fill="none"
+            >
+              <path d="M16.2273888,0 L0,16.2273888" />
+              <path d="M0,0 L16.2273888,16.2273888" />
+            </g>
+          </svg>
+        </button>
         <h3>{candidate[0].name}</h3>
         {words.map((word, index) => (
           <p key={index}>
@@ -138,7 +154,6 @@ class Graphic extends React.Component {
                 opacity={filter === c.data.id ? 1 : .4}
                 className={filter === c.data.id ? css.open : null}
               >
-              {console.log(c.r)}
                 <circle
                   r={c.r < 10 ? 10 : c.r}
                   fill={`url(#img${idx})`}

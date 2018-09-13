@@ -14,12 +14,13 @@ class Description extends React.Component {
     }
   }
 
-  open = () => this.setState({ open: !this.state.open })
+  open = () => {
+    this.setState({ open: !this.state.open  })
+  }
 
-  /*onChangeLang = (e) => {
-    const lang = e.currentTarget.lang
-    this.props.onChangeLang(lang)
-  }*/
+  close = () => {
+    this.setState({ open: false  })
+  }
 
   render() {
 
@@ -27,7 +28,7 @@ class Description extends React.Component {
     const lang = this.props.lang
 
     return (
-      <div className={css.description}>
+      <div className={css.description} onBlur={ this.close }>
         <h2>{i18n(`${content}.title`, lang)}</h2>
         <p>{i18n(`${content}.description`, lang)} <b>{i18n(`${content}.highlight`, lang)}</b></p>
         <button
