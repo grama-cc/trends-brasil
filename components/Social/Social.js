@@ -13,7 +13,7 @@ class Social extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      open: null,
+      open: 'download',
       modal: false,
       value: '',
       copied: false,
@@ -137,7 +137,7 @@ class Social extends React.Component {
         {this.props.children}
 
         <ul className={`${css.social} ${this.props.bottom ? css.bottom : null} ${this.props.share ? css.share : null}`}>
-          {!this.props.share ?
+          {/*!this.props.share ?
           <li>
             <a
               target="_blank"
@@ -146,7 +146,7 @@ class Social extends React.Component {
             >
               <Media stroke={this.props.stroke} />
             </a>
-          </li> : null}
+          </li> : null*/}
           <li>
             <a 
               target="_blank"
@@ -158,7 +158,7 @@ class Social extends React.Component {
           <li>
             <a 
               target="_blank" 
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A//trends-brasil.herokuapp.com/"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.nabuscadocandidato.com.br/"
             >
               <Facebook stroke={this.props.stroke} />
             </a>

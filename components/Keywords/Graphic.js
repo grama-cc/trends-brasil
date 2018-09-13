@@ -82,26 +82,7 @@ class Graphic extends React.Component {
         >
           <defs>
             {circles.map((c, idx) => {
-              /*let styleSheet = document.styleSheets[0];
-
-              let opa = `
-              @keyframes oi${idx} {
-                0% {
-                  width: 0;
-                  height: 0;
-                }
-                100% {
-                  width: ${c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2}
-                  height: ${c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
-                }
-              }`;
-
-              styleSheet.insertRule(opa, styleSheet.cssRules.length);
-              
-              let epa = {
-                animationName: `oi${idx}`,
-                animationDelay: `${0.2*idx}s`
-              };*/
+              const size = c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2
 
               return (
                 <pattern 
@@ -116,42 +97,38 @@ class Graphic extends React.Component {
                   <image 
                     x="0" 
                     y="0"
-
-                    // style={epa}
-
-                    height={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
-                    width={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2}
-
+                    height={size} 
+                    width={size}
                     xlinkHref={`https://www.nabuscadocandidato.com.br/static/img/candidates/${c.data.slug}.png`}
                     className={filter === c.data.id ? css.openImage : null}
-                  />
+                  >
+                    {/*<animate 
+                      attributeName="width"
+                      from={0}
+                      to={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
+                      dur="1s"
+                      begin={`${(0.2 * idx) + 0.4}s`}
+                      fill="freeze"
+                      calcMode="paced"
+                      repeatCount="1"
+                    />
+                    <animate 
+                      attributeName="height"
+                      from={0}
+                      to={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
+                      dur="1s"
+                      begin={`${(0.2 * idx) + 0.4}s`}
+                      fill="freeze"
+                      calcMode="paced"
+                      repeatCount="1"
+                    />*/}
+                </image>
                 </pattern>
               )
             })}
           </defs>
 
           {circles.map((c, idx) => {
-
-            let styleSheet = document.styleSheets[0];
-
-            let keyframes = `
-            @keyframes animation${idx} {
-              0% {
-                r:0;
-              }
-              100% {
-                r:${c.r < 10 ? 10 : c.r};
-              }
-            }`;
-
-            styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-            
-            let style = {
-              animationName: `animation${idx}`,
-              animationDelay: `${0.2*idx}s`
-              //transform:`translate(${x}px, ${y}px)`,
-            };
-
             return (
               <g
                 key={idx}
@@ -161,11 +138,22 @@ class Graphic extends React.Component {
                 opacity={filter === c.data.id ? 1 : .4}
                 className={filter === c.data.id ? css.open : null}
               >
+              {console.log(c.r)}
                 <circle
                   r={c.r < 10 ? 10 : c.r}
                   fill={`url(#img${idx})`}
-                  // style={style}
-                />
+                >
+                  {/*<animate 
+                    attributeName="r"
+                    from={0}
+                    to={c.r < 10 ? 10 : c.r} 
+                    dur="1s"
+                    begin={`${(0.2 * idx) + 0.4}s`}
+                    fill="freeze"
+                    calcMode="paced"
+                    repeatCount="1"
+                  />*/}
+                </circle>
               </g>
             )
           })}

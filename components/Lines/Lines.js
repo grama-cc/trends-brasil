@@ -201,6 +201,9 @@ class Lines extends React.Component {
                 key={date.id}
                 className={css.date}
                 transform={`translate(${scaleTime(this.getDate(date.day))}, 0)`}
+                style={{
+                  display: scaleTime(this.getDate(date.day)) > 800 ? 'none' : 'block'
+                }}
               >
                 <line y2={this.cfg.height} />
                 <rect 

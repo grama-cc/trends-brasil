@@ -2,6 +2,12 @@
 
 .footer {
 	padding: responsive(20, 80) responsive(20, 80);
+
+	@media screen and (min-width: $medium-devices) {
+		.project, .contact {
+			width: 33%;
+		}
+	}
   .container, .content {
   	display: flex;
 	  flex-direction: column;
@@ -9,14 +15,14 @@
 	  @media screen and (min-width: $medium-devices) {
 	  	flex-direction: row;
 	  	.project {
-	  		width: 75%;
+	  		//width: 75%;
 	  	}
 	  }
 	}
 	.content {
 		@media screen and (min-width: $medium-devices) {
 			div {
-				width: 45%;
+				//width: 45%;
 			}
 		}
 	}

@@ -17,6 +17,7 @@ class Footer extends React.Component {
     return (
       <section className={css.footer}>
         <div className={css.container}>
+
           <div className={css.project}>
             <h2>{i18n('footer.project.title', lang)}</h2>
             <div className={css.content}>
@@ -25,13 +26,25 @@ class Footer extends React.Component {
                   <p key={index}>{text}</p>
                 ))}
               </div>
-              <div>
+              {/*<div>
                 {i18n('footer.project.columnRight', lang).map((text, index) => (
+                  <p key={index}>{text}</p>
+                ))}
+              </div>*/}
+            </div>
+          </div>
+
+          <div className={css.contact}>
+            <h2>{i18n('footer.contact.title', lang)}</h2>
+            <div className={css.content}>
+              <div>
+                {i18n('footer.contact.column', lang).map((text, index) => (
                   <p key={index}>{text}</p>
                 ))}
               </div>
             </div>
           </div>
+
           <div className={css.team}>
             <h2>{i18n('footer.team.title', lang)}</h2>
             <ul>

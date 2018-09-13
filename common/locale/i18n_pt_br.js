@@ -31,19 +31,20 @@ export const i18n_pt_br = {
     title: 'Na busca do',
     highlight: 'candidato',
     description: [
-    	'O que os brasileiros procuram no Google sobre as eleições de 2018?',
-      'Veja o que pesquisam sobre os candidatos à presidência\n'
+    	'Durante as eleições de 2018, milhões de brasileiros usam o Google para buscar pelos candidatos que disputam o cargo de Presidente da República.',
+    	'Quais são os assuntos que despertam maior interesse? Como se comparam as buscas entre os presidenciáveis? Quais são as tendências ao longo do tempo?',
+    	'Descubra as eleições brasileiras de 2018 através das lentes do Google Trends.'
     ],
   },
 
   keywords: {
-	  title: "Por quem buscam",
-	  description: "O gráfico representa a popularidade dos candidatos na busca diária do Google e os termos mais comuns associados a ele durante a semana. Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
-	  highlight: "Quanto maior o interesse de busca pelo candidato, maior a proporção das imagens.",
+	  title: "Mais buscados",
+	  description: "Quanto maior o círculo, maior é o interesse de busca pelo candidato nas últimas 24 horas. A nuvem de palavras mostra os termos mais buscados em relação ao presidenciável nos últimos sete dias.",
+	  highlight: " Use as setas para navegar pelos candidatos ou escolha diretamente pela foto",
 	  button: "Saiba mais",
 	  legend: "Palavras relacionadas",
 	  more: [
-	  	'O gráfico de bolas representa a relevância das buscas dos candidatos à presidência nas eleições de 2018 no Brasil, e a nuvem de palavras mostra os termos mais buscados no Google para cada candidato. Os termos e candidatos mais frequentes aparecem maiores.'
+	  	"O gráfico de círculos representa o interesse de busca no Google pelos candidatos à presidência da república nas últimas 24 horas. A nuvem de palavras mostra os termos mais buscados no Google para cada um dos candidatos nos últimos sete dias. Os termos e os candidatos mais frequentes aparecem maiores."
 	  ],
 	  select: {
 	  	graphic: "Gráfico",
@@ -55,27 +56,28 @@ export const i18n_pt_br = {
 	},
 
 	lines: {
-    title: 'O desempenho nas buscas',
-		description: 'Interesse pelos candidatos ao longo do tempo.',
+    title: 'Interesse ao longo do tempo',
+		description: 'Veja o nível de interesse nos candidatos desde o início da campanha eleitoral.',
 		highlight: '',
 		legend: "Interesse de busca por candidato, em valores de 0 a 100, indexados pelo Google Trends",
 		button: 'Saiba mais',
 		more: [
-	  	'O Google Trends disponibiliza a informação de interesse ao longo do tempo para cada candidato em valores indexados de 0 a 100, sendo 100 o ponto mais alto do gráfico. ',
-      'Todos os outros valores são por comparação. ',
-      'É possível visualizar a evolução temporal do volume de busca dos candidato com os filtros por semana, mês e ano, e sua evolução individual',
+			"O Google Trends disponibiliza a informação de interesse ao longo do tempo para cada candidato em valores indexados de 0 a 100, sendo 100 o ponto mais alto do gráfico.",
+			"Todos os outros valores são calculados em relação ao ponto mais alto do gráfico no período.",
+			"Veja a evolução temporal do volume de busca dos candidato com os filtros por semana e mês, e a evolução individual.",
+			"O filtro “semana” mostra os dados em relação aos últimos sete dias. O filtro “mês” mostra os dados em relação aos últimos trinta dias."
     ],
   },
 
   category:{
-	  title: 'O que buscam?',
-	  description: 'A comparação dos termos mais buscados em cinco temas predominantes.',
+	  title: 'Temas predominantes',
+	  description: 'Veja a comparação dos termos mais buscados dentro de cinco categorias que dominaram as buscas.',
 	  highlight: '',
 	  legend: "Porcentagem das categorias (%) entre as buscas feitas para cada candidato",
 	  button: 'Saiba mais',
 	  more: [
-	  	'A análise dos termos de busca revelou a curiosidade por diferentes aspectos de cada candidato.',
-      'Foi possível agrupar os dados iniciais em cinco grandes temas fornecendo um novo entendimento sobre o interesse dos usuários.'
+	  	'Cada candidato desperta interesse em diferentes temas e assuntos da sua trajetória.',
+      'Cada tema reúne buscas de diferentes tipos feitas em conjunto com as do candidato. São nomes de celebridade, curiosidades sobre a biografia, associação a figuras políticas, questões de ideologia e assuntos da mídia.'
 	  ],
 
 	  list:[
@@ -113,14 +115,14 @@ export const i18n_pt_br = {
 	},
 
   radar: {
-	  title: "Como buscam",
-	  description: "A região do gráfico indica o interesse nos diferentes temas. O deslocamento da área em relação ao centro revela a importância de cada tema na busca dos candidatos.",
+	  title: "Distribuição dos temas",
+	  description: "O gráfico mostra o deslocamento de interesse em cada uma das cinco categorias que dominaram as buscas.",
 	  highlight: "",
 	  legend: "Porcentagem das categorias (%) entre as buscas feitas para cada candidato",
 	  button: "Saiba mais",
 	  more: [
-	  	"O gráfico ajuda a entender melhor a curiosidade do usuário pelo candidato, revelando a distribuição de buscas pelos temas. ",
-		  "Dessa forma, é possível acompanhar uma transformação de interesses ao longo do tempo com os filtros."
+	  	"O deslocamento da área em relação ao centro revela a importância de cada tema na busca dos candidatos.",
+		  "O filtro “semana” mostra os dados em relação aos últimos sete dias. O filtro “mês” mostra os dados em relação aos últimos trinta dias."
 	  ],
 	  names:[
 			"Figuras políticas",
@@ -135,26 +137,25 @@ export const i18n_pt_br = {
 	},
 
 	relationship: {
-	  title: "Como os candidatos se relacionam",
-	  description: "As palavras de busca relacionada de cada candidato. Para descobrir quais termos são comum a ambos, escolha dois políticos para comparação.",
+	  title: "Compare os candidatos",
+	  description: "Escolha dois candidatos e veja quais são os termos de busca mais comuns entre eles.",
 	  highlight: '',
 	  button: "Saiba mais",
 	  more: [
-	  	"A comparação dos termos de cada candidato destaca a interessante relação das buscas tanto ideológicas quanto à aspectos de individuais, como biografia ou figuras políticas, e pode evidenciar posicionamentos opostos nos termos não comuns a ambos. ",
-		  "Para evitar redundâncias, buscas como “proposta de Bolsonaro” e “proposta Bolsonaro” foram agrupados em “proposta”."
+	  	"A comparação dos termos destaca a relação das buscas em diferentes aspectos dos perfis dos candidatos e pode evidenciar posicionamentos opostos. Para evitar redundâncias, buscas como “proposta de candidato X” e “proposta candidato X” foram agrupados em “proposta”."
 	  ],
 	  common:'em comum'
 	},
 
 	orbit: {
-	  title: "Quem está na órbita",
-	  description: "A frequência com que celebridades e figuras políticas aparecem nas buscas. A proximidade do centro indica um maior volume de busca correlacionadas entre o candidato e a personalidade.",
+	  title: "Na órbita do candidato",
+	  description: "A frequência com que figuras importantes aparecem nas buscas junto com os candidatos.",
 	  highlight: '',
 	  legend: "Personalidades na busca relacionada ao candidato, em valores de 0 a 100, indexados pelo Google Trends",
 	  button: "Saiba mais",
 	  more: [
-	  	"A análise inicial dos dados coletados mostrou uma quantidade relevante de nomes de personalidades associada ao de candidatos. ",
-			"A visualização mede a intensidade dessa busca relacionada, distribuindo os nomes de acordo com a sua relevância, sendo que buscas mais frequentes se mantém próximas ao centro."
+	  	"Quanto mais próximo do centro, maior o nível de interesse da personalidade junto com o candidato. A análise dos dados mostrou uma quantidade relevante de figuras importantes associadas aos candidatos. A visualização mede a intensidade dessa busca relacionada, distribuindo os nomes de acordo com a sua relevância.", 
+			"O filtro “semana” mostra os dados em relação aos últimos sete dias. O filtro “mês” mostra os dados em relação aos últimos trinta dias."
 	  ],
 	  empty: "O candidato não teve buscas suficientes para gerar a visualização"
 	},
@@ -168,59 +169,67 @@ export const i18n_pt_br = {
 		project: {
 	  	title: "O projeto",
 		  columnLeft: [
-		  	"“Na busca do Candidato” é um projeto de designer e programadoras brasileiras em colaboração com o Google News Initiative. Analisamos os dados de pesquisas no Google relacionados à campanha eleitoral de 2018.",
-			  "Buscamos entender o que mais interessa ao eleitor brasileiro sobre os candidatos ao cargo de Presidente da República.",
+		  	"“Na busca do Candidato” é um projeto de designer e programadoras brasileiras em colaboração com a Google News Initiative. Analisamos os dados de pesquisas no Google relacionados à campanha eleitoral de 2018 para apresentar o que mais interessa ao eleitor brasileiro sobre os candidatos ao cargo de Presidente da República do Brasil.",
+			  "Vamos acompanhar os resultados até o fim das eleições, em outubro de 2018.",
+	   		"O Google Trends analisa uma amostra aleatória das buscas feitas usando a máquina de busca do Google em um período específico de tempo e as classifica em uma escala de 0 a 100, sendo 100 o termo de maior interesse de pesquisa. Todos os outros valores são calculados em relação ao de maior interesse."
 		  ],
 	   	columnRight: [
-	   		"Vamos acompanhar os resultados até outubro de 2018, mês das eleições.",
-	  		"O Google Trends analisa uma amostra aleatória das buscas feitas pelo Google em um período específico de tempo e as classifica em uma escala de 0 a 100, sendo 100 o termo de maior interesse de pesquisa. A partir daí, os outros resultados ganham valores relativos.\n"
 	   	]
 		},
-  	team: {
-	  title: "Equipe",
-	  list: [
-	  	{
-	  		title: "Carol Cavaleiro",
-	  		name: "Direção de arte, edição e design",
-				link: "https://carolcavaleiro.com/portfolio/"
-	  	},
-	  	{
-	  		title: "Thais Viana",
-	  		name: "hub9 | Compreensão de Dados",
-				link: "https://hub9.co/"
-	  	},
-	  	{
-	  		title: "Tainá Simões",
-	  		name: "Grama | Programação Criativa",
-				link: "https://grama.cc/"
-	  	},
-	  	{
-	  		title: "Google News Lab",
-	  		name: "Marco Túlio Pires e Simon Rogers"
-	  	},
-	  	{
-	  		title: "Consultor de projetos",
-	  		name: "Alberto Cairo"
-	  	}
-	  ]
-	},
 
-	clipping: {
-	  list: [
-	  	{
-	  		title: "Making Of",
-	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
-	  	},
-	  	{
-	  		title: "Link 2",
-	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
-	  	},
-	  	{
-	  		title: "Link 3",
-	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
-	  	}
-	  ]
-	}
+		contact: {
+			title: "Contato",
+			column: [
+		  	"Se você tiver dúvidas ou sugestões, envie um email para falar com a gente.",
+			  "A Google News Initiative apoiou o projeto “Na busca do candidato” com acesso aos dados, edição e questões técnicas do Google Trends. Para mais informações sobre o Google Trends, entre em contato com newslabtrends@google.com"
+		  ],
+		},
+
+  	team: {
+		  title: "Equipe",
+		  list: [
+		  	{
+		  		title: "Carol Cavaleiro",
+		  		name: "Direção de arte, edição e design",
+					link: "https://carolcavaleiro.com/portfolio/"
+		  	},
+		  	{
+		  		title: "Thais Viana",
+		  		name: "hub9 | Compreensão de Dados",
+					link: "https://hub9.co/"
+		  	},
+		  	{
+		  		title: "Tainá Simões",
+		  		name: "Grama | Programação Criativa",
+					link: "https://grama.cc/"
+		  	},
+		  	{
+		  		title: "Google News Lab",
+		  		name: "Marco Túlio Pires e Simon Rogers"
+		  	},
+		  	{
+		  		title: "Consultor de projetos",
+		  		name: "Alberto Cairo"
+		  	}
+		  ]
+		},
+
+		clipping: {
+		  list: [
+		  	{
+		  		title: "Making Of",
+		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  	},
+		  	{
+		  		title: "Link 2",
+		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  	},
+		  	{
+		  		title: "Link 3",
+		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  	}
+		  ]
+		}
 
   }
 }

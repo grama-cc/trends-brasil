@@ -104,7 +104,7 @@ class Home extends React.Component {
 
       <Layout>
         <Head
-          title="Trends Brasil"
+          title="Na busca do candidato"
           description="Na busca do candidato"
           image="https://www.nabuscadocandidato.com.br/static/img/share.jpg"
           twitter="https://www.nabuscadocandidato.com.br/static/img/twt.png"
