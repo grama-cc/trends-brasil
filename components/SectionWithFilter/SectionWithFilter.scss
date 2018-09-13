@@ -67,6 +67,8 @@
         display: block;
         width: 100%;
         transition: all .4s ease;
+        position: absolute;
+        bottom: 15%;
       }
       h3 {
         background: $grayLight;
