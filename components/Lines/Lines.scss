@@ -50,7 +50,7 @@
     height: 95%;
     left: 0;
     top: 0;
-    width: responsive(10, 20);
+    width: responsive(10, 40);
 
     &.right {
       left: auto;
@@ -104,7 +104,7 @@
   .chart {
     order: 2;
     box-sizing: border-box;
-    padding: responsive(30, 50) responsive(10, 20) responsive(20, 30);
+    // padding: responsive(30, 50) responsive(10, 20) responsive(20, 30);
     min-height: 50vh;
     width: 250vw;
 

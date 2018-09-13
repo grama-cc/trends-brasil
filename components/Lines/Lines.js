@@ -35,6 +35,8 @@ class Lines extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+
+    // console.log(prevProps, prevState)
     if (prevProps.filter !== this.props.filter) {
       this.updateCandidate()
     }
@@ -42,7 +44,10 @@ class Lines extends React.Component {
     const svg = d3.select(this.svg);
 
     svg.selectAll(`.${css.date}`).each(function() {
+
       const text = d3.select(this).select('text');
+
+      // console.log(d3.select(this).select('text'))
       const width = text.node().getBBox().width + 20;
 
       d3.select(this).select('rect')
@@ -73,7 +78,6 @@ class Lines extends React.Component {
 
   getDate = (timezone) => {
     // hard convert to midday, so no timezone will modify the day
-
     // const safeTime = `${timezone.substring(0,10)}T12:00:00-03:00`;
     const safeTime = `${timezone}T12:00:00-03:00`
     return d3.timeDay.floor(new Date(safeTime));
@@ -82,9 +86,7 @@ class Lines extends React.Component {
   getPercent = (candidate, date) => {
     const line = candidate.lines.find(l => (
       // this.getDate(l.date) === this.getDate(date)
-
       this.getDate(l.date) === this.getDate(date)
-
       // this.getDate(l.date).getTime() === this.getDate(date).getTime()
     ))
     return line ? line.percent : 0;
@@ -121,6 +123,7 @@ class Lines extends React.Component {
     // axis
     const scaleTime = d3.scaleTime()
       .domain([start, end])
+      // .range([0, this.cfg.width])
       .range([-24, ( this.cfg.width + 24 )])
 
     const axis = d3Axis.axisBottom()
@@ -139,6 +142,7 @@ class Lines extends React.Component {
 
     const lineGenerator = d3.line()
       .curve(d3.curveBasis)
+      // .curve(d3.curveMonotoneX)
       .x(d => scaleTime(this.getDate(d.day)))
       .y(d => scalePercent(d.percent))
 
@@ -166,7 +170,8 @@ class Lines extends React.Component {
           <svg 
             className={css.chart}
             xmlns="http://www.w3.org/2000/svg"
-            viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
+            // viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
+            viewBox={`0 -30 ${this.cfg.width} 380`}
             preserveAspectRatio="none"
             ref={(c) => { this.svg = c; }}
           >
@@ -180,7 +185,6 @@ class Lines extends React.Component {
               className={css.lines}
               fill='none'
             >
-
               {this.state.data.map((candidate) => (
                 <path
                   // className={this.props.filter && this.props.filter != candidate.id ? null : css.tem}
@@ -196,14 +200,11 @@ class Lines extends React.Component {
               ))}
             </g>
 
-            {this.state.specialDates.map((date) => (
+            {this.state.specialDates.map((date, i) => (
               <g
-                key={date.id}
+                key={i}
                 className={css.date}
                 transform={`translate(${scaleTime(this.getDate(date.day))}, 0)`}
-                style={{
-                  display: scaleTime(this.getDate(date.day)) > 800 ? 'none' : 'block'
-                }}
               >
                 <line y2={this.cfg.height} />
                 <rect 
@@ -212,19 +213,9 @@ class Lines extends React.Component {
                   rx="10"
                   ry="10"
                 />
-                <text 
-                  textAnchor="middle"
-                >            
+                <text textAnchor="middle">         
                   {date.text}
                 </text>
-                {/*this.state.data.map((candidate, i) => (
-                  <circle
-                    key={candidate.id}
-                    r="4"
-                    cy={scalePercent(this.getPercent(candidate, date.day))}
-                    stroke={this.props.filter && this.props.filter != candidate.id ? '#b4b4b4' : candidate.color}
-                  />
-                ))*/}
               </g>
             ))}
           </svg>
