@@ -19,6 +19,7 @@ class Section extends React.Component {
           filter={this.props.filter}
           candidates={this.props.candidates}
           arrowColor='#b4b4b4'
+          lang={this.props.lang}
         />
       )
     }
