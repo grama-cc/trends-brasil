@@ -107,11 +107,6 @@ export const i18n_en_us = {
 	  		id: 1,
 	  		name:"Biography",
 	  		text:"Searches about politician's lives, such as positions held or wanted and involvement in cases of corruption."
-	  	},
-	  	{
-	  		id: 2,
-	  		name:"Others",
-	  		text:"Relevant search terms that do not fit under any classification."
 	  	}
 	  ]
   },
@@ -132,8 +127,7 @@ export const i18n_en_us = {
 	  	"Media",
 	  	"Ideology",
 	  	"Celebrities",
-	  	"Biography",
-	  	"Others"
+	  	"Biography"
 	  ],
 	  empty: "The candidate did not have enough searches to generate the view"
 	},

@@ -105,11 +105,6 @@ export const i18n_pt_br = {
 	  		id: 1,
 	  		name:"Biografia",
 	  		text:"Buscas sobre a vida pública dos candidatos, como cargos ocupados ou pretendidos e envolvimento em casos de corrupção."
-	  	},
-	  	{
-	  		id: 2,
-	  		name:"Outros",
-	  		text:"Termos amplamente buscados que não se enquadram em nenhuma classificação."
 	  	}
 	  ]
 	},
@@ -129,8 +124,7 @@ export const i18n_pt_br = {
 			"Mídia",
 			"Ideologia",
 			"Celebridades",
-			"Biografia",
-			"Outros"
+			"Biografia"
 	  ],
 
 	  empty: "O candidato não teve buscas suficientes para gerar a visualização"
