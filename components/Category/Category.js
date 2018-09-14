@@ -32,7 +32,8 @@ class Category extends React.Component {
   }
 
   onClickPrev = () => {
-    const size = this.props.bars.length - 1;
+    //const size = this.props.bars.length - 1;
+    const size = 4;
     const idx = this.state.idx;
 
     if(idx > 0) {
@@ -43,7 +44,8 @@ class Category extends React.Component {
   }
 
   onClickNext = () => {
-    const size = this.props.bars.length - 1;
+    //const size = this.props.bars.length - 1;
+    const size = 4;
     const idx = this.state.idx;
 
     if(idx < size) {

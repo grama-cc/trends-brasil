@@ -16,7 +16,6 @@
 }
 
 .radar {
-
   margin: responsive(20, 40) 0 0;
   display: flex;
   flex-direction: column;
@@ -24,7 +23,6 @@
   justify-content: center;
   width: 80%;
   height: 80%;
-
   position: relative;
 
   // order: 2;
@@ -49,33 +47,57 @@
       margin-top: -8px;
       color: #4b4b4b;
       font-size: responsive(12, 18);
-      // background: #fff;
+      // Figuras políticas
+      &:nth-of-type(1) { transform: rotate(-90deg) translate(19vh) rotate(90deg); }
+        
+      // Mídia
+      &:nth-of-type(2) { transform: rotate(-165deg) translate(23vh) rotate(165deg); }
 
-      &:nth-of-type(1) { transform: rotate(-90deg) translate(33vw) rotate(90deg); }
-      &:nth-of-type(2) { transform: rotate(-160deg) translate(40vw) rotate(160deg); }
-      &:nth-of-type(3) { transform: rotate(-210deg) translate(45vw) rotate(210deg); }
-      &:nth-of-type(4) { transform: rotate(-270deg) translate(40vw) rotate(270deg); }
-      &:nth-of-type(5) { transform: rotate(-336deg) translate(42vw) rotate(336deg); }
-      &:nth-of-type(6) { transform: rotate(-390deg) translate(44vw) rotate(390deg); }
+      // Ideologia
+      &:nth-of-type(3) { transform: rotate(-230deg) translate(24vh) rotate(230deg); }
+
+      // Celebridade
+      &:nth-of-type(4) { transform: rotate(-315deg) translate(24vh) rotate(315deg); }
+
+      // Biofrafia
+      &:nth-of-type(5) { transform: rotate(-20deg) translate(25vh) rotate(20deg); }
 
       @media screen and (min-width: 700px) {
-        &:nth-of-type(1) { transform: rotate(-90deg) translate(20vw) rotate(90deg); }
-        &:nth-of-type(2) { transform: rotate(-155deg) translate(23vw) rotate(155deg); }
-        &:nth-of-type(3) { transform: rotate(-210deg) translate(25vw) rotate(210deg); }
-        &:nth-of-type(4) { transform: rotate(-270deg) translate(23vw) rotate(270deg); }
-        &:nth-of-type(5) { transform: rotate(-336deg) translate(25vw) rotate(336deg); }
-        &:nth-of-type(6) { transform: rotate(-390deg) translate(26vw) rotate(390deg); }
+
+        // Figuras políticas
+        &:nth-of-type(1) { transform: rotate(-90deg) translate(15vh) rotate(90deg); }
+        
+        // Mídia
+        &:nth-of-type(2) { transform: rotate(-165deg) translate(18vh) rotate(165deg); }
+
+        // Ideologia
+        &:nth-of-type(3) { transform: rotate(-230deg) translate(19vh) rotate(230deg); }
+
+        // Celebridade
+        &:nth-of-type(4) { transform: rotate(-315deg) translate(19vh) rotate(315deg); }
+
+        // Biofrafia
+        &:nth-of-type(5) { transform: rotate(-20deg) translate(20vh) rotate(20deg); }
       }
 
       @media screen and (min-width: $medium-devices) {
         width: 140px;
         margin-left: -70px;
-        &:nth-of-type(1) { transform: rotate(-90deg) translate(28vh) rotate(90deg); }
-        &:nth-of-type(2) { transform: rotate(-157deg) translate(34vh) rotate(157deg); }
-        &:nth-of-type(3) { transform: rotate(-207deg) translate(35vh) rotate(207deg); }
-        &:nth-of-type(4) { transform: rotate(-270deg) translate(33vh) rotate(270deg); }
-        &:nth-of-type(5) { transform: rotate(-335deg) translate(34vh) rotate(335deg); }
-        &:nth-of-type(6) { transform: rotate(-389deg) translate(35vh) rotate(389deg); }
+
+        // Figuras políticas
+        &:nth-of-type(1) { transform: rotate(-90deg) translate(30vh) rotate(90deg); }
+        
+        // Mídia
+        &:nth-of-type(2) { transform: rotate(-165deg) translate(34vh) rotate(165deg); }
+
+        // Ideologia
+        &:nth-of-type(3) { transform: rotate(-230deg) translate(35vh) rotate(230deg); }
+
+        // Celebridade
+        &:nth-of-type(4) { transform: rotate(-315deg) translate(35vh) rotate(315deg); }
+
+        // Biofrafia
+        &:nth-of-type(5) { transform: rotate(-20deg) translate(36vh) rotate(20deg); }
       }
 
     }

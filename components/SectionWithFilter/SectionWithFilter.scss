@@ -2,7 +2,6 @@
 
 .section {
   @include grid();
-
   overflow: hidden;
 
   .container {
@@ -113,20 +112,12 @@
     &.next {
       right: 15%;
     }
-
     position: absolute;
-
     display: none;
-
     @media screen and (min-width: $medium-devices) {
       display: block;
     }
   }
-
-
-
-
-
 }
 
 .loading {

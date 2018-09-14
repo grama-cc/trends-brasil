@@ -13,6 +13,7 @@
 		}
 		li {
 			margin: 40px 0 0;
+			width: 100%;
 			&:first-child {
 				margin: 0;
 			}
@@ -26,6 +27,7 @@
 				line-height: responsive(20, 22);
 			}
 			@media screen and (min-width: $medium-devices) {
+				width: 33%;
 				margin: 0 0 0 30px;
 				&:first-child {
 					margin: 0;

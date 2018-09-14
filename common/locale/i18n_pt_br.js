@@ -105,11 +105,6 @@ export const i18n_pt_br = {
 	  		id: 1,
 	  		name:"Biografia",
 	  		text:"Buscas sobre a vida pública dos candidatos, como cargos ocupados ou pretendidos e envolvimento em casos de corrupção."
-	  	},
-	  	{
-	  		id: 2,
-	  		name:"Outros",
-	  		text:"Termos amplamente buscados que não se enquadram em nenhuma classificação."
 	  	}
 	  ]
 	},
@@ -129,8 +124,7 @@ export const i18n_pt_br = {
 			"Mídia",
 			"Ideologia",
 			"Celebridades",
-			"Biografia",
-			"Outros"
+			"Biografia"
 	  ],
 
 	  empty: "O candidato não teve buscas suficientes para gerar a visualização"
@@ -217,16 +211,16 @@ export const i18n_pt_br = {
 		clipping: {
 		  list: [
 		  	{
-		  		title: "Making Of",
-		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  		title: "Central das eleições Google Trends",
+		  		text: "Acesse os dados do Google Trends na central de dados que a equipe do Google preparou especialmente para as eleições presidenciais de 2018. Acesse: g.co/trendseleicoes2018"
 		  	},
 		  	{
-		  		title: "Link 2",
-		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  		title: "",
+		  		text: ""
 		  	},
 		  	{
-		  		title: "Link 3",
-		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  		title: "",
+		  		text: ""
 		  	}
 		  ]
 		}

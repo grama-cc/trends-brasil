@@ -31,7 +31,7 @@ class RadarChart extends React.Component {
       levels: 2,
       padding: 1.3,
       labelsCirles: 1.2, // circle label distance
-      maxValue: 1/6, // biggest circle will value
+      maxValue: 1/5, // biggest circle will value
     };
 
     // Circle radius
@@ -41,10 +41,8 @@ class RadarChart extends React.Component {
   onClickPeriod = (period) => {
     // const period = e.target.value
     this.setState({ period: period })
-
     this.getData(period);
   }
-
 
   getData = async (period) => {
     const radar = await Api.getRadar(period);
@@ -73,7 +71,7 @@ class RadarChart extends React.Component {
     );
 
     const scale = d3.scaleLinear().range([-15, this.radius]).domain([0, max]);
-    const angles = - Math.PI * 2 / 6;
+    const angles = - Math.PI * 2 / 5;
 
     return {
       "max": max,
@@ -103,7 +101,7 @@ class RadarChart extends React.Component {
       }) : [];
 
       const radarLine =  d3.radialLine().curve( d3.curveCardinalClosed ).radius(( d ) => ( 
-        values.scale( -(d.percent ) / 100 ) )).angle(( d, i ) => ( i * values.angles )
+        values.scale( -(d.percent) / 100 ) )).angle(( d, i ) => ( i * values.angles )
       );
       const filter = this.props.filter;
       const candidates = this.state.radar ? radar.filter((c) => filter === c.id) : [];
@@ -120,7 +118,6 @@ class RadarChart extends React.Component {
 
       const w = this.config.width + 10;
       const h = this.config.height + 10;
-
       const lang = this.props.lang;
 
       return (
@@ -198,19 +195,51 @@ class RadarChart extends React.Component {
                     />
                   </g>
                 ))}
+
+                {/*axis.map((point, idx) => (
+                  <g key={idx} className='text'>
+                  {console.log(point)}
+                    <text
+                      //stroke="#fff"
+                      //strokeDasharray={this.config.dash}
+                      className={css.axis}
+                      fontSize='11px'
+                      textAnchor='middle'
+                      x={-point.x}
+                      y={point.y}
+                      dy={'0.35em'}
+                    >
+                      taina {idx}
+                    </text>
+                  </g>
+                ))*/}
+
+                {/*Append the labels at each axis
+                axis.append("text")
+                  .attr("class", "legend")
+                  .style("font-size", "11px")
+                  .attr("text-anchor", "middle")
+                  .attr("dy", "0.35em")
+                  .attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
+                  .attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
+                  .text(function(d){return d})
+                  .call(wrap, cfg.wrapWidth);*/}
               </g>
               <g className={css.areaContainer}>
               {radar.map((curves, idx) => {
+
+                const filterCurve = curves.categories.filter((r, i) => r.id != 2 )
+
                 return (
                   <g className={css.wrap} key={idx} id={curves.id}>
                     <path
                       className={css.area}
-                      d={radarLine(curves.categories)}
+                      d={radarLine(filterCurve)}
                       fill="none"
                     />
                     <path
                       className={idx == radar.length - 1 && filter ? css.stroke : null}
-                      d={radarLine(curves.categories)}
+                      d={radarLine(filterCurve)}
                       strokeWidth={idx == radar.length - 1 && filter ? 2 : 1}
                       stroke={idx == radar.length - 1 && filter ? "#fff" : "#4b4b4b"}
                       opacity={idx == radar.length - 1 && filter ? 1 : .3}
