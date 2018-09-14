@@ -211,16 +211,16 @@ export const i18n_pt_br = {
 		clipping: {
 		  list: [
 		  	{
-		  		title: "Making Of",
-		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  		title: "Central das eleições Google Trends",
+		  		text: "Acesse os dados do Google Trends na central de dados que a equipe do Google preparou especialmente para as eleições presidenciais de 2018. Acesse: g.co/trendseleicoes2018"
 		  	},
 		  	{
-		  		title: "Link 2",
-		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  		title: "",
+		  		text: ""
 		  	},
 		  	{
-		  		title: "Link 3",
-		  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+		  		title: "",
+		  		text: ""
 		  	}
 		  ]
 		}

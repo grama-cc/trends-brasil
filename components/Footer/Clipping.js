@@ -4,11 +4,14 @@ import {i18n} from "../../common/locale/i18n";
 
 
 class Clipping extends React.Component {
+
   render() {
+    const lang = this.props.lang
+
     return (
       <section className={css.clipping}>
         <ul>
-          {i18n('footer.clipping.list', null).map((item, index) => (
+          {i18n('footer.clipping.list', lang).map((item, index) => (
             <li key={index}>
               <h2>{item.title}</h2>
               <p>{item.text}</p>

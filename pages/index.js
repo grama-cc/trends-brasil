@@ -177,7 +177,9 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        {/*<Clipping />*/}
+        <Clipping 
+          lang={this.state.lang}
+        />
       </Layout>
     );
   }

@@ -28,25 +28,24 @@ export const i18n_en_us = {
       title: "On the search for a candidate",
       description: 'Google',
     },
-    title: "In search of the",
+    title: "In search for the",
     highlight: "candidate",
     description: [
-    	"What are Brazilians googling about on the 2018 elections?",
-    	"Check out what searches are being made about president candidates."
-    ],
+    	"During 2018 elections, millions of Brazilians are using Google in searches on candidates running for presidency.",
+    	"Which are the topics that arouse the most interest? How can the searches related to the presidential candidates compare?",
+    	"What are tendencies over time? Discover 2018 Brazilian elections through Google Trends lenses."
+    ]
   },
 
   keywords: {
-	  title: "Who do people search for on Google?",
-	  description: "The graphic represents the candidate's daily popularity on Google Search and the most common search terms associated to them during the week.",
+	  title: "Most popular",
+	  description: "The larger the bubble, the greater the interest search over the last 24 hours. The word cloud shows the most searched terms on each candidate over the last seven days. Use the arrows to navigate through the candidates or choose the picture directly.",
 	  highlight: "The more frequent the search, the bigger the candidate and terms are.",
 	  legend: "Related words",
 	  button: 'Learn more',
 
 	  more: [
-	  	"The bubble chart represents the search relevance for each of Brazil’s 2018th presidential race candidate.",
-	  	"The word cloud shows the most common search terms on Google about each candidate.",
-	  	"The more frequent the search, the bigger the candidate and terms are."
+	  	"The circle graphic represents the Google search interest on the presidency candidates in the last 24 hours. The word cloud shows the most frequent terms searched on Google for each candidate in the last seven days. The most frequent terms and candidates are the largest."
 	  ],
 
 	  select: {
@@ -60,26 +59,28 @@ export const i18n_en_us = {
 	},
 
 	lines: {
-    title: 'Search performance',
-		description: 'Interest in the candidates over time.',
+    title: 'Interest over time',
+		description: 'Check out the interest level in the candidates since the beginning of the presidential campaign.',
 		highlight: "",
 		legend: "Search interest for each candidate, from 0 to 100, indexed by Google Trends",
 		button: 'Learn more',
 		more: [
-			"Google Trends tracks the interests over time for each candidate and displays the data in an index from 0 to 100, where 100 is the highest peak of the chart, and all the other values are set in comparison.",
-			"It is possible to visualize how each candidate's search develops over time with filters by week, month and year and every candidate's personal evolution.",
-		],
+			"Google Trends makes the information of overtime interest for each candidate available and they are indexed in amounts from 0 to 100, where 100 is the highest point in the graph.",
+			"All other amounts are calculated in comparison to the highest point of the graph for that period.",
+			"Check out the evolution of searches on each candidate within monthly and weekly timeframes.",
+			"The filter “week” shows data related to the last seven days. The filter “month” shows data related to the last thirty days."
+		]
   },
 
   category: {
-    title: 'What do they search for?',
-    description: "The comparison of the most searched terms in five predominant themes.",
+    title: 'Predominant topics',
+    description: "Take a look at the comparison of the most popular terms divided into five categories that dominated the researches.",
 		highlight: "",
 		legend: "Percentage of each researched category (%) for each candidate",
 		button: 'Learn more',
 		more: [
-			"The analysis of search terms revealed users’ curiosity about different aspects of each candidate.",
-			"It was possible to sort the initial data into five major themes and provide a new understanding of the users’ interest."
+			"Each candidate triggers the interest in different topics and subjects of his course.",
+			"Each subject brings together different searches made along with each candidate.. There are celebrities, biography curiosities, associations to political figures, ideology issues and media issues."
 		],
 
 		list:[
@@ -112,14 +113,14 @@ export const i18n_en_us = {
   },
 
   radar: {
-	  title: "How do they search?",
-	  description: "The radar chart shows the search interest among the themes. The distance of the area from the center reveals the importance of each theme in the search for candidates.",
+	  title: "Subject distribution",
+	  description: "The graph shows how interest shifts in each of the five different categories that dominated the searches",
 	  highlight: "",
 	  legend: "Theme percentage (%) of the search interest made on each candidate",
 	  button: "Learn more",
 	  more: [
-	  	"The chart helps to understand the users' curiosity of a candidate, revealing the search distribution by themes.",
-	  	"It is possible to track the transition of interests over time with the filters."
+	  	"The distance from the center reveals the importance of each topic in candidate searches.",
+			"The filter “week” shows data related to the last seven days. The filter “month” shows data related to the last thirty days."
 	  ],
 
 	  names:[
@@ -133,26 +134,25 @@ export const i18n_en_us = {
 	},
 
   relationship: {
-	  title: 'How do they correlate?',
-	  description: 'The most common and the most unusual search terms between two candidates. Choose two candidates to compare.',
+	  title: 'Compare the candidates',
+	  description: 'Choose two candidates and find out which are the most common search topics between them.',
 	  highlight: '',
 	  button: "Learn more",
 	  more: [
-	  	"The comparison between the search terms of two candidates highlights the interesting search correlations among ideological and individual aspects, such as biography or political figures, and may point out opposite points of view in search terms not common between them.",
-	  	"Equivalent search terms are grouped together, for instance: “proposta de Bolsonaro” and “proposta Bolsonaro” appear as “proposta”"
+	  	"The topic comparison highlights the connections between different aspects of candidate profiles and can reveal opposite points of view. In order to avoid redundancies,  searches like “candidate's X proposal” and “proposal of the candidate X” were all grouped into “proposal”."
 	  ],
 	  common: 'common'
 	},
 
 	orbit: {
-	  title: "Who orbits the candidate",
-	  description: "How often celebrities and other politicians appear in the candidate related searches. The center proximity indicates a bigger correlated search volume between the candidate and the celebrity.",
+	  title: "In the orbit of the candidate ",
+	  description: "The frequency in which important figures appear in searches along with each candidate.",
 	  highlight: '',
 	  legend: "Personalities in the candidate's related search, in values ​​from 0 to 100, indexed by Google Trends",
 	  button: "Learn more",
 	  more: [
-	  	"The initial data gathered presented a relevant amount of celebrities names on the candidates related search.",
-	  	"The image measures the volume of these searches, displaying the names accordingly their relevance, where the most frequent searches appear near the center."
+	  	"The nearer to the center, the higher the level of interest is in the personality in relation to the candidate. The data analysis revealed a large amount of important personalities associated to the candidates.", 
+			"The filter “week” shows data related to the last seven days. The filter “month” shows data related to the last thirty days." 
 	  ],
 	  empty: "The candidate did not have enough searches to generate the view"
 	},
@@ -166,14 +166,20 @@ export const i18n_en_us = {
  		project: {
 			title: "The project",
 			columnLeft: [
-				"“Searching for a candidate” is a project created by Brazilian designers and programmers with Google News Initiative. We gathered and analyzed search interest data on Google Trends related to the 2018's election campaign.",
-				"We try to understand what catches the interest of Brazilian voters about the candidates running for presidency.",
+				"“In search for the candidate” is a project by Brazilian designers and programmers in collaboration with Google News Initiative. We analyze Google’s search data related to 2018’s election race to display the interest of Brazilian voters on the candidates running for presidency.",
+				"We will track the results until the end of election, on Oct.2018.",
+				"Google Trends analyzes a random sample of searches using Google's search engine in a specific time period and indexes them from 0 to 100, where 100 is the most searched interest. All the other values are set in comparison to the most searched."
 			],
 			columnRight: [
-				"We will track the results until the election month, on Oct.2018",
-				"Google Trends analyzes a random sample of Google searches in a specific time period and indexes them from 0 to 100,",
-				"where 100 is the most searched interest. All the other values are set in comparison."
 			]
+		},
+
+		contact: {
+			title: "Contato",
+			column: [
+				"If you have any questions or suggestions, send us an email.",
+				"Google News Initiative supported the project “In search for the candidate” providing data, edition and technical questions about Google Trends. For more info about Google Trends, contact newslabtrends@google.com"
+		  ],
 		},
 
 		team: {
@@ -208,16 +214,16 @@ export const i18n_en_us = {
 	clipping: {
 	  list: [
 	  	{
-	  		title: "Making Of",
-	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  		title: "Google Trends’ Election Center",
+	  		text: "Check Google Trends data at Google’s data center made specially for 2018 presidential election. Go to: g.co/trendseleicoes2018"
 	  	},
 	  	{
-	  		title: "Link 2",
-	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  		title: "",
+	  		text: ""
 	  	},
 	  	{
-	  		title: "Link 3",
-	  		text: "Chocolate cookie dessert ice cream. Pudding brownie bonbon jujubes. Sweet cookie dessert. Bear claw lemon drops dragée sweet roll donut icing pie sweet jelly-o. Soufflé marzipan bear claw. Ice cream oa"
+	  		title: "",
+	  		text: ""
 	  	}
 	  ]
 	}

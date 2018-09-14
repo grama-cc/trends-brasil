@@ -224,10 +224,6 @@ class RadarChart extends React.Component {
                   .attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
                   .text(function(d){return d})
                   .call(wrap, cfg.wrapWidth);*/}
-
-
-
-
               </g>
               <g className={css.areaContainer}>
               {radar.map((curves, idx) => {
