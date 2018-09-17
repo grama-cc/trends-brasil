@@ -175,9 +175,19 @@ class Lines extends React.Component {
             //preserveAspectRatio="none"
             ref={(c) => { this.svg = c; }}
           >
+            <title>{i18n('lines.title', lang)}</title>
+            <defs>
+              <text className='description'>
+                {i18n('lines.description', lang)}
+                {i18n('lines.highlight', lang)}
+              </text>
+              <text className='more'>
+                {i18n('lines.button', lang)} - {i18n('lines.more', lang)}
+              </text>
+            </defs>
             <g
               className={css.axis}
-              transform={`translate(0, ${this.cfg.height})`}
+              transform={`translate(0, ${this.cfg.height - 10})`}
               ref={(c) => { this.axisElement = c; }}
               strokeDasharray={2}
               strokeOpacity={0.2}
@@ -210,7 +220,7 @@ class Lines extends React.Component {
                 transform={`translate(${scaleTime(this.getDate(date.day))}, 0)`}
               >
                 <line 
-                  y2={this.cfg.height}
+                  y2={this.cfg.height - 10}
                   stroke="#000"
                 />
                 <rect 

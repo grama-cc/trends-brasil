@@ -167,6 +167,17 @@ class RadarChart extends React.Component {
               padding: '0 12px 0'
             }}
           >
+            <title>{i18n('radar.title', lang)}</title>
+            <defs>
+              <text className='description'>
+                {i18n('radar.description', lang)}
+                {i18n('radar.highlight', lang)}
+              </text>
+              <text className='more'>
+                {i18n('radar.button', lang)} - {i18n('radar.more', lang)}
+              </text>
+            </defs>
+
             <g 
               transform={`translate(${w / 2}, ${(h / 2) + 10})`}
               

@@ -55,6 +55,16 @@ class Chart extends React.Component {
           viewBox={`0 0 ${this.cfg.width} ${h}`}
           // preserveAspectRatio="none"
         >
+          <title>{i18n('category.title', lang)}</title>
+          <defs>
+            <text className='description'>
+              {i18n('category.description', lang)}
+              {i18n('category.highlight', lang)}
+            </text>
+            <text className='more'>
+              {i18n('category.button', lang)} - {i18n('category.more', lang)}
+            </text>
+          </defs>
           <g
             transform={`translate(${this.cfg.margin.left}, ${this.cfg.margin.bottom})`}
           >

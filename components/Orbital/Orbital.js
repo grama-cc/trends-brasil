@@ -150,6 +150,17 @@ class Orbital extends React.Component {
               backgroundColor: filter ? candidates[0].color : '#b4b4b4'
             }}
           >
+            <title>{i18n('orbit.title', lang)}</title>
+            <defs>
+              <text className='description'>
+                {i18n('orbit.description', lang)}
+                {i18n('orbit.highlight', lang)}
+              </text>
+              <text className='more'>
+                {i18n('orbit.button', lang)} - {i18n('orbit.more', lang)}
+              </text>
+            </defs>
+            
             <g transform={`translate(${w / 2}, ${h / 2})`}>
               {circles.map((diameter, idx) => (
                 <circle

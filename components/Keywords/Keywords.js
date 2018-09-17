@@ -83,6 +83,7 @@ class Keywords extends React.Component {
           bottom 
           parent="Graphic_graphic_IWdTV"
           id='keywords'
+          zip='/static/img/candidates.zip'
         />
       </section>
     )

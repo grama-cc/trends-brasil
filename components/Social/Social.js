@@ -105,11 +105,12 @@ class Social extends React.Component {
               type='download'
               className={this.state.open === 'download' ? css.open : css.close}
             >
-              <button 
+              <a 
                 onClick={(e) => this.handleClick(e, this.props.parent)}
+                href={this.props.zip ? this.props.zip : 'javascript:void(0)'}
               >
                 .svg
-              </button>
+              </a>
             </li>
 
             <li className={this.state.open === 'embed' ? css.open : css.close}>
@@ -141,7 +142,7 @@ class Social extends React.Component {
           <li>
             <a
               target="_blank"
-              href='javascript:void(0)'
+              //href={this.props.zip ? this.props.zip : 'javascript:void(0)'}
               onClick={this.openModal}
             >
               <Media stroke={this.props.stroke} />
