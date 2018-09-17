@@ -16,10 +16,14 @@ export function i18n(key, lang) {
     l = global.navigator.language.toLowerCase()
   }
 
-  if (l === 'pt-br' || lang === 'port') {
+  if (lang == 'port') {
+
     obj = i18nObj.pt_br
-  } else if(l === 'en_us' || lang === 'en') {
+
+  } else if(lang == 'en') {
+
     obj = i18nObj.en_us
+
   }
 
   const str = key.split('.').reduce((o, i) => o[i], obj);
