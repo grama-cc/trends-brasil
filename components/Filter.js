@@ -177,7 +177,21 @@ class Filter extends React.Component {
 
         <div className={`${css.container} ${css.filter} ${relationship ? css.show : null}`}>
           <div>
-            {relationship ? this.renderImageFilter(filterSlug, filterColor) : null}
+            {/*relationship ? this.renderImageFilter(filterSlug, filterColor) : null*/}
+
+            {relationship ? candidates.map((c, idx) => { 
+              return (
+                <div
+                  key={idx}
+                  className={css.image}
+                  style={{
+                    backgroundImage: `url(/static/img/candidates/${c.slug}.png)`,
+                    backgroundColor: c.color,
+                    display: filter === c.id ? 'block' : 'none'
+                  }}
+                />
+              )
+            }) : null}
             {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
           </div>
         </div>
@@ -185,7 +199,22 @@ class Filter extends React.Component {
         {relationship ? 
           <div className={`${css.container} ${css.compare} ${relationship ? css.show : null}`}>
             <div>
-              {relationship ? this.renderImageCompare(compareSlug, compareColor) : null}
+              {/*relationship ? this.renderImageCompare(compareSlug, compareColor) : null*/}
+              
+              {relationship ? candidates.map((c, idx) => { 
+                return (
+                  <div
+                    key={idx}
+                    className={css.image}
+                    style={{
+                      backgroundImage: `url(/static/img/candidates/${c.slug}.png)`,
+                      backgroundColor: c.color,
+                      display: compare === c.id ? 'block' : 'none'
+                    }}
+                  />
+                )
+              }) : null}
+
               {this.renderDropdown(this.onDropdownCompare, compare, selectedNameCompare, this.state.openCompare, filter, this.onCompare)}
             </div>
           </div>
