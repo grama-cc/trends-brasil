@@ -17,6 +17,7 @@
 			p {
 				&.show {
 					opacity: 1;
+					padding: 0 10px;
 					// display: block;
 				}
 
@@ -32,6 +33,7 @@
 	margin: 10px 0 0;
 	text-transform: uppercase;
 	width: 100%;
+	padding: 0 10px;
 
 	@media screen and (min-width: $medium-devices) {
 		text-align: left;
@@ -152,7 +154,7 @@
 					border-radius: 0;
 					border: none;
 					background-position: center right 0;
-    			padding: 10px 0;
+    			padding: 10px;
     			&.choose {
     				border-bottom: 1px solid #b4b4b4;
     			}

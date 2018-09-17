@@ -44,6 +44,7 @@ class Filter extends React.Component {
   }
 
   renderImageFilter(slug, color) {
+    console.log('filter', slug)
     return (
       <div
         className={css.image}
@@ -56,6 +57,7 @@ class Filter extends React.Component {
   }
 
   renderImageCompare(slug, color) {
+    console.log('compare', slug)
     return (
       <div
         className={css.image}
@@ -113,8 +115,8 @@ class Filter extends React.Component {
     const relationship = this.props.relationship;
     const lang = this.props.lang;
 
-    const f = candidates.filter(c => c.id == filter);
-    const c = candidates.filter(c => c.id == compare);
+    const f = candidates.filter(c => c.id === filter);
+    const c = candidates.filter(c => c.id === compare);
 
     const selectedNameFilter = filter ? f[0].name : i18n('filter.choose', lang);
     const selectedNameCompare = compare ? c[0].name : i18n('filter.choose', lang);

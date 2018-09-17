@@ -185,7 +185,7 @@ class Lines extends React.Component {
             />
 
             <g 
-              className={css.lines}
+              // className={css.lines}
               fill='none'
             >
               {this.state.data.map((candidate) => (

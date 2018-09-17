@@ -100,7 +100,12 @@ class Relationship extends React.Component {
 
         </div>
 
-        <Social stroke='#b4b4b4' parent="Relationship_clouds_ybJRI"/>
+        <Social
+          // share
+          mediaHidden
+          stroke='#b4b4b4'
+          parent="Relationship_clouds_ybJRI"
+        />
         
       </section>
     )

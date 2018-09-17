@@ -11,6 +11,8 @@
   .legend {
     font-size: 12px;
     text-align: center;
+    position: relative;
+    z-index: 1;
     // margin: 0 0 12px;
   }
 }
@@ -24,81 +26,13 @@
   width: 80%;
   height: 80%;
   position: relative;
+  
+
 
   @media screen and (min-width: $medium-devices) and (orientation: landscape) {
     width: 70vh;
     height: 70vh;
   }
-
-  /*.categories {
-    position: absolute;
-    .name {
-      position: relative;
-      font-family: $robotoMedium;
-      top: 50%; 
-      left: 50%;
-      text-align: center;
-      width: 120px;
-      height: 16px;
-      margin-left: -60px;
-      margin-top: -8px;
-      color: #4b4b4b;
-      font-size: responsive(12, 18);
-      // Figuras políticas
-      &:nth-of-type(1) { transform: rotate(-90deg) translate(19vh) rotate(90deg); }
-        
-      // Mídia
-      &:nth-of-type(2) { transform: rotate(-165deg) translate(23vh) rotate(165deg); }
-
-      // Ideologia
-      &:nth-of-type(3) { transform: rotate(-230deg) translate(24vh) rotate(230deg); }
-
-      // Celebridade
-      &:nth-of-type(4) { transform: rotate(-315deg) translate(24vh) rotate(315deg); }
-
-      // Biofrafia
-      &:nth-of-type(5) { transform: rotate(-20deg) translate(25vh) rotate(20deg); }
-
-      @media screen and (min-width: 700px) {
-
-        // Figuras políticas
-        &:nth-of-type(1) { transform: rotate(-90deg) translate(15vh) rotate(90deg); }
-        
-        // Mídia
-        &:nth-of-type(2) { transform: rotate(-165deg) translate(18vh) rotate(165deg); }
-
-        // Ideologia
-        &:nth-of-type(3) { transform: rotate(-230deg) translate(19vh) rotate(230deg); }
-
-        // Celebridade
-        &:nth-of-type(4) { transform: rotate(-315deg) translate(19vh) rotate(315deg); }
-
-        // Biofrafia
-        &:nth-of-type(5) { transform: rotate(-20deg) translate(20vh) rotate(20deg); }
-      }
-
-      @media screen and (min-width: $medium-devices) {
-        width: 140px;
-        margin-left: -70px;
-
-        // Figuras políticas
-        &:nth-of-type(1) { transform: rotate(-90deg) translate(30vh) rotate(90deg); }
-        
-        // Mídia
-        &:nth-of-type(2) { transform: rotate(-165deg) translate(34vh) rotate(165deg); }
-
-        // Ideologia
-        &:nth-of-type(3) { transform: rotate(-230deg) translate(35vh) rotate(230deg); }
-
-        // Celebridade
-        &:nth-of-type(4) { transform: rotate(-315deg) translate(35vh) rotate(315deg); }
-
-        // Biofrafia
-        &:nth-of-type(5) { transform: rotate(-20deg) translate(36vh) rotate(20deg); }
-      }
-
-    }
-  }*/
 
   .empty {
     position: absolute;
@@ -117,7 +51,7 @@
     flex-direction: column;
 
     text-align: center;
-    transition: background .5s ease; 
+    transition: background .4s ease; 
 
     h4 {
       font-size: responsive(22, 24);
@@ -135,12 +69,14 @@
     height: 0;
     opacity: 0;
     z-index: 0;
-    transition: background .5s ease; 
+    transition: background .4s ease; 
   }
 
   svg {
     margin: 0 auto;
     //transform: rotate(90deg);
+
+    transition: background .4s ease; 
 
     .stroke {
       transition: all .4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 

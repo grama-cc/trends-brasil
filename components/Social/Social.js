@@ -40,7 +40,7 @@ class Social extends React.Component {
 
       if(elements[0].childNodes[i].nodeName === 'svg'){
         svgContent = elements[0].childNodes[i].cloneNode(true)
-        svgContent.style.backgroundColor = "#ececec"
+        // svgContent.style.backgroundColor = "#ececec"
         svgContent.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink")
         svgContent.setAttribute("xmlns","http://www.w3.org/2000/svg")
         svgContent.setAttribute("xlink:href", "data:image/png;base64")
@@ -110,7 +110,6 @@ class Social extends React.Component {
               >
                 .svg
               </button>
-              <button>.json</button>
             </li>
 
             <li className={this.state.open === 'embed' ? css.open : css.close}>
@@ -138,7 +137,7 @@ class Social extends React.Component {
         {this.props.children}
 
         <ul className={`${css.social} ${this.props.bottom ? css.bottom : null} ${this.props.share ? css.share : null}`}>
-          {!this.props.share ?
+          {!this.props.share  && !this.props.mediaHidden ?
           <li>
             <a
               target="_blank"

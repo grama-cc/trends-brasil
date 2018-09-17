@@ -146,6 +146,9 @@ class Orbital extends React.Component {
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${w} ${h}`}
             //preserveAspectRatio="none"
+            style={{
+              backgroundColor: filter ? candidates[0].color : '#b4b4b4'
+            }}
           >
             <g transform={`translate(${w / 2}, ${h / 2})`}>
               {circles.map((diameter, idx) => (

@@ -161,13 +161,16 @@ class RadarChart extends React.Component {
             viewBox={`0 0 ${w} ${h}`}
             // preserveAspectRatio="none"
             transform={`rotate(90)`}
+            // fill={filter ? candidates[0].color : '#b4b4b4'}
             style={{
               // padding: '53px 12px 32px'
+              backgroundColor: filter ? candidates[0].color : '#b4b4b4',
               padding: '0 12px 0'
             }}
           >
             <g 
               transform={`translate(${w / 2}, ${(h / 2) + 10})`}
+              
             >
               <defs>
                 <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
