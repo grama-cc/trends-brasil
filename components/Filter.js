@@ -43,7 +43,19 @@ class Filter extends React.Component {
     })
   }
 
-  renderImage(slug, color) {
+  renderImageFilter(slug, color) {
+    return (
+      <div
+        className={css.image}
+        style={{
+          backgroundImage: `url(/static/img/candidates/${slug})`,
+          backgroundColor: color,
+        }}
+      />
+    )
+  }
+
+  renderImageCompare(slug, color) {
     return (
       <div
         className={css.image}
@@ -162,7 +174,7 @@ class Filter extends React.Component {
 
         <div className={`${css.container} ${css.filter} ${relationship ? css.show : null}`}>
           <div>
-            {relationship ? this.renderImage(filterSlug, filterColor) : null}
+            {relationship ? this.renderImageFilter(filterSlug, filterColor) : null}
             {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
           </div>
         </div>
@@ -170,7 +182,7 @@ class Filter extends React.Component {
         {relationship ? 
           <div className={`${css.container} ${css.compare} ${relationship ? css.show : null}`}>
             <div>
-              {relationship ? this.renderImage(compareSlug, compareColor) : null}
+              {relationship ? this.renderImageCompare(compareSlug, compareColor) : null}
               {this.renderDropdown(this.onDropdownCompare, compare, selectedNameCompare, this.state.openCompare, filter, this.onCompare)}
             </div>
           </div>
