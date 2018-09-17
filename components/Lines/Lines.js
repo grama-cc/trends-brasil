@@ -169,16 +169,19 @@ class Lines extends React.Component {
           <div className={css.space}/>
           <svg 
             className={css.chart}
-            xmlns="http://www.w3.org/2000/svg"
+            // xmlns="http://www.w3.org/2000/svg"
             // viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
             viewBox={`0 -30 ${this.cfg.width} 380`}
-            preserveAspectRatio="none"
+            //preserveAspectRatio="none"
             ref={(c) => { this.svg = c; }}
           >
             <g
               className={css.axis}
               transform={`translate(0, ${this.cfg.height})`}
               ref={(c) => { this.axisElement = c; }}
+              strokeDasharray={2}
+              strokeOpacity={0.2}
+              strokeWidth={1}
             />
 
             <g 
@@ -206,14 +209,27 @@ class Lines extends React.Component {
                 className={css.date}
                 transform={`translate(${scaleTime(this.getDate(date.day))}, 0)`}
               >
-                <line y2={this.cfg.height} />
+                <line 
+                  y2={this.cfg.height}
+                  stroke="#000"
+                />
                 <rect 
                   y="-25"
                   height="20"
                   rx="10"
                   ry="10"
+                  fill='#000'
                 />
-                <text textAnchor="middle">         
+                <text
+                  textAnchor="middle"
+                  fill="#fff"
+                  fontSize="10px"
+                  transform={`translate(0, -11)`}
+                  fontWeight={500}
+                  style={{
+                    textTransform: "uppercase"
+                  }}
+                >         
                   {date.text}
                 </text>
               </g>
@@ -251,6 +267,7 @@ class Lines extends React.Component {
 				<Social
           stroke='#b4b4b4'
           id='lines'
+          parent="Lines_chart_container_1hkMp"
         />
       </section>
     )

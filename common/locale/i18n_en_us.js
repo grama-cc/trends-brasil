@@ -182,6 +182,14 @@ export const i18n_en_us = {
 		  ],
 		},
 
+		central: {
+			title: "Google Trends’ Election Center",
+		  column: [
+		  	"Check Google Trends data at Google’s data center made specially for 2018 presidential election. Go to:"
+		  ],
+		  link: "g.co/trendseleicoes2018"
+		},
+
 		team: {
 		  title: "Team",
 		  list: [

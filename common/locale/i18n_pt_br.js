@@ -179,6 +179,14 @@ export const i18n_pt_br = {
 		  ],
 		},
 
+		central: {
+			title: "Central das eleições Google Trends",
+		  column: [
+		  	"Acesse os dados do Google Trends na central de dados que a equipe do Google preparou especialmente para as eleições presidenciais de 2018. Acesse:"
+		  ],
+		  link: "g.co/trendseleicoes2018"
+		},
+
   	team: {
 		  title: "Equipe",
 		  list: [

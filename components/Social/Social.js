@@ -21,13 +21,12 @@ class Social extends React.Component {
   }
 
   writeDownloadLink = (svgData,parentName) => {
-    console.log(svgData)
     try {
       var isFileSaverSupported = !!new Blob();
     } catch (e) {
       alert("blob not supported");
     }
-    var blob = new Blob([svgData], {type: "image/svg+xml"});
+    var blob = new Blob([svgData], {type: "data:image/svg+xml;base64",  disposition: "attachment"});
     saveAs(blob, parentName+".svg");
   }
 
@@ -43,6 +42,8 @@ class Social extends React.Component {
         svgContent = elements[0].childNodes[i].cloneNode(true)
         svgContent.style.backgroundColor = "#ececec"
         svgContent.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink")
+        svgContent.setAttribute("xmlns","http://www.w3.org/2000/svg")
+        svgContent.setAttribute("xlink:href", "data:image/png;base64")
         svgContent = svgContent.outerHTML
       }
     }
@@ -137,7 +138,7 @@ class Social extends React.Component {
         {this.props.children}
 
         <ul className={`${css.social} ${this.props.bottom ? css.bottom : null} ${this.props.share ? css.share : null}`}>
-          {/*!this.props.share ?
+          {!this.props.share ?
           <li>
             <a
               target="_blank"
@@ -146,7 +147,7 @@ class Social extends React.Component {
             >
               <Media stroke={this.props.stroke} />
             </a>
-          </li> : null*/}
+          </li> : null}
           <li>
             <a 
               target="_blank"
@@ -175,7 +176,6 @@ class Social extends React.Component {
           </li>
           <li className={css.webwhats}>
             <a
-              
               target="_blank"
               href="https://web.whatsapp.com/send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
               data-action="share/whatsapp/share" 

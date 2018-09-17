@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './Graphic.scss';
 import * as d3 from "d3";
+import {i18n} from "../../common/locale/i18n";
 
 class Graphic extends React.Component {
 
@@ -74,6 +75,8 @@ class Graphic extends React.Component {
     
     const nodes = d3.hierarchy(children).sum(function(d) { return d.size; });
 
+    const lang = this.props.lang;
+
     let circles = bubble(nodes).leaves();
 
     circles = circles.sort((a, b) => {
@@ -94,9 +97,16 @@ class Graphic extends React.Component {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox={`0 0 ${this.config.width} ${this.config.height}`}
-          preserveAspectRatio="none"
         >
+          <title>{i18n('keywords.title', lang)}</title>
           <defs>
+            <text className='description'>
+              {i18n('keywords.description', lang)}
+              {i18n('keywords.highlight', lang)}
+            </text>
+            <text className='more'>
+              {i18n('keywords.button', lang)} - {i18n('keywords.more', lang)}
+            </text>
             {circles.map((c, idx) => {
               const size = c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2
 

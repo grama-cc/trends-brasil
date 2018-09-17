@@ -78,15 +78,6 @@ class Keywords extends React.Component {
           />
           { this.renderChart(candidates, words, view) }
         </div>
-        {/*<Period 
-          bgColor='#f8f8f8'
-          color='#b4b4b4'
-          bottom
-          arrowColor={this.props.arrowColor}
-          period={this.props.period}
-          onClickPeriod={this.props.onClickPeriod}
-          lang={this.props.lang}
-        />*/}
         <Social 
           stroke='#b4b4b4' 
           bottom 

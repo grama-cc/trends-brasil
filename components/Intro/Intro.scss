@@ -8,6 +8,8 @@
   align-items: center;
   width: 100vw;
 
+
+
   .boxAnimation {
     position: absolute;
     max-width: 100%;
@@ -21,6 +23,13 @@
     z-index: 1;
     max-width: 480px;
     padding: 0 40px;
+
+    margin: 60px 0;
+
+    @media screen and (min-width: $medium-devices) {
+      margin: 0;
+    }
+
     h1 {
       font-size: 38px;
       font-family: $robotoLight;
@@ -46,6 +55,7 @@
     top: responsive(20, 40);
     right: responsive(20, 40);
     display: flex;
+    z-index: 9999;
     
     li {
       &:first-child {

@@ -43,6 +43,17 @@ class Footer extends React.Component {
                 ))}
               </div>
             </div>
+
+            <h2>{i18n('footer.central.title', lang)}</h2>
+            <div className={css.content}>
+              <div>
+                {i18n('footer.central.column', lang).map((text, index) => (
+                  <p key={index}>{text} <a href={`https://${i18n('footer.central.link', lang)}`} target="_blank">{i18n('footer.central.link', lang)}</a></p>
+                ))}
+              </div>
+            </div>
+
+
           </div>
 
           <div className={css.team}>

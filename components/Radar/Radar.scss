@@ -143,13 +143,13 @@
 
   svg {
     margin: 0 auto;
-    transform: rotate(90deg);
+    //transform: rotate(90deg);
 
     .stroke {
       transition: all .4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
     }
     .areaContainer {
-      transform: rotate(90deg);
+      //transform: rotate(90deg);
     }
   }
 }

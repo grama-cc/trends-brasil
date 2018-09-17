@@ -154,7 +154,8 @@ class RadarChart extends React.Component {
           <svg 
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${w} ${h}`}
-            preserveAspectRatio="none"
+            // preserveAspectRatio="none"
+            transform={`rotate(90)`}
           >
             <g 
               transform={`translate(${w / 2}, ${h / 2})`}
@@ -225,7 +226,10 @@ class RadarChart extends React.Component {
                   .text(function(d){return d})
                   .call(wrap, cfg.wrapWidth);*/}
               </g>
-              <g className={css.areaContainer}>
+              <g 
+                className={css.areaContainer}
+                transform={`rotate(90)`}
+              >
               {radar.map((curves, idx) => {
 
                 const filterCurve = curves.categories.filter((r, i) => r.id != 2 )
@@ -269,6 +273,7 @@ class RadarChart extends React.Component {
         lang={this.props.lang}
         period={this.state.period}
         onClickPeriod={this.onClickPeriod}
+        parent="Radar_radar_1qzAg"
       >
 
         <div className={css.chart_container}>
