@@ -36,8 +36,8 @@ class Home extends React.Component {
 
     // console.log(this.state.relationship)
 
-    if(id && this.state.compare) {
-
+    if(id && this.state.compare !== null) {
+      console.log('filter')
       const relationship = await Api.getRelationship(id, this.state.compare);
       // this.setState({relationship: relationship.intersection});
 
@@ -53,8 +53,12 @@ class Home extends React.Component {
 
   onCompare = async (id) => {
     this.setState({ compare: id });
+
+    console.log(this.state.filter)
    
-    if(this.state.filter && id) {
+    if(this.state.filter !== null && id) {
+
+      console.log('compare')
 
       const relationship = await Api.getRelationship(this.state.filter, id);
       // this.setState({relationship: relationship.intersection});

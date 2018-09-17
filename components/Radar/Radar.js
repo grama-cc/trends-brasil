@@ -154,7 +154,6 @@ class RadarChart extends React.Component {
             }
           })}
 
-              {console.log(radar)}
 
           <svg 
             xmlns="http://www.w3.org/2000/svg"
@@ -215,7 +214,6 @@ class RadarChart extends React.Component {
                   </p>
                 ))*/}
 
-                {console.log(axis)}
 
                 <g className='taina'>
                 {axis.map((a, idx) => {
