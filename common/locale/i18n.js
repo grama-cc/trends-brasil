@@ -18,8 +18,7 @@ export function i18n(key, lang) {
 
   if (l === 'pt-br' || lang === 'port') {
     obj = i18nObj.pt_br
-  } else {
-    // Default language
+  } else if(l === 'en_us' || lang === 'en') {
     obj = i18nObj.en_us
   }
 
