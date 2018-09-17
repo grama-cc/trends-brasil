@@ -58,11 +58,11 @@ class Cloud extends React.Component {
             }`;
           styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
           let style = {
-            animationName: `animation`,
+            //animationName: `animation`,
             fontSize: `calc( ${size}px + 12px)`,
             color: this.props.color ? this.props.color : word.color,
             // opacity: 0,
-            animationDelay: `${ .2 * idx/5}s`
+            //animationDelay: `${ .2 * idx/5}s`
             //animationDelay: `${ ((Math.floor(Math.random() * (2 - 1 + 1) + 1))) * idx/5}s`
           };
           
