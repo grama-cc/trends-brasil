@@ -20,13 +20,13 @@ class RadarChart extends React.Component {
 
     this.config = {
       width: 270,
-      height: 270,
-      margin: { 
-        top: 100,
-        right: 100,
-        bottom: 100,
-        left: 100 
-      },
+      height: 350,
+      //margin: { 
+        //top: 100,
+        //right: 100,
+        //bottom: 100,
+        //left: 100 
+      //},
       dash: 1,
       levels: 2,
       padding: 1.3,
@@ -92,9 +92,10 @@ class RadarChart extends React.Component {
 
       const values = this.values(radar);
 
-      const axis = this.state.radar ? radar[0].categories.map((d, i) => {
+      let axis = this.state.radar ? radar[0].categories.map((d, i) => {
         return {
           "name": d.name,
+          "id": d.id,
           "x": values.scale( values.max ) * Math.sin( values.angles * i - Math.PI / 2 ), 
           "y": values.scale( values.max ) * Math.cos( values.angles * i - Math.PI / 2 )
         }
@@ -120,16 +121,18 @@ class RadarChart extends React.Component {
       const h = this.config.height + 10;
       const lang = this.props.lang;
 
+      axis = axis.filter((a, i) => a.id != 2 )
+
       return (
         <React.Fragment>
 
-          <div className={css.categories}>
+          {/*<div className={css.categories}>
             {i18n('radar.names', lang).map((point, idx) => (
               <p className={css.name} key={idx}>
                 {point}
               </p>
             ))}
-          </div>
+          </div>*/}
 
           {radar.map((candidate, idx) => {
 
@@ -151,11 +154,17 @@ class RadarChart extends React.Component {
             }
           })}
 
+              {console.log(radar)}
+
           <svg 
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${w} ${h}`}
             // preserveAspectRatio="none"
             transform={`rotate(90)`}
+            style={{
+              // padding: '53px 12px 32px'
+              padding: '0 12px 0'
+            }}
           >
             <g 
               transform={`translate(${w / 2}, ${h / 2})`}
@@ -197,23 +206,39 @@ class RadarChart extends React.Component {
                   </g>
                 ))}
 
-                {/*axis.map((point, idx) => (
-                  <g key={idx} className='text'>
-                  {console.log(point)}
-                    <text
-                      //stroke="#fff"
-                      //strokeDasharray={this.config.dash}
-                      className={css.axis}
-                      fontSize='11px'
-                      textAnchor='middle'
-                      x={-point.x}
-                      y={point.y}
-                      dy={'0.35em'}
-                    >
-                      taina {idx}
-                    </text>
-                  </g>
+                {/*i18n('radar.names', lang).map((point, idx) => (
+                  <p className={css.name} key={idx}>
+                    {point}
+                  </p>
                 ))*/}
+
+                {console.log(axis)}
+
+                <g className='taina'>
+                {axis.map((a, idx) => {
+                  //const axis = curves.categories.filter((r, i) => r.id != 2 )
+
+                  return(
+                    <text
+                      className={css.axis}
+                      fontSize='10px'
+                      textAnchor={a.id === 3 || a.id === 1 ? 'start' : a.id === 5 || a.id === 4 ? 'end' : 'middle'}
+                      transform={`translate(${a.x * 1.07},${-a.y * 1.07})rotate(-90)`}
+
+
+                      fontWeight='500'
+                      fill='#4b4b4b'
+
+                      // x={point.x}
+                      // y={point.y}
+                      dy={'0.35em'}
+                      key={idx} 
+                    >
+                      {a.name}
+                    </text>
+                  )
+                })}
+                </g>
 
                 {/*Append the labels at each axis
                 axis.append("text")

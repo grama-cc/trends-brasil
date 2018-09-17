@@ -17,13 +17,10 @@
 		position: relative;
 		margin-top: 17px;
 		padding: 5px;
-
-		transition: opacity .4s ease;
-    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    animation-duration: 1s;
+		animation-timing-function: linear;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
-   	// opacity: 0;
-
+    animation-direction: normal;
 		@media screen and (min-width: $medium-devices) {
 			max-width: 240px;
 			margin-top: 0;
