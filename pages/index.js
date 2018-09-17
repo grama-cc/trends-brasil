@@ -105,7 +105,7 @@ class Home extends React.Component {
       <Layout>
         <Head
           title="Na busca do candidato"
-          description="Na busca do candidato"
+          description="Descubra as eleições brasileiras de 2018 através das lentes do Google Trends."
           image="https://www.nabuscadocandidato.com.br/static/img/share.jpg"
           twitter="https://www.nabuscadocandidato.com.br/static/img/twt.png"
           url='https://www.nabuscadocandidato.com.br/'
@@ -177,9 +177,9 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        <Clipping 
+        {/*<Clipping 
           lang={this.state.lang}
-        />
+        />*/}
       </Layout>
     );
   }

@@ -145,7 +145,7 @@ class Orbital extends React.Component {
             className="Orbital_chart"
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${w} ${h}`}
-            preserveAspectRatio="none"
+            //preserveAspectRatio="none"
           >
             <g transform={`translate(${w / 2}, ${h / 2})`}>
               {circles.map((diameter, idx) => (
@@ -237,6 +237,7 @@ class Orbital extends React.Component {
                       >
                         <circle
                           stroke='#fff'
+                          r={7}
                           fill={dot.is_candidate ? color[0].color : '#fff'}
                           style={{
                             animationDelay: `${0.2*i}s`
@@ -244,6 +245,7 @@ class Orbital extends React.Component {
                         />
                         <text
                           y={-12}
+                          fontSize={10}
                           textAnchor="middle"
                           fill='#fff'
                           style={{
@@ -276,6 +278,7 @@ class Orbital extends React.Component {
         lang={this.props.lang}
         period={this.state.period}
         onClickPeriod={this.onClickPeriod}
+        parent="Orbital_orbital_1KHG9"
       >
         <div className={css.chart_container}>
           <p className={css.legend}>

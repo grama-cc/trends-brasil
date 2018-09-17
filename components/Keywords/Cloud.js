@@ -36,7 +36,7 @@ class Cloud extends React.Component {
       <div className={css.cloud} type={this.props.type}>
         {words.map((word, idx) => {
 
-          let size =  word.size * (screen.width < 800 ? 30 : 150)/100; 
+          let size =  word.size * (screen.width < 800 ? 30 : 100)/100; 
 
           if (size > 100) {
             size = 100;
@@ -46,19 +46,23 @@ class Cloud extends React.Component {
           
           let styleSheet = document.styleSheets[0];
           let keyframes = `
-            @keyframes animation${idx} {
+            @keyframes animation {
               0% {
-                opacity: 0;
+                //opacity: 0;
+                left: -100vw;
               }
               100% {
-                opacity: 1;
+                //opacity: 1;
+                left: 0;
               }
             }`;
           styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
           let style = {
-            //animationName: `animation${idx}`,
+            animationName: `animation`,
             fontSize: `calc( ${size}px + 12px)`,
             color: this.props.color ? this.props.color : word.color,
+            // opacity: 0,
+            animationDelay: `${ .2 * idx/5}s`
             //animationDelay: `${ ((Math.floor(Math.random() * (2 - 1 + 1) + 1))) * idx/5}s`
           };
           

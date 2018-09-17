@@ -53,7 +53,7 @@ class Chart extends React.Component {
           className={css.chart}
           xmlns="http://www.w3.org/2000/svg"
           viewBox={`0 0 ${this.cfg.width} ${h}`}
-          preserveAspectRatio="none"
+          // preserveAspectRatio="none"
         >
           <g
             transform={`translate(${this.cfg.margin.left}, ${this.cfg.margin.bottom})`}
@@ -61,6 +61,7 @@ class Chart extends React.Component {
             <g
               className={css.axis}
               ref={(y) => { this.axisElement = y; }}
+              strokeDasharray={2}
             />
             <g transform={`scale(1,-1) translate(0, -${h})`}>
               {this.props.data.values.map((d, i) => (
