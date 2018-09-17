@@ -167,7 +167,7 @@ class RadarChart extends React.Component {
             }}
           >
             <g 
-              transform={`translate(${w / 2}, ${h / 2})`}
+              transform={`translate(${w / 2}, ${(h / 2) + 10})`}
             >
               <defs>
                 <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
