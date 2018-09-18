@@ -1,5 +1,9 @@
 export const i18n_en_us = {
 
+	share: {
+		text: "In search for the candidate: What are Brazilians googling about on the 2018 elections?"
+	},
+
 	period: {
 		title: "Period",
 		week: "Week",
@@ -175,7 +179,7 @@ export const i18n_en_us = {
 		},
 
 		contact: {
-			title: "Contato",
+			title: "Contact",
 			column: [
 				"If you have any questions or suggestions, send us an email.",
 				"Google News Initiative supported the project “In search for the candidate” providing data, edition and technical questions about Google Trends. For more info about Google Trends, contact newslabtrends@google.com"

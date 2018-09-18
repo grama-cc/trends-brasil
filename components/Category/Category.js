@@ -192,7 +192,11 @@ class Category extends React.Component {
           </div>
         </div>
 
-        <Social stroke='#b4b4b4' parent="Chart_container_1d8aV"/>
+        <Social
+          stroke='#b4b4b4'
+          parent="Chart_container_1d8aV"
+          lang={this.props.lang}
+        />
       </section>
     )
   }

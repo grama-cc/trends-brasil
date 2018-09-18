@@ -155,7 +155,11 @@ class Section extends React.Component {
               onClickPeriod={this.props.onClickPeriod}
               lang={this.props.lang}
             />
-            <Social stroke='#fff' parent={this.props.parent}/>
+            <Social
+              stroke='#fff'
+              parent={this.props.parent}
+              lang={this.props.lang}
+            />
 
           </div>
         </div>

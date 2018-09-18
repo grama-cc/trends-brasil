@@ -84,6 +84,7 @@ class Keywords extends React.Component {
           parent="Graphic_graphic_IWdTV"
           id='keywords'
           zip='/static/img/candidates.zip'
+          lang={this.props.lang}
         />
       </section>
     )

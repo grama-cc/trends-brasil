@@ -105,6 +105,7 @@ class Relationship extends React.Component {
           mediaHidden
           stroke='#b4b4b4'
           parent="Relationship_clouds_ybJRI"
+          lang={this.props.lang}
         />
         
       </section>

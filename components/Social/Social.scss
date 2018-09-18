@@ -104,13 +104,28 @@
 	width: 100%;
 	order: 2;
 	z-index: 2;
+
+	.media {
+		display: none;
+		@media screen and (min-width: $medium-devices) {
+			display: block;
+		}
+	}
 	
 	&.bottom {
 		position: absolute;
-		width: calc(100vw - 112px);
+		//width: calc(100vw - 112px);
+		width: 100%;
 		bottom: responsive(20, 80);
+		// right: responsive(20, 60);
 		left: 50%;
 		transform: translateX(-50%);
+
+		@media screen and (min-width: $medium-devices) {
+			left: auto;
+			right: responsive(20, 60);
+			transform: translateX(0%)
+		}
 	}
 
 	.whats {
@@ -152,9 +167,13 @@
 		margin: 0 0 0 24px;
 		cursor: pointer;
 		@media screen and (max-width: $medium-devices) {
-			&:first-child {
-				margin: 0;
-			}
+			//&:first-child {
+				//margin: 0;
+			//}
+			margin: 0 12px;
+			//&:nth-child(2) {
+				//margin: 0;
+			//}
 		}
 		a {
 			display: flex;

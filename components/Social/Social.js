@@ -8,6 +8,8 @@ import Facebook from './Facebook.js';
 import Whatsapp from './Whatsapp.js';
 import { saveAs } from 'file-saver/FileSaver';
 
+import {i18n} from '../../common/locale/i18n';
+
 class Social extends React.Component {
 
   constructor (props) {
@@ -64,6 +66,7 @@ class Social extends React.Component {
   }
 
   render () {
+    const lang = this.props.lang;
 
     return (
       <React.Fragment>
@@ -138,8 +141,8 @@ class Social extends React.Component {
         {this.props.children}
 
         <ul className={`${css.social} ${this.props.bottom ? css.bottom : null} ${this.props.share ? css.share : null}`}>
-          {!this.props.share  && !this.props.mediaHidden ?
-          <li>
+          {!this.props.share && !this.props.mediaHidden ?
+          <li className={css.media}>
             <a
               target="_blank"
               //href={this.props.zip ? this.props.zip : 'javascript:void(0)'}
@@ -151,7 +154,7 @@ class Social extends React.Component {
           <li>
             <a 
               target="_blank"
-              href={`https://twitter.com/home?status=Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018? https%3A//www.nabuscadocandidato.com.br/`}
+              href={`https://twitter.com/home?status=${i18n('share.text', lang)} https%3A//www.nabuscadocandidato.com.br/`}
             >
               <Twitter stroke={this.props.stroke} />
             </a>
@@ -167,9 +170,9 @@ class Social extends React.Component {
           <li className={css.whats}>
             <a
               target="_blank"
-              href="whatsapp://send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
+              href={`whatsapp://send?text=${i18n('share.text', lang)} https://www.nabuscadocandidato.com.br/`} 
               data-action="share/whatsapp/share" 
-              data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
+              data-text={i18n('share.text', lang)}
               data-href="https://www.nabuscadocandidato.com.br/">
               <Whatsapp stroke={this.props.stroke} />
             </a>
@@ -177,9 +180,9 @@ class Social extends React.Component {
           <li className={css.webwhats}>
             <a
               target="_blank"
-              href="https://web.whatsapp.com/send?text=Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018? https://www.nabuscadocandidato.com.br/" 
+              href={`https://web.whatsapp.com/send?text=${i18n('share.text', lang)} https://www.nabuscadocandidato.com.br/`} 
               data-action="share/whatsapp/share" 
-              data-text="Na busca do candidato O que os brasileiros procuram no Google sobre as eleições de 2018?" 
+              data-text={i18n('share.text', lang)} 
               data-href="https://www.nabuscadocandidato.com.br/">
               <Whatsapp stroke={this.props.stroke} />
             </a>

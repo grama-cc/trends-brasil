@@ -278,6 +278,7 @@ class Lines extends React.Component {
           stroke='#b4b4b4'
           id='lines'
           parent="Lines_chart_container_1hkMp"
+          lang={this.props.lang}
         />
       </section>
     )

@@ -1,5 +1,9 @@
 export const i18n_pt_br = {
 
+	share: {
+		text: "Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018?"
+	},
+
 	period: {
 		title: "Período",
 		week: "Semana",
