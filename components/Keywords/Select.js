@@ -12,11 +12,6 @@ class Select extends React.Component {
     this.props.click(val)
   }
 
-  /*onChangeLang = (e) => {
-    const lang = e.currentTarget.lang
-    this.props.onChangeLang(lang)
-  }*/
-
   render() {
     const val = this.props.val
     const content = this.props.content

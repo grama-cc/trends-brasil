@@ -15,6 +15,7 @@ class Clipping extends React.Component {
             <li key={index}>
               <h2>{item.title}</h2>
               <p>{item.text}</p>
+              <a href={item.link} target="_blank">{item.link}</a>
             </li>
           ))}
         </ul>

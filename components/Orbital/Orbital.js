@@ -16,22 +16,14 @@ import {i18n} from '../../common/locale/i18n';
 class Orbital extends React.Component {
   constructor (props) {
     super(props)
-
     this.state = {
       orbital: null,
       id: null,
       period: 'month'
     };
-
     this.config = {
       width: 270,
       height: 270,
-      margin: { 
-        top: 100,
-        right: 100,
-        bottom: 100,
-        left: 100 
-      },
       levels: 3,
       maxValue: 0.5, // biggest circle will value
     };
@@ -93,44 +85,35 @@ class Orbital extends React.Component {
 
     } else {
       const orbital = this.state.orbital;
-
+      const lang = this.props.lang;
+      const filter = this.props.filter;
       const w = this.config.width * 1.08;
       const h = this.config.height * 1.08;
-
-      const filter = this.props.filter;
-
       const circles = this.circleLevels();
       const values = this.values(orbital);
       const levels = d3.range(1, (this.config.levels + 1) ).reverse();
-
       const candidates = orbital.filter((c) => filter === c.id);
-
-      const lang = this.props.lang;
-
       const slug = this.props.candidates ? this.props.candidates.filter((c) => filter === c.id) : [];
 
       return ( 
         <React.Fragment>
-
-          {this.props.candidates ? <div
-            className={css.image}
-            style={{
-              backgroundImage: filter ? `url(/static/img/candidates/${slug[0].slug}.png` : '',
-              backgroundColor: filter ? slug[0].color : 'transparent',
-            }}
-          /> : null }
-
+          {this.props.candidates ? 
+            <div
+              className={css.image}
+              style={{
+                backgroundImage: filter ? `url(/static/img/candidates/${slug[0].slug}.png` : '',
+                backgroundColor: filter ? slug[0].color : 'transparent',
+              }}
+            />
+          : null }
 
           <p className={css.middle}>{filter ? candidates[0].name : null}</p>
 
           {orbital.map((candidate, idx) => {
-
             if (candidate.people.length === 0 && candidate.id === filter) {
               return (
                 <div
-                  style={{
-                    backgroundColor: candidate.color
-                  }}
+                  style={{ backgroundColor: candidate.color }}
                   className={filter === candidate.id ? css.empty : `${css.none} ${css.empty}`}
                   key={idx}
                 > 
@@ -143,9 +126,7 @@ class Orbital extends React.Component {
 
           <svg
             className="Orbital_chart"
-            xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${w} ${h}`}
-            //preserveAspectRatio="none"
             style={{
               backgroundColor: filter ? candidates[0].color : '#b4b4b4'
             }}
@@ -197,7 +178,6 @@ class Orbital extends React.Component {
               ))}
               {orbital.map((points, idx) => (
                 <g className='candidates' key={idx}>
-
                   {points.id === filter ?
                     <g>
                       <circle

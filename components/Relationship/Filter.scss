@@ -1,0 +1,262 @@
+@import '../../lib/scss/variables.scss';
+
+// Filter and Compare
+.container {
+	display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  z-index: 2;
+  order: 2;
+
+  @media screen and (min-width: $medium-devices) {
+		width: 100%;
+	}
+
+	@media screen and (min-width: $medium-devices) {
+		&.filter {
+			p {
+				&.show {
+					opacity: 1;
+					padding: 0 10px;
+					// display: block;
+				}
+
+				opacity: 0;
+				// display: none;
+			}
+		}
+	}
+}
+
+.legend {
+	text-align: center;
+	margin: 10px 0 0;
+	text-transform: uppercase;
+	width: 100%;
+	
+	@media screen and (min-width: $medium-devices) {
+		text-align: left;
+		margin: 0;
+		padding: 0 10px;
+	}
+	display: inline-block !important;
+	// margin: 10px 0 0 responsive(55, 110);
+	font-size: 10px;
+	opacity: 1 !important;
+	font-family: $robotoMedium;
+	font-weight: bold;
+}
+
+
+// If mobile filter
+.selected {
+	width: responsive(140, 220);
+	position: relative;
+	display: block;
+		p {
+			// opacity: 0;
+			display: none;
+		}
+		@media screen and (min-width: $medium-devices) {
+			p {
+				opacity: 0;
+				display: block;
+			}
+		}
+
+		li {
+		font-size: responsive(12, 22);
+		position: relative;
+		padding: 10px;
+		overflow: hidden;
+		transition: background .4s ease;
+		&.disabled {
+			transition: background .4s ease;
+			background-color: $grayLight;
+			color: $grayDark;
+		}
+
+		&.unclick {
+			color: $grayDark;
+		}
+
+		&.choose {
+			background-color: $white;
+			border: 1px solid #b4b4b4;
+    	border-radius: 4px;
+    	display: flex;
+    	justify-content: space-between;
+    	align-items: center;
+    	svg {
+    		width: 16px;
+    		height: 8px;
+    		margin: 0;
+    	}
+		}
+	}
+
+	div {
+		width: 100%;
+		transition: height .4s ease;
+		height: 0;
+		overflow: hidden;
+		position: absolute;
+		background-color: $white;
+		z-index: 1;
+		&.open {
+			height: 300px;
+			overflow-y: scroll;
+		}
+	}
+}
+
+.filter {
+	&.show {
+    align-items: flex-start;
+  }
+}
+
+.compare {
+	&.show {
+    align-items: flex-end;
+  }
+}
+
+
+.filter, .compare {
+	display: flex;
+	justify-content: flex-end;
+	@media screen and (min-width: $medium-devices) {
+		display: none;
+		&.show {
+
+			display: flex;
+    	justify-content: baseline;
+    	flex-direction: column;
+
+			>div {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				width: auto;
+			}
+			
+			ul {
+				margin: 0 20px;
+				width: auto;
+				min-width: 200px;
+				div {
+					background-color: #f8f8f8;
+					z-index: 1;
+				}
+				li {
+					background-color: transparent;
+					border-radius: 0;
+					border: none;
+					background-position: center right 0;
+    			padding: 10px;
+    			&.choose {
+    				border-bottom: 1px solid #b4b4b4;
+    			}
+				}
+			}
+		}
+	}
+}
+
+// If componente is relationship
+.image {
+	width: responsive(35, 90);
+	height: responsive(35, 90);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	border-radius: 100%;
+	margin: 10px auto;
+	display: none;
+	@media screen and (min-width: $medium-devices) { 
+		margin: 0;
+		display: block;
+	}
+}
+
+$circle-size: responsive(20, 60);
+
+.icons {
+	width: responsive(20, 60);
+}
+
+// If desktop filter and not relationship
+.list {
+	width: 100%;
+	display: none;
+	@media screen and (min-width: $medium-devices) {
+		display: block;
+		&.hide {
+			display: none;
+		}
+	}
+
+	p {
+		background-image: url(/static/img/candidates/none.svg);
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: 40px;
+    height: 40px;
+    padding: 0 0 0 50px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 20px;
+    font-size: 24px;
+    font-family: $robotoLight;
+    cursor: pointer;
+    &.show {
+    	display: flex;
+    }
+	}
+
+	ul {
+		width: 100%;
+		height: auto;
+		position: relative;
+		display: flex;
+		// justify-content: space-around;
+		justify-content: space-between;
+
+		align-items: flex-start;
+
+		&.gray {
+			.disabled {
+				background-color: rgba(180, 180, 180, .4);
+			}
+		}
+
+		li {
+			display: block;
+			width: $circle-size;
+			height: $circle-size;
+			border-radius: 100%;
+			overflow: hidden;
+			opacity: 1;
+			background-color: transparent;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			box-shadow: 0 0 0 3px #fff;
+			transition: background .4s ease, box-shadow .4s ease;
+			cursor: pointer;
+
+			margin: 0 0 5px;
+
+			&.disabled {
+				box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
+				filter: grayscale(100%);
+				opacity: .6;
+				background-color: rgba(255, 255, 255, .6);
+				
+			}
+		}
+	}
+}
+
+
+

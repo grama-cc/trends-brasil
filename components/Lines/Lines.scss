@@ -2,18 +2,15 @@
 
 .lines {
 	@include grid();
-
   @media screen and (min-width: $medium-devices) {
     align-items: flex-end;
   }
-
   .info {
   	display: flex;
   	flex-direction: column;
     align-items: center;
     order: 2;
     width: 100%;
-
   	@media screen and (min-width: $medium-devices) {
     	flex-direction: row;
       align-items: flex-start;
@@ -21,19 +18,16 @@
         width: 40%;
       }
   	}
-
     .line_filter {
       width: 60%;
     }
   }
-
   .percent {
     order: 2;
     text-align: center;
     font-size: 11px;
     margin: 20px 0 10px;
     z-index: 1;
-
     @media screen and (min-width: $medium-devices) {
       position: absolute;
       top: 55%;
@@ -43,7 +37,6 @@
       width: 450px;
     }
   }
-
   .space {
     background-color: #fff;
     position: absolute;
@@ -51,19 +44,15 @@
     left: 0;
     top: 0;
     width: responsive(10, 40);
-
+    display: none;
     &.right {
       left: auto;
       right: 0;
     }
-
-    display: none;
-
     @media screen and (min-width: $medium-devices) {
       display: block;
     }
   }
-
   .chart_container {
     order: 2;
     width: 100%;
@@ -71,28 +60,21 @@
     overflow-y: hidden;
     min-height: 50vh;
     position: relative;
-
     &::-webkit-scrollbar { height: 5px; width: 5px; } // width and height
-
     &::-webkit-scrollbar-track { background: #f8f8f8; } // track
-     
     &::-webkit-scrollbar-thumb { background: #b4b4b4; } // handle
-
     @media screen and (min-width: $medium-devices) {
       overflow: none;
       margin: 20px 0 0;
-
       &::-webkit-scrollbar {
         display: none;
       }
     }
-
     h3 {
       position: absolute;
-      //margin: 35px 0 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       span {
         background: $grayLight;
         padding: 12px 20px;
@@ -100,24 +82,15 @@
       }
     }
   }
-
   .chart {
     order: 2;
     box-sizing: border-box;
-    // padding: responsive(30, 50) responsive(10, 20) responsive(20, 30);
     min-height: 50vh;
     width: 250vw;
-
     @media screen and (min-width: $medium-devices) {
       width: 100%;
     }
-
     .axis {
-      line {
-        //opacity: 0.2;
-        //stroke-dasharray: 1px;
-      }
-
       path {
         visibility: hidden;
       }
@@ -126,41 +99,20 @@
         font-size: 10px;
       }
     }
-
     .date {
       line {
         stroke: $black;
       }
-
       rect {
         fill: $black;
       }
-
-      text {
-        // fill: $white;
-        // font-size: 10px;
-        // transform: translateY(-11px);
-        // font-weight: 500;
-        // text-transform: uppercase;
-      }
-
       circle {
         fill: $white;
         stroke-width: 2px;
       }
     }
-
-    // .tem {
-      // transition: all 1s ease; 
-    // }
-
-    .lines {
-
-      
-    }
   }
 }
-
 .loading {
   text-align: center;
   padding: 20px;

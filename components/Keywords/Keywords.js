@@ -23,6 +23,7 @@ class Keywords extends React.Component {
 
   renderChart(candidates, words, view) {
 
+
     if(!this.props.candidates && !this.props.words) {
 
       return <div className={css.loading}>Loading...</div>
@@ -58,6 +59,7 @@ class Keywords extends React.Component {
     const candidates = this.props.candidates
     const words = this.props.words
     const view = this.state.view;
+    const lang = this.props.lang
     
     return (
       <section className={css.keywords} id='keywords'>
@@ -65,7 +67,7 @@ class Keywords extends React.Component {
           <Description
             content='keywords'
             arrowColor={this.props.arrowColor}
-            lang={this.props.lang}
+            lang={lang}
             color='#f8f8f8'
           />
         </div>
@@ -74,17 +76,17 @@ class Keywords extends React.Component {
             click={this.onChangeView}
             val={view}
             content='keywords.select'
-            lang={this.props.lang}
+            lang={lang}
           />
           { this.renderChart(candidates, words, view) }
         </div>
         <Social 
           stroke='#b4b4b4' 
-          bottom 
+          bottom
           parent="Graphic_graphic_IWdTV"
           id='keywords'
           zip='/static/img/candidates.zip'
-          lang={this.props.lang}
+          lang={lang}
         />
       </section>
     )

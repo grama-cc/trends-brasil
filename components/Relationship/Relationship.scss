@@ -26,7 +26,6 @@
   .compare {
   	width: 100%;
   	min-height: 80vh;
-  	// position: relative;
 
   	@media screen and (min-width: $medium-devices) {
   		width: 70%;
@@ -88,19 +87,10 @@
 		}
 	}
 	&_words{
-		/*	
-			position: absolute;
-			white-space: nowrap;
-			text-transform: lowercase;
-		*/
-
+		font-size: responsive(14, 18);
     text-transform: lowercase;
     text-align: center;
     margin: 10px 0;
-		font-size: 18px;
-		// @media screen and (min-width: $medium-devices) {
-			// font-size: 20px;
-		// }
 	}
 
 }

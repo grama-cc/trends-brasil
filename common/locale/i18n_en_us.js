@@ -1,6 +1,7 @@
 export const i18n_en_us = {
 
 	share: {
+		download: "For image processing programs",
 		text: "In search for the candidate: What are Brazilians googling about on the 2018 elections?"
 	},
 
@@ -223,22 +224,25 @@ export const i18n_en_us = {
 		  ]
 		},
 
-	clipping: {
-	  list: [
-	  	{
-	  		title: "Google Trends’ Election Center",
-	  		text: "Check Google Trends data at Google’s data center made specially for 2018 presidential election. Go to: g.co/trendseleicoes2018"
-	  	},
-	  	{
-	  		title: "",
-	  		text: ""
-	  	},
-	  	{
-	  		title: "",
-	  		text: ""
-	  	}
-	  ]
-	}
+		clipping: {
+		  list: [
+		  	{
+		  		title: "Making of",
+		  		text: "What do brazilian voters search for about the candidates running for presidency?",
+		  		link: "https://bit.ly/2xy9Obb"
+		  	},
+		  	{
+		  		title: "",
+		  		text: "",
+		  		link: ""
+		  	},
+		  	{
+		  		title: "",
+		  		text: "",
+		  		link: ""
+		  	}
+		  ]
+		}
   }
 
 }

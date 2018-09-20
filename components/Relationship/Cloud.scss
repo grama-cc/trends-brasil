@@ -1,21 +1,11 @@
 @import '../../lib/scss/variables.scss';
 
 .cloud {
-	&[type='candidate'] {
-		display: block;
-		align-items: center;
-		@media screen and (min-width: $medium-devices) {
-			align-items: initial;
-			margin: 40px 0 0;
-		}
-	}
 	text-align: center;
-
 	a {
 		display: inline;
 		position: relative;
 		margin-top: 17px;
-		// transform: translateX(-20%) !important;
 		@media screen and (min-width: $medium-devices) {
 			max-width: 140px;
 			transform: translateX(-10%) !important;
@@ -23,7 +13,6 @@
 			width: max-content;
 		}
 	}
-
 	@media screen and (min-width: $medium-devices) {
     width: 100%;
   }

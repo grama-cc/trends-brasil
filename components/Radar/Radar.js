@@ -11,7 +11,6 @@ import {i18n} from '../../common/locale/i18n';
 class RadarChart extends React.Component {
   constructor (props) {
     super(props)
-
     this.state = {
       radar: null,
       id: null,
@@ -21,12 +20,6 @@ class RadarChart extends React.Component {
     this.config = {
       width: 270,
       height: 350,
-      //margin: { 
-        //top: 100,
-        //right: 100,
-        //bottom: 100,
-        //left: 100 
-      //},
       dash: 1,
       levels: 2,
       padding: 1.3,
@@ -39,7 +32,6 @@ class RadarChart extends React.Component {
   }
 
   onClickPeriod = (period) => {
-    // const period = e.target.value
     this.setState({ period: period })
     this.getData(period);
   }
@@ -125,19 +117,8 @@ class RadarChart extends React.Component {
 
       return (
         <React.Fragment>
-
-          {/*<div className={css.categories}>
-            {i18n('radar.names', lang).map((point, idx) => (
-              <p className={css.name} key={idx}>
-                {point}
-              </p>
-            ))}
-          </div>*/}
-
           {radar.map((candidate, idx) => {
-
             const empty = candidate.categories.filter((c) => c.percent === 1)
-
             if (empty.length === 6 ) {
               return (
                 <div
@@ -153,16 +134,11 @@ class RadarChart extends React.Component {
               )
             }
           })}
-
-
           <svg 
             xmlns="http://www.w3.org/2000/svg"
             viewBox={`0 0 ${w} ${h}`}
-            // preserveAspectRatio="none"
             transform={`rotate(90)`}
-            // fill={filter ? candidates[0].color : '#b4b4b4'}
             style={{
-              // padding: '53px 12px 32px'
               backgroundColor: filter ? candidates[0].color : '#b4b4b4',
               padding: '0 12px 0'
             }}
@@ -178,10 +154,7 @@ class RadarChart extends React.Component {
               </text>
             </defs>
 
-            <g 
-              transform={`translate(${w / 2}, ${(h / 2) + 10})`}
-              
-            >
+            <g transform={`translate(${w / 2}, ${(h / 2) + 10})`}>
               <defs>
                 <radialGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="20%" 
@@ -204,7 +177,6 @@ class RadarChart extends React.Component {
                     r={diameter}
                   />
                 ))}
-
                 {axis.map((point, idx) => (
                   <g key={idx}>
                     <line
@@ -219,30 +191,16 @@ class RadarChart extends React.Component {
                   </g>
                 ))}
 
-                {/*i18n('radar.names', lang).map((point, idx) => (
-                  <p className={css.name} key={idx}>
-                    {point}
-                  </p>
-                ))*/}
-
-
-                <g className='taina'>
+                <g>
                 {axis.map((a, idx) => {
-                  //const axis = curves.categories.filter((r, i) => r.id != 2 )
-
                   return(
                     <text
                       className={css.axis}
                       fontSize='10px'
                       textAnchor={a.id === 3 || a.id === 1 ? 'start' : a.id === 5 || a.id === 4 ? 'end' : 'middle'}
                       transform={`translate(${a.x * 1.07},${-a.y * 1.07})rotate(-90)`}
-
-
                       fontWeight='500'
                       fill='#4b4b4b'
-
-                      // x={point.x}
-                      // y={point.y}
                       dy={'0.35em'}
                       key={idx} 
                     >
@@ -251,44 +209,28 @@ class RadarChart extends React.Component {
                   )
                 })}
                 </g>
-
-                {/*Append the labels at each axis
-                axis.append("text")
-                  .attr("class", "legend")
-                  .style("font-size", "11px")
-                  .attr("text-anchor", "middle")
-                  .attr("dy", "0.35em")
-                  .attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
-                  .attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
-                  .text(function(d){return d})
-                  .call(wrap, cfg.wrapWidth);*/}
               </g>
-              <g 
-                className={css.areaContainer}
-                transform={`rotate(90)`}
-              >
-              {radar.map((curves, idx) => {
-
-                const filterCurve = curves.categories.filter((r, i) => r.id != 2 )
-
-                return (
-                  <g className={css.wrap} key={idx} id={curves.id}>
-                    <path
-                      className={css.area}
-                      d={radarLine(filterCurve)}
-                      fill="none"
-                    />
-                    <path
-                      className={idx == radar.length - 1 && filter ? css.stroke : null}
-                      d={radarLine(filterCurve)}
-                      strokeWidth={idx == radar.length - 1 && filter ? 2 : 1}
-                      stroke={idx == radar.length - 1 && filter ? "#fff" : "#4b4b4b"}
-                      opacity={idx == radar.length - 1 && filter ? 1 : .3}
-                      fill={idx == radar.length - 1 && filter ? "url(#grad)" : "none" }
-                    />
-                  </g>
-                )
-              })}
+              <g className={css.areaContainer} transform={`rotate(90)`}>
+                {radar.map((curves, idx) => {
+                  const filterCurve = curves.categories.filter((r, i) => r.id != 2 )
+                  return (
+                    <g className={css.wrap} key={idx} id={curves.id}>
+                      <path
+                        className={css.area}
+                        d={radarLine(filterCurve)}
+                        fill="none"
+                      />
+                      <path
+                        className={idx == radar.length - 1 && filter ? css.stroke : null}
+                        d={radarLine(filterCurve)}
+                        strokeWidth={idx == radar.length - 1 && filter ? 2 : 1}
+                        stroke={idx == radar.length - 1 && filter ? "#fff" : "#4b4b4b"}
+                        opacity={idx == radar.length - 1 && filter ? 1 : .3}
+                        fill={idx == radar.length - 1 && filter ? "url(#grad)" : "none" }
+                      />
+                    </g>
+                  )
+                })}
               </g>
             </g>
           </svg>

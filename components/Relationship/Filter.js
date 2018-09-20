@@ -1,11 +1,9 @@
 import React from 'react';
-// import Slider from 'react-slick'
 import PropTypes from 'prop-types';
 
 import css from './Filter.scss';
-import Arrow from './Arrow.js';
-
-import {i18n} from '../common/locale/i18n';
+import Arrow from '../Arrow.js';
+import {i18n} from '../../common/locale/i18n';
 
 class Filter extends React.Component {
 
@@ -15,10 +13,6 @@ class Filter extends React.Component {
       openFilter: false,
       openCompare: false
     };
-  }
-
-  onClickClear = () => {
-    this.props.onFilter()
   }
 
   onFilter = (e) => {
@@ -44,8 +38,6 @@ class Filter extends React.Component {
   }
 
   renderImageFilter(slug, color) {
-    //console.log('filter', slug)
-    // console.log('filter', slug, this.props.compare, this.props.filter)
     return (
       <div
         className={css.image}
@@ -58,7 +50,6 @@ class Filter extends React.Component {
   }
 
   renderImageCompare(slug, color) {
-    // console.log('compare', slug, this.props.compare, this.props.filter)
     return (
       <div
         className={css.image}
@@ -86,12 +77,6 @@ class Filter extends React.Component {
         </li>
 
         <div className={dropdownState ? css.open : null}>
-          <li
-            onClick={this.onClickClear}
-            className={!this.props.filter ? css.disabled : null}
-          >
-            {this.props.all ?  i18n('filter.all', lang) :  i18n('filter.choose', lang)}
-          </li>
           {candidates.map((c, idx) => (
             <li 
               key={idx}
@@ -104,7 +89,7 @@ class Filter extends React.Component {
           ))}
         </div>
 
-        {this.props.relationship ? <p className={css.legend}>{i18n('filter.related', lang)}</p> : null}
+        <p className={css.legend}>{i18n('filter.related', lang)}</p>
       </ul>
     )
   }
@@ -113,7 +98,6 @@ class Filter extends React.Component {
     const candidates = this.props.candidates;
     const filter = this.props.filter;
     const compare = this.props.compare;
-    const relationship = this.props.relationship;
     const lang = this.props.lang;
 
     const f = candidates.filter(f => f.id === filter);
@@ -130,10 +114,10 @@ class Filter extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={`${css.container} ${css.list} ${relationship ? css.hide : null}`}>
+        <div className={`${css.container} ${css.list} ${css.hide}`}>
           <p
             onClick={this.onClickClear}
-            className={`${!this.props.filter ? css.disabled : null} ${this.props.all ? css.show : null}`}
+            className={`${!this.props.filter ? css.disabled : null}`}
           >
             {i18n('filter.candidates', lang)}
           </p>
@@ -162,64 +146,27 @@ class Filter extends React.Component {
                     backgroundColor: filter === c.id ? c.color : null,
                   }}
                 />
-                {this.props.lineFilter && filter === c.id ? <span
-                  style={{
-                    fontSize: '10px',
-                    display: 'block',
-                    textAlign: 'center',
-                    textTransform: 'uppercase'
-                  }}
-                >{c.name}</span> : null }
                 </div>
               )
             })}
           </ul>
         </div>
 
-        <div className={`${css.container} ${css.filter} ${relationship ? css.show : null}`}>
+        <div className={`${css.container} ${css.filter} ${css.show}`}>
           <div>
-            {relationship ? this.renderImageFilter(filterSlug, filterColor) : null}
-
-            {/*relationship ? candidates.map((c, idx) => { 
-              return (
-                <div
-                  key={idx}
-                  className={css.image}
-                  style={{
-                    backgroundImage: `url(/static/img/candidates/${c.slug}.png)`,
-                    backgroundColor: c.color,
-                    display: filter === c.id ? 'block' : 'none'
-                  }}
-                />
-              )
-            }) : null*/}
+            {this.renderImageFilter(filterSlug, filterColor)}
             {this.renderDropdown(this.onDropdownFilter, filter, selectedNameFilter, this.state.openFilter, compare, this.onFilter)}
           </div>
         </div>
 
-        {relationship ? 
-          <div className={`${css.container} ${css.compare} ${relationship ? css.show : null}`}>
+        
+          <div className={`${css.container} ${css.compare} ${css.show}`}>
             <div>
-              {relationship ? this.renderImageCompare(compareSlug, compareColor) : null}
-              
-              {/*relationship ? candidates.map((c, idx) => { 
-                return (
-                  <div
-                    key={idx}
-                    className={css.image}
-                    style={{
-                      backgroundImage: `url(/static/img/candidates/${c.slug}.png)`,
-                      backgroundColor: c.color,
-                      display: compare === c.id ? 'block' : 'none'
-                    }}
-                  />
-                )
-              }) : null*/}
-
+              {this.renderImageCompare(compareSlug, compareColor)}
               {this.renderDropdown(this.onDropdownCompare, compare, selectedNameCompare, this.state.openCompare, filter, this.onCompare)}
             </div>
           </div>
-        : null}
+        
       </React.Fragment>
     )
   }

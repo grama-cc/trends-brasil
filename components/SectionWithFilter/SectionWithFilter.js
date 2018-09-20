@@ -25,37 +25,27 @@ class Section extends React.Component {
     }
   }
 
-
   onPrev = (e) => {
-    const idx = Number(e.currentTarget.dataset.index);
+    const idx = Number( e.currentTarget.dataset.index );
     const candidates = this.props.candidates;
 
-    if(idx > 0) {
-
-      this.props.onFilter(candidates[idx - 1].id)
-
-    } else if(idx === 0) {
-
-      this.props.onFilter(candidates[candidates.length - 1].id)
-
+    if( idx > 0 ) {
+      this.props.onFilter( candidates[idx - 1].id )
+    } else if( idx === 0 ) {
+      this.props.onFilter( candidates[candidates.length - 1].id )
     }
   }
 
   onNext = (e) => {
-    const idx = Number(e.currentTarget.dataset.index)
+    const idx = Number( e.currentTarget.dataset.index )
     const candidates = this.props.candidates;
-
-    if(!idx) {
-      this.props.onFilter(candidates[0].id)
+    if( !idx ) {
+      this.props.onFilter( candidates[0].id) 
     }
-
-    if(idx < candidates.length - 1) {
-
-      this.props.onFilter(candidates[idx + 1].id)
-
-    } else if(idx === candidates.length - 1) {
-
-      this.props.onFilter(candidates[0].id)
+    if( idx < candidates.length - 1 ) {
+      this.props.onFilter( candidates[idx + 1].id )
+    } else if( idx === candidates.length - 1 ) {
+      this.props.onFilter( candidates[0].id )
     }
   }
 
@@ -77,7 +67,7 @@ class Section extends React.Component {
     const bg = currentCandidate ? `${currentCandidate.slug}.png` : 'none.svg';
     const name = currentCandidate ? currentCandidate.name : i18n('slider.choose', lang);
 
-    const idx = !this.props.filter ? null : this.findIndex(candidates, 'id', this.props.filter);
+    const idx = !this.props.filter ? null : this.findIndex( candidates, 'id', this.props.filter );
 
     return (
       <section
@@ -146,7 +136,6 @@ class Section extends React.Component {
           <div className={css.chart}>
             {this.renderFilter()}
             {this.props.children}
-
             <Period
               bgColor={currentCandidate ? currentCandidate.color : '#b4b4b4'}
               color='#fff'
@@ -160,11 +149,8 @@ class Section extends React.Component {
               parent={this.props.parent}
               lang={this.props.lang}
             />
-
           </div>
         </div>
-        
-        
       </section>
     )
   }

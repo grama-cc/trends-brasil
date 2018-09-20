@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Api from '../../lib/Api';
 
-// import data from './data'
 import css from './Category.scss';
 
 import Description from '../Description/Description.js';
 import Social from '../Social/Social.js';
 import Select from './Select.js';
+import Cloud from './Cloud.js';
+
 import Chart from './Chart'
-import Cloud from '../Cloud.js';
-
 import ChartVertical from './ChartVertical';
-
 import {i18n} from '../../common/locale/i18n';
 
 class Category extends React.Component {
@@ -21,9 +19,20 @@ class Category extends React.Component {
     super(props);
     this.state = {
       bars: null,
+      wordsCategory: null,
       idx: 0,
       view: 'bars',
     };
+  }
+
+  getData = async () => {
+    const bars = await Api.getBar();
+    const wordsCategory = await Api.getWordsCategory();
+    this.setState({bars,  wordsCategory});
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   onClick = (e) => {
@@ -32,10 +41,8 @@ class Category extends React.Component {
   }
 
   onClickPrev = () => {
-    //const size = this.props.bars.length - 1;
     const size = 4;
     const idx = this.state.idx;
-
     if(idx > 0) {
       this.setState({ idx: idx - 1 })
     } else if (idx === 0) {
@@ -44,26 +51,18 @@ class Category extends React.Component {
   }
 
   onClickNext = () => {
-    //const size = this.props.bars.length - 1;
     const size = 4;
     const idx = this.state.idx;
-
     if(idx < size) {
       this.setState({ idx: idx + 1 })
     } else if (idx === size) {
       this.setState({ idx: 0 })
     }
-
   }
 
   onChangeView = (val) => {
     this.setState({ view: val })
   }
-
-  /*onChangeLang = (e) => {
-    const lang = e.currentTarget.lang
-    this.props.onChangeLang(lang)
-  }*/
 
   renderNav (type) {
     const idx = this.state.idx;
@@ -71,8 +70,6 @@ class Category extends React.Component {
 
     return(
       <nav className={type === 'btn' ? `${css.btn} ${css.nav}` : `${css.nav}`}>
-
-      {/*this.props.bars ? this.props.bars.map((d, i) => {*/}
         {i18n('category.list', lang).map((d, i) => {
           return(
             <button 
@@ -92,47 +89,60 @@ class Category extends React.Component {
     )
   }
 
-  render() {
-
+  renderCharts() {
     const idx = this.state.idx;
     const view = this.state.view;
     const lang = this.props.lang;
 
-    /*const text = [
-      "Políticos em mandato ativo e demais personalidades do mundo político, como ministros do Supremo e juízes federais.",
-      
-      "Buscas relacionadas a notícias e seus veículos de publicação, como jornais, sites ou programas de TV.",
-      
-      "Todos os termos relacionados à ideologia política dos candidatos, como partido, plano de governo e declarações.",
-      
-      "Cantores, atores, ex-BBBs… quem orbita os candidatos à Presidência na busca relacionada.",
-      
-      "Buscas sobre a vida pública dos candidatos, como cargos ocupados  ou pretendidos e envolvimento em casos de corrupção.",
-      
-      "Termos amplamente buscados que não se enquadram em nenhuma classificação.",
-    ]*/
-    
-    if(!this.props.candidates && !this.props.words) {
-      return <div className={css.loading}>Loading...</div>
+    if(this.props.words && this.props.candidates && this.state.bars && this.state.wordsCategory) {
+      return (
+        <React.Fragment>
+          <div className={css.desk}>
+            <Chart 
+              lang={this.props.lang}
+              type={view} 
+              data={this.state.bars[idx]}
+            />
+          </div>
+          <div className={css.mobile}>
+            <ChartVertical
+              lang={this.props.lang}
+              type={view}
+              data={this.state.bars[idx]}
+            />
+          </div>
+          <div type={view} className={css.cloud_container}>
+            <Cloud 
+              id={this.state.bars[idx].id} 
+              words={this.state.wordsCategory} 
+              color='#b4b4b4'
+            />
+          </div>
+        </React.Fragment>
+      )
     }
+    return <div className={css.loading}>Loading...</div>
+  }
+
+  render() {
+    const idx = this.state.idx;
+    const view = this.state.view;
+    const lang = this.props.lang;
 
     return (
       <section className={css.category}>
-
         <div className={css.content}>
-
           <div className={css.info}>
             <Description
               content='category'
               arrowColor={this.props.arrowColor}
-              lang={this.props.lang}
+              lang={lang}
               color='#f8f8f8'
             />
             {this.renderNav()}
           </div>
 
           <div className={css.chart}>
-
             <header>
               <button
                 className={`${css.arrow} ${css.prev}`}
@@ -148,16 +158,18 @@ class Category extends React.Component {
                 className={`${css.arrow} ${css.next}`}
                 onClick={this.onClickNext}
               /> 
-
             </header>
             
             <Select
               click={this.onChangeView}
               val={view}
               content='keywords.select'
-              lang={this.props.lang}
+              lang={lang}
             />
-            {this.props.bars ? 
+
+            {this.renderCharts()}
+
+            {/*this.props.bars ? 
               <React.Fragment>
                 <div className={css.desk}>
                   <Chart 
@@ -175,23 +187,23 @@ class Category extends React.Component {
                 </div>
               </React.Fragment>
               : 'Loading...'
-            }
-            <div type={view} className={css.cloud_container}>
-            {this.props.words && this.props.candidates && this.props.bars ? 
-              <Cloud 
-                id={this.props.bars[idx].id} 
-                candidates={this.props.candidates}
-                words={this.props.words} 
-                keywords
-                color='#b4b4b4'
-              />
-            : 'Loading'}
-            </div>
+            */}
+
+            {/*<div type={view} className={css.cloud_container}>
+              {this.props.words && this.props.candidates && this.props.bars ? 
+                <Cloud 
+                  id={this.props.bars[idx].id} 
+                  candidates={this.props.candidates}
+                  words={this.props.words} 
+                  keywords
+                  color='#b4b4b4'
+                />
+              : null}
+            </div>*/}
            
             {this.renderNav('btn')}
           </div>
         </div>
-
         <Social
           stroke='#b4b4b4'
           parent="Chart_container_1d8aV"

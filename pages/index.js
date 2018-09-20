@@ -25,7 +25,7 @@ class Home extends React.Component {
       candidates: null,
       words: null,
       relationship: null,
-      bars: null,
+      // bars: null,
       lang: 'port',
       period: 'month',
     };
@@ -34,24 +34,17 @@ class Home extends React.Component {
   onFilter = async (id) => {
     this.setState({ filter: id });
 
-    // console.log(this.state.relationship)
-
-    if(id && this.state.compare !== null) {
+    /*if(id && this.state.compare !== null) {
       console.log('filter')
       const relationship = await Api.getRelationship(id, this.state.compare);
-      // this.setState({relationship: relationship.intersection});
-
       this.setState({relationship: relationship});
-      
     } else {
-
       const relationship = await Api.getRelationship(id, id);
-
       this.setState({relationship: relationship});
-    }
+    }*/
   }
 
-  onCompare = async (id) => {
+  /*onCompare = async (id) => {
     this.setState({ compare: id });
 
     console.log(this.state.filter)
@@ -71,7 +64,7 @@ class Home extends React.Component {
 
       this.setState({relationship: relationship});
     }
-  }
+  }*/
 
   onChangeLang = (lang) => {
     this.setState({ lang: lang })
@@ -90,7 +83,6 @@ class Home extends React.Component {
     this.setState({ words });
 
     const bars = await Api.getBar();
-
     this.setState({ bars });
   }
 
@@ -99,7 +91,6 @@ class Home extends React.Component {
   }
 
   render() {
-
     const candidates = this.state.candidates;
     const words = this.state.words;
     const bars = this.state.bars;
@@ -145,7 +136,6 @@ class Home extends React.Component {
           lang={this.state.lang}
           candidates={candidates}
           words={words}
-          bars={bars}
         />
 
         <Radar
@@ -157,13 +147,13 @@ class Home extends React.Component {
         />
 
         <Relationship 
-          onFilter={this.onFilter} 
-          onCompare={this.onCompare}
-          filter={this.state.filter}
-          compare={this.state.compare}
+          // onFilter={this.onFilter} 
+          // onCompare={this.onCompare}
+          // filter={this.state.filter}
+          // compare={this.state.compare}
 
           candidates={candidates}
-          words={words}
+          // words={words}
           relationship={this.state.relationship}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
@@ -181,9 +171,9 @@ class Home extends React.Component {
           lang={this.state.lang}
         />
 
-        {/*<Clipping 
+        <Clipping 
           lang={this.state.lang}
-        />*/}
+        />
       </Layout>
     );
   }
