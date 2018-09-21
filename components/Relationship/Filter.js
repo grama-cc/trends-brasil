@@ -88,7 +88,6 @@ class Filter extends React.Component {
             </li>
           ))}
         </div>
-
         <p className={css.legend}>{i18n('filter.related', lang)}</p>
       </ul>
     )
