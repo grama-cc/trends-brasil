@@ -1,6 +1,7 @@
 export const i18n_pt_br = {
 
 	share: {
+		download: "Para programas de processamento de imagens",
 		text: "Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018?"
 	},
 
@@ -219,20 +220,23 @@ export const i18n_pt_br = {
 		  	}
 		  ]
 		},
-
+		
 		clipping: {
 		  list: [
 		  	{
-		  		title: "Central das eleições Google Trends",
-		  		text: "Acesse os dados do Google Trends na central de dados que a equipe do Google preparou especialmente para as eleições presidenciais de 2018. Acesse: g.co/trendseleicoes2018"
+		  		title: "Making of",
+		  		text: "O que o eleitor brasileiro busca sobre os candidatos a presidente?",
+		  		link: "https://bit.ly/2NpQckB"
 		  	},
 		  	{
 		  		title: "",
-		  		text: ""
+		  		text: "",
+		  		link: ""
 		  	},
 		  	{
 		  		title: "",
-		  		text: ""
+		  		text: "",
+		  		link: ""
 		  	}
 		  ]
 		}

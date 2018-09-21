@@ -128,26 +128,6 @@ class Graphic extends React.Component {
                     xlinkHref={`https://www.nabuscadocandidato.com.br/static/img/candidates/${c.data.slug}.png`}
                     className={filter === c.data.id ? css.openImage : null}
                   >
-                    {/*<animate 
-                      attributeName="width"
-                      from={0}
-                      to={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
-                      dur="1s"
-                      begin={`${(0.2 * idx) + 0.4}s`}
-                      fill="freeze"
-                      calcMode="paced"
-                      repeatCount="1"
-                    />
-                    <animate 
-                      attributeName="height"
-                      from={0}
-                      to={c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2} 
-                      dur="1s"
-                      begin={`${(0.2 * idx) + 0.4}s`}
-                      fill="freeze"
-                      calcMode="paced"
-                      repeatCount="1"
-                    />*/}
                 </image>
                 </pattern>
               )
@@ -168,16 +148,6 @@ class Graphic extends React.Component {
                   r={c.r < 10 ? 10 : c.r}
                   fill={`url(#img${idx})`}
                 >
-                  {/*<animate 
-                    attributeName="r"
-                    from={0}
-                    to={c.r < 10 ? 10 : c.r} 
-                    dur="1s"
-                    begin={`${(0.2 * idx) + 0.4}s`}
-                    fill="freeze"
-                    calcMode="paced"
-                    repeatCount="1"
-                  />*/}
                 </circle>
               </g>
             )

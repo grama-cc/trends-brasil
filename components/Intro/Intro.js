@@ -23,6 +23,7 @@ class Intro extends React.Component {
   onChangeLang = (e) => {
     const lang = e.currentTarget.lang
     this.props.onChangeLang(lang)
+    // history.replaceState({}, '', `?lang=${lang}`);
   }
 
 	render() {
@@ -38,6 +39,7 @@ class Intro extends React.Component {
 							onClick={this.onChangeLang}
 							lang='port'
 							disabled={lang === 'port'}
+							// href='?lang=pt'
 						>
 							PT
 						</button>
@@ -47,6 +49,7 @@ class Intro extends React.Component {
 							onClick={this.onChangeLang}
 							lang='en'
 							disabled={lang === 'en'}
+							// href='?lang=en'
 						>
 							EN
 						</button>

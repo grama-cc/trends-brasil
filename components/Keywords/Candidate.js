@@ -16,46 +16,39 @@ class Candidate extends React.Component {
   }
 
   onFilter = (e) => {
-    const id = Number(e.currentTarget.dataset.id)
+    const id = Number( e.currentTarget.dataset.id )
     this.props.onFilter(id)
   }
 
   onPrev = (e) => {
-    const idx = Number(e.currentTarget.dataset.index);
+    const idx = Number( e.currentTarget.dataset.index );
     const candidates = this.props.candidates;
 
-    if(idx > 0) {
-
-      this.props.onFilter(candidates[idx - 1].id)
-
-    } else if(idx === 0) {
-
-      this.props.onFilter(candidates[candidates.length - 1].id)
-
+    if( idx > 0 ) {
+      this.props.onFilter( candidates[idx - 1].id )
+    } else if( idx === 0 ) {
+      this.props.onFilter( candidates[candidates.length - 1].id )
     }
   }
 
   onNext = (e) => {
-    const idx = Number(e.currentTarget.dataset.index)
+    const idx = Number( e.currentTarget.dataset.index )
     const candidates = this.props.candidates;
 
-    if(!idx) {
+    if( !idx ) {
       this.props.onFilter(candidates[0].id)
     }
 
-    if(idx < candidates.length - 1) {
-
-      this.props.onFilter(candidates[idx + 1].id)
-
-    } else if(idx === candidates.length - 1) {
-
+    if( idx < candidates.length - 1 ) {
+      this.props.onFilter( candidates[idx + 1].id )
+    } else if( idx === candidates.length - 1 ) {
       this.props.onFilter(candidates[0].id)
     }
   }
 
   findIndex = (array, attr, value) => {
-    for(var i = 0; i < array.length; i += 1) {
-      if(array[i][attr] === value) {
+    for( var i = 0; i < array.length; i += 1 ) {
+      if( array[i][attr] === value ) {
         return i;
       }
     }
@@ -76,16 +69,15 @@ class Candidate extends React.Component {
     this.props.onChangeLang(lang)
   }
 
-
   render() {
     const candidates = this.props.candidates;
     const words = this.props.words;
     const content = this.props.content;
     const filter = this.props.filter
 
-    const idx = !filter ? null : this.findIndex(candidates, 'id', filter);
+    const idx = !filter ? null : this.findIndex( candidates, 'id', filter );
     const list = 90;
-    const move = ( list * ( - idx ) ) + (this.state.width / 2) - list / 2;
+    const move = ( list * ( - idx ) ) + ( this.state.width / 2 ) - list / 2;
     const lang = this.props.lang;
 
     return (
@@ -120,6 +112,7 @@ class Candidate extends React.Component {
               />
             </li>
             {candidates.map((d, i) => {
+              const size = filter === d.id ? '100%' : '60px';
               return (
                 <li
                   key={i}
@@ -133,8 +126,8 @@ class Candidate extends React.Component {
                       backgroundImage: `url(/static/img/candidates/${d.slug}.png)`,
                       backgroundColor: d.color,
                       opacity: filter === d.id ? 1 : .5,
-                      width: filter === d.id ? '100%' : '60px',
-                      height: filter === d.id ? '100%' : '60px',
+                      width: size,
+                      height: size,
                     }}
                   />
                   <span className={css.order}>{i+1}&#186;</span>
@@ -145,26 +138,21 @@ class Candidate extends React.Component {
 
           <h3 className={css.title}>
             {!filter ? 
-              <span
-                style={{
-                  backgroundColor: 'transparent'
-                }}
-              >{i18n('keywords.buttons.choose_candidate', lang)}</span> : 
+              <span style={{backgroundColor: 'transparent'}}>
+                {i18n('keywords.buttons.choose_candidate', lang)}
+              </span> : 
               <span>{candidates[idx].name}</span>
             }
           </h3>
           <p className={css.legend}>{i18n('keywords.legend', lang)}</p>
+          {console.log(idx)}
           {candidates && words? 
             <Cloud 
               id={!filter ? [] : candidates[idx].id} 
               candidates={candidates}
-              words={words} 
-              type='candidate'
-              keywords
+              words={words}
             />
-          : 'Loading...'}
-          
-
+          : null}
         </div>
 
         <button

@@ -5,8 +5,6 @@ import * as d3 from "d3";
 import * as d3Axis from 'd3-axis'
 
 import Api from '../../lib/Api';
-// import content from '../../static/json/lines.json'
-
 import {i18n} from '../../common/locale/i18n';
 
 import Period from '../Period/Period.js';
@@ -35,21 +33,13 @@ class Lines extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-
-    // console.log(prevProps, prevState)
     if (prevProps.filter !== this.props.filter) {
       this.updateCandidate()
     }
-
     const svg = d3.select(this.svg);
-
     svg.selectAll(`.${css.date}`).each(function() {
-
       const text = d3.select(this).select('text');
-
-      // console.log(d3.select(this).select('text'))
       const width = text.node().getBBox().width + 20;
-
       d3.select(this).select('rect')
         .attr('width', width)
         .attr('x', -width / 2)
@@ -77,17 +67,13 @@ class Lines extends React.Component {
   }
 
   getDate = (timezone) => {
-    // hard convert to midday, so no timezone will modify the day
-    // const safeTime = `${timezone.substring(0,10)}T12:00:00-03:00`;
     const safeTime = `${timezone}T12:00:00-03:00`
     return d3.timeDay.floor(new Date(safeTime));
   }
 
   getPercent = (candidate, date) => {
     const line = candidate.lines.find(l => (
-      // this.getDate(l.date) === this.getDate(date)
       this.getDate(l.date) === this.getDate(date)
-      // this.getDate(l.date).getTime() === this.getDate(date).getTime()
     ))
     return line ? line.percent : 0;
   }
@@ -119,20 +105,23 @@ class Lines extends React.Component {
     const lastDate = firstLines[firstLines.length-1].day;
     const end = this.getDate(lastDate);
     const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -29);
+    let data = this.state.data;
+    const lang = this.props.lang;
+    const filter = this.props.filter;
+    const candidates = data ? data.filter((c) => filter === c.id) : [];
 
     // axis
     const scaleTime = d3.scaleTime()
       .domain([start, end])
-      // .range([0, this.cfg.width])
       .range([-24, ( this.cfg.width + 24 )])
-
+    
     const axis = d3Axis.axisBottom()
       .scale(scaleTime)
       .tickSize(-this.cfg.height) // vertical line height
       .tickPadding([5]) // text padding
       .tickFormat(d => `${d.getDate()}/${d.getMonth()+1}`)
       .ticks(d3.timeDay.every(1));
-
+    
     d3.select(this.axisElement).call(axis);
 
     // lines
@@ -142,15 +131,10 @@ class Lines extends React.Component {
 
     const lineGenerator = d3.line()
       .curve(d3.curveBasis)
-      // .curve(d3.curveMonotoneX)
       .x(d => scaleTime(this.getDate(d.day)))
       .y(d => scalePercent(d.percent))
 
-    const filter = this.props.filter;
-
-    const candidates = this.state.data ? this.state.data.filter((c) => filter === c.id) : [];
-
-    this.state.data = this.state.data.sort((a, b) => {
+    data = data.sort((a, b) => {
       if (a.id === filter) {
         return 1;
       }
@@ -160,8 +144,6 @@ class Lines extends React.Component {
       return 0;
     });
 
-    const lang = this.props.lang;
-
     return (
       <React.Fragment>
         <p className={css.percent}>{i18n('lines.legend', lang)}</p>
@@ -169,10 +151,7 @@ class Lines extends React.Component {
           <div className={css.space}/>
           <svg 
             className={css.chart}
-            // xmlns="http://www.w3.org/2000/svg"
-            // viewBox={`0 0 ${this.cfg.width} ${this.cfg.height}`}
             viewBox={`0 -30 ${this.cfg.width} 380`}
-            //preserveAspectRatio="none"
             ref={(c) => { this.svg = c; }}
           >
             <title>{i18n('lines.title', lang)}</title>
@@ -193,14 +172,9 @@ class Lines extends React.Component {
               strokeOpacity={0.2}
               strokeWidth={1}
             />
-
-            <g 
-              // className={css.lines}
-              fill='none'
-            >
+            <g>
               {this.state.data.map((candidate) => (
                 <path
-                  // className={this.props.filter && this.props.filter != candidate.id ? null : css.tem}
                   key={candidate.id}
                   d={lineGenerator(candidate.lines)}
                   fillOpacity={this.props.filter === candidate.id ? .5 : 0}
@@ -212,7 +186,7 @@ class Lines extends React.Component {
                 />
               ))}
             </g>
-
+            
             {this.state.specialDates.map((date, i) => (
               <g
                 key={i}

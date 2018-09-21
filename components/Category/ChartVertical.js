@@ -5,7 +5,6 @@ import * as d3 from "d3";
 import * as d3Axis from 'd3-axis'
 
 import css from './ChartVertical.scss'
-
 import {i18n} from '../../common/locale/i18n';
 
 class Chart extends React.Component { 
@@ -40,65 +39,46 @@ class Chart extends React.Component {
   }
 
   render() {
+    const lang = this.props.lang;
     const h = this.cfg.height;
     const yScale = d3.scaleLinear()
       .domain([0, this.props.data.max_value])
       .range([this.cfg.width, this.cfg.margin.left]);
 
-    const lang = this.props.lang;
-
     return (
       <div className={css.container} type={this.props.type}>
-
         <p className={css.percent}>{i18n('category.legend', lang)}</p>
-
         <div className={css.content}>
           <svg
             className={css.chart}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox={`0 0 ${this.cfg.width + 95} ${h}`}
-            preserveAspectRatio="none"
+            viewBox={`0 0 ${this.cfg.width + 95} ${h - (this.props.data.values.length * 5)}`}
           >
-            <g
-              transform={`translate(110, 20)`}
-            >
+            <g transform={`translate(110, 20)`}>
               <g
                 className={css.axis}
                 ref={(y) => { this.axisElement = y; }}
                 transform={`translate(-45, 0)`}
               />
-              <g 
-                transform={`translate(-15, 0)`}
-              >
+              <g transform={`translate(-15, 0)`}>
                 {this.props.data.values.map((d, i) => (
                   <g 
                     key={i}
-                    transform={`translate(0, ${(this.cfg.height / this.props.data.values.length) * i})`}
+                    transform={`translate(0, ${((this.cfg.height / this.props.data.values.length) - 5) * i})`}
                   >
-                    <text
-                      y={10}
-                      x={-95}
-                    >
-                      {d.title}
-                    </text>
+                    <text y={10} x={-95}>{d.title}</text>
                     <rect
                       y={0}
                       x={0}
                       width={this.cfg.width - yScale(d.value)}
                       height={this.cfg.rect}
                       fill={d.color}
-                    >
-                    </rect>
+                    />
                   </g>
                 ))}
               </g>
             </g>
           </svg>
-
         </div>
-
-        
-        
       </div>
     )
   }

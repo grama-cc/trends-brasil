@@ -25,6 +25,7 @@
 				font-family: $robotoLight;
 				font-size: responsive(14, 18);
 				line-height: responsive(20, 22);
+				margin: 0 0 10px;
 			}
 			@media screen and (min-width: $medium-devices) {
 				width: 33%;

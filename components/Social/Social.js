@@ -67,6 +67,7 @@ class Social extends React.Component {
 
   render () {
     const lang = this.props.lang;
+    const zip = this.props.zip;
 
     return (
       <React.Fragment>
@@ -79,7 +80,6 @@ class Social extends React.Component {
         </section>
 
         <div 
-          //className={css.modal}
           className={this.state.modal ? `${css.open} ${css.modal}` : css.modal}
         >
           <nav>
@@ -89,18 +89,20 @@ class Social extends React.Component {
             >
               Download
             </h3>
-            {/*<h3
-              onClick={this.open}
-              data-type='embed'
-            >
-              Embed
-            </h3>*/}
-            {/*<h3
-              onClick={this.open}
-              data-type='link'
-            >
-              Link
-            </h3>*/}
+            {/*
+              <h3
+                onClick={this.open}
+                data-type='embed'
+              >
+                Embed
+              </h3>
+              <h3
+                onClick={this.open}
+                data-type='link'
+              >
+                Link
+              </h3>
+            */}
           </nav>
 
           <ul>
@@ -108,20 +110,21 @@ class Social extends React.Component {
               type='download'
               className={this.state.open === 'download' ? css.open : css.close}
             >
+              <p>{i18n('share.download', lang)}</p>
+              
               <a 
                 onClick={(e) => this.handleClick(e, this.props.parent)}
-                href={this.props.zip ? this.props.zip : 'javascript:void(0)'}
+                href={zip ? zip : 'javascript:void(0)'}
               >
                 .svg
               </a>
             </li>
 
-            <li className={this.state.open === 'embed' ? css.open : css.close}>
+            {/*<li className={this.state.open === 'embed' ? css.open : css.close}>
               <h4>Codigo</h4>
               <p>iframe</p>
               <button>Copiar</button>
             </li>
-
             <li className={this.state.open === 'link' ? css.open : css.close}>
               <h4>Link</h4>
               <p
@@ -134,7 +137,7 @@ class Social extends React.Component {
               >
                 Copiar
               </button>
-            </li>
+            </li>*/}
           </ul>
         </div>
 
@@ -145,7 +148,6 @@ class Social extends React.Component {
           <li className={css.media}>
             <a
               target="_blank"
-              //href={this.props.zip ? this.props.zip : 'javascript:void(0)'}
               onClick={this.openModal}
             >
               <Media stroke={this.props.stroke} />

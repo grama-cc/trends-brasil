@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import css from './Cloud.scss';
 
 class Cloud extends React.Component {
-  constructor (props) {
-    super(props)
-    this.width = 100;
-  }
 
   render() {
     const words = this.props.words.words;
@@ -22,12 +18,12 @@ class Cloud extends React.Component {
       <div className={css.cloud} type={this.props.type}>
         {words.map((word, idx) => {
 
-          const size = this.props.keywords ? word.size * (screen.width < 800 ? 12 : 40) / maxValue : word.size * (screen.width < 800 ? 10 : 20) / maxValue; 
+          const size = word.size * (screen.width < 800 ? 10 : 20) / maxValue; 
 
           return(
             <a
               key={idx}
-              // href={`https://www.google.com.br/search?q=${word.query_text.replace(/ /g,"+")}`}
+              href='javascript:void(0)'
               target="_blank"
               style={{
                 fontSize: `calc( ${size}px + 12px)`,
@@ -40,7 +36,7 @@ class Cloud extends React.Component {
                 transform: `${word.size * 40 / maxValue > 30 ? 'translateX(-20%)' : ''}`
               }}
             > 
-              {`${word.text} `}
+              {word.text}
             </a>
           )
         })}
