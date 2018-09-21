@@ -50,6 +50,7 @@
 	width: responsive(140, 220);
 	position: relative;
 	display: block;
+	z-index: 2;
 		p {
 			// opacity: 0;
 			display: none;
