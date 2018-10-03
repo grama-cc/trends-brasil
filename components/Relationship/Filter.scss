@@ -18,11 +18,8 @@
 				&.show {
 					opacity: 1;
 					padding: 0 10px;
-					// display: block;
 				}
-
 				opacity: 0;
-				// display: none;
 			}
 		}
 	}
@@ -54,7 +51,6 @@
 	position: relative;
 	display: block;
 		p {
-			// opacity: 0;
 			display: none;
 		}
 		@media screen and (min-width: $medium-devices) {
@@ -220,9 +216,7 @@ $circle-size: responsive(20, 60);
 		height: auto;
 		position: relative;
 		display: flex;
-		// justify-content: space-around;
 		justify-content: space-between;
-
 		align-items: flex-start;
 
 		&.gray {

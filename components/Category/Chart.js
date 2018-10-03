@@ -91,9 +91,6 @@ class Chart extends React.Component {
 
         <ul className={css.list}>
           {this.props.data.values.map((d, i) => {
-
-            // console.log(this.props.data)
-            // const cat = d.categories.filter((r, i) => r.id != 2 )
             return (
               <li key={i}>
                 <img src={`/static/img/candidates/${d.slug}.png`} />

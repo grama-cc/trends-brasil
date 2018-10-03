@@ -41,8 +41,6 @@ class Relationship extends React.Component {
       console.log('compare')
 
       const relationship = await Api.getRelationship(this.state.filter, id);
-      // this.setState({relationship: relationship.intersection});
-
       this.setState({relationship: relationship});
 
     } else {
@@ -52,21 +50,6 @@ class Relationship extends React.Component {
       this.setState({relationship: relationship});
     }
   }
-
-  //componentDidMount() {
-    //this.getData();
-  //}
-
-  /*getData = async (period) => {
-    const candidates = await Api.getCandidates();
-    this.setState({ candidates });
-
-    const words = await Api.getWords(period);
-    this.setState({ words });
-
-    const bars = await Api.getBar();
-    this.setState({ bars });
-  }*/
 
   renderChart () {
     const lang = this.props.lang;

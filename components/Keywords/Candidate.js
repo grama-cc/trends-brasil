@@ -145,7 +145,6 @@ class Candidate extends React.Component {
             }
           </h3>
           <p className={css.legend}>{i18n('keywords.legend', lang)}</p>
-          {console.log(idx)}
           {candidates && words? 
             <Cloud 
               id={!filter ? [] : candidates[idx].id} 

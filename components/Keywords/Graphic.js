@@ -14,6 +14,16 @@ class Graphic extends React.Component {
     }
   }
 
+  getSearchParams = (key) => {
+    var params = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+    function(str,key,value){
+      params[key] = value
+    });
+    return key?params[key]:params;
+  }
+
+
   onFilter = (e) => {
     const id = Number(e.currentTarget.dataset.id)
     this.props.onFilter(id)

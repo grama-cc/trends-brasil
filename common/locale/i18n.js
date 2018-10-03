@@ -18,7 +18,6 @@ export function i18n(key, lang) {
 
   if (lang == 'port') {
     obj = i18nObj.pt_br;
-
   } else if(lang == 'en') {
     obj = i18nObj.en_us;
   }

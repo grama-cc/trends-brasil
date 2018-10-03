@@ -22,15 +22,12 @@ class Period extends React.Component {
     super(props);
     this.state = {
       open: false,
-      //val: 'month'
     };
   }
 
   onClick = (e) => {
     let period = e.target.value
-
     this.props.onClickPeriod(period)
-    //this.setState({val: val})
   }
 
   onDropdown = () => {
@@ -42,8 +39,6 @@ class Period extends React.Component {
   render() {
     const period = this.props.period;
     const lang = this.props.lang
-
-    // console.log(i18n('period.title', lang))
 
     return (
       <ul

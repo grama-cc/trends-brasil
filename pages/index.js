@@ -24,8 +24,6 @@ class Home extends React.Component {
       compare: null,
       candidates: null,
       words: null,
-      relationship: null,
-      // bars: null,
       lang: 'port',
       period: 'month',
     };
@@ -33,38 +31,7 @@ class Home extends React.Component {
 
   onFilter = async (id) => {
     this.setState({ filter: id });
-
-    /*if(id && this.state.compare !== null) {
-      console.log('filter')
-      const relationship = await Api.getRelationship(id, this.state.compare);
-      this.setState({relationship: relationship});
-    } else {
-      const relationship = await Api.getRelationship(id, id);
-      this.setState({relationship: relationship});
-    }*/
   }
-
-  /*onCompare = async (id) => {
-    this.setState({ compare: id });
-
-    console.log(this.state.filter)
-   
-    if(this.state.filter !== null && id) {
-
-      console.log('compare')
-
-      const relationship = await Api.getRelationship(this.state.filter, id);
-      // this.setState({relationship: relationship.intersection});
-
-      this.setState({relationship: relationship});
-
-    } else {
-
-      const relationship = await Api.getRelationship(id, id);
-
-      this.setState({relationship: relationship});
-    }
-  }*/
 
   onChangeLang = (lang) => {
     this.setState({ lang: lang })
@@ -147,14 +114,7 @@ class Home extends React.Component {
         />
 
         <Relationship 
-          // onFilter={this.onFilter} 
-          // onCompare={this.onCompare}
-          // filter={this.state.filter}
-          // compare={this.state.compare}
-
           candidates={candidates}
-          // words={words}
-          relationship={this.state.relationship}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
         />

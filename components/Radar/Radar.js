@@ -204,7 +204,7 @@ class RadarChart extends React.Component {
                       dy={'0.35em'}
                       key={idx} 
                     >
-                      {a.name}
+                      {i18n('radar.names', lang)[idx]}
                     </text>
                   )
                 })}

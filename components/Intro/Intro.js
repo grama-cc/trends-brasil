@@ -5,7 +5,6 @@ import { i18n } from '../../common/locale/i18n';
 
 import content from '../../static/json/intro.json'
 import css from './Intro.scss';
-
 import Arrow from '../Arrow.js';
 
 
@@ -20,14 +19,36 @@ class Intro extends React.Component {
 		});
   }
 
+  getSearchParams = (key) => {
+  	var params = {};
+  	window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+    function(str,key,value){
+      params[key] = value
+    });
+  	return key?params[key]:params;
+	}
+
+  componentDidMount() {
+  	const getUrlPath = this.getSearchParams('lang');
+
+  	if ( getUrlPath ) {
+  		const lang = getUrlPath;
+  		this.props.onChangeLang(lang);
+  	}
+  }
+
   onChangeLang = (e) => {
-    const lang = e.currentTarget.lang
-    this.props.onChangeLang(lang)
-    // history.replaceState({}, '', `?lang=${lang}`);
+  	const getUrlPath = this.getSearchParams('lang');
+  	const lang = e.currentTarget.lang;
+
+  	if ( getUrlPath ) {
+  		const lang = getUrlPath;
+  	}
+  	this.props.onChangeLang(lang);
+    history.replaceState({}, '', `?lang=${lang}`);
   }
 
 	render() {
-
 		const lang = this.props.lang
 
 		return (
@@ -39,7 +60,6 @@ class Intro extends React.Component {
 							onClick={this.onChangeLang}
 							lang='port'
 							disabled={lang === 'port'}
-							// href='?lang=pt'
 						>
 							PT
 						</button>
@@ -49,7 +69,6 @@ class Intro extends React.Component {
 							onClick={this.onChangeLang}
 							lang='en'
 							disabled={lang === 'en'}
-							// href='?lang=en'
 						>
 							EN
 						</button>

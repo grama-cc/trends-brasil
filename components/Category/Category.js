@@ -168,38 +168,6 @@ class Category extends React.Component {
             />
 
             {this.renderCharts()}
-
-            {/*this.props.bars ? 
-              <React.Fragment>
-                <div className={css.desk}>
-                  <Chart 
-                    lang={this.props.lang}
-                    type={view} 
-                    data={this.props.bars[idx]}
-                  />
-                </div>
-                <div className={css.mobile}>
-                  <ChartVertical
-                    lang={this.props.lang}
-                    type={view}
-                    data={this.props.bars[idx]}
-                  />
-                </div>
-              </React.Fragment>
-              : 'Loading...'
-            */}
-
-            {/*<div type={view} className={css.cloud_container}>
-              {this.props.words && this.props.candidates && this.props.bars ? 
-                <Cloud 
-                  id={this.props.bars[idx].id} 
-                  candidates={this.props.candidates}
-                  words={this.props.words} 
-                  keywords
-                  color='#b4b4b4'
-                />
-              : null}
-            </div>*/}
            
             {this.renderNav('btn')}
           </div>

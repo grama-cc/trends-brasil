@@ -23,7 +23,6 @@ class Keywords extends React.Component {
 
   renderChart(candidates, words, view) {
 
-
     if(!this.props.candidates && !this.props.words) {
 
       return <div className={css.loading}>Loading...</div>
