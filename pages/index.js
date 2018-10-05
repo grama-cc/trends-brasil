@@ -26,6 +26,8 @@ class Home extends React.Component {
       words: null,
       lang: 'port',
       period: 'month',
+      load: false,
+      round: 2
     };
   }
 
@@ -42,7 +44,12 @@ class Home extends React.Component {
     this.getData(period);
   }
 
-  getData = async (period) => {
+  onClickRound = (round) => {
+    this.setState({ round: round })
+    // this.getData(round);
+  }
+
+  getData = async (period, round) => {
     const candidates = await Api.getCandidates();
     this.setState({ candidates });
 
@@ -55,12 +62,24 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.getData();
+    if(window) {
+      window.onload = () => {
+        this.setState({ load: true })
+      }
+    }
   }
 
   render() {
-    const candidates = this.state.candidates;
+    let candidates = this.state.candidates;
     const words = this.state.words;
     const bars = this.state.bars;
+
+    // let candidates = this.props.candidates;
+    if(this.state.round === 2) {
+      if(candidates){
+        candidates = candidates.filter((c) => c.second_round);
+      }
+    }
 
     return (
 
@@ -77,6 +96,9 @@ class Home extends React.Component {
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
+
+          round={this.state.round}
+          onClickRound={this.onClickRound}
         />
 
         <Keywords
@@ -86,8 +108,12 @@ class Home extends React.Component {
           filter={this.state.filter}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
+
           period={this.state.period}
           onClickPeriod={this.onClickPeriod}
+
+          round={this.state.round}
+          load={this.state.load}
         />
 
         <Lines
@@ -96,6 +122,8 @@ class Home extends React.Component {
           candidates={candidates}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
+          load={this.state.load}
+          round={this.state.round}
         />
 
         <Category
@@ -103,6 +131,8 @@ class Home extends React.Component {
           lang={this.state.lang}
           candidates={candidates}
           words={words}
+          load={this.state.load}
+          round={this.state.round}
         />
 
         <Radar
@@ -111,12 +141,16 @@ class Home extends React.Component {
           candidates={candidates}
           arrowColor='#fff'
           lang={this.state.lang}
+          load={this.state.load}
+          round={this.state.round}
         />
 
         <Relationship 
           candidates={candidates}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
+          load={this.state.load}
+          round={this.state.round}
         />
 
         <Orbital
@@ -125,6 +159,8 @@ class Home extends React.Component {
           candidates={candidates}
           arrowColor='#fff'
           lang={this.state.lang}
+          load={this.state.load}
+          round={this.state.round}
         />
 
         <Footer

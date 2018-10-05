@@ -6,6 +6,8 @@
 		display: inline;
 		position: relative;
 		margin-top: 17px;
+		left: 0;
+		transition: left .4s ease;
 		@media screen and (min-width: $medium-devices) {
 			max-width: 140px;
 			transform: translateX(-10%) !important;

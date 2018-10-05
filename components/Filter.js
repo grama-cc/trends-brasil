@@ -88,7 +88,7 @@ class Filter extends React.Component {
             {i18n('filter.candidates', lang)}
           </p>
           <ul
-            className={this.props.all ? css.gray : null}
+            className={this.props.all ? css.gray : this.props.round === 2 ? css.center : null}
           >
             {candidates.map((c, idx) => {
               return(

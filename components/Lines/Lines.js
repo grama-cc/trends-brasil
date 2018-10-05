@@ -79,36 +79,52 @@ class Lines extends React.Component {
   }
 
   renderFilter () {
-    if (!this.props.candidates) {
+    if (!this.props.candidates || !this.props.load) {
       return
     } else {
-      return (
-        <Filter 
-          onFilter={this.props.onFilter} 
-          filter={this.props.filter}
-          candidates={this.props.candidates}
-          all
-          arrowColor='#b4b4b4'
-          lineFilter
-          lang={this.props.lang}
-        />
-      )
+
+      console.log(this.props.round)
+
+      if(!this.props.round === 2) {
+
+        return (
+          <Filter 
+            onFilter={this.props.onFilter} 
+            filter={this.props.filter}
+            candidates={this.props.candidates}
+            all
+            arrowColor='#b4b4b4'
+            lineFilter
+            lang={this.props.lang}
+          />
+        )
+
+      }
     }
   }
 
   renderChart () {
-    if (!this.state.data || !this.state.specialDates) {
+    if (!this.state.data || !this.state.specialDates || !this.props.candidates) {
       return <div>Loading...</div>
     }
 
-    const firstLines = this.state.data[0].lines;
+    let candidates = this.props.candidates
+
+    let data = this.state.data;
+
+    if(this.props.round === 2) {
+      data = data.filter((c) => candidates[0].id === c.id || candidates[1].id === c.id);
+    }
+
+
+    const firstLines = data[0].lines;
     const lastDate = firstLines[firstLines.length-1].day;
     const end = this.getDate(lastDate);
     const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -29);
-    let data = this.state.data;
+
     const lang = this.props.lang;
     const filter = this.props.filter;
-    const candidates = data ? data.filter((c) => filter === c.id) : [];
+    candidates = data ? data.filter((c) => filter === c.id) : [];
 
     // axis
     const scaleTime = d3.scaleTime()
@@ -173,7 +189,7 @@ class Lines extends React.Component {
               strokeWidth={1}
             />
             <g>
-              {this.state.data.map((candidate) => (
+              {data.map((candidate) => (
                 <path
                   key={candidate.id}
                   d={lineGenerator(candidate.lines)}

@@ -33,12 +33,8 @@ class Relationship extends React.Component {
 
   onCompare = async (id) => {
     this.setState({ compare: id });
-
-    console.log(this.state.filter)
    
     if(this.state.filter !== null && id) {
-
-      console.log('compare')
 
       const relationship = await Api.getRelationship(this.state.filter, id);
       this.setState({relationship: relationship});
@@ -77,7 +73,9 @@ class Relationship extends React.Component {
         <div className={css.clouds}>
           {this.state.relationship ?
             <Cloud 
-              words={this.state.relationship.candidato_1} 
+              id={this.props.filter}
+              words={this.state.relationship.candidato_1}
+              candidates={this.props.candidates}
               position='left'
             />
           : <div /> }
@@ -97,8 +95,10 @@ class Relationship extends React.Component {
           </div>
 
           {this.state.relationship ?
-            <Cloud 
-              words={this.state.relationship.candidato_2} 
+            <Cloud
+              id={this.props.filter}
+              words={this.state.relationship.candidato_2}
+              candidates={this.props.candidates}
               position='right'
             />
           : <div />}

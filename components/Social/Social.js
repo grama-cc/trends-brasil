@@ -42,7 +42,6 @@ class Social extends React.Component {
 
       if(elements[0].childNodes[i].nodeName === 'svg'){
         svgContent = elements[0].childNodes[i].cloneNode(true)
-        // svgContent.style.backgroundColor = "#ececec"
         svgContent.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink")
         svgContent.setAttribute("xmlns","http://www.w3.org/2000/svg")
         svgContent.setAttribute("xlink:href", "data:image/png;base64")
@@ -71,14 +70,10 @@ class Social extends React.Component {
 
     return (
       <React.Fragment>
-
         <section
           onClick={this.closeModal}
           className={this.state.modal ? `${css.open} ${css.modal_container}` : css.modal_container}
-        >
-          
-        </section>
-
+        />
         <div 
           className={this.state.modal ? `${css.open} ${css.modal}` : css.modal}
         >
@@ -89,20 +84,6 @@ class Social extends React.Component {
             >
               Download
             </h3>
-            {/*
-              <h3
-                onClick={this.open}
-                data-type='embed'
-              >
-                Embed
-              </h3>
-              <h3
-                onClick={this.open}
-                data-type='link'
-              >
-                Link
-              </h3>
-            */}
           </nav>
 
           <ul>
@@ -111,7 +92,6 @@ class Social extends React.Component {
               className={this.state.open === 'download' ? css.open : css.close}
             >
               <p>{i18n('share.download', lang)}</p>
-              
               <a 
                 onClick={(e) => this.handleClick(e, this.props.parent)}
                 href={zip ? zip : 'javascript:void(0)'}
@@ -119,25 +99,6 @@ class Social extends React.Component {
                 .svg
               </a>
             </li>
-
-            {/*<li className={this.state.open === 'embed' ? css.open : css.close}>
-              <h4>Codigo</h4>
-              <p>iframe</p>
-              <button>Copiar</button>
-            </li>
-            <li className={this.state.open === 'link' ? css.open : css.close}>
-              <h4>Link</h4>
-              <p
-              >
-                {`https://www.nabuscadocandidato.com.br/#${this.props.id}`}
-              </p>
-              <button 
-                onClick={this.copy}
-                data-copy={`https://www.nabuscadocandidato.com.br/#${this.props.id}`}
-              >
-                Copiar
-              </button>
-            </li>*/}
           </ul>
         </div>
 

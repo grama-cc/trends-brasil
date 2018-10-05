@@ -70,8 +70,9 @@ class Candidate extends React.Component {
   }
 
   render() {
-    const candidates = this.props.candidates;
-    const words = this.props.words;
+    let candidates = this.props.candidates;
+    let words = this.props.words;
+
     const content = this.props.content;
     const filter = this.props.filter
 

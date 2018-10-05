@@ -23,7 +23,7 @@ class Keywords extends React.Component {
 
   renderChart(candidates, words, view) {
 
-    if(!this.props.candidates && !this.props.words) {
+    if(!this.props.candidates || !this.props.words || !this.props.load) {
 
       return <div className={css.loading}>Loading...</div>
 
@@ -38,6 +38,9 @@ class Keywords extends React.Component {
             onFilter={this.props.onFilter} 
             filter={this.props.filter}
             lang={this.props.lang}
+
+            round={this.props.round}
+            //onClickRound={this.props.onClickRound}
           />
           <Candidate
             val={view}
@@ -47,6 +50,11 @@ class Keywords extends React.Component {
             filter={this.props.filter}
             content='keywords'
             lang={this.props.lang}
+
+            round={this.props.round}
+            // onClickRound={this.props.onClickRound}
+
+
           />
         </React.Fragment>
       )

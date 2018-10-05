@@ -90,6 +90,10 @@
     @media screen and (min-width: $medium-devices) {
       width: 100%;
     }
+
+    path {
+      transition: all .4s ease; 
+    }
     .axis {
       path {
         visibility: hidden;

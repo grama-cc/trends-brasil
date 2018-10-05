@@ -10,9 +10,10 @@ import {i18n} from '../../common/locale/i18n';
 class Section extends React.Component {
 
   renderFilter () {
-    if (!this.props.candidates) {
+    if (!this.props.candidates || !this.props.load) {
       return
     } else {
+
       return (
         <Filter 
           onFilter={this.props.onFilter} 
@@ -20,6 +21,7 @@ class Section extends React.Component {
           candidates={this.props.candidates}
           arrowColor='#b4b4b4'
           lang={this.props.lang}
+          round={this.props.round}
         />
       )
     }
@@ -60,7 +62,14 @@ class Section extends React.Component {
 
   render() {
     const content = this.props.content;
-    const candidates = this.props.candidates || [];
+
+    let candidates = this.props.candidates || [];
+
+    if(this.props.round === 2) {
+      candidates = candidates.filter((c) => c.second_round);
+    }
+
+
     const currentCandidate = candidates.find((c) => this.props.filter === c.id);
     const lang = this.props.lang;
     

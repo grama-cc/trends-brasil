@@ -30,7 +30,6 @@ class Intro extends React.Component {
 
   componentDidMount() {
   	const getUrlPath = this.getSearchParams('lang');
-
   	if ( getUrlPath ) {
   		const lang = getUrlPath;
   		this.props.onChangeLang(lang);
@@ -48,8 +47,18 @@ class Intro extends React.Component {
     history.replaceState({}, '', `?lang=${lang}`);
   }
 
+
+  onClickRound = (e) => {
+  	const round = Number(e.currentTarget.dataset.round);
+
+  	console.log(round);
+
+  	this.props.onClickRound(round);
+  }
+
 	render() {
 		const lang = this.props.lang
+		const round = this.props.round
 
 		return (
 			<section className={css.intro}>
@@ -98,6 +107,25 @@ class Intro extends React.Component {
 			    <button onClick={this.onScroll}>
 			    	<Arrow arrowColor={this.props.arrowColor}/>
 			    </button>
+		    </div>
+
+		    <div className={css.rounds}>
+		    	<button 
+		    		data-round={1}
+		    		// className={css.round1}
+		    		onClick={this.onClickRound}
+		    		disabled={round === 1}
+		    	>
+		    		1º Turno
+		    	</button>
+		    	<button
+		    		data-round={2}
+		    		// className={css.round2}
+		    		onClick={this.onClickRound}
+		    		disabled={round === 2}
+		    	>
+		    		2º Turno
+		    	</button>
 		    </div>
 
 		  </section>

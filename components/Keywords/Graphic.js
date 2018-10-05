@@ -14,16 +14,6 @@ class Graphic extends React.Component {
     }
   }
 
-  getSearchParams = (key) => {
-    var params = {};
-    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,
-    function(str,key,value){
-      params[key] = value
-    });
-    return key?params[key]:params;
-  }
-
-
   onFilter = (e) => {
     const id = Number(e.currentTarget.dataset.id)
     this.props.onFilter(id)
@@ -34,7 +24,14 @@ class Graphic extends React.Component {
   }
 
   renderModalWords () {
-    const candidate= this.props.candidates.filter((c) => this.props.filter === c.id);
+
+    if(!this.props.candidates || !this.props.words) {
+
+      return <div className={css.loading} />
+
+    }
+
+    let candidate = this.props.candidates.filter((c) => this.props.filter === c.id);
     
     let words = this.props.words.filter((c) => this.props.filter === c.candidate);
     words = words.slice(0, 8);
@@ -76,8 +73,12 @@ class Graphic extends React.Component {
   }
 
   render () {
-    const data = this.props.candidates;
-    const filter = this.props.filter;
+    let data = this.props.candidates;
+    let filter = this.props.filter;
+
+    /*if(this.props.round === 2) {
+      data = data.filter((c) => c.second_round);
+    }*/
 
     const children = {'children': data.map((d) => (d))};
 
@@ -108,8 +109,8 @@ class Graphic extends React.Component {
           xmlns="http://www.w3.org/2000/svg"
           viewBox={`0 0 ${this.config.width} ${this.config.height}`}
         >
-          <title>{i18n('keywords.title', lang)}</title>
           <defs>
+            <text>{i18n('keywords.title', lang)}</text>
             <text className='description'>
               {i18n('keywords.description', lang)}
               {i18n('keywords.highlight', lang)}
@@ -119,7 +120,6 @@ class Graphic extends React.Component {
             </text>
             {circles.map((c, idx) => {
               const size = c.r < 10 ? 20 : filter === c.data.id && c.r === 50 ? 100 : c.r * 2
-
               return (
                 <pattern 
                   key={idx}

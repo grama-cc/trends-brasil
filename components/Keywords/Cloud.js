@@ -33,6 +33,8 @@ class Cloud extends React.Component {
           } else {
             size = size;
           }
+
+          const candidate = this.props.candidates.filter((c) => word.candidate === c.id);
           
           return(
             <a
@@ -40,8 +42,9 @@ class Cloud extends React.Component {
               href={`https://www.google.com.br/search?q=${word.query_text.replace( / /g,"+" )}`}
               target="_blank"
               style={{
-                fontSize: `calc( ${size}px + 12px)`,
-                color: word.color
+                fontSize: word.candidate === candidate[0].id ? `calc( ${size}px + 12px)` : '0px',
+                color: word.color,
+                opacity: word.candidate === candidate[0].id ? 1 : 0
               }}
             > 
               {word.text}

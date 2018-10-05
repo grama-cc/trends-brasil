@@ -94,7 +94,9 @@ class Category extends React.Component {
     const view = this.state.view;
     const lang = this.props.lang;
 
-    if(this.props.words && this.props.candidates && this.state.bars && this.state.wordsCategory) {
+    if(this.state.bars && this.state.wordsCategory && this.props.load) {
+
+      console.log(this.state.bars)
       return (
         <React.Fragment>
           <div className={css.desk}>

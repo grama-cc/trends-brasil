@@ -44,6 +44,15 @@
       height: 25px;
       width: 50px;
       margin: 40px 0 0;
+      path {
+        transition: all .4s ease;
+      }
+      &:hover {
+        path {
+          stroke: #4b4b4b;
+          transition: all .4s ease;
+        }
+      }
     }
   }
 
@@ -64,19 +73,55 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          background-color: #b4b4b4;
+          background-color: $grayDark;
         }
       }
     }
     button, a {
       font-size: responsive(14, 22);
-      color: #b4b4b4;
+      color: $grayDark;
       padding: 0 10px;
       font-family: $robotoLight;
-      transition: color .5s ease;
+      transition: color .4s ease;
+      &[disabled] {
+        color: $black;
+        transition: color .4s ease;
+      }
+      &:hover {
+        color: $black;
+        transition: color .4s ease;
+      }
+    }
+  }
+
+  .rounds {
+    position: absolute;
+    bottom: responsive(30, 50, 320, 1280);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    button {
+      font-family: $robotoLight;
+      font-size: responsive(18, 24, 320, 1280);
+      margin: 0 20px;
+      color: #b4b4b4;
       &[disabled] {
         color: #4b4b4b;
-        transition: color .5s ease;
+      }
+      &:first-child {
+        &:before {
+          content: '';
+          position: absolute;
+          width: 1px;
+          height: responsive(25, 35);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: $grayDark;
+        }
       }
     }
   }

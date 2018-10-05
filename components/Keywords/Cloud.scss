@@ -12,6 +12,8 @@
 		position: relative;
 		padding: 5px;
 		line-height: 0.9em;
+		transition: all .4s ease-in-out;
+
 		@media screen and (min-width: $medium-devices) {
 			max-width: 240px;
 			margin-top: 0;

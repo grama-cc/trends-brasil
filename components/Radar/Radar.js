@@ -73,14 +73,20 @@ class RadarChart extends React.Component {
   }
 
   renderChart () {
-    if(!this.state.radar && !this.props.candidates) {
+    if(!this.state.radar || !this.props.candidates) {
 
       return <div className={css.loading}>Loading...</div>
 
     } else {
       const circles = this.circleLevels();
-
+      let candidates = this.props.candidates;
       let radar = this.state.radar || [];
+
+      let data = this.state.data;
+
+      if(this.props.round === 2) {
+        radar = radar.filter((c) => candidates[0].id === c.id || candidates[1].id === c.id);
+      }
 
       const values = this.values(radar);
 
@@ -97,7 +103,7 @@ class RadarChart extends React.Component {
         values.scale( -(d.percent) / 100 ) )).angle(( d, i ) => ( i * values.angles )
       );
       const filter = this.props.filter;
-      const candidates = this.state.radar ? radar.filter((c) => filter === c.id) : [];
+      candidates = this.state.radar ? radar.filter((c) => filter === c.id) : [];
 
       radar = radar.sort((a, b) => {
         if (a.id === filter) {
@@ -253,6 +259,8 @@ class RadarChart extends React.Component {
         period={this.state.period}
         onClickPeriod={this.onClickPeriod}
         parent="Radar_radar_1qzAg"
+        load={this.props.load}
+        round={this.props.round}
       >
 
         <div className={css.chart_container}>

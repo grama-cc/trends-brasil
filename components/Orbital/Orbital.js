@@ -273,6 +273,8 @@ class Orbital extends React.Component {
         period={this.state.period}
         onClickPeriod={this.onClickPeriod}
         parent="Orbital_orbital_1KHG9"
+        load={this.props.load}
+        round={this.props.round}
       >
         <div className={css.chart_container}>
           <p className={css.legend}>

@@ -46,9 +46,13 @@
           font-family: $robotoLight;
           font-size: 20px;
           opacity: 0.5;
+          transition: opacity .4s ease;
           &.clicked {
             opacity: 1;
             font-family: $robotoMedium;
+          }
+          &:hover {
+            opacity: 1;
           }
         }
       }

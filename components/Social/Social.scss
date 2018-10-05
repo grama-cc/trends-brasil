@@ -168,6 +168,17 @@
 		@media screen and (max-width: $medium-devices) {
 			margin: 0 12px;
 		}
+		path {
+			transition: all .4s ease;
+		}
+		&:hover {
+			a {
+				path {
+					stroke: #4b4b4b;
+					transition: all .4s ease;
+				}
+			}	
+		}
 		a {
 			display: flex;
 	    flex-direction: column;
