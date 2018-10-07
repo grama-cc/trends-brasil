@@ -41,10 +41,10 @@ class Filter extends React.Component {
     return (
       <div
         className={css.image}
+        id={this.props.round === 2 ? css.imagef : null}
         style={{
           backgroundImage: `url(/static/img/candidates/${slug})`,
           backgroundColor: color,
-          display: this.props.round === 2 ? 'block' : 'none'
         }}
       />
     )
@@ -54,10 +54,10 @@ class Filter extends React.Component {
     return (
       <div
         className={css.image}
+        id={this.props.round === 2 ? css.imagec : null}
         style={{
           backgroundImage: `url(/static/img/candidates/${slug})`,
           backgroundColor: color,
-          display: this.props.round === 2 ? 'block' : 'none'
         }}
       />
     )

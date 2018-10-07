@@ -165,10 +165,10 @@
 	}
 }
 
-$circle-size: responsive(40, 60);
+$circle-size: responsive(35, 60);
 
 .icons {
-	width: responsive(40, 60);
+	width: responsive(35, 60);
 	display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,6 +179,9 @@ $circle-size: responsive(40, 60);
 .list {
 	width: 100%;
 	display: none;
+	&#list {
+		display: block;
+	}
 	@media screen and (min-width: $medium-devices) {
 		display: block;
 		&.hide {

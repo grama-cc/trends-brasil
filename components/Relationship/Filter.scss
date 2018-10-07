@@ -186,6 +186,12 @@
 	border-radius: 100%;
 	margin: 10px auto;
 	display: none;
+
+	&#imagec, &#imagef {
+		display: block;
+	}
+
+
 	@media screen and (min-width: $medium-devices) { 
 		margin: 0;
 		display: block;

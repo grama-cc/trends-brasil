@@ -81,9 +81,10 @@ class Filter extends React.Component {
       <React.Fragment>
         <div
           className={`${css.container} ${css.list}`}
-          style={{
-            display: this.props.round === 2 ? 'flex' : 'none'
-          }}
+          id={this.props.round === 2 ? css.list : null}
+          //style={{
+            //display: this.props.round === 2 ? 'flex' : 'none'
+          //}}
         >
           <p
             onClick={this.onClickClear}
