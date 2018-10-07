@@ -45,15 +45,22 @@ class Chart extends React.Component {
     const yScale = d3.scaleLinear().domain([0, this.props.data.max_value]).range([h, this.cfg.margin.top]);
 
     const lang = this.props.lang;
-    
+
+    let data = this.props.data.values;
+    const candidates = this.props.candidates;
+    const round = this.props.round;
+
+    if(round === 2) {
+      data = data.filter((c) => candidates[0].id == c.id || candidates[1].id == c.id);
+    }
+
     return (
       <div className={css.container} type={this.props.type}>
         <p className={css.percent}>{i18n('category.legend', lang)}</p>
         <svg
           className={css.chart}
           xmlns="http://www.w3.org/2000/svg"
-          viewBox={`0 0 ${this.cfg.width} ${h}`}
-          // preserveAspectRatio="none"
+          viewBox={`0 0 ${this.cfg.width} ${h + 60}`}
         >
           <title>{i18n('category.title', lang)}</title>
           <defs>
@@ -64,6 +71,35 @@ class Chart extends React.Component {
             <text className='more'>
               {i18n('category.button', lang)} - {i18n('category.more', lang)}
             </text>
+
+            <filter id="pictureFilter">
+              <feColorMatrix in="SourceGraphic"
+              type="saturate"
+              values="0" />
+            </filter>
+
+
+            {data.map((d, i) => {
+              return (
+                <pattern 
+                  key={i}
+                  id={`bar${i}`} 
+                  patternUnits="objectBoundingBox" 
+                  width="1"
+                  height="1" 
+                > 
+                  <image 
+                    x="0" 
+                    y="0"
+                    opacity={0.6}
+                    filter="url(#pictureFilter)"
+                    height={40} 
+                    width={40}
+                    xlinkHref={`https://www.nabuscadocandidato.com.br/static/img/candidates/${d.slug}.png`}
+                  />
+                </pattern>
+              )
+            })}
           </defs>
           <g
             transform={`translate(${this.cfg.margin.left}, ${this.cfg.margin.bottom})`}
@@ -73,31 +109,30 @@ class Chart extends React.Component {
               ref={(y) => { this.axisElement = y; }}
               strokeDasharray={2}
             />
-            <g transform={`scale(1,-1) translate(0, -${h})`}>
-              {this.props.data.values.map((d, i) => (
-                <rect
-                  key={i}
-                  x={(this.cfg.width / this.props.data.values.length) * i}
-                  y={0}
-                  height={h - yScale(d.value)}
-                  width={this.cfg.rect}
-                  fill={d.color}
-                >
-                </rect>
+            <g transform={`scale(1,-1) translate(${round === 2 ? ( this.cfg.width / 2 ) - ( 30 + 100 / 2 )  : 0}, -${h})`}>
+              {data.map((d, i) => (
+                <g  key={i} className={d.id}>
+                  <rect
+                    key={i}
+                    x={round === 2 ? 100 * i : (this.cfg.width / data.length) * i}
+                    y={0}
+                    height={h - yScale(d.value)}
+                    width={round === 2 ? 30 : this.cfg.rect}
+                    fill={d.color}
+                  >
+                  </rect>
+                  <circle
+                    cx={ round === 2 ? (100 * i) + 30 / 2  : ( (this.cfg.width / data.length) * i ) + 20 / 2 }
+                    cy={25}
+                    transform={`scale(1,-1)`}
+                    r={20}
+                    fill={`url(#bar${i})`}
+                  />
+                </g>
               ))}
             </g>
           </g>
         </svg>
-
-        <ul className={css.list}>
-          {this.props.data.values.map((d, i) => {
-            return (
-              <li key={i}>
-                <img src={`/static/img/candidates/${d.slug}.png`} />
-              </li>
-            )
-          })}
-        </ul>
         
       </div>
     )

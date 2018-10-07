@@ -117,7 +117,7 @@ class Social extends React.Component {
           <li>
             <a 
               target="_blank"
-              href={`https://twitter.com/home?status=${i18n('share.text', lang)} https%3A//www.nabuscadocandidato.com.br/`}
+              href={`https://twitter.com/home?status=${i18n('share.text', lang)} ${i18n('share.url', lang)}`}
             >
               <Twitter stroke={this.props.stroke} />
             </a>
@@ -125,7 +125,7 @@ class Social extends React.Component {
           <li>
             <a 
               target="_blank" 
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.nabuscadocandidato.com.br/"
+              href={`https://www.facebook.com/sharer/sharer.php?u=${i18n('share.url', lang)}`}
             >
               <Facebook stroke={this.props.stroke} />
             </a>
@@ -133,20 +133,22 @@ class Social extends React.Component {
           <li className={css.whats}>
             <a
               target="_blank"
-              href={`whatsapp://send?text=${i18n('share.text', lang)} https://www.nabuscadocandidato.com.br/`} 
+              href={`whatsapp://send?text=${i18n('share.text', lang)} ${i18n('share.url', lang)}`} 
               data-action="share/whatsapp/share" 
               data-text={i18n('share.text', lang)}
-              data-href="https://www.nabuscadocandidato.com.br/">
+              data-href={i18n('share.url', lang)}
+            >
               <Whatsapp stroke={this.props.stroke} />
             </a>
           </li>
           <li className={css.webwhats}>
             <a
               target="_blank"
-              href={`https://web.whatsapp.com/send?text=${i18n('share.text', lang)} https://www.nabuscadocandidato.com.br/`} 
+              href={`https://web.whatsapp.com/send?text=${i18n('share.text', lang)} ${i18n('share.url', lang)}`} 
               data-action="share/whatsapp/share" 
               data-text={i18n('share.text', lang)} 
-              data-href="https://www.nabuscadocandidato.com.br/">
+              data-href={i18n('share.url', lang)}
+            >
               <Whatsapp stroke={this.props.stroke} />
             </a>
           </li>

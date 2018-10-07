@@ -165,10 +165,10 @@
 	}
 }
 
-$circle-size: responsive(20, 60);
+$circle-size: responsive(40, 60);
 
 .icons {
-	width: responsive(20, 60);
+	width: responsive(40, 60);
 	display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,8 +223,10 @@ $circle-size: responsive(20, 60);
 			div {
 				margin: 0 10px;
 			}
+			&#lineList {
+				display: none;
+			}
 		}
-
 
 		li {
 			display: block;

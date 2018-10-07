@@ -31,18 +31,28 @@ class RadarChart extends React.Component {
     this.radius = Math.min(this.config.width / 2, this.config.width / 2);
   }
 
-  onClickPeriod = (period) => {
+  onClickPeriod = (period, round) => {
     this.setState({ period: period })
-    this.getData(period);
+    this.getData(period, this.props.round);
   }
 
-  getData = async (period) => {
-    const radar = await Api.getRadar(period);
+  getData = async (period, round) => {
+    const radar = await Api.getRadar(period, this.props.round);
     this.setState({ radar });
   }
 
-  componentDidMount() {
-    this.getData();
+  componentDidMount(period, round) {
+    this.getData(period, this.props.round);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.round !== this.props.round) {
+      // if(this.props.round === 2) {
+        this.getData(this.state.period, this.props.round);
+      // } else {
+        //this.getData();
+      // }
+    }
   }
 
   circleLevels = () => {
@@ -84,10 +94,6 @@ class RadarChart extends React.Component {
 
       let data = this.state.data;
 
-      if(this.props.round === 2) {
-        radar = radar.filter((c) => candidates[0].id === c.id || candidates[1].id === c.id);
-      }
-
       const values = this.values(radar);
 
       let axis = this.state.radar ? radar[0].categories.map((d, i) => {
@@ -103,7 +109,7 @@ class RadarChart extends React.Component {
         values.scale( -(d.percent) / 100 ) )).angle(( d, i ) => ( i * values.angles )
       );
       const filter = this.props.filter;
-      candidates = this.state.radar ? radar.filter((c) => filter === c.id) : [];
+      candidates = radar ? radar.filter((c) => filter === c.id) : [];
 
       radar = radar.sort((a, b) => {
         if (a.id === filter) {

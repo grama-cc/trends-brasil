@@ -16,6 +16,8 @@ import Orbital from '../components/Orbital/Orbital';
 import Footer from '../components/Footer/Footer';
 import Clipping from '../components/Footer/Clipping';
 
+import {i18n} from '../common/locale/i18n';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -46,11 +48,11 @@ class Home extends React.Component {
 
   onClickRound = (round) => {
     this.setState({ round: round })
-    // this.getData(round);
+    this.getData(round);
   }
 
-  getData = async (period, round) => {
-    const candidates = await Api.getCandidates();
+  getData = async (period) => {
+    const candidates = await Api.getCandidates(period);
     this.setState({ candidates });
 
     const words = await Api.getWords(period);
@@ -61,32 +63,31 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getData(this.state.round);
+
     if(window) {
       window.onload = () => {
         this.setState({ load: true })
       }
     }
+
   }
 
   render() {
-    let candidates = this.state.candidates;
+    if(!this.state.candidates) {
+      return <div />
+    }
+
+    const candidates = this.state.candidates;
     const words = this.state.words;
     const bars = this.state.bars;
-
-    // let candidates = this.props.candidates;
-    if(this.state.round === 2) {
-      if(candidates){
-        candidates = candidates.filter((c) => c.second_round);
-      }
-    }
 
     return (
 
       <Layout>
         <Head
-          title="Na busca do candidato"
-          description="Descubra as eleições brasileiras de 2018 através das lentes do Google Trends."
+          title={i18n('seo.title', this.state.lang)}
+          description={i18n('seo.description', this.state.lang)}
           image="https://www.nabuscadocandidato.com.br/static/img/share.jpg"
           twitter="https://www.nabuscadocandidato.com.br/static/img/twt.png"
           url='https://www.nabuscadocandidato.com.br/'
@@ -96,7 +97,7 @@ class Home extends React.Component {
           arrowColor='#b4b4b4'
           onChangeLang={this.onChangeLang} 
           lang={this.state.lang}
-
+          onFilter={this.onFilter} 
           round={this.state.round}
           onClickRound={this.onClickRound}
         />
@@ -118,7 +119,7 @@ class Home extends React.Component {
 
         <Lines
           onFilter={this.onFilter} 
-          filter={this.state.filter}
+          filter={this.state.round === 2 ? null : this.state.filter}
           candidates={candidates}
           arrowColor='#b4b4b4'
           lang={this.state.lang}
@@ -150,6 +151,8 @@ class Home extends React.Component {
           arrowColor='#b4b4b4'
           lang={this.state.lang}
           load={this.state.load}
+          c1={candidates[0].id}
+          c2={candidates[1].id}
           round={this.state.round}
         />
 

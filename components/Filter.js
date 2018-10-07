@@ -72,7 +72,6 @@ class Filter extends React.Component {
     const filter = this.props.filter;
     const lang = this.props.lang;
 
-
     const f = candidates.filter(f => f.id === filter);
     const selectedNameFilter = filter ? f[0].name : i18n('filter.choose', lang);
     const filterSlug = filter ? f[0].slug + '.png' : 'none.svg';
@@ -80,7 +79,12 @@ class Filter extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={`${css.container} ${css.list}`}>
+        <div
+          className={`${css.container} ${css.list}`}
+          style={{
+            display: this.props.round === 2 ? 'flex' : 'none'
+          }}
+        >
           <p
             onClick={this.onClickClear}
             className={`${!this.props.filter ? css.disabled : null} ${this.props.all ? css.show : null}`}
@@ -88,6 +92,7 @@ class Filter extends React.Component {
             {i18n('filter.candidates', lang)}
           </p>
           <ul
+            id={this.props.lineFilter ? css.lineList : null}
             className={this.props.all ? css.gray : this.props.round === 2 ? css.center : null}
           >
             {candidates.map((c, idx) => {
@@ -109,7 +114,7 @@ class Filter extends React.Component {
                   className={filter === c.id ? null : css.disabled}
                   style={{
                     backgroundImage: `url(/static/img/candidates/${c.slug}.png)`,
-                    backgroundColor: filter === c.id ? c.color : null,
+                    backgroundColor: filter === c.id ? c.color  : null,
                   }}
                 />
                 {this.props.lineFilter && filter === c.id ? <span
@@ -128,7 +133,7 @@ class Filter extends React.Component {
 
         <div className={`${css.container} ${css.filter}`}>
           <div>
-            {this.renderDropdown(selectedNameFilter)}
+            {this.props.round === 2 ? null : this.renderDropdown(selectedNameFilter)}
           </div>
         </div>
       </React.Fragment>

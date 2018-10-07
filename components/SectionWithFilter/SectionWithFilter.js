@@ -65,10 +65,9 @@ class Section extends React.Component {
 
     let candidates = this.props.candidates || [];
 
-    if(this.props.round === 2) {
-      candidates = candidates.filter((c) => c.second_round);
-    }
-
+    // if(this.props.round === 2) {
+      // candidates = candidates.filter((c) => c.second_round);
+    // }
 
     const currentCandidate = candidates.find((c) => this.props.filter === c.id);
     const lang = this.props.lang;

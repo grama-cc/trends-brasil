@@ -50,6 +50,20 @@
 	width: responsive(140, 220);
 	position: relative;
 	display: block;
+
+		&#two {
+			@media screen and (max-width: $medium-devices) {
+				li {
+					background-color: transparent;
+			    border: none;
+			    border-radius: 0;
+			    justify-content: center;
+			    align-items: center;
+			    border-bottom: 1px solid #b4b4b4;
+			    margin: 0 0 5px;
+				}
+			}
+		}
 		p {
 			display: none;
 		}

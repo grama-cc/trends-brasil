@@ -22,13 +22,18 @@ class Relationship extends React.Component {
 
   onFilter = async (id) => {
     this.setState({ filter: id });
+
     if(id && this.state.compare !== null) {
+
       const relationship = await Api.getRelationship(id, this.state.compare);
       this.setState({relationship: relationship});
+
     } else {
+
       const relationship = await Api.getRelationship(id, id);
       this.setState({relationship: relationship});
     }
+
   }
 
   onCompare = async (id) => {
@@ -47,12 +52,35 @@ class Relationship extends React.Component {
     }
   }
 
+  getData = async (c1, c2) => {
+    const relationship = await Api.getRelationship(c1, c2);
+    this.setState({relationship: relationship});
+  }
+
+  componentDidMount() {
+    if(this.props.round === 2) {
+      this.getData(this.props.c1, this.props.c2);
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.candidates !== this.props.candidates) {
+      if(this.props.round === 2) {
+        this.getData(this.props.c1, this.props.c2);
+      } else {
+        this.getData();
+      }
+    }
+  }
+
   renderChart () {
     const lang = this.props.lang;
 
     if (!this.props.candidates) {
       return <div className={css.loading}>Loading...</div>
     }
+
+    const c = this.props.candidates;
 
     return (
       <React.Fragment>
@@ -61,12 +89,13 @@ class Relationship extends React.Component {
             onFilter={this.onFilter} 
             onCompare={this.onCompare}
 
-            filter={this.state.filter}
-            compare={this.state.compare}
+            filter={this.props.round === 2 ? c[0].id : this.state.filter}
+            compare={this.props.round === 2 ? c[1].id : this.state.compare}
 
             candidates={this.props.candidates} 
             arrowColor={this.props.arrowColor}
             lang={this.props.lang}
+            round={this.props.round}
           />
         </div>
 

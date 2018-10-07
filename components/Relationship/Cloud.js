@@ -10,7 +10,7 @@ class Cloud extends React.Component {
     
     let maxValue = 0;
 
-    words.forEach((el)=> {
+    words.forEach((el) => {
       el.size > maxValue ? maxValue = el.size : null;
     });
 

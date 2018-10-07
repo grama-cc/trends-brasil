@@ -137,8 +137,7 @@ class Graphic extends React.Component {
                     width={size}
                     xlinkHref={`https://www.nabuscadocandidato.com.br/static/img/candidates/${c.data.slug}.png`}
                     className={filter === c.data.id ? css.openImage : null}
-                  >
-                </image>
+                  />
                 </pattern>
               )
             })}
@@ -157,8 +156,7 @@ class Graphic extends React.Component {
                 <circle
                   r={c.r < 10 ? 10 : c.r}
                   fill={`url(#img${idx})`}
-                >
-                </circle>
+                />
               </g>
             )
           })}

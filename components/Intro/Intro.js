@@ -51,9 +51,8 @@ class Intro extends React.Component {
   onClickRound = (e) => {
   	const round = Number(e.currentTarget.dataset.round);
 
-  	console.log(round);
-
   	this.props.onClickRound(round);
+  	this.props.onFilter();
   }
 
 	render() {
@@ -109,10 +108,18 @@ class Intro extends React.Component {
 			    </button>
 		    </div>
 
-		    <div className={css.rounds}>
+		    <div 
+		    	className={css.rounds}
+		    	style={{
+		    		// background: 'red',
+				    // position: 'fixed',
+				    // top: 0,
+				    // zIndex: 999999,
+				    // height: '50px'
+		    	}}
+		    >
 		    	<button 
 		    		data-round={1}
-		    		// className={css.round1}
 		    		onClick={this.onClickRound}
 		    		disabled={round === 1}
 		    	>
@@ -120,7 +127,6 @@ class Intro extends React.Component {
 		    	</button>
 		    	<button
 		    		data-round={2}
-		    		// className={css.round2}
 		    		onClick={this.onClickRound}
 		    		disabled={round === 2}
 		    	>

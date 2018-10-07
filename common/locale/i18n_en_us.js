@@ -1,6 +1,12 @@
 export const i18n_en_us = {
 
+	seo: {
+		title: "On the search for a candidate",
+		description: "Discover 2018 Brazilian elections through Google Trends lenses."
+	},
+
 	share: {
+		url: "https://www.nabuscadocandidato.com.br/?lang=en",
 		download: "For image processing programs",
 		text: "In search for the candidate: What are Brazilians googling about on the 2018 elections?"
 	},
@@ -29,10 +35,6 @@ export const i18n_en_us = {
 	},
 
  	intro: {
-    meta_tags: {
-      title: "On the search for a candidate",
-      description: 'Google',
-    },
     title: "In search for the",
     highlight: "candidate",
     description: [
@@ -173,7 +175,8 @@ export const i18n_en_us = {
 			columnLeft: [
 				"“In search for the candidate” is a project by Brazilian designers and programmers in collaboration with Google News Initiative. We analyze Google’s search data related to 2018’s election race to display the interest of Brazilian voters on the candidates running for presidency.",
 				"We will track the results until the end of election, on Oct.2018.",
-				"Google Trends analyzes a random sample of searches using Google's search engine in a specific time period and indexes them from 0 to 100, where 100 is the most searched interest. All the other values are set in comparison to the most searched."
+				"Google Trends analyzes a random sample of searches using Google's search engine in a specific time period and indexes them from 0 to 100, where 100 is the most searched interest. All the other values are set in comparison to the most searched.",
+				"The data related to the first round was updated until Oct. 7."
 			],
 			columnRight: [
 			]

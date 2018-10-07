@@ -227,7 +227,7 @@ class Orbital extends React.Component {
                         className={css.point}
                         style={style}
                         data-id={dot.is_candidate ? color[0].id : null}
-                        onClick={dot.is_candidate ? this.onFilter : null}
+                        onClick={this.props.round === 2 ? null : dot.is_candidate ? this.onFilter : null}
                       >
                         <circle
                           stroke='#fff'

@@ -39,11 +39,17 @@ class Chart extends React.Component {
   }
 
   render() {
+    let data = this.props.data.values;
+    const candidates = this.props.candidates;
+    const round = this.props.round;
+
     const lang = this.props.lang;
-    const h = this.cfg.height;
-    const yScale = d3.scaleLinear()
-      .domain([0, this.props.data.max_value])
-      .range([this.cfg.width, this.cfg.margin.left]);
+    const h = round === 2 ? 300 : this.cfg.height;
+    const yScale = d3.scaleLinear().domain([0, this.props.data.max_value]).range([this.cfg.width, this.cfg.margin.left]);
+
+    if(round === 2) {
+      data = data.filter((c) => candidates[0].id == c.id || candidates[1].id == c.id);
+    }
 
     return (
       <div className={css.container} type={this.props.type}>
@@ -51,7 +57,7 @@ class Chart extends React.Component {
         <div className={css.content}>
           <svg
             className={css.chart}
-            viewBox={`0 0 ${this.cfg.width + 95} ${h - (this.props.data.values.length * 5)}`}
+            viewBox={`0 0 ${this.cfg.width + 95} ${h - (data.length * 5)}`}
           >
             <g transform={`translate(110, 20)`}>
               <g
@@ -59,18 +65,18 @@ class Chart extends React.Component {
                 ref={(y) => { this.axisElement = y; }}
                 transform={`translate(-45, 0)`}
               />
-              <g transform={`translate(-15, 0)`}>
-                {this.props.data.values.map((d, i) => (
+              <g transform={`translate(-15, ${round === 2 ? ( ( h / 2 ) - ( 30 + 80 / 2 ) )  : 0 })`}>
+                {data.map((d, i) => (
                   <g 
                     key={i}
-                    transform={`translate(0, ${((this.cfg.height / this.props.data.values.length) - 5) * i})`}
+                    transform={`translate(0, ${round === 2 ? 80 * i : ( ( h / data.length ) - 5 ) * i})`}
                   >
-                    <text y={10} x={-95}>{d.title}</text>
+                    <text y={round === 2 ? 18 : 10} x={-95}>{d.title}</text>
                     <rect
                       y={0}
                       x={0}
                       width={this.cfg.width - yScale(d.value)}
-                      height={this.cfg.rect}
+                      height={round === 2 ? 30 : this.cfg.rect}
                       fill={d.color}
                     />
                   </g>

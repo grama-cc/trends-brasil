@@ -44,6 +44,7 @@ class Filter extends React.Component {
         style={{
           backgroundImage: `url(/static/img/candidates/${slug})`,
           backgroundColor: color,
+          display: this.props.round === 2 ? 'block' : 'none'
         }}
       />
     )
@@ -56,6 +57,7 @@ class Filter extends React.Component {
         style={{
           backgroundImage: `url(/static/img/candidates/${slug})`,
           backgroundColor: color,
+          display: this.props.round === 2 ? 'block' : 'none'
         }}
       />
     )
@@ -66,14 +68,18 @@ class Filter extends React.Component {
     const lang = this.props.lang;
 
     return (
-      <ul onClick={dropdown} className={css.selected} >
+      <ul 
+        onClick={this.props.round === 2 ? null : dropdown}
+        className={css.selected}
+        id={this.props.round === 2 ? css.two : null}
+      >
         <p className={!this.props.filter ? css.show : null}>
           {i18n('filter.two', lang)}
         </p>
 
         <li className={css.choose}>
           <span>{dropdownFilter ? dropdownSelected : this.props.all ? i18n('filter.all', lang) : i18n('filter.choose', lang)}</span>
-          <Arrow arrowColor={this.props.arrowColor} />
+          {this.props.round === 2 ? null : <Arrow arrowColor={this.props.arrowColor} />}
         </li>
 
         <div className={dropdownState ? css.open : null}>

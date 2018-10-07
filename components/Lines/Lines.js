@@ -52,17 +52,17 @@ class Lines extends React.Component {
     this.setState({ data, specialDates });
   }
 
-  getData = async (period) => {
-    return await Api.getAggregatedLine(period)
+  getData = async (period, round) => {
+    return await Api.getAggregatedLine(period, this.props.round)
   }
 
   updateCandidate = async () => {
-    const data = await this.getData(this.state.period);
+    const data = await this.getData(this.state.period, this.props.round);
     this.setState({ data });
   }
 
-  onClickPeriod = async (period) => {
-    const data = await this.getData(period);
+  onClickPeriod = async (period, round) => {
+    const data = await this.getData(period, this.props.round);
     this.setState({ period, data });
   }
 
@@ -80,26 +80,23 @@ class Lines extends React.Component {
 
   renderFilter () {
     if (!this.props.candidates || !this.props.load) {
+
       return
+
     } else {
 
-      console.log(this.props.round)
-
-      if(!this.props.round === 2) {
-
-        return (
-          <Filter 
-            onFilter={this.props.onFilter} 
-            filter={this.props.filter}
-            candidates={this.props.candidates}
-            all
-            arrowColor='#b4b4b4'
-            lineFilter
-            lang={this.props.lang}
-          />
-        )
-
-      }
+      return (
+        <Filter 
+          onFilter={this.props.onFilter} 
+          filter={this.props.filter}
+          candidates={this.props.candidates}
+          all={this.props.round === 2 ? false : true}
+          arrowColor='#b4b4b4'
+          lineFilter
+          lang={this.props.lang}
+          round={this.props.round}
+        />
+      )
     }
   }
 
@@ -108,17 +105,12 @@ class Lines extends React.Component {
       return <div>Loading...</div>
     }
 
-    let candidates = this.props.candidates
-
+    let candidates = this.props.candidates;
     let data = this.state.data;
 
-    if(this.props.round === 2) {
-      data = data.filter((c) => candidates[0].id === c.id || candidates[1].id === c.id);
-    }
-
-
     const firstLines = data[0].lines;
-    const lastDate = firstLines[firstLines.length-1].day;
+
+    const lastDate = this.props.round === 2 ? firstLines[firstLines.length-1].day : '2018-10-09';
     const end = this.getDate(lastDate);
     const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -29);
 
@@ -250,7 +242,7 @@ class Lines extends React.Component {
             arrowColor={this.props.arrowColor}
             lang={this.props.lang}
           />
-          <div className={css.line_filter}>{this.renderFilter()}</div>
+          {this.props.round === 2 ? null : <div className={css.line_filter}>{this.renderFilter()}</div>}
         </div>
         
         {this.renderChart()}

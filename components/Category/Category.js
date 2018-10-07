@@ -94,23 +94,26 @@ class Category extends React.Component {
     const view = this.state.view;
     const lang = this.props.lang;
 
-    if(this.state.bars && this.state.wordsCategory && this.props.load) {
+    if(this.state.bars && this.state.wordsCategory && this.props.load && this.props.candidates) {
 
-      console.log(this.state.bars)
       return (
         <React.Fragment>
           <div className={css.desk}>
             <Chart 
               lang={this.props.lang}
               type={view} 
+              round={this.props.round}
               data={this.state.bars[idx]}
+              candidates={this.props.candidates}
             />
           </div>
           <div className={css.mobile}>
             <ChartVertical
               lang={this.props.lang}
               type={view}
+              round={this.props.round}
               data={this.state.bars[idx]}
+              candidates={this.props.candidates}
             />
           </div>
           <div type={view} className={css.cloud_container}>

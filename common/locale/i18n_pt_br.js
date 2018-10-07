@@ -1,6 +1,12 @@
 export const i18n_pt_br = {
 
+	seo: {
+		title: "Na busca do candidato",
+		description: "Descubra as eleições brasileiras de 2018 através das lentes do Google Trends."
+	},
+
 	share: {
+		url: "https://www.nabuscadocandidato.com.br/",
 		download: "Para programas de processamento de imagens",
 		text: "Na busca do candidato: O que os brasileiros procuram no Google sobre as eleições de 2018?"
 	},
@@ -29,10 +35,6 @@ export const i18n_pt_br = {
 	},
 
   intro: {
-    meta_tags: {
-      title: 'Na busca do candidato',
-      description: 'Google',
-    },
     title: 'Na busca do',
     highlight: 'candidato',
     description: [
@@ -170,7 +172,8 @@ export const i18n_pt_br = {
 		  columnLeft: [
 		  	"“Na busca do Candidato” é um projeto de designer e programadoras brasileiras em colaboração com a Google News Initiative. Analisamos os dados de pesquisas no Google relacionados à campanha eleitoral de 2018 para apresentar o que mais interessa ao eleitor brasileiro sobre os candidatos ao cargo de Presidente da República do Brasil.",
 			  "Vamos acompanhar os resultados até o fim das eleições, em outubro de 2018.",
-	   		"O Google Trends analisa uma amostra aleatória das buscas feitas usando a máquina de busca do Google em um período específico de tempo e as classifica em uma escala de 0 a 100, sendo 100 o termo de maior interesse de pesquisa. Todos os outros valores são calculados em relação ao de maior interesse."
+	   		"O Google Trends analisa uma amostra aleatória das buscas feitas usando a máquina de busca do Google em um período específico de tempo e as classifica em uma escala de 0 a 100, sendo 100 o termo de maior interesse de pesquisa. Todos os outros valores são calculados em relação ao de maior interesse.",
+	   		"Os dados do 1º turno foram atualizados até dia 7 de outubro."
 		  ],
 	   	columnRight: [
 	   	]
