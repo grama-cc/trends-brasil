@@ -112,7 +112,7 @@ class Lines extends React.Component {
 
     const lastDate = this.props.round === 2 ? firstLines[firstLines.length-1].day : '2018-10-09';
     const end = this.getDate(lastDate);
-    const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : -29);
+    const start = d3.timeDay.offset(end, this.state.period === 'week' ? -7 : this.props.round === 2 ? -20 : -29);
 
     const lang = this.props.lang;
     const filter = this.props.filter;
