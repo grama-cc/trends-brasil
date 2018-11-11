@@ -2,6 +2,7 @@
 
 .relationship {
   @include grid();
+  align-items: inherit;
   background-color: $gray;
   overflow: hidden;
 
