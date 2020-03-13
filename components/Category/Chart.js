@@ -95,7 +95,7 @@ class Chart extends React.Component {
                     filter="url(#pictureFilter)"
                     height={40} 
                     width={40}
-                    xlinkHref={`https://www.nabuscadocandidato.com.br/static/img/candidates/${d.slug}.png`}
+                    xlinkHref={`./static/img/candidates/${d.slug}.png`}
                   />
                 </pattern>
               )

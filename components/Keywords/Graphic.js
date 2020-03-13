@@ -135,7 +135,7 @@ class Graphic extends React.Component {
                     y="0"
                     height={size} 
                     width={size}
-                    xlinkHref={`https://www.nabuscadocandidato.com.br/static/img/candidates/${c.data.slug}.png`}
+                    xlinkHref={`./static/img/candidates/${c.data.slug}.png`}
                     className={filter === c.data.id ? css.openImage : null}
                   />
                 </pattern>
