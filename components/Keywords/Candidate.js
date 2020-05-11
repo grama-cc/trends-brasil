@@ -1,9 +1,7 @@
 import React from 'react';
-import Slider from 'react-slick'
-
 import css from './Candidate.scss';
-import Cloud from './Cloud.js';
-import {i18n} from "../../common/locale/i18n";
+import Cloud from './Cloud';
+import { i18n } from '../../common/locale/i18n';
 
 class Candidate extends React.Component {
 
